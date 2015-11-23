@@ -1,0 +1,71 @@
+<Solution>
+  <PropertyGroup Name="DiamondWar" Version="2.3.2.3" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Project Name="MainScene.csd" Type="Scene" />
+        <Image Name="HelloWorld.png" />
+        <Image Name="battlebg.jpg" />
+        <Image Name="bsj.png" />
+        <Image Name="csj.png" />
+        <Image Name="hsj.png" />
+        <Image Name="icon1.png" />
+        <Image Name="icon2.png" />
+        <Image Name="icon3.png" />
+        <Image Name="icon4.png" />
+        <Image Name="icon5.png" />
+        <Image Name="icon6.png" />
+        <Image Name="iconbg.png" />
+        <Image Name="lsj.png" />
+        <Image Name="lvsj.png" />
+        <Image Name="player1.png" />
+        <Image Name="player2.png" />
+        <Image Name="sjbg.png" />
+        <Image Name="tmsj.png" />
+        <Image Name="xuetiaobg.png" />
+        <Image Name="xuetiaoup.png" />
+        <Image Name="zsj.png" />
+        <Project Name="heyeguai.csd" Type="Node" />
+        <Folder Name="NewFolder">
+          <Folder Name="heteguai">
+            <Image Name="1.png" />
+            <Image Name="10.png" />
+            <Image Name="2.png" />
+            <Image Name="4.png" />
+            <Image Name="5.png" />
+            <Image Name="6.png" />
+            <Image Name="66.png" />
+            <Image Name="7.png" />
+            <Image Name="8.png" />
+            <Image Name="9.png" />
+          </Folder>
+          <Folder Name="mogulvqingwa">
+            <Image Name="1.png" />
+            <Image Name="10.png" />
+            <Image Name="11.png" />
+            <Image Name="12.png" />
+            <Image Name="13.png" />
+            <Image Name="14.png" />
+            <Image Name="2.png" />
+            <Image Name="3.png" />
+            <Image Name="4.png" />
+            <Image Name="5.png" />
+            <Image Name="6.png" />
+            <Image Name="66.png" />
+            <Image Name="7.png" />
+            <Image Name="8.png" />
+            <Image Name="9.png" />
+          </Folder>
+        </Folder>
+        <Project Name="mogu.csd" Type="Scene" />
+        <PlistImageFolder Image="Bullet.png" PListFile="Bullet.plist" Name=".Bullet_PList.Dir">
+          <PlistImageFile Name="Bullet_0.png" Key="Bullet_0.png" />
+          <PlistImageFile Name="Bullet_1.png" Key="Bullet_1.png" />
+          <PlistImageFile Name="Bullet_2.png" Key="Bullet_2.png" />
+          <PlistImageFile Name="Bullet_3.png" Key="Bullet_3.png" />
+        </PlistImageFolder>
+        <Project Name="Skeleton.csd" Type="Skeleton" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
