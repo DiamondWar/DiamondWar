@@ -153,7 +153,10 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\CGlobleConfig.cpp" />
     <ClCompile Include="..\Classes\ESystemEnum.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\SkillData.cpp" />
     <ClCompile Include="..\Classes\Solider.cpp" />
+    <ClCompile Include="..\Classes\SoliderConfig.cpp" />
+    <ClCompile Include="..\Classes\SoliderData.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +167,10 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\CGlobleConfig.h" />
     <ClInclude Include="..\Classes\ESystemEnum.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\SkillData.h" />
     <ClInclude Include="..\Classes\Solider.h" />
+    <ClInclude Include="..\Classes\SoliderConfig.h" />
+    <ClInclude Include="..\Classes\SoliderData.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

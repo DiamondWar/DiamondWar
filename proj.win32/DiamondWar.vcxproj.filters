@@ -19,6 +19,12 @@
     <Filter Include="src\Tools">
       <UniqueIdentifier>{9e66ccba-fe5b-4ee2-a46d-ccebfd449d3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Config">
+      <UniqueIdentifier>{778df249-4df4-4104-952c-7e7da2b77faf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Data">
+      <UniqueIdentifier>{97c95830-067b-436a-9361-c5d16821873f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +54,15 @@
     <ClCompile Include="..\Classes\Bullet.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SoliderConfig.cpp">
+      <Filter>src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SoliderData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SkillData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -76,6 +91,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Bullet.h">
       <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoliderConfig.h">
+      <Filter>src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoliderData.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SkillData.h">
+      <Filter>src\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

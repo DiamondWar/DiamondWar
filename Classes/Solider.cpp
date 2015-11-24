@@ -148,9 +148,9 @@ void CSolider::OnRun()
 }
 void CSolider::OnAttack()
 {
-	CBullet* buttlet = new CBullet(1, "Bullet", Obj->getPosition(), AttackTarget, Ranks, 2);
-	Obj->addChild(buttlet->Obj);
-	CBattleObjectManager::GetInstance()->AddObject(buttlet);
+	CBullet* buttlet = new CBullet(1, "Bullet",Obj->getPosition().x, Obj->getPosition().y, AttackTarget, Ranks, 2);
+	Obj->getParent()->addChild(buttlet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 	OpreateType = ESoliderOpreate_Attack;
 	__super::OnAttack();
 }

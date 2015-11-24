@@ -50,9 +50,9 @@ bool HelloWorld::init()
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
 
-	CBullet* buttlet = new CBullet(1, "Bullet", sol->Obj->getPosition(), sol2, 1, 2);
+	/*CBullet* buttlet = new CBullet(1, "Bullet", 960, 480, sol2, 1, 2);
 	addChild(buttlet->Obj);
-	CBattleObjectManager::GetInstance()->AddObject(buttlet);
+	CBattleObjectManager::GetInstance()->AddObject(buttlet);*/
 
 	this->scheduleUpdate();
     return true;

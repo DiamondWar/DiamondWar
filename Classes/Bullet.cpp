@@ -2,16 +2,17 @@
 #include "BattleObject.h"
 #include "CGlobleConfig.h"
 
-CBullet::CBullet(int id, std::string resourename,cocos2d::Vec2 position,CSolider* target,int rank, int type)
+CBullet::CBullet(int id, std::string resourename,int x ,int y ,CSolider* target,int rank, int type)
 {
 	ResourceName = resourename;
 	DownLoadType = type;
-	InitObj();
-	Init_x = position.x;
-	Init_y = position.y;
+	Init_x = x;
+	Init_y = y;
 	AtTarget_ = target;
 	Ranks_ = rank;
 	RangeR_ = 10;
+	iSpeed_ = 1;
+	InitObj();
 }
 
 
@@ -22,6 +23,10 @@ CBullet::~CBullet()
 void CBullet::OnResourceLoadComplete()
 {
 	Obj->setPosition(Init_x, Init_y);
+	if (Ranks_ != 1)
+	{
+		Obj->setRotationSkewY(180);
+	}
 
 }
 //动作播放完成
@@ -40,18 +45,18 @@ void CBullet::OnSkillActionComplete()
 void CBullet::Update()
 {
 	__super::Update();
-	/*if (CheckIsAtTarget() == false)
+	if (CheckIsAtTarget() == false)
 	{
-	if (Ranks_ == 1)
-	Obj->setPosition(Obj->getPosition().x + iSpeed_, Obj->getPosition().y);
-	else
-	Obj->setPosition(Obj->getPosition().x - iSpeed_, Obj->getPosition().y);
+		if (Ranks_ == 1)
+			Obj->setPosition(Obj->getPosition().x + iSpeed_, Obj->getPosition().y);
+		else
+			Obj->setPosition(Obj->getPosition().x - iSpeed_, Obj->getPosition().y);
 	}
 	else
 	{
-	IsDelete_ = false;
-	Obj->setVisible(false);
-	}*/
+		IsDelete_ = false;
+		Obj->setVisible(false);
+	}
 	
 }
 bool CBullet::CheckIsAtTarget()

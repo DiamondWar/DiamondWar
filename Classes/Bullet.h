@@ -5,7 +5,7 @@ class CBullet :
 	public CBattleObject
 {
 public:
-	CBullet(int id, std::string resourename, cocos2d::Vec2 pos, CSolider* target, int rank, int type);
+	CBullet(int id, std::string resourename, int x, int y, CSolider* target, int rank, int type);
 	~CBullet();
 	virtual void Update();
 	virtual void OnResourceLoadComplete() ;

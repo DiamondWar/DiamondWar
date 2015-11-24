@@ -26,6 +26,10 @@ void CBattleObjectManager::AddObject(CBattleObject* obj)
 {
 	BattleList_.insert(BattleList_.size(), obj);
 }
+void CBattleObjectManager::AddBulletObject(CBullet* obj)
+{
+	BulletList_.insert(BulletList_.size(), obj);
+}
 void CBattleObjectManager::DeleteObject(CBattleObject*obj)
 {
 
@@ -72,6 +76,11 @@ void CBattleObjectManager::Update()
 	{
 		if (key->IsDelete_==false)
 			key->Update();
+	}
+	for (auto key: BulletList_)
+	{
+		if (key->IsDelete_ == false)
+			key ->Update();
 	}
 }
 void CBattleObjectManager::ClearAllObject()

@@ -31,30 +31,34 @@ CBattleObject::~CBattleObject()
 }
  void CBattleObject::Update()
  {
-	 if (!_Action->isPlaying())
+	 if (DownLoadType == 1)
 	 {
-		 switch (ActionType)
+		 if (!_Action->isPlaying())
 		 {
-		 case EAction_Idle:
-			 break;
-		 case EAction_Walk:
-			 break;
-		 case EAction_Attack:
-			 CCLOG("Attack is Done!");
-			 OnAttackActionComplete();
-			 break;
-		 case EAction_Hurt:
-			 CCLOG("hurt is Done!");
-			 OnHurtActionComplete();
-			 break;
-		 case EAction_Skill:
-			 CCLOG("Skill is Done!");
-			 OnSkillActionComplete();
-			 break;
-		 default:
-			 break;
+			 switch (ActionType)
+			 {
+			 case EAction_Idle:
+				 break;
+			 case EAction_Walk:
+				 break;
+			 case EAction_Attack:
+				 CCLOG("Attack is Done!");
+				 OnAttackActionComplete();
+				 break;
+			 case EAction_Hurt:
+				 CCLOG("hurt is Done!");
+				 OnHurtActionComplete();
+				 break;
+			 case EAction_Skill:
+				 CCLOG("Skill is Done!");
+				 OnSkillActionComplete();
+				 break;
+			 default:
+				 break;
+			 }
 		 }
 	 }
+	
 	
  }
  void CBattleObject::OnIdle()
