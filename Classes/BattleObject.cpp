@@ -42,15 +42,12 @@ CBattleObject::~CBattleObject()
 			 case EAction_Walk:
 				 break;
 			 case EAction_Attack:
-				 CCLOG("Attack is Done!");
 				 OnAttackActionComplete();
 				 break;
 			 case EAction_Hurt:
-				 CCLOG("hurt is Done!");
 				 OnHurtActionComplete();
 				 break;
 			 case EAction_Skill:
-				 CCLOG("Skill is Done!");
 				 OnSkillActionComplete();
 				 break;
 			 default:

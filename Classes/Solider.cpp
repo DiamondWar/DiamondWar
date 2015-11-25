@@ -3,9 +3,10 @@
 #include "CGlobleConfig.h"
 #include "cocos2d.h"
 #include "Bullet.h"
-
-CSolider::CSolider(std::string name, int x, int y, int type, int rank,int range)
+#include "SoliderConfig.h"
+CSolider::CSolider(int id,std::string name, int x, int y, int type, int rank)
 {
+	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	ResourceName = name;
 	Init_x = x;
 	Init_y = y;
@@ -13,7 +14,8 @@ CSolider::CSolider(std::string name, int x, int y, int type, int rank,int range)
 	SkillName = name;
 	Ranks = rank;
 	RangeR_ = 200;
-	AttakRange = range;
+	AttakRange = Data_->AttackRange;
+	MoveSpeed = Data_->MoveSpeed;
 	InitObj();
 	
 }
@@ -24,7 +26,6 @@ CSolider::~CSolider()
 }
 void CSolider::OnResourceLoadComplete()
 {
-	CCLOG("-------------------------------------------");
 	Obj->setPosition(Init_x, Init_y);
 	Obj->setScale(0.5, 0.5);
 	if (Ranks != 1)
@@ -65,19 +66,9 @@ void CSolider::Update()
 		break;
 	case ESoliderOpreate_Walk:
 		if (Ranks == 1)
-			Obj->setPosition(Obj->getPosition().x + speed_x, Obj->getPosition().y + spped_y);
+			Obj->setPosition(Obj->getPosition().x + MoveSpeed*CCGlobleConfig::COMMON_VALUE, Obj->getPosition().y);
 		else
-			Obj->setPosition(Obj->getPosition().x - speed_x, Obj->getPosition().y - spped_y);
-
-		if (Obj->getPosition().x > cocos2d::Director::getInstance()->getVisibleSize().width)
-		{
-			speed_x = -speed_x;
-		}
-		else if (Obj->getPosition().x <= 0)
-		{
-			speed_x = -speed_x;
-		}
-
+			Obj->setPosition(Obj->getPosition().x - MoveSpeed*CCGlobleConfig::COMMON_VALUE, Obj->getPosition().y);
 		if (AttackTarget != nullptr)
 		{
 			CCLOG("OnAttack");
@@ -110,7 +101,6 @@ void CSolider::OnHurtActionComplete()
 }
 void CSolider::OnAttackActionComplete()
 {
-	CCLOG("OnAttackActionComplete");
 	OnIdle();
 }
 void CSolider::OnSkillActionComplete()

@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-class CSoliderData
+class CSoliderData :public cocos2d::Node
 {
 public:
 	CSoliderData();
@@ -14,8 +14,8 @@ public:
 	int SkillId;
 	int Attack;
 	int Blood;
-	int MoveSpeed;
-	int AttackRange;
+	float MoveSpeed;
+	float AttackRange;
 	std::string Desc;
 };
 

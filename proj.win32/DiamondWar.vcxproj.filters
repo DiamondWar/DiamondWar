@@ -63,6 +63,9 @@
     <ClCompile Include="..\Classes\SkillData.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SkillConfig.cpp">
+      <Filter>src\Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SkillData.h">
       <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SkillConfig.h">
+      <Filter>src\Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

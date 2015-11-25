@@ -2,10 +2,11 @@
 #ifndef _CSOLIDER_H_
 #define _CSOLIDER_H_
 #include "BattleObject.h"
+#include "SoliderData.h"
 class CSolider :public CBattleObject
 {
 public:
-	CSolider(std::string name, int x, int y, int type, int rank,int range);
+	CSolider(int id, std::string name, int x, int y, int type, int rank);
 	~CSolider();
 	//队伍id
 	int Ranks = 0;
@@ -29,6 +30,8 @@ public:
 	//检测范围内的队友
 	void CheckFriendInRange();
 	CSolider* AttackTarget = nullptr;
+	CSoliderData* Data_;
+	int MoveSpeed = 0 ;
 private: 
 	ESoliderOpreate OpreateType =ESoliderOpreate_Idle;
 	//速度

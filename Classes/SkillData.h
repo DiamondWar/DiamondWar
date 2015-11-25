@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-class CSkillData
+class CSkillData :public cocos2d::Node
 {
 public:
 	CSkillData();
