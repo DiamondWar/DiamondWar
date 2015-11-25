@@ -22,19 +22,8 @@ long CCGlobleConfig::GetCurrntTime()
 	long ltime = second + minute * 60 + hour * 3600;
 	return ltime;
 }
-//void HelloWorld::LoadText()
-//{
-//	std::string  data = cocos2d::FileUtils::getInstance()->getStringFromFile("res/RoleConfig.txt");
-//	CCString* ns = CCString::createWithFormat("%s", data.c_str());
-//	CCArray* array = split(ns->getCString(), "\n");
-//	for (int i = 0; i < array->count(); i++)
-//	{
-//		CCString * str = static_cast<CCString*>(array->getObjectAtIndex(i));
-//		CCArray * strarray = split(str->getCString(), "\t");
-//	}
-//	CCLOG(" data  == %s", ns->getCString());
-//
-//}
+long CCGlobleConfig::Game_time = 0;
+
 cocos2d::CCArray* CCGlobleConfig::split(const char* srcStr, const char* sSep)
 {
 	cocos2d::CCArray* stringList = cocos2d::CCArray::create();

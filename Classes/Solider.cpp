@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "Bullet.h"
 #include "SoliderConfig.h"
-CSolider::CSolider(int id,std::string name, int x, int y, int type, int rank)
+CSolider::CSolider(int id,std::string name, int x, int y, int type, int range,int rank)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	ResourceName = name;
@@ -14,9 +14,12 @@ CSolider::CSolider(int id,std::string name, int x, int y, int type, int rank)
 	SkillName = name;
 	Ranks = rank;
 	RangeR_ = 200;
-	AttakRange = Data_->AttackRange;
-	MoveSpeed = Data_->MoveSpeed;
+	AttakRange = range;
+	AttakInveral = Data_->AttackRange*CCGlobleConfig::COMMON_ATTACK_VALUE;
+	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
+	CCLOG("MoveSpeed===  %d", MoveSpeed);
 	InitObj();
+	AttackDamage = Data_->Attack;
 	
 }
 
@@ -63,12 +66,25 @@ void CSolider::Update()
 			LastAttackTime = NowTime;
 			OnAttack();
 		}
+		if (isShowHurt == true)
+		{
+			if (CCGlobleConfig::Game_time > lastShowHurtTime +10)
+			{
+				isShowHurt = false;
+				ShowHurt();
+			}
+			else
+			{
+				ShowHurt();
+			}
+		}
+		
 		break;
 	case ESoliderOpreate_Walk:
 		if (Ranks == 1)
-			Obj->setPosition(Obj->getPosition().x + MoveSpeed*CCGlobleConfig::COMMON_VALUE, Obj->getPosition().y);
+			Obj->setPosition(Obj->getPosition().x + MoveSpeed, Obj->getPosition().y);
 		else
-			Obj->setPosition(Obj->getPosition().x - MoveSpeed*CCGlobleConfig::COMMON_VALUE, Obj->getPosition().y);
+			Obj->setPosition(Obj->getPosition().x - MoveSpeed, Obj->getPosition().y);
 		if (AttackTarget != nullptr)
 		{
 			CCLOG("OnAttack");
@@ -138,7 +154,7 @@ void CSolider::OnRun()
 }
 void CSolider::OnAttack()
 {
-	CBullet* buttlet = new CBullet(1, "Bullet",Obj->getPosition().x, Obj->getPosition().y, AttackTarget, Ranks, 2);
+	CBullet* buttlet = new CBullet(1, "Bullet", Obj->getPosition().x, Obj->getPosition().y, AttackDamage, AttackTarget, Ranks, 2);
 	Obj->getParent()->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 	OpreateType = ESoliderOpreate_Attack;
@@ -148,6 +164,19 @@ void CSolider::OnHurt()
 {
 	OpreateType = ESoliderOpreate_Hurt;
 	__super::OnHurt();
+}
+void  CSolider::GetDamage(int damage)
+{
+	CCLOG("Damange:   %d", damage);
+	isShowHurt = true;
+	lastShowHurtTime = CCGlobleConfig::Game_time;
+}
+void CSolider::ShowHurt()
+{
+	if (isShowHurt== true)
+	Obj->setColor(cocos2d::Color3B::GRAY);
+	else 
+		Obj->setColor(cocos2d::Color3B::WHITE);
 }
 void CSolider::OnSkill()
 {

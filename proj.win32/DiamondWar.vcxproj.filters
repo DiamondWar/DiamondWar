@@ -66,6 +66,7 @@
     <ClCompile Include="..\Classes\SkillConfig.cpp">
       <Filter>src\Config</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Buff.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -107,6 +108,7 @@
     <ClInclude Include="..\Classes\SkillConfig.h">
       <Filter>src\Config</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Buff.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

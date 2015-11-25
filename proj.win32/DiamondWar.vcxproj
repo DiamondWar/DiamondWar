@@ -149,6 +149,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\BattleObject.cpp" />
     <ClCompile Include="..\Classes\BattleObjectManager.cpp" />
+    <ClCompile Include="..\Classes\Buff.cpp" />
     <ClCompile Include="..\Classes\Bullet.cpp" />
     <ClCompile Include="..\Classes\CGlobleConfig.cpp" />
     <ClCompile Include="..\Classes\ESystemEnum.cpp" />
@@ -164,6 +165,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\BattleObject.h" />
     <ClInclude Include="..\Classes\BattleObjectManager.h" />
+    <ClInclude Include="..\Classes\Buff.h" />
     <ClInclude Include="..\Classes\Bullet.h" />
     <ClInclude Include="..\Classes\CGlobleConfig.h" />
     <ClInclude Include="..\Classes\ESystemEnum.h" />

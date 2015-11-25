@@ -2,7 +2,7 @@
 #include "BattleObject.h"
 #include "CGlobleConfig.h"
 
-CBullet::CBullet(int id, std::string resourename,int x ,int y ,CSolider* target,int rank, int type)
+CBullet::CBullet(int id, std::string resourename,int x ,int y ,int damage,CSolider* target,int rank, int type)
 {
 	ResourceName = resourename;
 	DownLoadType = type;
@@ -11,7 +11,8 @@ CBullet::CBullet(int id, std::string resourename,int x ,int y ,CSolider* target,
 	AtTarget_ = target;
 	Ranks_ = rank;
 	RangeR_ = 10;
-	iSpeed_ = 1;
+	iSpeed_ = 10;
+	Damage = damage;
 	InitObj();
 }
 
@@ -45,6 +46,8 @@ void CBullet::OnSkillActionComplete()
 void CBullet::Update()
 {
 	__super::Update();
+	if (IsDelete_ == true)
+		return;
 	if (CheckIsAtTarget() == false)
 	{
 		if (Ranks_ == 1)
@@ -54,15 +57,18 @@ void CBullet::Update()
 	}
 	else
 	{
-		IsDelete_ = false;
+		IsDelete_ = true;
 		Obj->setVisible(false);
+		AtTarget_->GetDamage(Damage);
 	}
 	
 }
 bool CBullet::CheckIsAtTarget()
 {
+	if (Obj == nullptr)
+		return true;
 	float length = CCGlobleConfig::GetLengthByPoint(AtTarget_->Obj->getPosition().x, AtTarget_->Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
-	if (length <= 5)
+	if (length <= iSpeed_)
 	{
 		return true;
 	}

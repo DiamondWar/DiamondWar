@@ -5,7 +5,7 @@ class CBullet :
 	public CBattleObject
 {
 public:
-	CBullet(int id, std::string resourename, int x, int y, CSolider* target, int rank, int type);
+	CBullet(int id, std::string resourename, int x, int y, int damage, CSolider* target, int rank, int type);
 	~CBullet();
 	virtual void Update();
 	virtual void OnResourceLoadComplete() ;
@@ -15,6 +15,7 @@ public:
 	bool  CheckIsAtTarget();
 
 	int Ranks_;
+	int Damage;
 private: 
 	int iSpeed_;
 	CSolider*  AtTarget_;

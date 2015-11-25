@@ -41,15 +41,19 @@ bool HelloWorld::init()
         return false;
     }
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet.plist", "Bullet.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
     
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
-	CSolider* sol = new CSolider(101,"heyeguai.csb", 100,480,1,1);
+	CSolider* sol = new CSolider(101,"heyeguai.csb", 100,480,1,400,1);
 	addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);
-	CSolider* sol2 = new CSolider(201,"heyeguai.csb", 1900, 480, 1, 2);
+	CSolider* sol2 = new CSolider(201,"heyeguai.csb", 1900, 480, 1,200, 2);
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
 
@@ -62,5 +66,6 @@ bool HelloWorld::init()
 }
 void HelloWorld::update(float dt)
 {
+	CCGlobleConfig::Game_time++;
 	CBattleObjectManager::GetInstance()->Update();
 }

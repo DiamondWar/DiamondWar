@@ -6,7 +6,7 @@
 class CSolider :public CBattleObject
 {
 public:
-	CSolider(int id, std::string name, int x, int y, int type, int rank);
+	CSolider(int id, std::string name, int x, int y, int type, int range, int rank);
 	~CSolider();
 	//队伍id
 	int Ranks = 0;
@@ -29,9 +29,14 @@ public:
 	bool CheckEnemyInRange();
 	//检测范围内的队友
 	void CheckFriendInRange();
+	//受伤害
+	void GetDamage(int damage);
+	//显示受伤
+	void ShowHurt();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	int MoveSpeed = 0 ;
+
 private: 
 	ESoliderOpreate OpreateType =ESoliderOpreate_Idle;
 	//速度
@@ -40,6 +45,9 @@ private:
 	//上次攻击的时间
 	long LastAttackTime = 0;
 	long NowTime = 0;
+	int AttackDamage;
+	bool isShowHurt = false;
+	long lastShowHurtTime = 0;
 };
 
 #endif 
