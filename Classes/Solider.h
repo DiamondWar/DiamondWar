@@ -3,6 +3,7 @@
 #define _CSOLIDER_H_
 #include "BattleObject.h"
 #include "SoliderData.h"
+#include "SkillData.h"
 class CSolider :public CBattleObject
 {
 public:
@@ -35,6 +36,8 @@ public:
 	void ShowHurt();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
+	CSkillData* AttackData_;
+	CSkillData* SKillData_;
 	int MoveSpeed = 0 ;
 
 private: 

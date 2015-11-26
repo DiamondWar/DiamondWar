@@ -4,9 +4,13 @@
 #include "cocos2d.h"
 #include "Bullet.h"
 #include "SoliderConfig.h"
+#include "SkillConfig.h"
+#include "HurtShow.h"
 CSolider::CSolider(int id,std::string name, int x, int y, int type, int range,int rank)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
+	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
+	SKillData_ = CSkillConfig::GetInstance()->GetItemById(Data_->SkillId);
 	ResourceName = name;
 	Init_x = x;
 	Init_y = y;
@@ -170,6 +174,10 @@ void  CSolider::GetDamage(int damage)
 	CCLOG("Damange:   %d", damage);
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
+	CHurtShow *hurt = new CHurtShow();
+	hurt->SetFont(3);
+	hurt->ShowLabel(damage,Obj);
+	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 }
 void CSolider::ShowHurt()
 {

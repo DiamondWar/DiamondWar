@@ -24,11 +24,15 @@ CBattleObjectManager* CBattleObjectManager::GetInstance()
 }
 void CBattleObjectManager::AddObject(CBattleObject* obj)
 {
-	BattleList_.insert(BattleList_.size(), obj);
+	BattleList_.pushBack(obj);
 }
 void CBattleObjectManager::AddBulletObject(CBullet* obj)
 {
-	BulletList_.insert(BulletList_.size(), obj);
+	BulletList_.pushBack(obj);
+}
+void CBattleObjectManager::AddHurtShowObject(CHurtShow* obj)
+{
+	HurtShowList_.pushBack(obj);
 }
 void CBattleObjectManager::DeleteObject(CBattleObject*obj)
 {
@@ -81,6 +85,11 @@ void CBattleObjectManager::Update()
 	{
 		if (key->IsDelete_ == false)
 			key ->Update();
+	}
+	for (auto key: HurtShowList_)
+	{
+		if (key->IsDelete_ == false)
+		key->Update();
 	}
 }
 void CBattleObjectManager::ClearAllObject()

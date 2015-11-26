@@ -4,20 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>-.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{94,39},{30,13}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{7,10},{30,13}}</string>
-                <key>sourceSize</key>
-                <string>{44,35}</string>
-            </dict>
-            <key>0.png</key>
+            <key>pgz_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{48,39},{44,35}}</string>
@@ -30,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>1.png</key>
+            <key>pgz_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{94,54},{24,35}}</string>
@@ -43,7 +30,20 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>2.png</key>
+            <key>pgz_10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{94,39},{30,13}}</string>
+                <key>offset</key>
+                <string>{0,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{7,10},{30,13}}</string>
+                <key>sourceSize</key>
+                <string>{44,35}</string>
+            </dict>
+            <key>pgz_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,39},{44,35}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>3.png</key>
+            <key>pgz_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{44,113},{38,35}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>4.png</key>
+            <key>pgz_4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{46,76},{42,35}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>5.png</key>
+            <key>pgz_5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,76},{42,35}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>6.png</key>
+            <key>pgz_6.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{48,2},{44,35}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>7.png</key>
+            <key>pgz_7.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{94,2},{32,35}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>8.png</key>
+            <key>pgz_8.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,113},{40,35}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{44,35}</string>
             </dict>
-            <key>9.png</key>
+            <key>pgz_9.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{44,35}}</string>
@@ -157,7 +157,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:aff9c8ad892d5febd36ded481fac5458$</string>
+            <string>$TexturePacker:SmartUpdate:838305b9a3f76adfc48833854d9b9dd4$</string>
             <key>textureFileName</key>
             <string>PZ.png</string>
         </dict>

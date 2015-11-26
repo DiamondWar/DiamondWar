@@ -26,45 +26,45 @@ CSoliderConfig* CSoliderConfig::GetInstance()
 void CSoliderConfig::LoadText()
 {
 	std::string  data = cocos2d::FileUtils::getInstance()->getStringFromFile(StressText);
-	CCString* ns = CCString::createWithFormat("%s", data.c_str());
+	String* ns = String::createWithFormat("%s", data.c_str());
 	CCArray* array = CCGlobleConfig::split(ns->getCString(), "\n");
 	for (int i = 1; i < array->count(); i++)
 	{
-		CCString * str = static_cast<CCString*>(array->getObjectAtIndex(i));
+		String * str = static_cast<String*>(array->getObjectAtIndex(i));
 		CCArray * strarray = CCGlobleConfig::split(str->getCString(), "\t");
 		int index = 0;
 		CSoliderData *data = new CSoliderData();
-		CCString * str0 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str0 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->ID = str0->intValue();
 		str0->release();
-		CCString * str1 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str1 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Name = str1->getCString();
 		str1->release();
-		CCString * str2 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str2 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Type = str2->intValue();
 		str2->release();
-		CCString * str3 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str3 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->NeedStar = str3->intValue();
 		str3->release();
-		CCString * str4 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str4 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->AttackId = str4->intValue();
 		str4->release();
-		CCString * str5 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str5 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->SkillId = str5->intValue();
 		str5->release();
-		CCString * str6 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str6 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Attack = str6->intValue();
 		str6->release();
-		CCString * str7 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str7 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Blood = str7->intValue();
 		str7->release();
-		CCString * str8 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str8 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->MoveSpeed = str8->floatValue();
 		str8->release();
-		CCString * str9 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str9 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->AttackRange = str9->floatValue();
 		str9->release();
-		CCString * str10 = static_cast<CCString*>(strarray->getObjectAtIndex(index++));
+		String * str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Desc = str10->getCString();
 		str10->release();
 		DataList_.insert(DataList_.size(), data);

@@ -4,20 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>-.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{84,202},{42,14}}</string>
-                <key>offset</key>
-                <string>{0,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{10,15},{42,14}}</string>
-                <key>sourceSize</key>
-                <string>{62,48}</string>
-            </dict>
-            <key>0.png</key>
+            <key>bjz_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,152},{62,48}}</string>
@@ -30,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>1.png</key>
+            <key>bjz_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{48,202},{34,48}}</string>
@@ -43,7 +30,20 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>2.png</key>
+            <key>bjz_10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{84,202},{42,14}}</string>
+                <key>offset</key>
+                <string>{0,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,15},{42,14}}</string>
+                <key>sourceSize</key>
+                <string>{62,48}</string>
+            </dict>
+            <key>bjz_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,102},{62,48}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>3.png</key>
+            <key>bjz_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{66,152},{54,48}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>4.png</key>
+            <key>bjz_4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{66,52},{58,48}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>5.png</key>
+            <key>bjz_5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{66,2},{58,48}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>6.png</key>
+            <key>bjz_6.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,52},{62,48}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>7.png</key>
+            <key>bjz_7.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,202},{44,48}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>8.png</key>
+            <key>bjz_8.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{66,102},{56,48}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{62,48}</string>
             </dict>
-            <key>9.png</key>
+            <key>bjz_9.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{62,48}}</string>
@@ -157,7 +157,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2b89aa670bb936e0f7a1a25363d09e2d$</string>
+            <string>$TexturePacker:SmartUpdate:4979907879a75a3d0b091ada4c1a78c8$</string>
             <key>textureFileName</key>
             <string>BZ.png</string>
         </dict>

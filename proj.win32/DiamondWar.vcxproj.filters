@@ -25,6 +25,9 @@
     <Filter Include="src\Data">
       <UniqueIdentifier>{97c95830-067b-436a-9361-c5d16821873f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\BattleUI">
+      <UniqueIdentifier>{a7b7a8e9-3bed-48a6-852b-08adcf2f4a0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,7 +69,12 @@
     <ClCompile Include="..\Classes\SkillConfig.cpp">
       <Filter>src\Config</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Buff.cpp" />
+    <ClCompile Include="..\Classes\Buff.cpp">
+      <Filter>src\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HurtShow.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -108,7 +116,12 @@
     <ClInclude Include="..\Classes\SkillConfig.h">
       <Filter>src\Config</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Buff.h" />
+    <ClInclude Include="..\Classes\Buff.h">
+      <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HurtShow.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

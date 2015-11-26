@@ -44,10 +44,11 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
     
+	
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
 	CSolider* sol = new CSolider(101,"heyeguai.csb", 100,480,1,400,1);
@@ -56,10 +57,6 @@ bool HelloWorld::init()
 	CSolider* sol2 = new CSolider(201,"heyeguai.csb", 1900, 480, 1,200, 2);
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
-
-	/*CBullet* buttlet = new CBullet(1, "Bullet", 960, 480, sol2, 1, 2);
-	addChild(buttlet->Obj);
-	CBattleObjectManager::GetInstance()->AddObject(buttlet);*/
 
 	this->scheduleUpdate();
     return true;

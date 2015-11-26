@@ -7,6 +7,7 @@
 #include "Solider.h"
 #include "CGlobleConfig.h"
 #include "Bullet.h"
+#include "HurtShow.h"
  class CBattleObjectManager
 {
 public:
@@ -15,6 +16,7 @@ public:
 	 static CBattleObjectManager* GetInstance();
 	 void AddObject(CBattleObject* obj);
 	 void AddBulletObject(CBullet* obj);
+	 void AddHurtShowObject(CHurtShow* obj);
 	 void DeleteObject(CBattleObject*obj);
 	void DeleteObject(int id);
 	void ClearAllObject();
@@ -24,6 +26,7 @@ private:
 	static CBattleObjectManager* Instance_;
 	cocos2d::Vector<CBattleObject*> BattleList_;
 	cocos2d::Vector<CBullet*> BulletList_;
+	cocos2d::Vector<CHurtShow*> HurtShowList_;
 };
 #endif // ! _CBATTLEOBJECTMANGER_H_
 

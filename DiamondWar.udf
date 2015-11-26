@@ -29,8 +29,9 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="Skeleton.csd" />
+          <FilePathData Path="mogu.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="Skeleton.csd" />
+        <ActiveDocument Path="mogu.csd" />
       </Value>
     </Item>
   </Properties>
