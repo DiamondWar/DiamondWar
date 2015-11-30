@@ -9,6 +9,7 @@ public:
 	int ID;
 	std::string Name;
 	int Type;
+	int RangeR;
 	int NeedStar;
 	int AttackId;
 	int SkillId;
@@ -16,6 +17,8 @@ public:
 	int Blood;
 	float MoveSpeed;
 	float AttackRange;
+	float AttackInterval;
 	std::string Desc;
+	std::string ResourceName;
 };
 

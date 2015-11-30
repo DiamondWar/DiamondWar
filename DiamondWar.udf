@@ -1,4 +1,4 @@
-<UserData Version="2.3.2.3">
+<UserData Version="2.3.3.0">
   <Properties>
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
@@ -28,10 +28,9 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="Skeleton.csd" />
-          <FilePathData Path="mogu.csd" />
+          <FilePathData Path="MainScene.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="mogu.csd" />
+        <ActiveDocument Path="MainScene.csd" />
       </Value>
     </Item>
   </Properties>

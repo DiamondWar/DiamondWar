@@ -51,10 +51,10 @@ bool HelloWorld::init()
 	
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
-	CSolider* sol = new CSolider(101,"heyeguai.csb", 100,480,1,400,1);
+	CSolider* sol = new CSolider(101,1,1);
 	addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);
-	CSolider* sol2 = new CSolider(201,"heyeguai.csb", 1900, 480, 1,200, 2);
+	CSolider* sol2 = new CSolider(201, 1, 2);
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
 

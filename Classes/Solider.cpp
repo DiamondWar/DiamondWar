@@ -6,22 +6,28 @@
 #include "SoliderConfig.h"
 #include "SkillConfig.h"
 #include "HurtShow.h"
-CSolider::CSolider(int id,std::string name, int x, int y, int type, int range,int rank)
+CSolider::CSolider(int id, int type,int rank)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
 	SKillData_ = CSkillConfig::GetInstance()->GetItemById(Data_->SkillId);
-	ResourceName = name;
-	Init_x = x;
-	Init_y = y;
+	ResourceName = Data_->ResourceName;
+	if (rank == 1)
+		Init_x = 10;
+	else
+		Init_x = 1900;
+	if (Data_->Type == 3)
+		Init_y = CCGlobleConfig::COMMON_SKY_POINT;
+	else 
+
+		Init_y = CCGlobleConfig::COMMON_LOAD_POINT;
 	DownLoadType = type;
-	SkillName = name;
 	Ranks = rank;
-	RangeR_ = 200;
-	AttakRange = range;
-	AttakInveral = Data_->AttackRange*CCGlobleConfig::COMMON_ATTACK_VALUE;
+	RangeR_ = Data_->RangeR;
+	AttakRange = Data_->AttackRange;///CCGlobleConfig::COMMON_VALUE;
+	AttakInveral = Data_->AttackInterval*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
-	CCLOG("MoveSpeed===  %d", MoveSpeed);
+	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange,AttakInveral);
 	InitObj();
 	AttackDamage = Data_->Attack;
 	
@@ -33,15 +39,16 @@ CSolider::~CSolider()
 }
 void CSolider::OnResourceLoadComplete()
 {
+	Obj->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	Obj->setPosition(Init_x, Init_y);
-	Obj->setScale(0.5, 0.5);
+	
 	if (Ranks != 1)
 	{
 		Obj->setRotationSkewY(180);
 	}
 	// 创建物体，并且物体的形状为圆形，第一参数为半径，第二个参数为物体材质
 	//第三个参数为边的厚度,就是在Debug模式下看到的物体外面线条的厚度，默认为0 
-	cocos2d::PhysicsBody* ballBodyOne = cocos2d::PhysicsBody::createBox(cocos2d::Size(200, 200), cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
+	cocos2d::PhysicsBody* ballBodyOne = cocos2d::PhysicsBody::createCircle(AttakRange, cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
 	//是否设置物体为静态 
 	//ballBody->setDynamic(false); 
 	//设置物体的恢复力 
@@ -55,7 +62,7 @@ void CSolider::OnResourceLoadComplete()
 	//设置物体是否受重力系数影响 
 	ballBodyOne->setGravityEnable(false);
 	//把物体添加到精灵中 
-	Obj->setPhysicsBody(ballBodyOne);
+	//Obj->setPhysicsBody(ballBodyOne);
 	OnRun();
 }
 void CSolider::Update()

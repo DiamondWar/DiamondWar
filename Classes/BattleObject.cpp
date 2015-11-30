@@ -13,8 +13,8 @@ CBattleObject::~CBattleObject()
 {
 	 if (DownLoadType == 1)//直接加载csb文件
 	 {
-		 Obj = CSLoader::createNode(ResourceName);
-		 _Action = CSLoader::createTimeline(ResourceName);
+		 Obj = CSLoader::createNode(ResourceName+".csb");
+		 _Action = CSLoader::createTimeline(ResourceName+".csb");
 		 Obj->runAction(_Action);
 		 OnResourceLoadComplete();
 	 }
@@ -91,7 +91,15 @@ CBattleObject::~CBattleObject()
 	 ActionType = EAction_Skill;
 	 if (DownLoadType == 1)
 	 {
-		 _Action->play("attack", false);
+		 if (_Action->IsAnimationInfoExists("kill"))
+		 {
+			 _Action->play("kill", false);
+		 }
+		 else
+		 {
+			 _Action->play("attack", false);
+		 }
+		 
 	 }
  }
  void CBattleObject::OnHurt()

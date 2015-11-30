@@ -8,6 +8,13 @@ float CCGlobleConfig::GetLengthByPoint(float point1_x, float point1_y, float poi
 	float length = sqrt(x*x + y*y);
 	return length;
 }
+float CCGlobleConfig::GetAngleByPoint(float point1_x, float point1_y, float point2_x, float point2_y)
+{
+	float y = point2_y - point1_y;
+	float x = point2_x - point1_x;
+	float value = atan(y/x);
+	return value;
+}
 long CCGlobleConfig::GetCurrntTime()
 {
 	struct tm *tm;

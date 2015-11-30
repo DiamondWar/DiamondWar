@@ -7,7 +7,7 @@
 class CSolider :public CBattleObject
 {
 public:
-	CSolider(int id, std::string name, int x, int y, int type, int range, int rank);
+	CSolider(int id, int type, int rank);
 	~CSolider();
 	//队伍id
 	int Ranks = 0;
@@ -38,7 +38,12 @@ public:
 	CSoliderData* Data_;
 	CSkillData* AttackData_;
 	CSkillData* SKillData_;
+	//移动速度
 	int MoveSpeed = 0 ;
+	//当前血量
+	int CurHp;
+	//总血量
+	int MaxHp;
 
 private: 
 	ESoliderOpreate OpreateType =ESoliderOpreate_Idle;

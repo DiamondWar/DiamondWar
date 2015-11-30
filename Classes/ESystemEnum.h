@@ -20,4 +20,11 @@ enum EAction
 	EAction_Hurt,
 	EAction_Skill,
 };
+//±¯÷÷¿‡–Õ
+enum ESoliderType
+{
+	E_Solider_MT =1,
+	E_Solider_YC,
+	E_Solider_FX,
+};
 #endif // !_ESYSTEMENUM_H_

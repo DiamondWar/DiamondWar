@@ -1,5 +1,5 @@
 <Solution>
-  <PropertyGroup Name="DiamondWar" Version="2.3.2.3" Type="CocosStudio" />
+  <PropertyGroup Name="DiamondWar" Version="2.3.3.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
@@ -26,45 +26,99 @@
         <Image Name="xuetiaoup.png" />
         <Image Name="zsj.png" />
         <Project Name="heyeguai.csd" Type="Node" />
-        <Folder Name="NewFolder">
-          <Folder Name="heteguai">
-            <Image Name="1.png" />
-            <Image Name="10.png" />
-            <Image Name="2.png" />
-            <Image Name="4.png" />
-            <Image Name="5.png" />
-            <Image Name="6.png" />
-            <Image Name="66.png" />
-            <Image Name="7.png" />
-            <Image Name="8.png" />
-            <Image Name="9.png" />
-          </Folder>
-          <Folder Name="mogulvqingwa">
-            <Image Name="1.png" />
-            <Image Name="10.png" />
-            <Image Name="11.png" />
-            <Image Name="12.png" />
-            <Image Name="13.png" />
-            <Image Name="14.png" />
-            <Image Name="2.png" />
-            <Image Name="3.png" />
-            <Image Name="4.png" />
-            <Image Name="5.png" />
-            <Image Name="6.png" />
-            <Image Name="66.png" />
-            <Image Name="7.png" />
-            <Image Name="8.png" />
-            <Image Name="9.png" />
-          </Folder>
-        </Folder>
-        <Project Name="mogu.csd" Type="Scene" />
         <PlistImageFolder Image="Bullet.png" PListFile="Bullet.plist" Name=".Bullet_PList.Dir">
           <PlistImageFile Name="Bullet_0.png" Key="Bullet_0.png" />
-          <PlistImageFile Name="Bullet_1.png" Key="Bullet_1.png" />
-          <PlistImageFile Name="Bullet_2.png" Key="Bullet_2.png" />
-          <PlistImageFile Name="Bullet_3.png" Key="Bullet_3.png" />
         </PlistImageFolder>
-        <Project Name="Skeleton.csd" Type="Skeleton" />
+        <Folder Name="tupian">
+          <Folder Name="heyeguai">
+            <Image Name="_0000_-----1.png" />
+            <Image Name="_0002_-----3.png" />
+            <Image Name="_0003_-----4.png" />
+            <Image Name="_0004_-----5.png" />
+            <Image Name="_0005_-----6.png" />
+            <Image Name="_0006_-----7.png" />
+            <Image Name="_0008_-----9.png" />
+            <Image Name="_0009_---3-----.png" />
+          </Folder>
+          <Folder Name="mogulvqingwa">
+            <Image Name="_0000_---4-----.png" />
+            <Image Name="_0001_-----56.png" />
+            <Image Name="_0002_-----59.png" />
+            <Image Name="_0003_-----62.png" />
+            <Image Name="_0004_-----66.png" />
+            <Image Name="_0005_-----64.png" />
+            <Image Name="_0006_-----1.png" />
+            <Image Name="_0007_-----2.png" />
+            <Image Name="_0008_-----3.png" />
+            <Image Name="_0009_-----4.png" />
+            <Image Name="_0010_-----5.png" />
+            <Image Name="_0011_-----60.png" />
+            <Image Name="_0012_-----6.png" />
+            <Image Name="_0013_-----7.png" />
+          </Folder>
+          <Folder Name="banrouzhanshi">
+            <Image Name="banrouzhanshi_0000_yanzhu.png" />
+            <Image Name="banrouzhanshi_0001_yanbai.png" />
+            <Image Name="banrouzhanshi_0002_1.png" />
+            <Image Name="banrouzhanshi_0002_banrouzhanshi.png" />
+            <Image Name="banrouzhanshi_0003_2.png" />
+            <Image Name="banrouzhanshi_0004_3.png" />
+            <Image Name="banrouzhanshi_0005_4.png" />
+            <Image Name="banrouzhanshi_0006_5.png" />
+            <Image Name="banrouzhanshi_0007_6.png" />
+            <Image Name="banrouzhanshi_0008_7.png" />
+            <Image Name="banrouzhanshi_0009_8.png" />
+            <Image Name="banrouzhanshi_0010_9.png" />
+            <Image Name="banrouzhanshi_0011_10.png" />
+            <Image Name="banrouzhanshi_0012_11.png" />
+            <Image Name="banrouzhanshi_0013_12.png" />
+          </Folder>
+          <Folder Name="chibangguai">
+            <Image Name="chiabangguai_0000s_0000_----1.png" />
+            <Image Name="chiabangguai_0000s_0001_-----81.png" />
+            <Image Name="chiabangguai_0000s_0002_----.png" />
+            <Image Name="chiabangguai_0000s_0003_------.png" />
+            <Image Name="chiabangguai_0000s_0004_-----121.png" />
+            <Image Name="chiabangguai_0000s_0005_-----124.png" />
+            <Image Name="chiabangguai_0000s_0006_----2.png" />
+            <Image Name="chiabangguai_0000_------2-----.png" />
+          </Folder>
+          <Folder Name="huangmaozi">
+            <Image Name="huangmaozi_0000_-----116-----.png" />
+            <Image Name="huangmaozi_0001_-----116.png" />
+            <Image Name="huangmaozi_0002_----.png" />
+            <Image Name="huangmaozi_0003_-----115.png" />
+            <Image Name="huangmaozi_0004_-----120.png" />
+            <Image Name="huangmaozi_0005_----.png" />
+            <Image Name="huangmaozi_0006_----.png" />
+            <Image Name="huangmaozi_0007_--.png" />
+            <Image Name="huangmaozi_0008_----.png" />
+            <Image Name="huangmaozi_0009_-----123.png" />
+            <Image Name="huangmaozi_0010_---------.png" />
+          </Folder>
+          <Folder Name="lanmaozi">
+            <Image Name="lanmaozi_0000s_0000_--1-----.png" />
+            <Image Name="lanmaozi_0000s_0001_-----126.png" />
+            <Image Name="lanmaozi_0000s_0003_--1.png" />
+            <Image Name="lanmaozi_0000s_0004_----.png" />
+            <Image Name="lanmaozi_0000s_0005_----.png" />
+            <Image Name="lanmaozi_0000s_0006_--2.png" />
+            <Image Name="lanmaozi_0000s_0007_--2-----.png" />
+            <Image Name="lanmaozi_0000s_0008_--2.png" />
+            <Image Name="lanmaozi_0000s_0009_----.png" />
+            <Image Name="lanmaozi_0000s_0010_-----73.png" />
+            <Image Name="lanmaozi_0000s_0011_-----72.png" />
+            <Image Name="lanmaozi_0000s_0012_-----82.png" />
+            <Image Name="lanmaozi_0000s_0013_--.png" />
+            <Image Name="lanmaozi_0000_------2-----------------.png" />
+          </Folder>
+        </Folder>
+        <Project Name="moguguai.csd" Type="Node" />
+        <Project Name="leidianfashi.csd" Type="Node" />
+        <Project Name="feixingbing2.csd" Type="Node" />
+        <Project Name="feixingbing1.csd" Type="Node" />
+        <Project Name="banrouzhanshi.csd" Type="Node" />
+        <Image Name="Bullet1.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

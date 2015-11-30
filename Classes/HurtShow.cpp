@@ -11,6 +11,7 @@ CHurtShow::~CHurtShow()
 }
 void CHurtShow::SetFont(int type)
 {
+
 	if (type == 1)
 	{
 		ResourceName = "bjz";
@@ -31,6 +32,7 @@ void CHurtShow::SetFont(int type)
 void CHurtShow::ShowLabel(int value, Node* node)
 {
 	int n = 0;
+	
 	while (value > 0)
 	{
 		int temp = value % 10;
@@ -41,6 +43,11 @@ void CHurtShow::ShowLabel(int value, Node* node)
 		sprite->autorelease();
 		SpriteArray.pushBack(sprite);
 	}
+	CCString *string1 = CCString::createWithFormat("%s_10.png", ResourceName);
+	CCSprite* sprite1 = CCSprite::createWithSpriteFrameName(string1->getCString());
+	sprite1->autorelease();
+	SpriteArray.pushBack(sprite1);
+
 	int count = SpriteArray.size();
 	for (int i = 0; i < SpriteArray.size(); i++)
 	{
@@ -53,7 +60,6 @@ void CHurtShow::Update()
 {
 	if (isMove == true)
 	{
-		CCLOG("dddddddddddddddddddddddddddddddddddddddd");
 		MoveNum++;
 		for (int i = 0; i < SpriteArray.size(); i++)
 		{

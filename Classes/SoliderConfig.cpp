@@ -43,6 +43,9 @@ void CSoliderConfig::LoadText()
 		String * str2 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Type = str2->intValue();
 		str2->release();
+		str2 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->RangeR = str2->intValue();
+		str2->release();
 		String * str3 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->NeedStar = str3->intValue();
 		str3->release();
@@ -61,11 +64,17 @@ void CSoliderConfig::LoadText()
 		String * str8 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->MoveSpeed = str8->floatValue();
 		str8->release();
+		str8 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->AttackInterval = str8->floatValue();
+		str8->release();
 		String * str9 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->AttackRange = str9->floatValue();
 		str9->release();
 		String * str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Desc = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceName = str10->getCString();
 		str10->release();
 		DataList_.insert(DataList_.size(), data);
 		CCLOG(" data  == %s", ns->getCString());
