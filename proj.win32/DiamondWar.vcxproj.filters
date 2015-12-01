@@ -75,6 +75,9 @@
     <ClCompile Include="..\Classes\HurtShow.cpp">
       <Filter>src\BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BaseBoss.cpp">
+      <Filter>src\Battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HurtShow.h">
       <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseBoss.h">
+      <Filter>src\Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

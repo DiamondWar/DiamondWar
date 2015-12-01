@@ -4,7 +4,7 @@
 
 CBullet::CBullet(int id, std::string resourename, int x, int y, int damage, CSolider* target, int rank, int type)
 {
-	ResourceName = resourename;
+	ResourceName = resourename+"_0.png";
 	DownLoadType = type;
 	Init_x = x;
 	Init_y = y;

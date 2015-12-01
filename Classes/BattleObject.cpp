@@ -20,7 +20,7 @@ CBattleObject::~CBattleObject()
 	 }
 	 else if (DownLoadType == 2)//加载SpriteFrameCache中的资源
 	 {
-		 SpriteFrame* frame  = SpriteFrameCache::getInstance()->getSpriteFrameByName(ResourceName+"_0.png");
+		 SpriteFrame* frame  = SpriteFrameCache::getInstance()->getSpriteFrameByName(ResourceName);
 		 Obj = CCSprite::createWithSpriteFrame(frame);
 		 OnResourceLoadComplete();
 	 }

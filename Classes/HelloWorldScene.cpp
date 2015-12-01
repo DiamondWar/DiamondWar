@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "SoliderConfig.h"
 #include "SkillConfig.h"
+#include "BaseBoss.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -45,12 +46,17 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
     
 	
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
+	CBaseBoss* boss = new CBaseBoss(1);
+	addChild(boss->Obj);
+	CBaseBoss* boss1 = new CBaseBoss(2);
+	addChild(boss1->Obj);
 	CSolider* sol = new CSolider(101,1,1);
 	addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);

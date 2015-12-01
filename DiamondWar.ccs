@@ -6,25 +6,7 @@
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="HelloWorld.png" />
         <Image Name="battlebg.jpg" />
-        <Image Name="bsj.png" />
-        <Image Name="csj.png" />
-        <Image Name="hsj.png" />
-        <Image Name="icon1.png" />
-        <Image Name="icon2.png" />
-        <Image Name="icon3.png" />
-        <Image Name="icon4.png" />
-        <Image Name="icon5.png" />
-        <Image Name="icon6.png" />
-        <Image Name="iconbg.png" />
-        <Image Name="lsj.png" />
-        <Image Name="lvsj.png" />
-        <Image Name="player1.png" />
-        <Image Name="player2.png" />
         <Image Name="sjbg.png" />
-        <Image Name="tmsj.png" />
-        <Image Name="xuetiaobg.png" />
-        <Image Name="xuetiaoup.png" />
-        <Image Name="zsj.png" />
         <Project Name="heyeguai.csd" Type="Node" />
         <PlistImageFolder Image="Bullet.png" PListFile="Bullet.plist" Name=".Bullet_PList.Dir">
           <PlistImageFile Name="Bullet_0.png" Key="Bullet_0.png" />
@@ -118,7 +100,30 @@
         <Project Name="feixingbing2.csd" Type="Node" />
         <Project Name="feixingbing1.csd" Type="Node" />
         <Project Name="banrouzhanshi.csd" Type="Node" />
-        <Image Name="Bullet1.png" />
+        <PlistImageFolder Image="Battle.png" PListFile="Battle.plist" Name=".Battle_PList.Dir">
+          <PlistImageFile Name="bsj.png" Key="bsj.png" />
+          <PlistImageFile Name="csj.png" Key="csj.png" />
+          <PlistImageFile Name="hsj.png" Key="hsj.png" />
+          <PlistImageFile Name="icon1.png" Key="icon1.png" />
+          <PlistImageFile Name="icon2.png" Key="icon2.png" />
+          <PlistImageFile Name="icon3.png" Key="icon3.png" />
+          <PlistImageFile Name="icon4.png" Key="icon4.png" />
+          <PlistImageFile Name="icon5.png" Key="icon5.png" />
+          <PlistImageFile Name="icon6.png" Key="icon6.png" />
+          <PlistImageFile Name="iconbg.png" Key="iconbg.png" />
+          <PlistImageFile Name="lsj.png" Key="lsj.png" />
+          <PlistImageFile Name="lvsj.png" Key="lvsj.png" />
+          <PlistImageFile Name="player1.png" Key="player1.png" />
+          <PlistImageFile Name="player2.png" Key="player2.png" />
+          <PlistImageFile Name="tmsj.png" Key="tmsj.png" />
+          <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
+          <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
+          <PlistImageFile Name="zsj.png" Key="zsj.png" />
+        </PlistImageFolder>
+        <PlistImageFolder Image="BattleBoss.png" PListFile="BattleBoss.plist" Name=".BattleBoss_PList.Dir">
+          <PlistImageFile Name="enemyboss.png" Key="enemyboss.png" />
+          <PlistImageFile Name="myboss.png" Key="myboss.png" />
+        </PlistImageFolder>
       </RootFolder>
     </Group>
   </SolutionFolder>
