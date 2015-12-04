@@ -1,9 +1,24 @@
 #pragma once
-class CBuff
+#include "BattleObject.h"
+#include "Solider.h"
+#include "BuffData.h"
+class CBuff:public CBattleObject
 {
 public:
-	CBuff();
+	CBuff(CBuffData* data);
 	~CBuff();
-	int Damage;
+
+	CBuffData* BuffData;
+	virtual void OnResourceLoadComplete();
+	virtual void OnAttackActionComplete();
+	virtual void OnHurtActionComplete();
+	virtual void OnSkillActionComplete();
+	virtual void Update();
+private:
+	long StartTime;
+	long LastTime;
+	long NowTime;
 };
+
+
 

@@ -52,6 +52,9 @@ private:
 	int AttackDamage;
 	bool isShowHurt = false;
 	long lastShowHurtTime = 0;
+	//¹¥»÷´ÎÊý
+	int AttackNum;
+	void CheckAttackOrSkill();
 };
 
 #endif 

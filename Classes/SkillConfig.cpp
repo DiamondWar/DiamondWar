@@ -1,5 +1,6 @@
 #include "SkillConfig.h"
 #include "CGlobleConfig.h"
+#include "json/rapidjson.h"
 USING_NS_CC;
 CSkillConfig* CSkillConfig::Instance_ = nullptr;
 CSkillConfig::CSkillConfig()
@@ -43,7 +44,12 @@ void CSkillConfig::LoadText()
 		data->BulletType = str4->intValue();
 		str4->release();
 		String * str5 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->BulletValue = str5->getCString();
+		CCArray* carr = CCGlobleConfig::split(str5->getCString(), ",");
+		CCLOG("str5 ===%s", str5->getCString());
+		for (int n = 0; n < carr->count(); n++)
+		{
+			data->AttributeInfo[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
+		}
 		str5->release();
 		String * str6 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->HurtCf = str6->intValue();
@@ -61,10 +67,18 @@ void CSkillConfig::LoadText()
 		data->EffectCf = str10->intValue();
 		str10->release();
 		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->EffectVale = str10->getCString();
+		CCArray* carr1 = CCGlobleConfig::split(str10->getCString(), ",");
+		CCLOG("str10 ===%s", str10->getCString());
+		for (int n = 0; n < carr1->count(); n++)
+		{
+			data->EffectValue[n] = static_cast<String*>(carr1->getObjectAtIndex(n))->intValue();
+		}
 		str10->release();
 		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Desc = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceName = str10->getCString();
 		str10->release();
 		DataList_.insert(DataList_.size(), data);
 

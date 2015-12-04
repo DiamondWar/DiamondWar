@@ -47,6 +47,7 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Shifa.plist", "Shifa.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
     

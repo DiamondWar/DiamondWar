@@ -21,7 +21,6 @@ public:
 	cocos2d::Node* Obj;
 	cocostudio::timeline::ActionTimeline* _Action;
 	//typeΪ2ʱ
-	cocos2d::Animation* ObjAction_;
 	CBattleObject();
 	~CBattleObject();
 	virtual void OnResourceLoadComplete() = 0;

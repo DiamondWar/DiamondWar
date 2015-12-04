@@ -6,6 +6,9 @@
 #include "SoliderConfig.h"
 #include "SkillConfig.h"
 #include "HurtShow.h"
+#include "SkillManager.h"
+#include "Buff.h"
+#include "BuffData.h"
 CSolider::CSolider(int id, int type,int rank)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
@@ -41,28 +44,10 @@ void CSolider::OnResourceLoadComplete()
 {
 	Obj->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	Obj->setPosition(Init_x, Init_y);
-	
 	if (Ranks != 1)
 	{
 		Obj->setRotationSkewY(180);
 	}
-	// 创建物体，并且物体的形状为圆形，第一参数为半径，第二个参数为物体材质
-	//第三个参数为边的厚度,就是在Debug模式下看到的物体外面线条的厚度，默认为0 
-	cocos2d::PhysicsBody* ballBodyOne = cocos2d::PhysicsBody::createCircle(AttakRange, cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
-	//是否设置物体为静态 
-	//ballBody->setDynamic(false); 
-	//设置物体的恢复力 
-	ballBodyOne->getShape(0)->setRestitution(0.0f);
-	//设置物体的摩擦力 
-	ballBodyOne->getShape(0)->setFriction(0.0f);
-	//设置物体密度 
-	ballBodyOne->getShape(0)->setDensity(0.0f);
-	//设置质量 
-	//ballBodyOne->getShape(0)->setMass(5000); 
-	//设置物体是否受重力系数影响 
-	ballBodyOne->setGravityEnable(false);
-	//把物体添加到精灵中 
-	//Obj->setPhysicsBody(ballBodyOne);
 	OnRun();
 }
 void CSolider::Update()
@@ -75,7 +60,7 @@ void CSolider::Update()
 		if (NowTime > LastAttackTime + AttakInveral)
 		{
 			LastAttackTime = NowTime;
-			OnAttack();
+			CheckAttackOrSkill();
 		}
 		if (isShowHurt == true)
 		{
@@ -153,6 +138,20 @@ void CSolider::CheckFriendInRange()
 		AttackTarget = Sol;
 	}*/
 }
+void CSolider::CheckAttackOrSkill()
+{
+	/*if (AttackNum >= AttackData_->CoolTime)
+	{
+		OnSkill();
+	}
+	else
+	{
+		AttackNum++;
+		OnAttack();
+	}
+	*/
+	OnSkill();
+}
 void CSolider::OnIdle()
 {
 	OpreateType= ESoliderOpreate_Idle;
@@ -165,9 +164,16 @@ void CSolider::OnRun()
 }
 void CSolider::OnAttack()
 {
-	CBullet* buttlet = new CBullet(1, "Bullet", Obj->getPosition().x, Obj->getPosition().y, AttackDamage, AttackTarget, Ranks, 2);
-	Obj->getParent()->addChild(buttlet->Obj);
-	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
+	if (AttackData_->BulletType <= 1)
+	{
+		AttackTarget->GetDamage(AttackData_->HurtCf*AttackDamage);
+	}
+	else
+	{
+		CBullet* buttlet = new CBullet(AttackData_, Obj->getPosition().x, Obj->getPosition().y, AttackDamage, AttackTarget, Ranks, 2);
+		Obj->getParent()->addChild(buttlet->Obj);
+		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
+	}
 	OpreateType = ESoliderOpreate_Attack;
 	__super::OnAttack();
 }
@@ -195,6 +201,10 @@ void CSolider::ShowHurt()
 }
 void CSolider::OnSkill()
 {
+	if (SKillData_->BulletType <=1)
+	{
+		CBuff* buff = new CBuff();
+	}
 	OpreateType = ESoliderOpreate_Skill;
 	__super::OnSkill();
 }

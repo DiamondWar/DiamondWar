@@ -1,4 +1,5 @@
 #include "HurtShow.h"
+#include "CGlobleConfig.h"
 USING_NS_CC;
 
 CHurtShow::CHurtShow()
@@ -58,24 +59,28 @@ void CHurtShow::ShowLabel(int value, Node* node)
 }
 void CHurtShow::Update()
 {
-	if (isMove == true)
+	if (CCGlobleConfig::Game_time % 3 == 0)
 	{
-		MoveNum++;
-		for (int i = 0; i < SpriteArray.size(); i++)
+		if (isMove == true)
 		{
-			SpriteArray.at(i)->setPosition(SpriteArray.at(i)->getPosition().x, SpriteArray.at(i)->getPosition().y + MoveNum);
-		}
-		if (MoveNum>10)
-		{
-			isMove = false;
-			IsDelete_ = true;
+			MoveNum++;
 			for (int i = 0; i < SpriteArray.size(); i++)
 			{
-				SpriteArray.at(i)->removeFromParent();
+				SpriteArray.at(i)->setPosition(SpriteArray.at(i)->getPosition().x, SpriteArray.at(i)->getPosition().y + MoveNum);
 			}
-			this->release();
-		}
+			if (MoveNum>10)
+			{
+				isMove = false;
+				IsDelete_ = true;
+				for (int i = 0; i < SpriteArray.size(); i++)
+				{
+					SpriteArray.at(i)->removeFromParent();
+				}
+				this->release();
+			}
 
+		}
 	}
+
 
 }

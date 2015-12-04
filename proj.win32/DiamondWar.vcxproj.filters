@@ -78,6 +78,12 @@
     <ClCompile Include="..\Classes\BaseBoss.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SkillManager.cpp">
+      <Filter>src\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BuffData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -127,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BaseBoss.h">
       <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SkillManager.h">
+      <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BuffData.h">
+      <Filter>src\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

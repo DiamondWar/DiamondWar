@@ -5,7 +5,7 @@
 class CCGlobleConfig
 {
 public:
-	static const int  COMMON_VALUE = 4;
+	static const int  COMMON_VALUE = 2;
 	static const int COMMON_ATTACK_VALUE = 10;
 	static  long Game_time ;
 	static const int COMMON_LOAD_POINT = 400;
