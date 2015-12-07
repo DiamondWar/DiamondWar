@@ -65,7 +65,7 @@ CBattleObject::~CBattleObject()
 	 {
 		 _Action->play("stand", true);
 	 }
-	 else if (DownLoadType == 1)
+	 else if (DownLoadType == 2)
 	 {
 
 	 }
@@ -84,6 +84,10 @@ CBattleObject::~CBattleObject()
 	 if (DownLoadType == 1)
 	 {
 		 _Action->play("attack", false);
+	 }
+	 else if (DownLoadType == 2)
+	 {
+		 
 	 }
  }
  void CBattleObject::OnSkill()

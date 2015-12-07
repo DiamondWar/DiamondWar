@@ -9,7 +9,7 @@
 #include "SkillManager.h"
 #include "Buff.h"
 #include "BuffData.h"
-CSolider::CSolider(int id, int type,int rank)
+CSolider::CSolider(int id, int type, int rank)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
@@ -21,7 +21,7 @@ CSolider::CSolider(int id, int type,int rank)
 		Init_x = 1900;
 	if (Data_->Type == 3)
 		Init_y = CCGlobleConfig::COMMON_SKY_POINT;
-	else 
+	else
 
 		Init_y = CCGlobleConfig::COMMON_LOAD_POINT;
 	DownLoadType = type;
@@ -30,10 +30,10 @@ CSolider::CSolider(int id, int type,int rank)
 	AttakRange = Data_->AttackRange;///CCGlobleConfig::COMMON_VALUE;
 	AttakInveral = Data_->AttackInterval*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
-	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange,AttakInveral);
+	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange, AttakInveral);
 	InitObj();
 	AttackDamage = Data_->Attack;
-	
+
 }
 
 
@@ -64,7 +64,7 @@ void CSolider::Update()
 		}
 		if (isShowHurt == true)
 		{
-			if (CCGlobleConfig::Game_time > lastShowHurtTime +10)
+			if (CCGlobleConfig::Game_time > lastShowHurtTime + 10)
 			{
 				isShowHurt = false;
 				ShowHurt();
@@ -74,7 +74,7 @@ void CSolider::Update()
 				ShowHurt();
 			}
 		}
-		
+
 		break;
 	case ESoliderOpreate_Walk:
 		if (Ranks == 1)
@@ -83,8 +83,7 @@ void CSolider::Update()
 			Obj->setPosition(Obj->getPosition().x - MoveSpeed, Obj->getPosition().y);
 		if (AttackTarget != nullptr)
 		{
-			CCLOG("OnAttack");
-			OnAttack();
+			CheckAttackOrSkill();
 			NowTime = CCGlobleConfig::GetCurrntTime();
 			LastAttackTime = NowTime;
 		}
@@ -103,7 +102,7 @@ void CSolider::Update()
 	default:
 		break;
 	}
-	
+
 }
 
 //动作播放完成
@@ -128,20 +127,20 @@ bool CSolider::CheckEnemyInRange()
 		return true;
 	}
 	return false;
-
 }
 void CSolider::CheckFriendInRange()
 {
 	/*CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks, (float)AttakRange, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
 	if (Sol != nullptr)
 	{
-		AttackTarget = Sol;
+	AttackTarget = Sol;
 	}*/
 }
 void CSolider::CheckAttackOrSkill()
 {
-	/*if (AttackNum >= AttackData_->CoolTime)
+	if (AttackNum >= SKillData_->CoolTime)
 	{
+		AttackNum = 0;
 		OnSkill();
 	}
 	else
@@ -149,12 +148,10 @@ void CSolider::CheckAttackOrSkill()
 		AttackNum++;
 		OnAttack();
 	}
-	*/
-	OnSkill();
 }
 void CSolider::OnIdle()
 {
-	OpreateType= ESoliderOpreate_Idle;
+	OpreateType = ESoliderOpreate_Idle;
 	__super::OnIdle();
 }
 void CSolider::OnRun()
@@ -170,7 +167,9 @@ void CSolider::OnAttack()
 	}
 	else
 	{
-		CBullet* buttlet = new CBullet(AttackData_, Obj->getPosition().x, Obj->getPosition().y, AttackDamage, AttackTarget, Ranks, 2);
+		CBuffData * buffdata = new CBuffData();
+		buffdata->Damage = AttackData_->HurtCf*AttackDamage;
+		CBullet* buttlet = new CBullet(AttackData_, Obj->getPosition().x, Obj->getPosition().y, buffdata, AttackTarget, Ranks, 2);
 		Obj->getParent()->addChild(buttlet->Obj);
 		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 	}
@@ -184,26 +183,28 @@ void CSolider::OnHurt()
 }
 void  CSolider::GetDamage(int damage)
 {
+	if (damage == 0)
+		return;
 	CCLOG("Damange:   %d", damage);
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
 	CHurtShow *hurt = new CHurtShow();
 	hurt->SetFont(3);
-	hurt->ShowLabel(damage,Obj);
+	hurt->ShowLabel(damage, Obj);
 	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 }
 void CSolider::ShowHurt()
 {
-	if (isShowHurt== true)
-	Obj->setColor(cocos2d::Color3B::GRAY);
-	else 
+	if (isShowHurt == true)
+		Obj->setColor(cocos2d::Color3B::GRAY);
+	else
 		Obj->setColor(cocos2d::Color3B::WHITE);
 }
 void CSolider::OnSkill()
 {
-	if (SKillData_->BulletType <=1)
+	if (SKillData_->BulletType >= 1)
 	{
-		//CBuff* buff = new CBuff();
+		CSkillManager::GetInstance()->ChoseSkill(SKillData_, this);
 	}
 	OpreateType = ESoliderOpreate_Skill;
 	__super::OnSkill();

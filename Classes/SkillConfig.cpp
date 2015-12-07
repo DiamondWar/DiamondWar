@@ -48,7 +48,7 @@ void CSkillConfig::LoadText()
 		CCLOG("str5 ===%s", str5->getCString());
 		for (int n = 0; n < carr->count(); n++)
 		{
-			data->AttributeInfo[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
+			data->BulletValue[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
 		}
 		str5->release();
 		String * str6 = static_cast<String*>(strarray->getObjectAtIndex(index++));
@@ -79,6 +79,9 @@ void CSkillConfig::LoadText()
 		str10->release();
 		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->ResourceName = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceFrameCount = str10->intValue();
 		str10->release();
 		DataList_.insert(DataList_.size(), data);
 

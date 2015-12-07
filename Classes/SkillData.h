@@ -20,5 +20,6 @@ public:
 	int EffectValue[3];
 	std::string Desc;
 	std::string ResourceName;
+	int ResourceFrameCount;
 };
 

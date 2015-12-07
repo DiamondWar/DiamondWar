@@ -2,7 +2,9 @@
 #include "BattleObject.h"
 #include "CGlobleConfig.h"
 #include "ESystemEnum.h"
-CBullet::CBullet(CSkillData* data, int x, int y,int damage, CSolider* target, int rank, int type)
+#include "Buff.h"
+#include "BattleObjectManager.h"
+CBullet::CBullet(CSkillData* data, int x, int y, CBuffData*  damage, CSolider* target, int rank, int type)
 {
 	Data_ = data;
 	ResourceName = Data_->ResourceName + "_0.png";
@@ -13,7 +15,7 @@ CBullet::CBullet(CSkillData* data, int x, int y,int damage, CSolider* target, in
 	Ranks_ = rank;
 	RangeR_ = 10;
 	iSpeed_ = Data_->BulletValue[1];
-	Damage = Data_->HurtCf*damage;
+	BuffData = damage;
 	InitObj();
 }
 
@@ -26,7 +28,6 @@ void CBullet::OnResourceLoadComplete()
 {
 	float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, AtTarget_->Obj->getPosition().x, AtTarget_->Obj->getPosition().y);
 	angle = angle * 180 / PI;
-	CCLOG("angle === %f", angle);
 	Obj->setPosition(Init_x, Init_y);
 }
 //动作播放完成
@@ -50,16 +51,46 @@ void CBullet::Update()
 	if (CheckIsAtTarget() == false)
 	{
 		float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, AtTarget_->Obj->getPosition().x, AtTarget_->Obj->getPosition().y);
-
+		CCLOG("angle  huduzhizhi  === %f", angle);
 		if (Ranks_ == 1)
-			Obj->setPosition(Obj->getPosition().x + iSpeed_*sin(angle), Obj->getPosition().y + iSpeed_*cos(angle));
+		{
+			if (angle >= 0)
+			{
+				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+			}
+			else
+			{
+				Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+			}
+		}
 		else
-			Obj->setPosition(Obj->getPosition().x - iSpeed_*sin(angle), Obj->getPosition().y - iSpeed_*cos(angle));
+		{
+			if (angle >= 0)
+			{
+				Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+			}
+			else
+			{
+				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+			}
+			
+		}
+			
 		angle = angle * 180 / PI;
+		CCLOG("angle jiaoduzhi === %f", angle);
 		Obj->setRotation(-angle);
 		if (Ranks_ != 1)
 		{
-			Obj->setRotationSkewY(180 - angle);
+			if (angle>=0)
+				Obj->setRotationSkewY(180 - angle);
+			else 
+				Obj->setRotationSkewY(- angle);
+
+		}
+		else
+		{
+			if (angle < 0)
+				Obj->setRotationSkewY(180 - angle);
 
 		}
 	}
@@ -67,7 +98,8 @@ void CBullet::Update()
 	{
 		IsDelete_ = true;
 		Obj->setVisible(false);
-		AtTarget_->GetDamage(Damage);
+		CBuff* buff = new CBuff(BuffData);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
 	}
 
 }

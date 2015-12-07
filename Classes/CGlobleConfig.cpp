@@ -10,8 +10,8 @@ float CCGlobleConfig::GetLengthByPoint(float point1_x, float point1_y, float poi
 }
 float CCGlobleConfig::GetAngleByPoint(float point1_x, float point1_y, float point2_x, float point2_y)
 {
-	float y = point2_y - point1_y;
-	float x = point2_x - point1_x;
+	float y = point1_y - point2_y;
+	float x = point1_x - point2_x;
 	float value = atan(y/x);
 	return value;
 }

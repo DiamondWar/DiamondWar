@@ -7,11 +7,11 @@ class CSkillManager
 public:
 	CSkillManager();
 	~CSkillManager();
-	void OnShiFaComplete();
+	void OnShiFa(CSolider* target);
 	static CSkillManager* GetInstance();
 	void ChoseSkill(CSkillData*data, CSolider* target);
 private:
 	static CSkillManager* Instance_;
-	
+	void OnQiangLiYiJi(CSkillData *data,CSolider*target);
 };
 

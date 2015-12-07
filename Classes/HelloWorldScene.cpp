@@ -47,7 +47,14 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Shifa.plist", "Shifa.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("SF.plist", "SF.png");
+
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A1.plist", "A1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A2.plist", "A2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("B1.plist", "B1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("B2.plist", "B2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("C1.plist", "C1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("C2.plist", "C2.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
     
@@ -58,10 +65,10 @@ bool HelloWorld::init()
 	addChild(boss->Obj);
 	CBaseBoss* boss1 = new CBaseBoss(2);
 	addChild(boss1->Obj);
-	CSolider* sol = new CSolider(101,1,1);
+	CSolider* sol = new CSolider(201,1,1);
 	addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);
-	CSolider* sol2 = new CSolider(201, 1, 2);
+	CSolider* sol2 = new CSolider(301, 1, 2);
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
 

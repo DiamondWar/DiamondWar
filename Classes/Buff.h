@@ -18,6 +18,7 @@ private:
 	long StartTime;
 	long LastTime;
 	long NowTime;
+	void GetResultHurt();
 };
 
 
