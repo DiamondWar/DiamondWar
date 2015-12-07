@@ -27,5 +27,8 @@ public:
 	CSolider* Target;
 	CSolider* From;
 	std::string ResourceName;
+	int ResourceFrameCount;
+	CBuffData(); 
+	~CBuffData();
 };
 

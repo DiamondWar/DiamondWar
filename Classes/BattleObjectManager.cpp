@@ -34,6 +34,10 @@ void CBattleObjectManager::AddHurtShowObject(CHurtShow* obj)
 {
 	HurtShowList_.pushBack(obj);
 }
+void CBattleObjectManager::AddBuffObject(CBuff* obj)
+{
+	BuffList_.pushBack(obj);
+}
 void CBattleObjectManager::DeleteObject(CBattleObject*obj)
 {
 
@@ -91,8 +95,16 @@ void CBattleObjectManager::Update()
 		if (key->IsDelete_ == false)
 		key->Update();
 	}
+	for (auto key : BuffList_)
+	{
+		if (key->IsDelete_ == false)
+			key->Update();
+	}
 }
 void CBattleObjectManager::ClearAllObject()
 {
 	BattleList_.clear();
+	BulletList_.clear();
+	HurtShowList_.clear();
+	BuffList_.clear();
 }

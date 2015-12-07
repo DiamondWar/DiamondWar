@@ -203,7 +203,7 @@ void CSolider::OnSkill()
 {
 	if (SKillData_->BulletType <=1)
 	{
-		CBuff* buff = new CBuff();
+		//CBuff* buff = new CBuff();
 	}
 	OpreateType = ESoliderOpreate_Skill;
 	__super::OnSkill();
