@@ -51,7 +51,6 @@ void CBullet::Update()
 	if (CheckIsAtTarget() == false)
 	{
 		float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, AtTarget_->Obj->getPosition().x, AtTarget_->Obj->getPosition().y);
-		CCLOG("angle  huduzhizhi  === %f", angle);
 		if (Ranks_ == 1)
 		{
 			if (angle >= 0)
@@ -77,7 +76,6 @@ void CBullet::Update()
 		}
 			
 		angle = angle * 180 / PI;
-		CCLOG("angle jiaoduzhi === %f", angle);
 		Obj->setRotation(-angle);
 		if (Ranks_ != 1)
 		{

@@ -45,10 +45,18 @@ void CSkillManager::OnQiangLiYiJi(CSkillData *skill, CSolider*target)
 	data->ResourceName = skill->ResourceName;
 	data->SpeedCf = 0;
 	data->Target = target->AttackTarget;
-	if (skill->)
-	CBullet* buttlet = new CBullet(target->, target->Obj->getPosition().x, Obj->getPosition().y, buffdata, AttackTarget, Ranks, 2);
-	Obj->getParent()->addChild(buttlet->Obj);
-	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
+	if (skill->BulletType == 1)
+	{
+		CBuff * buff = new CBuff(data);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+	}
+	else
+	{
+		CBullet* buttlet = new CBullet(target->AttackData_, target->Obj->getPosition().x, target->Obj->getPosition().y, data, target->AttackTarget, target->Ranks, 2);
+		target->Obj->getParent()->addChild(buttlet->Obj);
+		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
+	}
+	
 }
 void CSkillManager::OnShiFa(CSolider* target)
 {

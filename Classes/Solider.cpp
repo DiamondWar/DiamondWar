@@ -138,6 +138,7 @@ void CSolider::CheckFriendInRange()
 }
 void CSolider::CheckAttackOrSkill()
 {
+	CCLOG("ID: %d AttackNum ==== %d",Data_->ID, AttackNum);
 	if (AttackNum >= SKillData_->CoolTime)
 	{
 		AttackNum = 0;
@@ -203,6 +204,7 @@ void CSolider::ShowHurt()
 }
 void CSolider::OnSkill()
 {
+	CCLOG("OnSkill");
 	if (SKillData_->BulletType >= 1)
 	{
 		CSkillManager::GetInstance()->ChoseSkill(SKillData_, this);
