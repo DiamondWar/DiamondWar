@@ -169,6 +169,7 @@ void CSolider::OnAttack()
 	{
 		CBuffData * buffdata = new CBuffData();
 		buffdata->Damage = AttackData_->HurtCf*AttackDamage;
+		buffdata->Target = AttackTarget;
 		CBullet* buttlet = new CBullet(AttackData_, Obj->getPosition().x, Obj->getPosition().y, buffdata, AttackTarget, Ranks, 2);
 		Obj->getParent()->addChild(buttlet->Obj);
 		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
