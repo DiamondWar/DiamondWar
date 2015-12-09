@@ -139,16 +139,17 @@ void CSolider::CheckFriendInRange()
 void CSolider::CheckAttackOrSkill()
 {
 	CCLOG("ID: %d AttackNum ==== %d",Data_->ID, AttackNum);
-	if (AttackNum >= SKillData_->CoolTime)
+	/*if (AttackNum >= SKillData_->CoolTime)
 	{
-		AttackNum = 0;
-		OnSkill();
+	AttackNum = 0;
+	OnSkill();
 	}
 	else
 	{
-		AttackNum++;
-		OnAttack();
-	}
+	AttackNum++;
+	OnAttack();
+	}*/
+	OnSkill();
 }
 void CSolider::OnIdle()
 {

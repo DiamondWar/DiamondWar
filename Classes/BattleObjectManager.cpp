@@ -77,6 +77,42 @@ CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range,float r 
 	}
 	return sol;
 }
+Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks != rank)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length< range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
+Vector<CSolider*> CBattleObjectManager::GetFriendListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks == rank)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length < range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
 
 void CBattleObjectManager::Update()
 {

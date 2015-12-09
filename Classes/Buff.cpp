@@ -20,6 +20,7 @@ void CBuff::OnResourceLoadComplete()
 
 		return;
 	}
+	Obj->setAnchorPoint(Vec2(0.5f,0));
 	if (BuffData->AttackType == 2 || BuffData->AttackType == 3)
 	{
 		Obj->setPosition(BuffData->init_x, BuffData->init_y);

@@ -24,6 +24,8 @@ public:
 	void ClearAllObject();
 	void Update();
 	CSolider* GetEnemyByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetEnemyListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetFriendListByRange(float rank, float range, float r, float x, float y);
 private:
 	static CBattleObjectManager* Instance_;
 	cocos2d::Vector<CBattleObject*> BattleList_;
