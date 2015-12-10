@@ -42,6 +42,7 @@ bool HelloWorld::init()
         return false;
     }
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet.plist", "Bullet.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet1.plist", "Bullet1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
@@ -65,10 +66,10 @@ bool HelloWorld::init()
 	addChild(boss->Obj);
 	CBaseBoss* boss1 = new CBaseBoss(2);
 	addChild(boss1->Obj);
-	CSolider* sol = new CSolider(201,1,1);
+	CSolider* sol = new CSolider(202,1,1);
 	addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);
-	CSolider* sol2 = new CSolider(301, 1, 2);
+	CSolider* sol2 = new CSolider(101, 1, 2);
 	addChild(sol2->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol2);
 

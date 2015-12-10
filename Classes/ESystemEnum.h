@@ -41,11 +41,26 @@ enum EAttackTarget
 };
 enum EBulletType
 {
-	E_Bullet_None,
+	E_Bullet_None =0,
 	E_Bullet_GenZong,
 	E_Bullet_FanWei,
 	E_Bullet_Line,
 	E_Bullet_PaoWuXian,
 	E_Bullet_ChuiZhi,
+};
+enum EBuffType
+{
+	E_Buff_None = 0,
+	E_Buff_LowSpeed,//减少移动速度
+	E_Buff_HighSpeed,//增加移动速度
+	E_Buff_LowAttackSpeed,//减少攻击速度
+	E_Buff_HighAttackSpeed,//增加攻击速度
+	E_Buff_LowAttack,//减少攻击力
+	E_Buff_HighAttack,//增加攻击力
+	E_Buff_NoAction,//停止一切攻击移动
+	E_Buff_LowBlood,//增加血量
+	E_Buff_HighBlood,//减少血量
+	E_Buff_LowBloodUp,//减少血量上限
+	E_Buff_HighBloodUp,//增加血量上限
 };
 #endif // !_ESYSTEMENUM_H_

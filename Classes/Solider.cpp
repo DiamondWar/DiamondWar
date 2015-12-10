@@ -31,6 +31,9 @@ CSolider::CSolider(int id, int type, int rank)
 	AttakInveral = Data_->AttackInterval*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
 	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange, AttakInveral);
+	LastMoveSpeed = MoveSpeed;
+	LastAttakRange = AttakRange;
+	LastAttakInveral = AttakInveral;
 	InitObj();
 	AttackDamage = Data_->Attack;
 
@@ -184,10 +187,27 @@ void CSolider::OnHurt()
 	OpreateType = ESoliderOpreate_Hurt;
 	__super::OnHurt();
 }
-void  CSolider::GetDamage(int damage)
+void  CSolider::GetBuff(CBuffData* data)
 {
-	if (damage == 0)
-		return;
+	if (data->Damage != 0)
+	{
+		GetDamage(data->Damage); 
+	}
+	else
+	{
+		if (data->AttackInveralCf != 0)
+		{
+			GetAttackSpeedCf(data->AttackInveralCf); 
+		}
+		if (data->SpeedCf != 0)
+		{
+			GetMoveSpeedCf(data->SpeedCf);
+		}
+	}
+	
+}
+void CSolider::GetDamage(int damage,int type=3)
+{
 	CCLOG("Damange:   %d", damage);
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
@@ -195,6 +215,21 @@ void  CSolider::GetDamage(int damage)
 	hurt->SetFont(3);
 	hurt->ShowLabel(damage, Obj);
 	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
+}
+void CSolider::GetMoveSpeedCf(float cf)
+{
+	MoveSpeedCf += cf;
+	MoveSpeed += MoveSpeed+ MoveSpeed*MoveSpeedCf;
+}
+void CSolider::GetAttackSpeedCf(float cf)
+{
+	AttakInveralCf +=cf;
+	AttakInveral = AttakInveral+ AttakInveral*AttakInveralCf;
+}
+void  CSolider::GetAttackRangeCf(float cf)
+{
+	AttackRangeCf += cf;
+	AttackRangeCf = AttackRangeCf + AttackRangeCf*AttackRangeCf;
 }
 void CSolider::ShowHurt()
 {

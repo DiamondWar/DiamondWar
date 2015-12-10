@@ -14,5 +14,6 @@ private:
 	static CSkillManager* Instance_;
 	void OnQiangLiYiJi(CSkillData *data,CSolider*target);
 	void OnZhaoHuanShanDian(CSkillData *skill, CSolider*target);
+	void OnHanBingLingYu(CSkillData *skill, CSolider*target);
 };
 

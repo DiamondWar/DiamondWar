@@ -30,6 +30,9 @@ void CSkillManager::ChoseSkill(CSkillData*data, CSolider* target)
 	case 201:
 		OnZhaoHuanShanDian(data, target);
 		break;
+	case 401:
+		OnHanBingLingYu(data, target);
+		break;
 	}
 
 }
@@ -78,6 +81,28 @@ void CSkillManager::OnZhaoHuanShanDian(CSkillData *skill, CSolider*target)
 		data->ResourceFrameCount = skill->ResourceFrameCount;
 		data->ResourceName = skill->ResourceName;
 		data->SpeedCf = 0;
+		data->Target = key;
+		CBuff * buff = new CBuff(data);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+	}
+}
+void CSkillManager::OnHanBingLingYu(CSkillData *skill, CSolider*target)
+{
+	Vector<CSolider*> list = CBattleObjectManager::GetInstance()->GetEnemyListByRange(target->Ranks, target->AttakRange, target->RangeR_, target->Obj->getPosition().x, target->Obj->getPosition().y);
+	for (CSolider* key : list)
+	{
+		CBuffData *data = new CBuffData();
+		data->AttackType = 1;
+		data->AttackRange = 0;
+		data->ContinueTime = 2;
+		data->Damage = target->Data_->Attack*skill->HurtCf;
+		data->AttackInveralCf = 0;
+		data->From = target;
+		data->InveralTime = 0;
+		data->NextBuff = NULL;
+		data->ResourceFrameCount = skill->ResourceFrameCount;
+		data->ResourceName = skill->ResourceName;
+		data->SpeedCf = 1;
 		data->Target = key;
 		CBuff * buff = new CBuff(data);
 		CBattleObjectManager::GetInstance()->AddBuffObject(buff);

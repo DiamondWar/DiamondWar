@@ -11,10 +11,7 @@ public:
 	CSolider(int id, int type, int rank);
 	~CSolider();
 
-	//¹¥»÷·¶Î§
-	float AttakRange = 300;
-	//¹¥»÷¼ä¸ô
-	int AttakInveral = 5;
+	
 	virtual void OnResourceLoadComplete();
 	virtual void OnAttackActionComplete() ;
 	virtual void OnHurtActionComplete();
@@ -30,22 +27,22 @@ public:
 	bool CheckEnemyInRange();
 	//¼ì²â·¶Î§ÄÚµÄ¶ÓÓÑ
 	void CheckFriendInRange();
-	//ÊÜÉËº¦
-	void GetDamage(int damage);
+	
+	void GetBuff(CBuffData* damage);
+	void GetDamage(int damage, int type = 3);
+	void GetMoveSpeedCf(float cf);
+	void GetAttackSpeedCf(float cf);
+	void GetAttackRangeCf(float cf);
 	//ÏÔÊ¾ÊÜÉË
 	void ShowHurt();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	CSkillData* AttackData_;
 	CSkillData* SKillData_;
-	//ÒÆ¶¯ËÙ¶È
-	int MoveSpeed = 0 ;
+	
 
 private: 
 	ESoliderOpreate OpreateType =ESoliderOpreate_Idle;
-	//ËÙ¶È
-	int speed_x = 1;
-	int spped_y = 0;
 	//ÉÏ´Î¹¥»÷µÄÊ±¼ä
 	long LastAttackTime = 0;
 	long NowTime = 0;
@@ -54,7 +51,23 @@ private:
 	long lastShowHurtTime = 0;
 	//¹¥»÷´ÎÊý
 	int AttackNum=0;
+
+
+
+	//¹¥»÷·¶Î§
+	float AttackRangeCf = 0;//¹¥»÷·¶Î§ÏµÊý
+	float AttakRange = 300;
+	//¹¥»÷¼ä¸ô
+	float AttakInveralCf = 0;
+	int AttakInveral = 5;
+	//ÒÆ¶¯ËÙ¶È
+	float MoveSpeedCf = 0;
+	int MoveSpeed = 0;
+
 	void CheckAttackOrSkill();
+
+	
+	
 };
 
 #endif 
