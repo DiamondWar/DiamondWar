@@ -1,4 +1,7 @@
 #pragma once
+
+#ifndef _CHURTSHOW_H_
+#define  _CHURTSHOW_H_
 #include "cocos2d.h"
 class CHurtShow :public cocos2d::Node
 {
@@ -15,4 +18,4 @@ private:
 	bool isMove = false;
 	int MoveNum = 0;
 };
-
+#endif

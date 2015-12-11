@@ -41,7 +41,7 @@ void CSoliderConfig::LoadText()
 		data->Name = str1->getCString();
 		str1->release();
 		String * str2 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->Type = str2->intValue();
+		data->SoliderType = str2->intValue();
 		str2->release();
 		
 		String * str3 = static_cast<String*>(strarray->getObjectAtIndex(index++));

@@ -46,6 +46,22 @@ void  CBattleObjectManager::DeleteObject(int id)
 {
 
 }
+void CBattleObjectManager::SetFirstRanksBoss(CBaseBoss* boss)
+{
+	FirstRanksBoss_ = boss;
+}
+void CBattleObjectManager::SetSecondRanksBoss(CBaseBoss* boss)
+{
+	SecondRanksBoss_ = boss;
+}
+CBaseBoss* CBattleObjectManager::GetFirstRanksBoss()
+{
+	return FirstRanksBoss_;
+}
+CBaseBoss* CBattleObjectManager::GetSecondRanksBoss()
+{
+	return SecondRanksBoss_;
+}
 CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range,float r , float x, float y)
 {
 	CSolider* sol = nullptr;
@@ -77,6 +93,42 @@ CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range,float r 
 	}
 	return sol;
 }
+Vector<CSolider*> CBattleObjectManager::GetLuDiEnemyListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks != rank&&keysol->Data_->SoliderType <= 2)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length < range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
+Vector<CSolider*> CBattleObjectManager::GetFeiXingEnemyListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks != rank&&keysol->Data_->SoliderType ==3)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length < range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
 Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float range, float r, float x, float y)
 {
 	Vector<CSolider*> list;
@@ -96,6 +148,42 @@ Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float ra
 	return list;
 }
 Vector<CSolider*> CBattleObjectManager::GetFriendListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks == rank)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length < range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
+Vector<CSolider*> CBattleObjectManager::GetLuDiFriendListByRange(float rank, float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->Ranks == rank)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+			length = length - keysol->RangeR_ - r;
+			if (length < range)
+			{
+				list.pushBack(keysol);
+			}
+		}
+	}
+	return list;
+}
+Vector<CSolider*> CBattleObjectManager::GetFeiXingFriendListByRange(float rank, float range, float r, float x, float y)
 {
 	Vector<CSolider*> list;
 	for (CBattleObject* key : BattleList_)

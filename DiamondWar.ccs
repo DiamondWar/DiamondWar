@@ -101,9 +101,6 @@
         <Project Name="feixingbing1.csd" Type="Node" />
         <Project Name="banrouzhanshi.csd" Type="Node" />
         <PlistImageFolder Image="Battle.png" PListFile="Battle.plist" Name=".Battle_PList.Dir">
-          <PlistImageFile Name="bsj.png" Key="bsj.png" />
-          <PlistImageFile Name="csj.png" Key="csj.png" />
-          <PlistImageFile Name="hsj.png" Key="hsj.png" />
           <PlistImageFile Name="icon1.png" Key="icon1.png" />
           <PlistImageFile Name="icon2.png" Key="icon2.png" />
           <PlistImageFile Name="icon3.png" Key="icon3.png" />
@@ -111,14 +108,17 @@
           <PlistImageFile Name="icon5.png" Key="icon5.png" />
           <PlistImageFile Name="icon6.png" Key="icon6.png" />
           <PlistImageFile Name="iconbg.png" Key="iconbg.png" />
-          <PlistImageFile Name="lsj.png" Key="lsj.png" />
-          <PlistImageFile Name="lvsj.png" Key="lvsj.png" />
           <PlistImageFile Name="player1.png" Key="player1.png" />
           <PlistImageFile Name="player2.png" Key="player2.png" />
-          <PlistImageFile Name="tmsj.png" Key="tmsj.png" />
           <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
           <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
-          <PlistImageFile Name="zsj.png" Key="zsj.png" />
+          <PlistImageFile Name="caishuijing_0.png" Key="caishuijing_0.png" />
+          <PlistImageFile Name="caishuijing_1.png" Key="caishuijing_1.png" />
+          <PlistImageFile Name="shujing_1.png" Key="shujing_1.png" />
+          <PlistImageFile Name="shujing_2.png" Key="shujing_2.png" />
+          <PlistImageFile Name="shujing_3.png" Key="shujing_3.png" />
+          <PlistImageFile Name="shujing_4.png" Key="shujing_4.png" />
+          <PlistImageFile Name="shujing_0.png" Key="shujing_0.png" />
         </PlistImageFolder>
         <PlistImageFolder Image="BattleBoss.png" PListFile="BattleBoss.plist" Name=".BattleBoss_PList.Dir">
           <PlistImageFile Name="enemyboss.png" Key="enemyboss.png" />
@@ -149,69 +149,6 @@
           <PlistImageFile Name="caihong_7.png" Key="caihong_7.png" />
           <PlistImageFile Name="caihong_8.png" Key="caihong_8.png" />
           <PlistImageFile Name="caihong_9.png" Key="caihong_9.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="B10000.png" PListFile="B10000.plist" Name=".B10000_PList.Dir">
-          <PlistImageFile Name="C0001.png" Key="C0001.png" />
-          <PlistImageFile Name="C0002.png" Key="C0002.png" />
-          <PlistImageFile Name="C0003.png" Key="C0003.png" />
-          <PlistImageFile Name="C0004.png" Key="C0004.png" />
-          <PlistImageFile Name="C0005.png" Key="C0005.png" />
-          <PlistImageFile Name="C0006.png" Key="C0006.png" />
-          <PlistImageFile Name="C0007.png" Key="C0007.png" />
-          <PlistImageFile Name="C0008.png" Key="C0008.png" />
-          <PlistImageFile Name="C0009.png" Key="C0009.png" />
-          <PlistImageFile Name="C0010.png" Key="C0010.png" />
-          <PlistImageFile Name="C0011.png" Key="C0011.png" />
-          <PlistImageFile Name="C0012.png" Key="C0012.png" />
-          <PlistImageFile Name="C0013.png" Key="C0013.png" />
-          <PlistImageFile Name="C0014.png" Key="C0014.png" />
-          <PlistImageFile Name="C0015.png" Key="C0015.png" />
-          <PlistImageFile Name="C0016.png" Key="C0016.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="A20000.png" PListFile="A20000.plist" Name=".A20000_PList.Dir">
-          <PlistImageFile Name="d0001.png" Key="d0001.png" />
-          <PlistImageFile Name="d0002.png" Key="d0002.png" />
-          <PlistImageFile Name="d0003.png" Key="d0003.png" />
-          <PlistImageFile Name="d0004.png" Key="d0004.png" />
-          <PlistImageFile Name="d0005.png" Key="d0005.png" />
-          <PlistImageFile Name="d0006.png" Key="d0006.png" />
-          <PlistImageFile Name="d0007.png" Key="d0007.png" />
-          <PlistImageFile Name="d0008.png" Key="d0008.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="A10000.png" PListFile="A10000.plist" Name=".A10000_PList.Dir">
-          <PlistImageFile Name="a10001.png" Key="a10001.png" />
-          <PlistImageFile Name="a10002.png" Key="a10002.png" />
-          <PlistImageFile Name="a10003.png" Key="a10003.png" />
-          <PlistImageFile Name="a10004.png" Key="a10004.png" />
-          <PlistImageFile Name="a10005.png" Key="a10005.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="C20000.png" PListFile="C20000.plist" Name=".C20000_PList.Dir">
-          <PlistImageFile Name="e0001.png" Key="e0001.png" />
-          <PlistImageFile Name="e0002.png" Key="e0002.png" />
-          <PlistImageFile Name="e0003.png" Key="e0003.png" />
-          <PlistImageFile Name="e0004.png" Key="e0004.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="C10000.png" PListFile="C10000.plist" Name=".C10000_PList.Dir">
-          <PlistImageFile Name="u0001.png" Key="u0001.png" />
-          <PlistImageFile Name="u0002.png" Key="u0002.png" />
-          <PlistImageFile Name="u0003.png" Key="u0003.png" />
-          <PlistImageFile Name="u0004.png" Key="u0004.png" />
-          <PlistImageFile Name="u0005.png" Key="u0005.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="B20000.png" PListFile="B20000.plist" Name=".B20000_PList.Dir">
-          <PlistImageFile Name="b0001.png" Key="b0001.png" />
-          <PlistImageFile Name="b0002.png" Key="b0002.png" />
-          <PlistImageFile Name="b0003.png" Key="b0003.png" />
-          <PlistImageFile Name="b0004.png" Key="b0004.png" />
-          <PlistImageFile Name="b0005.png" Key="b0005.png" />
-          <PlistImageFile Name="b0006.png" Key="b0006.png" />
-          <PlistImageFile Name="b0007.png" Key="b0007.png" />
-          <PlistImageFile Name="b0008.png" Key="b0008.png" />
-          <PlistImageFile Name="b0009.png" Key="b0009.png" />
-          <PlistImageFile Name="b0010.png" Key="b0010.png" />
-          <PlistImageFile Name="b0011.png" Key="b0011.png" />
-          <PlistImageFile Name="b0012.png" Key="b0012.png" />
-          <PlistImageFile Name="b0013.png" Key="b0013.png" />
         </PlistImageFolder>
       </RootFolder>
     </Group>

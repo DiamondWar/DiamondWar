@@ -2,7 +2,6 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "Solider.h"
 #include "BattleObjectManager.h"
 class HelloWorld : public cocos2d::Layer
 {
@@ -12,8 +11,6 @@ public:
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
-	cocos2d::PhysicsWorld* m_world;
-	void setPhyWorld(cocos2d::PhysicsWorld* world){ m_world = world; }
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 	virtual void  update(float dt);

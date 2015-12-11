@@ -1,6 +1,9 @@
 #pragma once
-#include "Solider.h"
+#ifndef _CBUFFDATA_H_
+#define _CBUFFDATA_H_
 #include "cocos2d.h"
+#include "ESystemEnum.h"
+#include "Solider.h"
 class CBuffData
 {
 public:
@@ -15,6 +18,8 @@ public:
 	
 	int init_x = 0;
 	int init_y = 0;
+	//减少伤害值
+	float AttackCf = 0;
 	//减少攻速
 	float AttackInveralCf = 0;
 	//减速系数
@@ -26,13 +31,14 @@ public:
 	//间隔时间
 	float InveralTime = 0;
 	//下一个buff;
-	CBuffData* NextBuff= NULL;
+	CBuffData* NextBuff = nullptr;
 	//当前目标
-	CSolider* Target = NULL;
-	CSolider* From = NULL;
+	CSolider* Target = nullptr;
+	CSolider* From  = nullptr;
 	std::string ResourceName="";
 	int ResourceFrameCount = 0;
 	CBuffData(); 
 	~CBuffData();
 };
+#endif
 

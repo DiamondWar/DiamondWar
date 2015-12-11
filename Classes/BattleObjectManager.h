@@ -9,6 +9,7 @@
 #include "Bullet.h"
 #include "Buff.h"
 #include "HurtShow.h"
+#include "BaseBoss.h"
  class CBattleObjectManager
 {
 public:
@@ -20,18 +21,29 @@ public:
 	 void AddHurtShowObject(CHurtShow* obj);
 	 void AddBuffObject(CBuff*obj);
 	 void DeleteObject(CBattleObject*obj);
+	 void SetFirstRanksBoss(CBaseBoss* boss);
+	 void SetSecondRanksBoss(CBaseBoss* boss);
+	 CBaseBoss* GetSecondRanksBoss();
+	 CBaseBoss* GetFirstRanksBoss();
 	void DeleteObject(int id);
 	void ClearAllObject();
 	void Update();
+
 	CSolider* GetEnemyByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetEnemyListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetLuDiEnemyListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetFeiXingEnemyListByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetFriendListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetLuDiFriendListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetFeiXingFriendListByRange(float rank, float range, float r, float x, float y);
 private:
 	static CBattleObjectManager* Instance_;
 	cocos2d::Vector<CBattleObject*> BattleList_;
 	cocos2d::Vector<CBullet*> BulletList_;
 	cocos2d::Vector<CHurtShow*> HurtShowList_;
 	cocos2d::Vector<CBuff*> BuffList_;
+	CBaseBoss* FirstRanksBoss_;
+	CBaseBoss* SecondRanksBoss_;
 };
 #endif // ! _CBATTLEOBJECTMANGER_H_
 

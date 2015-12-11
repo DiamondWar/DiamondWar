@@ -155,15 +155,19 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\BuffData.cpp" />
     <ClCompile Include="..\Classes\Bullet.cpp" />
     <ClCompile Include="..\Classes\CGlobleConfig.cpp" />
+    <ClCompile Include="..\Classes\DiamondChoseManager.cpp" />
     <ClCompile Include="..\Classes\ESystemEnum.cpp" />
+    <ClCompile Include="..\Classes\GameSceneControl.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HurtShow.cpp" />
+    <ClCompile Include="..\Classes\ShuiJingBase.cpp" />
     <ClCompile Include="..\Classes\SkillConfig.cpp" />
     <ClCompile Include="..\Classes\SkillData.cpp" />
     <ClCompile Include="..\Classes\SkillManager.cpp" />
     <ClCompile Include="..\Classes\Solider.cpp" />
     <ClCompile Include="..\Classes\SoliderConfig.cpp" />
     <ClCompile Include="..\Classes\SoliderData.cpp" />
+    <ClCompile Include="..\Classes\SoliderDie.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,15 +179,19 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\BuffData.h" />
     <ClInclude Include="..\Classes\Bullet.h" />
     <ClInclude Include="..\Classes\CGlobleConfig.h" />
+    <ClInclude Include="..\Classes\DiamondChoseManager.h" />
     <ClInclude Include="..\Classes\ESystemEnum.h" />
+    <ClInclude Include="..\Classes\GameSceneControl.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HurtShow.h" />
+    <ClInclude Include="..\Classes\ShuiJingBase.h" />
     <ClInclude Include="..\Classes\SkillConfig.h" />
     <ClInclude Include="..\Classes\SkillData.h" />
     <ClInclude Include="..\Classes\SkillManager.h" />
     <ClInclude Include="..\Classes\Solider.h" />
     <ClInclude Include="..\Classes\SoliderConfig.h" />
     <ClInclude Include="..\Classes\SoliderData.h" />
+    <ClInclude Include="..\Classes\SoliderDie.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

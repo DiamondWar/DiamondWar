@@ -1,8 +1,10 @@
 #pragma once
+#ifndef _CBULLET_H_
+#define  _CBULLET_H_
+
 #include "cocos2d.h"
 #include "Solider.h"
 #include "SkillData.h"
-#include "BuffData.h"
 class CBullet :
 	public CBattleObject
 {
@@ -26,3 +28,4 @@ private:
 
 };
 
+#endif

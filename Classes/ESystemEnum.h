@@ -55,6 +55,8 @@ enum EBuffType
 	E_Buff_HighSpeed,//增加移动速度
 	E_Buff_LowAttackSpeed,//减少攻击速度
 	E_Buff_HighAttackSpeed,//增加攻击速度
+	E_buff_HighSpeedAndAttackSpeed,//既增加速度也增加攻速
+	E_buff_LowSpeedAndAttackSpeed,//既减少速度也减少攻速
 	E_Buff_LowAttack,//减少攻击力
 	E_Buff_HighAttack,//增加攻击力
 	E_Buff_NoAction,//停止一切攻击移动
@@ -62,5 +64,6 @@ enum EBuffType
 	E_Buff_HighBlood,//减少血量
 	E_Buff_LowBloodUp,//减少血量上限
 	E_Buff_HighBloodUp,//增加血量上限
+	E_Buff_NoHurt,//无敌
 };
 #endif // !_ESYSTEMENUM_H_

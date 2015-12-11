@@ -19,6 +19,7 @@ void CBuff::OnResourceLoadComplete()
 	{
 		if (BuffData->InveralTime == 0)
 		{
+			BuffData->Target->GetAttackCf(BuffData->AttackCf);
 			BuffData->Target->GetMoveSpeedCf(BuffData->SpeedCf);
 			BuffData->Target->GetAttackRangeCf(BuffData->AttackRangeCf);
 			BuffData->Target->GetAttackSpeedCf(BuffData->AttackInveralCf);
@@ -84,14 +85,18 @@ void CBuff::Update()
 	}
 	else
 	{
-		if (NowTime > LastTime + BuffData->InveralTime)
+		if (BuffData->InveralTime > 0)
 		{
-			//间隔时间到了 进行造成伤害
-			LastTime = NowTime;
-			BuffData->Target->GetDamage(BuffData->Damage);
-			BuffData->Target->GetMoveSpeedCf(BuffData->SpeedCf);
-			BuffData->Target->GetAttackRangeCf(BuffData->AttackRangeCf);
-			BuffData->Target->GetAttackSpeedCf(BuffData->AttackInveralCf);
+			if (NowTime > LastTime + BuffData->InveralTime)
+			{
+				//间隔时间到了 进行造成伤害
+				LastTime = NowTime;
+				BuffData->Target->GetAttackCf(BuffData->AttackCf);
+				BuffData->Target->GetDamage(BuffData->Damage, 3);
+				BuffData->Target->GetMoveSpeedCf(BuffData->SpeedCf);
+				BuffData->Target->GetAttackRangeCf(BuffData->AttackRangeCf);
+				BuffData->Target->GetAttackSpeedCf(BuffData->AttackInveralCf);
+			}
 		}
 	}
 }
@@ -102,9 +107,10 @@ void CBuff::OnHurtActionComplete()
 }
 void CBuff::OnAttackActionComplete()
 {
-	BuffData->Target->GetMoveSpeedCf(BuffData->SpeedCf);
-	BuffData->Target->GetAttackRangeCf(BuffData->AttackRangeCf);
-	BuffData->Target->GetAttackSpeedCf(BuffData->AttackInveralCf);
+	BuffData->Target->GetAttackCf(-BuffData->AttackCf);
+	BuffData->Target->GetMoveSpeedCf(-BuffData->SpeedCf);
+	BuffData->Target->GetAttackRangeCf(-BuffData->AttackRangeCf);
+	BuffData->Target->GetAttackSpeedCf(-BuffData->AttackInveralCf);
 	Obj->setVisible(false);
 	IsDelete_ = true;
 	this->release();
@@ -120,7 +126,7 @@ void CBuff::GetResultHurt()
 	{
 		if (BuffData->Target != NULL)
 		{
-			BuffData->Target->GetDamage(BuffData->Damage);
+			BuffData->Target->GetDamage(BuffData->Damage,3);
 		}
 	}
 	else

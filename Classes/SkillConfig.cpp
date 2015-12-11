@@ -45,7 +45,6 @@ void CSkillConfig::LoadText()
 		str4->release();
 		String * str5 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		CCArray* carr = CCGlobleConfig::split(str5->getCString(), ",");
-		CCLOG("str5 ===%s", str5->getCString());
 		for (int n = 0; n < carr->count(); n++)
 		{
 			data->BulletValue[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
@@ -68,7 +67,6 @@ void CSkillConfig::LoadText()
 		str10->release();
 		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		CCArray* carr1 = CCGlobleConfig::split(str10->getCString(), ",");
-		CCLOG("str10 ===%s", str10->getCString());
 		for (int n = 0; n < carr1->count(); n++)
 		{
 			data->EffectValue[n] = static_cast<String*>(carr1->getObjectAtIndex(n))->intValue();

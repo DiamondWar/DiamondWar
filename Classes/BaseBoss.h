@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _CBASEBOSS_H_
+#define  _CBASEBOSS_H_
 #include "cocos2d.h"
 #include "BattleObject.h"
 class CBaseBoss :public CBattleObject
@@ -18,4 +20,5 @@ public:
 	//×ÜÑªÁ¿
 	int MaxHp;
 };
+#endif
 

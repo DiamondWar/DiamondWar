@@ -17,6 +17,32 @@
                 <key>sourceSize</key>
                 <string>{320,299}</string>
             </dict>
+            <key>enmeydie.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{324,2},{182,132}}</string>
+                <key>offset</key>
+                <string>{0,-8}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,18},{182,132}}</string>
+                <key>sourceSize</key>
+                <string>{182,152}</string>
+            </dict>
+            <key>medie.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{324,136},{172,142}}</string>
+                <key>offset</key>
+                <string>{0,5}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,0},{172,142}}</string>
+                <key>sourceSize</key>
+                <string>{182,152}</string>
+            </dict>
             <key>myboss.png</key>
             <dict>
                 <key>frame</key>
@@ -40,7 +66,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1ad874bc703b1bf7e44fbab18a63d767$</string>
+            <string>$TexturePacker:SmartUpdate:b49398236f9a9e4606767ecd2f60a7a3$</string>
             <key>textureFileName</key>
             <string>BattleBoss.png</string>
         </dict>

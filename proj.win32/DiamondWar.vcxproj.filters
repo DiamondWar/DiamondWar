@@ -28,6 +28,9 @@
     <Filter Include="src\BattleUI">
       <UniqueIdentifier>{a7b7a8e9-3bed-48a6-852b-08adcf2f4a0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Manager">
+      <UniqueIdentifier>{718fbae1-9744-475e-97ea-f1700e5d9b3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -46,9 +49,6 @@
       <Filter>src\Interface</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\BattleObject.cpp">
-      <Filter>src\Battle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BattleObjectManager.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Solider.cpp">
@@ -84,6 +84,21 @@
     <ClCompile Include="..\Classes\BuffData.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BattleObjectManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameSceneControl.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DiamondChoseManager.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShuiJingBase.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SoliderDie.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -102,9 +117,6 @@
       <Filter>src\Interface</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\BattleObject.h">
-      <Filter>src\Battle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BattleObjectManager.h">
       <Filter>src\Battle</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Solider.h">
@@ -139,6 +151,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BuffData.h">
       <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleObjectManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameSceneControl.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DiamondChoseManager.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShuiJingBase.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoliderDie.h">
+      <Filter>src\BattleUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

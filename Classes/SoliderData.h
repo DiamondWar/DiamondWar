@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _CSOLIDERDATA_H_
+#define  _CSOLIDERDATA_H_
 #include "cocos2d.h"
 class CSoliderData :public cocos2d::Node
 {
@@ -8,7 +10,7 @@ public:
 
 	int ID;
 	std::string Name;
-	int Type;
+	int  SoliderType;
 	int RangeR;
 	int NeedStar;
 	int AttackId;
@@ -21,4 +23,5 @@ public:
 	std::string Desc;
 	std::string ResourceName;
 };
+#endif 
 

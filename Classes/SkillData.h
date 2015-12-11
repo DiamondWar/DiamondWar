@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _CSKILLDATA_H_
+#define _CSKILLDATA_H_
 #include "cocos2d.h"
 class CSkillData :public cocos2d::Node
 {
@@ -22,4 +24,4 @@ public:
 	std::string ResourceName;
 	int ResourceFrameCount;
 };
-
+#endif 

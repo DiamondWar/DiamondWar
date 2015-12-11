@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _CSOLIDERCONFIG_H_
+
+#define _CSOLIDERCONFIG_H_
 #include "cocos2d.h"
 #include "SoliderData.h"
 class CSoliderConfig
@@ -17,4 +20,4 @@ private:
 	
 	
 };
-
+#endif 

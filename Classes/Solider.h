@@ -5,15 +5,16 @@
 #include "SoliderData.h"
 #include "SkillData.h"
 #include "BaseBoss.h"
+extern class CBuffData;
 class CSolider :public CBaseBoss
 {
 public:
 	CSolider(int id, int type, int rank);
 	~CSolider();
 
-	
+
 	virtual void OnResourceLoadComplete();
-	virtual void OnAttackActionComplete() ;
+	virtual void OnAttackActionComplete();
 	virtual void OnHurtActionComplete();
 	virtual void OnSkillActionComplete();
 	virtual void Update();
@@ -27,22 +28,23 @@ public:
 	bool CheckEnemyInRange();
 	//¼ì²â·¶Î§ÄÚµÄ¶ÓÓÑ
 	void CheckFriendInRange();
-	
-	void GetBuff(CBuffData* damage);
-	void GetDamage(int damage, int type = 3);
+
+	void GetDamage(int damage, int type);
 	void GetMoveSpeedCf(float cf);
 	void GetAttackSpeedCf(float cf);
 	void GetAttackRangeCf(float cf);
+	void GetAttackCf(float cf);
+	void GetBuff(CBuffData* data);
 	//ÏÔÊ¾ÊÜÉË
 	void ShowHurt();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	CSkillData* AttackData_;
 	CSkillData* SKillData_;
-	
 
-private: 
-	ESoliderOpreate OpreateType =ESoliderOpreate_Idle;
+	float AttakRange = 300;
+private:
+	ESoliderOpreate OpreateType = ESoliderOpreate_Idle;
 	//ÉÏ´Î¹¥»÷µÄÊ±¼ä
 	long LastAttackTime = 0;
 	long NowTime = 0;
@@ -50,13 +52,16 @@ private:
 	bool isShowHurt = false;
 	long lastShowHurtTime = 0;
 	//¹¥»÷´ÎÊý
-	int AttackNum=0;
+	int AttackNum = 0;
+	int init_AttackInveral = 0;
+	int Init_MoveSpeed = 0;
+	int Init_AttackRange = 0;
 
 
-
-	//¹¥»÷·¶Î§
-	float AttackRangeCf = 0;//¹¥»÷·¶Î§ÏµÊý
-	float AttakRange = 300;
+	//¹¥»÷·¶Î§//¹¥»÷·¶Î§ÏµÊý
+	float AttackRangeCf = 0;
+	//¹¥»÷Á¦Ï÷Èõ
+	float AttackCf = 0;
 	//¹¥»÷¼ä¸ô
 	float AttakInveralCf = 0;
 	int AttakInveral = 5;
@@ -66,8 +71,8 @@ private:
 
 	void CheckAttackOrSkill();
 
-	
-	
+
+
 };
 
 #endif 

@@ -1,6 +1,8 @@
 #pragma once
+#ifndef _CBUFF_H_
+#define  _CBUFF_H_
+
 #include "BattleObject.h"
-#include "Solider.h"
 #include "BuffData.h"
 class CBuff:public CBattleObject
 {
@@ -20,6 +22,6 @@ private:
 	long NowTime;
 	void GetResultHurt();
 };
-
+#endif 
 
 
