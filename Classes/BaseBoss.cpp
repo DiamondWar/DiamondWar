@@ -17,6 +17,8 @@ CBaseBoss::CBaseBoss(int rank)
 		Init_x = 1750;
 	}
 	Init_y = 520;
+	CurHp = 1000;
+	MaxHp = 1000;
 	InitObj();
 	
 }

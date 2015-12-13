@@ -99,6 +99,12 @@
     <ClCompile Include="..\Classes\SoliderDie.cpp">
       <Filter>src\BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BattleUIManager.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleIcon.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -165,6 +171,12 @@
       <Filter>src\BattleUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SoliderDie.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleUIManager.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleIcon.h">
       <Filter>src\BattleUI</Filter>
     </ClInclude>
   </ItemGroup>

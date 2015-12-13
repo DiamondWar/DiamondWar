@@ -80,7 +80,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -110,6 +110,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
+    <ClCompile>
+      <StringPooling Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</StringPooling>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -149,8 +152,10 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\BaseBoss.cpp" />
+    <ClCompile Include="..\Classes\BattleIcon.cpp" />
     <ClCompile Include="..\Classes\BattleObject.cpp" />
     <ClCompile Include="..\Classes\BattleObjectManager.cpp" />
+    <ClCompile Include="..\Classes\BattleUIManager.cpp" />
     <ClCompile Include="..\Classes\Buff.cpp" />
     <ClCompile Include="..\Classes\BuffData.cpp" />
     <ClCompile Include="..\Classes\Bullet.cpp" />
@@ -173,8 +178,10 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\BaseBoss.h" />
+    <ClInclude Include="..\Classes\BattleIcon.h" />
     <ClInclude Include="..\Classes\BattleObject.h" />
     <ClInclude Include="..\Classes\BattleObjectManager.h" />
+    <ClInclude Include="..\Classes\BattleUIManager.h" />
     <ClInclude Include="..\Classes\Buff.h" />
     <ClInclude Include="..\Classes\BuffData.h" />
     <ClInclude Include="..\Classes\Bullet.h" />

@@ -25,6 +25,10 @@ void CGameSceneControl::CreateBoss(int ranks)
 {
 	CBaseBoss* boss = new CBaseBoss(ranks);
 	GameRoot_->addChild(boss->Obj);
+	if (ranks==1)
+	CBattleObjectManager::GetInstance()->SetFirstRanksBoss(boss);
+	else 
+		CBattleObjectManager::GetInstance()->SetSecondRanksBoss(boss);
 }
 void CGameSceneControl::SetRoot(cocos2d::Node* root)
 {

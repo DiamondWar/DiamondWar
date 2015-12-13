@@ -42,8 +42,8 @@ private:
 	cocos2d::Vector<CBullet*> BulletList_;
 	cocos2d::Vector<CHurtShow*> HurtShowList_;
 	cocos2d::Vector<CBuff*> BuffList_;
-	CBaseBoss* FirstRanksBoss_;
-	CBaseBoss* SecondRanksBoss_;
+	CBaseBoss* FirstRanksBoss_ = nullptr;
+	CBaseBoss* SecondRanksBoss_ = nullptr;
 };
 #endif // ! _CBATTLEOBJECTMANGER_H_
 

@@ -3,8 +3,8 @@
 #include "ui/CocosGUI.h"
 #include "SoliderConfig.h"
 #include "SkillConfig.h"
-
-#include "DiamondChoseManager.h"
+#include "BattleUIManager.h"
+#include "GameSceneControl.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -49,6 +49,7 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Line.plist", "Line.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("SF.plist", "SF.png");
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A1.plist", "A1.png");
@@ -63,12 +64,12 @@ bool HelloWorld::init()
 	
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
-
-	auto manager = CDiamondChoseManager::create();
-	manager->setAnchorPoint(Vec2(1, 0));
-	manager->setPosition(960, 0);
-	addChild(manager,2);
-
+	CGameSceneControl::GetInstance()->SetRoot(this);
+	CGameSceneControl::GetInstance()->CreateBoss(1);
+	CGameSceneControl::GetInstance()->CreateBoss(2);
+	auto manager = CBattleUIManager::create();
+	addChild(manager);
+	
 	this->scheduleUpdate();
     return true;
 }

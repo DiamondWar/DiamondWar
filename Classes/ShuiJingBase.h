@@ -7,9 +7,14 @@ public:
 	virtual bool init();
 	virtual void  update(float dt);
 	void SetInfo(int index);
+	void ResetInfo( int Color);
+	int MyColor =0;
+	bool IsLoading = false;// «∑ÒΩ¯»Î¿‰»¥
 private: 
 	cocos2d::CCProgressTimer* Progress_;
-	cocos2d::CCSprite* Lock_;
 	cocos2d::CCSprite* MainSprite_;
+	cocos2d::Label* CoolTimeLabel_;
+	int  CoolTime = 0;
+	const int MaxCoolTime = 300;
 };
 
