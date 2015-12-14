@@ -51,7 +51,7 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Line.plist", "Line.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("SF.plist", "SF.png");
-
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("caihong.plist", "caihong.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A1.plist", "A1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A2.plist", "A2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("B1.plist", "B1.png");
@@ -68,9 +68,12 @@ bool HelloWorld::init()
 	CGameSceneControl::GetInstance()->CreateBoss(1);
 	CGameSceneControl::GetInstance()->CreateBoss(2);
 	auto manager = CBattleUIManager::create();
+	manager->setAnchorPoint(ccp(0,0));
+	manager->setPosition(0, 0);
 	addChild(manager);
-	
+
 	this->scheduleUpdate();
+
     return true;
 }
 void HelloWorld::update(float dt)

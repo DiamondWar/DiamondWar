@@ -8,7 +8,7 @@ bool CShuiJingBase::init()
 	{
 		return false;
 	}
-	
+
 	this->scheduleUpdate();
 	return true;
 }
@@ -33,10 +33,10 @@ void CShuiJingBase::SetInfo(int index)
 	TTFConfig config("ERASDEMI.ttf", 80);
 	CoolTimeLabel_ = Label::createWithTTF(config, "", TextHAlignment::LEFT);
 	CoolTimeLabel_->setAnchorPoint(Vec2(0.5, 0.5));
-	CoolTimeLabel_->setPosition(55,75);
+	CoolTimeLabel_->setPosition(55, 75);
 	CoolTimeLabel_->setTextColor(Color4B::RED);
 	addChild(CoolTimeLabel_);
-	
+
 }
 void CShuiJingBase::update(float dt)
 {
@@ -51,10 +51,10 @@ void CShuiJingBase::update(float dt)
 			ct->setPercentage(--num);
 		}
 		CoolTime++;
-		CCString* ns = CCString::createWithFormat("%d", (MaxCoolTime-CoolTime)/60+1);
+		CCString* ns = CCString::createWithFormat("%d", (MaxCoolTime - CoolTime) / 60 + 1);
 		CoolTimeLabel_->setString(ns->getCString());
 		// 设置了循环播放
-		if (num <=0)
+		if (num <= 0)
 		{
 			IsLoading = false;//冷却成功
 			CoolTimeLabel_->setString("");
@@ -64,17 +64,19 @@ void CShuiJingBase::update(float dt)
 	{
 		CoolTime = 0;
 	}
-	
+
 }
-void CShuiJingBase::ResetInfo( int Color)
+void CShuiJingBase::ResetInfo(int Color,bool flag )
 {
 	MyColor = Color;
 	String* string = String::createWithFormat("shujing_%d.png", Color);
 	SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 	MainSprite_->setSpriteFrame(frame);
 
-	 Progress_->setPercentage(100);
-
-	IsLoading = true;
+	if (flag == false)
+	Progress_->setPercentage(0);
+	else 
+		Progress_->setPercentage(100);
+	IsLoading = flag;
 }
 

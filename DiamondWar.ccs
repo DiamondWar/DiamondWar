@@ -112,13 +112,16 @@
           <PlistImageFile Name="player2.png" Key="player2.png" />
           <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
           <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
-          <PlistImageFile Name="caishuijing_0.png" Key="caishuijing_0.png" />
-          <PlistImageFile Name="caishuijing_1.png" Key="caishuijing_1.png" />
           <PlistImageFile Name="shujing_1.png" Key="shujing_1.png" />
           <PlistImageFile Name="shujing_2.png" Key="shujing_2.png" />
           <PlistImageFile Name="shujing_3.png" Key="shujing_3.png" />
           <PlistImageFile Name="shujing_4.png" Key="shujing_4.png" />
           <PlistImageFile Name="shujing_0.png" Key="shujing_0.png" />
+          <PlistImageFile Name="caisebg.png" Key="caisebg.png" />
+          <PlistImageFile Name="caisebg1.png" Key="caisebg1.png" />
+          <PlistImageFile Name="caiseup1.png" Key="caiseup1.png" />
+          <PlistImageFile Name="caiseup2.png" Key="caiseup2.png" />
+          <PlistImageFile Name="shujing_5.png" Key="shujing_5.png" />
         </PlistImageFolder>
         <PlistImageFolder Image="BattleBoss.png" PListFile="BattleBoss.plist" Name=".BattleBoss_PList.Dir">
           <PlistImageFile Name="enemyboss.png" Key="enemyboss.png" />

@@ -1,6 +1,6 @@
 #include "DiamondChoseManager.h"
 #include "ShuiJingBase.h"
-
+#include "BattleUIManager.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -62,26 +62,31 @@ bool CDiamondChoseManager::init()
 		onTouchCancelled(touch, event);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	
 	return true;
 }
 //触摸事件开始，手指按下时  
 void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 {
 	CCPoint pt = convertTouchToNodeSpace(touch);
-	int nw = getContentSize().width;
-	int nh = getContentSize().height;
+	int nw = 1300;
+	int nh = 185;
 	CCRect rc(0, 0, nw, nh);
 	if (rc.containsPoint(pt))
 	{
 		int x = pt.x - init_x;
 		int index = x / 170;
+		if (index >= 7)
+			index = 6;
 		if (SpriteList.at(index)->IsLoading == false)
 		{
 			LaseChoseColor = SpriteList.at(index)->MyColor;
 			lastIndex = index;
 			StartIndex = index;
 			ChoseNum = 1;
-			StartPoint = SpriteList.at(index)->getPosition().x;
+			StartPoint = SpriteList.at(index)->getPosition().x+50;
+			LastPoint = StartPoint;
+			ChoseSprite_->setAnchorPoint(ccp(0, 0));
 			ChoseSprite_->setPositionX(StartPoint);
 		}
 		else
@@ -100,8 +105,8 @@ void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 {
 	CCPoint pt = convertTouchToNodeSpace(touch);
-	int nw = getContentSize().width;
-	int nh = getContentSize().height;
+	int nw = 1300;
+	int nh = 185;
 	CCRect rc(0, 0, nw, nh);
 	if (rc.containsPoint(pt))
 	{
@@ -109,13 +114,76 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 		int index = x / 170;
 		if (index >= 7)
 			index = 6;
-		if (lastIndex + 1 == index || lastIndex - 1 == index)
+		if (lastIndex + 1 == index )
 		{
-			if (LaseChoseColor == SpriteList.at(index)->MyColor&&SpriteList.at(index)->IsLoading == false)
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
 			{
-				ChoseNum++;
+				if (ChoseNum == 1)
+				{
+					IsAddOrDel = true;//判断刚开始是从左往右选的
+				}
+				if (IsAddOrDel == true)
+				{
+					ChoseNum++;
+				}
+				else
+				{
+					if (ChoseNum == 0)
+					{
+						ChoseNum = 2;
+						IsAddOrDel = true;
+					}
+
+				}
 				lastIndex = index;
 				int len = abs(pt.x - StartPoint);
+				if (pt.x < StartPoint)
+				{
+					ChoseSprite_->setAnchorPoint(ccp(1, 0));
+				}
+				else
+				{
+					ChoseSprite_->setAnchorPoint(ccp(0, 0));
+				}
+				ChoseSprite_->setScaleX((float)len / 256.0f);
+			}
+			else
+			{
+				//上一个选择的颜色跟这次的不一样，不再进行连线
+			}
+		}
+		else if (lastIndex - 1 == index)
+		{
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor||SpriteList.at(index)->MyColor==5)&&SpriteList.at(index)->IsLoading == false)
+			{
+				if (ChoseNum == 1)
+				{
+					IsAddOrDel = false;
+				}
+				if (IsAddOrDel == true)
+				{
+					ChoseNum--;
+					if (ChoseNum <= 0)
+					{
+						ChoseNum = 2;
+						IsAddOrDel = false;
+					}
+				}
+				else
+				{
+					ChoseNum++;	
+					lastIndex = index;
+				}
+				lastIndex = index;
+				int len = abs(pt.x - StartPoint);
+				if (pt.x < StartPoint)
+				{
+					ChoseSprite_->setAnchorPoint(ccp(1, 0));
+				}
+				else
+				{
+					ChoseSprite_->setAnchorPoint(ccp(0, 0));
+				}
 				ChoseSprite_->setScaleX((float)len / 256.0f);
 			}
 			else
@@ -125,34 +193,46 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 		}
 		else if (lastIndex==index)
 		{
+			
 			int len = abs(pt.x - StartPoint);
+			if (pt.x < StartPoint)
+			{
+				ChoseSprite_->setAnchorPoint(ccp(1, 0));
+			}
+			else
+			{
+				ChoseSprite_->setAnchorPoint(ccp(0, 0));
+			}
 			ChoseSprite_->setScaleX((float)len / 256.0f);
 
 		}
+		CCLOG("ChoseNum ==%d, LastChoseColor==%d, LastIndex== %d, Index== %d", ChoseNum, LaseChoseColor, lastIndex, index);
 		
-		
-		//CCLOG("ChoseNum ==%d, LastChoseColor==%d, LastIndex== %d, Index== %d", ChoseNum, LaseChoseColor, lastIndex, index);
 	}
 	if (lastIndex >= 0)
 	{
-		int temp = StartIndex > lastIndex ? lastIndex : StartIndex;
-		if (temp == lastIndex)
-			lastIndex = StartIndex;
-		for (int i = temp; i <= lastIndex; i++)
+		int last = lastIndex;
+		int start = StartIndex;
+		int temp = start > last ? last : start;
+		if (temp == last)
+			last = start;
+		for (int i = 0; i < SpriteList.size(); i++)
 		{
+			if (i >= temp&&i <= last)
 			SpriteList.at(i)->setPositionY(pt.y - 80);
+			else 
+				SpriteList.at(i)->setPositionY(init_y);
 
 		}
 		ChoseSprite_->setPositionY(pt.y - 80);
 	}
-	
 }
 //触摸事件结束，也就是手指松开时  
 void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 {
 	CCPoint pt = convertTouchToNodeSpace(touch);
-	int nw = getContentSize().width;
-	int nh = getContentSize().height;
+	int nw = 1300;
+	int nh = 185;
 	CCRect rc(0, 0, nw, nh);
 	if (rc.containsPoint(pt))
 	{
@@ -162,6 +242,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 		{
 			SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
 		}
+		lastIndex = -1;
 	}
 	else
 	{
@@ -170,7 +251,10 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 			if (lastIndex != -1)
 			{
 				ChoseSprite_->setScaleX(0);
+				
 				//结算当前消耗的
+				CBattleUIManager* manager = static_cast<CBattleUIManager*>(this->getParent());
+				manager->UpdateCaiSeShuiJing(ChoseNum);
 				int temp = StartIndex > lastIndex ? lastIndex : StartIndex;
 				for (int i = 0; i < ChoseNum; i++)
 				{
@@ -184,8 +268,8 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 				{
 					SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
 				}
+				lastIndex = -1;
 			}
-		
 		}
 		else
 		{
@@ -198,5 +282,18 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 void CDiamondChoseManager::onTouchCancelled(Touch* touch, Event* event)
 {
 	log("TouchTest onTouchesCancelled");
+}
+
+bool CDiamondChoseManager::CheckPointInThis(CCPoint pos)
+{
+	int x = getPositionX();
+	int index = (pos.x - x - init_x) / 170;
+
+	if (index <= 6&&pos.y<180&&SpriteList.at(index)->IsLoading == false)
+	{
+		SpriteList.at(index)->ResetInfo(5,false);
+		return true;
+	}
+	return false;
 }
 

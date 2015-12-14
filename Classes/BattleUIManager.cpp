@@ -1,5 +1,5 @@
 #include "BattleUIManager.h"
-#include "DiamondChoseManager.h"
+
 #include "BattleObjectManager.h"
 USING_NS_CC;
 
@@ -10,25 +10,106 @@ bool CBattleUIManager::init()
 	{
 		return false;
 	}
-	auto manager = CDiamondChoseManager::create();
-	manager->setAnchorPoint(Vec2(0, 0));
-	manager->setPosition(310, 0);
-	addChild(manager);
+	setContentSize(Size(Director::getInstance()->getWinSize().width, Director::getInstance()->getWinSize().height));
+	DiamondManger = CDiamondChoseManager::create();
+	DiamondManger->setAnchorPoint(Vec2(0, 0));
+	DiamondManger->setPosition(310, 0);
+	addChild(DiamondManger);
 	//创建我方阵容头像
 	for (int i = 0; i < 6; i++)
 	{
 		BattleIcon* icon = BattleIcon::create();
 		icon->SetInfo(i + 1, i, i / 2);
 		icon->setAnchorPoint(Vec2(0, 1));
-		icon->setPosition(50 + i % 3 * 70, 220 - (i / 3 )* 80);
+		icon->setPosition(50 + i % 3 * 70, 220 - (i / 3) * 80);
 		addChild(icon);
 		IconList.pushBack(icon);
 	}
 	//创建双方基地的血量显示
 	CreateFirstBase();
 	CreateSecondBase();
+
+	CreateCaiSeShuiJing();
+	EventListenerTouchOneByOne*	 listener = EventListenerTouchOneByOne::create();
+
+	listener->onTouchBegan = [this](Touch* touch, Event* event)
+	{
+		onTouchBegan(touch, event);
+		return true;
+	};
+	listener->onTouchMoved = [this](Touch* touch, Event* event)
+	{
+		onTouchMoved(touch, event);
+	};
+	listener->onTouchEnded = [this](Touch* touch, Event* event)
+	{
+		touch->setTouchInfo(1, 750, 50);
+		onTouchEnded(touch, event);
+	};
+	listener->onTouchCancelled = [this](Touch* touch, Event* event)
+	{
+		onTouchCancelled(touch, event);
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	return true;
 }
+//显示彩色水晶的信息
+void CBattleUIManager::CreateCaiSeShuiJing()
+{
+
+	Sprite*spritebg = Sprite::createWithSpriteFrameName("caisebg.png");
+	spritebg->setAnchorPoint(Vec2(1, 0));
+	spritebg->setPosition(Vec2(Director::getInstance()->getWinSize().width, 0));
+	addChild(spritebg);
+	CaiseShuiJingRoot_ = Node::create();
+	CaiseShuiJingRoot_->setAnchorPoint(Vec2(1, 0));
+	CaiseShuiJingRoot_->setPosition(Vec2(Director::getInstance()->getWinSize().width - 25, 18));
+	addChild(CaiseShuiJingRoot_);
+	Sprite*spritebg1 = Sprite::createWithSpriteFrameName("caisebg1.png");
+	spritebg1->setAnchorPoint(Vec2(1, 0));
+	spritebg1->setPosition(0, 0);
+	CaiseShuiJingRoot_->addChild(spritebg1);
+	auto stencil = Sprite::createWithSpriteFrameName("caiseup2.png");
+	stencil->setScale(1);//2
+	stencil->setAnchorPoint(Vec2(1, 0));
+	auto clipper = ClippingNode::create();
+	clipper->setAnchorPoint(Vec2(1, 0));
+	clipper->setPosition(0, 0);
+	clipper->setStencil(stencil);//设置裁剪模板 //3
+	clipper->setInverted(false);//设置底板可见
+	clipper->setAlphaThreshold(0);//设置绘制底板的Alpha值为0
+
+	CaiseShuiJingRoot_->addChild(clipper);//4
+	Vector<SpriteFrame*> vsp;
+	for (int i = 0; i < 24; i++)
+	{
+		String *string = String::createWithFormat("caihong_%d.png", i);
+		SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
+		vsp.pushBack(spfr);
+	}
+
+	Animation* animation = Animation::createWithSpriteFrames(vsp, 1.0f / 10);
+	Animate* animate = Animate::create(animation);
+	auto *ac1 = RepeatForever::create(animate);
+	CaiSeShuiJing_ = Sprite::createWithSpriteFrameName("caihong_0.png");//被裁剪的内容
+	CaiSeShuiJing_->setAnchorPoint(Vec2(1, 0));
+	CaiSeShuiJing_->setScaleY(0);
+	CaiSeShuiJing_->runAction(ac1);
+	clipper->addChild(CaiSeShuiJing_);//5
+
+	Sprite*spritebg2 = Sprite::createWithSpriteFrameName("caiseup1.png");
+	spritebg2->setAnchorPoint(Vec2(1, 0));
+	spritebg2->setPosition(0, 0);
+	CaiseShuiJingRoot_->addChild(spritebg2);
+	TTFConfig config("ARLRDBD.ttf", 25);
+	std::string str = "0%";
+	CaiSeShuiJingLabel_ = Label::createWithTTF(config, str, TextHAlignment::LEFT);
+	CaiSeShuiJingLabel_->setAnchorPoint(Vec2(1, 0));
+	CaiSeShuiJingLabel_->setPosition(Vec2(Director::getInstance()->getWinSize().width - 80, 150));
+	CaiSeShuiJingLabel_->setTextColor(Color4B::BLUE);
+	addChild(CaiSeShuiJingLabel_);
+}
+//显示第一队伍的基地信息
 void CBattleUIManager::CreateFirstBase()
 {
 	Sprite*bg = Sprite::createWithSpriteFrameName("iconbg.png");
@@ -67,6 +148,7 @@ void CBattleUIManager::CreateFirstBase()
 	this->scheduleUpdate();
 	addChild(MyBloodDesc_);
 }
+//显示第二队伍的基地信息
 void CBattleUIManager::CreateSecondBase()
 {
 	//创建双方基地的血条
@@ -88,11 +170,11 @@ void CBattleUIManager::CreateSecondBase()
 	Sprite*progressbg = Sprite::createWithSpriteFrameName("xuetiaobg.png");
 	progressbg->setRotationY(-180);
 	progressbg->setAnchorPoint(Vec2(0.5, 0.5));
-	progressbg->setPosition(Director::getInstance()->getWinSize().width - 300,Director::getInstance()->getWinSize().height - 100);
+	progressbg->setPosition(Director::getInstance()->getWinSize().width - 300, Director::getInstance()->getWinSize().height - 100);
 	addChild(progressbg);
 	Sprite*progress = Sprite::createWithSpriteFrameName("xuetiaoup.png");
 	SecondBloodProgress_ = CCProgressTimer::create(progress);
-	
+
 	SecondBloodProgress_->setAnchorPoint(Vec2(0.5, 0.5));
 	SecondBloodProgress_->setRotationY(-180);
 	SecondBloodProgress_->setPosition(Director::getInstance()->getWinSize().width - 300, Director::getInstance()->getWinSize().height - 100);
@@ -112,18 +194,99 @@ void CBattleUIManager::CreateSecondBase()
 void CBattleUIManager::update(float delta)
 {
 
-	if (CBattleObjectManager::GetInstance()->GetFirstRanksBoss() != nullptr&&MyBloodProgress_!=nullptr&&MyBloodDesc_!=nullptr)
+	if (CBattleObjectManager::GetInstance()->GetFirstRanksBoss() != nullptr&&MyBloodProgress_ != nullptr&&MyBloodDesc_ != nullptr)
 	{
 		CBaseBoss* boss = CBattleObjectManager::GetInstance()->GetFirstRanksBoss();
 		MyBloodProgress_->setPercentage(boss->CurHp * 100 / boss->MaxHp);
-		String*str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
-		 MyBloodDesc_->setString(str->getCString());
+
+		String* str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
+		MyBloodDesc_->setString(str->getCString());
 	}
-	if (CBattleObjectManager::GetInstance()->GetSecondRanksBoss() != nullptr&&SecondBloodDesc_!=nullptr&&SecondBloodProgress_!=nullptr)
+	if (CBattleObjectManager::GetInstance()->GetSecondRanksBoss() != nullptr&&SecondBloodDesc_ != nullptr&&SecondBloodProgress_ != nullptr)
 	{
 		CBaseBoss* boss = CBattleObjectManager::GetInstance()->GetSecondRanksBoss();
 		SecondBloodProgress_->setPercentage(boss->CurHp * 100 / boss->MaxHp);
-		String*str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
+		String* str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
 		SecondBloodDesc_->setString(str->getCString());
 	}
+}
+
+void CBattleUIManager::UpdateCaiSeShuiJing(int num)
+{
+	CurCaiSeShuiJingPrecentNum_ += num;
+	float val = CurCaiSeShuiJingPrecentNum_ / 5.0f;
+	CCLOG("%.2f", val);
+	if (val >= 0.99)
+	{
+		CaiSeShuiJing_->setScaleY(1.4);
+		IsCanChoseCaiSe_ = true;
+	}
+	else
+	{
+		CaiSeShuiJing_->setScaleY(val);
+		IsCanChoseCaiSe_ = false;
+	}
+
+	String* str = String::createWithFormat("%.0f%%", val * 100);
+	CaiSeShuiJingLabel_->setString(str->getCString());
+}
+//触摸事件开始，手指按下时  
+void CBattleUIManager::onTouchBegan(Touch* touch, Event* event)
+{
+	CCPoint pt = convertTouchToNodeSpace(touch);
+	int nw = getContentSize().width;
+	int nh = getContentSize().height;
+	CCRect rc(0, 0, nw, nh);
+	if (rc.containsPoint(pt))
+	{
+		if (pt.x > nw - 186 && pt.y < 184)
+		{
+			//点中彩色水晶
+			IsChoseCaiSe_ = true;
+		}
+	}
+
+}
+//触摸移动事件，也就是手指在屏幕滑动的过程  
+void CBattleUIManager::onTouchMoved(Touch* touch, Event* event)
+{
+	CCPoint pt = convertTouchToNodeSpace(touch);
+	int nw = getContentSize().width;
+	int nh = getContentSize().height;
+	CCRect rc(0, 0, nw, nh);
+	if (rc.containsPoint(pt))
+	{
+		if (IsChoseCaiSe_ == true)
+		{
+			CaiseShuiJingRoot_->setPosition(pt.x + 70, pt.y - 80);
+		}
+	}
+
+}
+//触摸事件结束，也就是手指松开时  
+void CBattleUIManager::onTouchEnded(Touch* touch, Event* event)
+{
+	CCPoint pt = convertTouchToNodeSpace(touch);
+	int nw = getContentSize().width;
+	int nh = getContentSize().height;
+	CCRect rc(0, 0, nw, nh);
+	if (rc.containsPoint(pt))
+	{
+		IsChoseCaiSe_ = false;
+		CCPoint pos = touch->getPreviousLocation();
+		CaiseShuiJingRoot_->setPosition(getContentSize().width - 25, 18);
+		if (IsCanChoseCaiSe_ == true)
+		{
+			if (DiamondManger->CheckPointInThis(pos))
+			{
+				UpdateCaiSeShuiJing(-5);
+			}
+		}
+	}
+
+}
+//打断触摸事件，一般是系统层级的消息，如来电话，触摸事件就会被打断  
+void CBattleUIManager::onTouchCancelled(Touch* touch, Event* event)
+{
+	log("TouchTest onTouchesCancelled");
 }

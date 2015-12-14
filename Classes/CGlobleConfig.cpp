@@ -1,6 +1,6 @@
 #include "CGlobleConfig.h"
 #include "cocos2d.h"
-
+USING_NS_CC;
 float CCGlobleConfig::GetLengthByPoint(float point1_x, float point1_y, float point2_x, float point2_y)
 {
 	float x = abs(point1_x - point2_x);
@@ -55,4 +55,32 @@ cocos2d::CCArray* CCGlobleConfig::split(const char* srcStr, const char* sSep)
 		stringList->addObject(cocos2d::CCString::create(str->_string));
 	}
 	return stringList;
+}
+Sprite* CCGlobleConfig::maskedSpriteWithSprite(Sprite* textureSprite,float size, Sprite* maskSprite)
+{
+	// 1
+	RenderTexture * rt = RenderTexture::create(maskSprite->getContentSize().width,
+		maskSprite->getContentSize().height);
+
+	// 2
+	maskSprite->setPosition(maskSprite->getContentSize().width / 2,
+		maskSprite->getContentSize().height / 2);
+	textureSprite->setScaleY(size);
+	textureSprite->setPosition(textureSprite->getContentSize().width / 2,
+		textureSprite->getContentSize().height / 2);
+
+	// 3
+	maskSprite->setBlendFunc(BlendFunc{ GL_ONE, GL_ZERO });
+	textureSprite->setBlendFunc(BlendFunc{ GL_DST_ALPHA, GL_ZERO });
+
+	// 4
+	rt->begin();
+	maskSprite->visit();
+	textureSprite->visit();
+	rt->end();
+
+	// 5
+	Sprite *retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
+	retval->setFlippedY(true);
+	return retval;
 }

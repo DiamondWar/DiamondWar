@@ -7,7 +7,7 @@ public:
 	virtual bool init();
 	virtual void  update(float dt);
 	void SetInfo(int index);
-	void ResetInfo( int Color);
+	void ResetInfo( int Color,bool flag =true);
 	int MyColor =0;
 	bool IsLoading = false;// «∑ÒΩ¯»Î¿‰»¥
 private: 

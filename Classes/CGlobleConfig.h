@@ -14,6 +14,6 @@ public:
 	static float GetAngleByPoint(float point1_x, float point1_y, float point2_x, float point2_y);
 	static long GetCurrntTime();
 	static cocos2d::CCArray* split(const char* srcStr, const char* sSep);
-private:
+	static cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, float size, cocos2d::Sprite* maskSprite);
 };
 
