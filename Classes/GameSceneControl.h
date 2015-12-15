@@ -6,10 +6,13 @@ public:
 	CGameSceneControl();
 	~CGameSceneControl();
 	static CGameSceneControl* GetInstance();
-	void CreateSolider(int id, int ranks);
+	void CreateSolider(int id, int ranks , float level);
 	void CreateBoss(int ranks);
 	void SetRoot(cocos2d::Node* root);
+	void InitGameData();
+	bool IsHaveConsumeHero(int color ,int num);
 	cocos2d::Node* GameRoot_;
+	int HeroList[8];
 private: 
 	static CGameSceneControl* Instance_;
 };

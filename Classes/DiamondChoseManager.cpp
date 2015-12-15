@@ -1,6 +1,7 @@
 #include "DiamondChoseManager.h"
 #include "ShuiJingBase.h"
 #include "BattleUIManager.h"
+#include "GameSceneControl.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -116,8 +117,10 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 			index = 6;
 		if (lastIndex + 1 == index )
 		{
-			if ((LaseChoseColor == SpriteList.at(index)->MyColor || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor ||LaseChoseColor==5|| SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
 			{
+				if (LaseChoseColor == 5 && ChoseNum == 1)
+					LaseChoseColor = SpriteList.at(index)->MyColor;
 				if (ChoseNum == 1)
 				{
 					IsAddOrDel = true;//判断刚开始是从左往右选的
@@ -128,13 +131,15 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 				}
 				else
 				{
-					if (ChoseNum == 0)
+					ChoseNum--; 
+					if (ChoseNum <= 0)
 					{
 						ChoseNum = 2;
 						IsAddOrDel = true;
 					}
 
 				}
+				
 				lastIndex = index;
 				int len = abs(pt.x - StartPoint);
 				if (pt.x < StartPoint)
@@ -154,8 +159,10 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 		}
 		else if (lastIndex - 1 == index)
 		{
-			if ((LaseChoseColor == SpriteList.at(index)->MyColor||SpriteList.at(index)->MyColor==5)&&SpriteList.at(index)->IsLoading == false)
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor || LaseChoseColor == 5 || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
 			{
+				if (LaseChoseColor == 5 && ChoseNum == 1)
+					LaseChoseColor = SpriteList.at(index)->MyColor;
 				if (ChoseNum == 1)
 				{
 					IsAddOrDel = false;
@@ -167,6 +174,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 					{
 						ChoseNum = 2;
 						IsAddOrDel = false;
+						
 					}
 				}
 				else
@@ -188,12 +196,14 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 			}
 			else
 			{
+				
 				//上一个选择的颜色跟这次的不一样，不再进行连线
 			}
 		}
 		else if (lastIndex==index)
 		{
-			
+			if (ChoseNum == 1 && SpriteList.at(lastIndex)->MyColor == 5)
+				LaseChoseColor = SpriteList.at(index)->MyColor;
 			int len = abs(pt.x - StartPoint);
 			if (pt.x < StartPoint)
 			{
@@ -252,17 +262,26 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 			{
 				ChoseSprite_->setScaleX(0);
 				
-				//结算当前消耗的
+				//结算当前消耗的 如果阵容中有消耗的颜色水晶 则出兵 否则就消耗到彩色水晶里面
 				CBattleUIManager* manager = static_cast<CBattleUIManager*>(this->getParent());
-				manager->UpdateCaiSeShuiJing(ChoseNum);
+				bool flag = false;
+				if (!CGameSceneControl::GetInstance()->IsHaveConsumeHero(LaseChoseColor, ChoseNum))
+				{
+					flag = true; 
+					manager->UpdateCaiSeShuiJing(ChoseNum);
+				}
 				int temp = StartIndex > lastIndex ? lastIndex : StartIndex;
 				for (int i = 0; i < ChoseNum; i++)
 				{
 					int rand = random(1, 4);
 					SpriteList.at(temp)->ResetInfo(rand);
+					if (flag == true)
+					manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width-80,90));
+					else 
+						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(200, 540));
 					SpriteList.pushBack(SpriteList.at(temp));
 					SpriteList.erase(temp);
-
+					
 				}
 				for (int i = 0; i < SpriteList.size(); i++)
 				{

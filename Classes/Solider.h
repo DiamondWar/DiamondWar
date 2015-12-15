@@ -9,7 +9,7 @@ extern class CBuffData;
 class CSolider :public CBaseBoss
 {
 public:
-	CSolider(int id, int type, int rank);
+	CSolider(int id, int type, int rank,float level);
 	~CSolider();
 
 

@@ -13,10 +13,13 @@ public:
 	void CreateSecondBase();
 	void CreateCaiSeShuiJing();
 	void UpdateCaiSeShuiJing(int num);
+	void CreateMoveAnimation(int color ,cocos2d::CCPoint start, cocos2d::CCPoint target);
+	void OnMoveAnimationComplete(cocos2d::CCSprite* spr);
 	void onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
+	cocos2d::Node* CaiseShuiJingRoot_;
 private: 
 	cocos2d::Vector<BattleIcon*> IconList;
 	CDiamondChoseManager * DiamondManger;
@@ -34,7 +37,7 @@ private:
 	cocos2d::Sprite* CaiSeShuiJing_;
 	cocos2d::Label* CaiSeShuiJingLabel_;
 	float CurCaiSeShuiJingPrecentNum_;
-	cocos2d::Node* CaiseShuiJingRoot_;
+	
 	bool IsChoseCaiSe_ = false;//之前是否点到彩色水晶
 	bool IsCanChoseCaiSe_ = false;//是否可以使用彩色水晶
 };

@@ -65,6 +65,7 @@ bool HelloWorld::init()
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
 	CGameSceneControl::GetInstance()->SetRoot(this);
+	CGameSceneControl::GetInstance()->InitGameData();
 	CGameSceneControl::GetInstance()->CreateBoss(1);
 	CGameSceneControl::GetInstance()->CreateBoss(2);
 	auto manager = CBattleUIManager::create();

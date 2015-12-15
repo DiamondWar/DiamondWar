@@ -51,6 +51,7 @@ bool CBattleUIManager::init()
 		onTouchCancelled(touch, event);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->scheduleUpdate();
 	return true;
 }
 //显示彩色水晶的信息
@@ -145,7 +146,7 @@ void CBattleUIManager::CreateFirstBase()
 	MyBloodDesc_->setAnchorPoint(Vec2(0.5, 0.5));
 	MyBloodDesc_->setTextColor(Color4B::RED);
 	MyBloodDesc_->setPosition(300, Director::getInstance()->getWinSize().height - 90);
-	this->scheduleUpdate();
+	
 	addChild(MyBloodDesc_);
 }
 //显示第二队伍的基地信息
@@ -229,6 +230,22 @@ void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 
 	String* str = String::createWithFormat("%.0f%%", val * 100);
 	CaiSeShuiJingLabel_->setString(str->getCString());
+}
+void CBattleUIManager::CreateMoveAnimation(int color,CCPoint start, CCPoint target)
+{
+	String* str = String::createWithFormat("shujing_%d.png", color);
+	Sprite* sprite = Sprite::createWithSpriteFrameName(str->getCString());
+	sprite->setTag(100);
+	sprite->setPosition(start);
+	CCMoveTo* move = CCMoveTo::create(1, target);
+	CCFiniteTimeAction* ac = CCSequence::create(move, CallFuncN::create(std::bind(&CBattleUIManager::OnMoveAnimationComplete, this, sprite)) , NULL);
+	
+	sprite->runAction(ac);
+	addChild(sprite);
+}
+void CBattleUIManager::OnMoveAnimationComplete(cocos2d::CCSprite* spr)
+{
+	spr->removeFromParent();
 }
 //触摸事件开始，手指按下时  
 void CBattleUIManager::onTouchBegan(Touch* touch, Event* event)

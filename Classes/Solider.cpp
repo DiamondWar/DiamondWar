@@ -9,7 +9,7 @@
 #include "SkillManager.h"
 #include "Buff.h"
 
-CSolider::CSolider(int id, int type, int rank)
+CSolider::CSolider(int id, int type, int rank,float level)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
@@ -35,7 +35,7 @@ CSolider::CSolider(int id, int type, int rank)
 	Init_AttackRange = AttakRange;
 	Init_MoveSpeed = MoveSpeed;
 	InitObj();
-	AttackDamage = Data_->Attack;
+	AttackDamage = Data_->Attack*level;
 
 }
 
