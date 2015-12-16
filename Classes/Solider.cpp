@@ -9,7 +9,7 @@
 #include "SkillManager.h"
 #include "Buff.h"
 
-CSolider::CSolider(int id, int type, int rank,float level)
+CSolider::CSolider(int id, int type, int rank, float level)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
 	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
@@ -55,7 +55,7 @@ void CSolider::OnResourceLoadComplete()
 }
 void CSolider::Update()
 {
-	__super::Update();
+	CBattleObject::Update();
 	switch (OpreateType)
 	{
 	case ESoliderOpreate_Idle:
@@ -141,34 +141,34 @@ void CSolider::CheckFriendInRange()
 }
 void CSolider::CheckAttackOrSkill()
 {
-	CCLOG("ID: %d AttackNum ==== %d",Data_->ID, AttackNum);
+
 	if (AttackNum >= SKillData_->CoolTime)
 	{
-	AttackNum = 0;
-	OnSkill();
+		AttackNum = 0;
+		OnSkill();
 	}
 	else
 	{
-	AttackNum++;
-	OnAttack();
+		AttackNum++;
+		OnAttack();
 	}
 	//OnSkill();
 }
 void CSolider::OnIdle()
 {
 	OpreateType = ESoliderOpreate_Idle;
-	__super::OnIdle();
+	CBattleObject::OnIdle();
 }
 void CSolider::OnRun()
 {
 	OpreateType = ESoliderOpreate_Walk;
-	__super::OnRun();
+	CBattleObject::OnRun();
 }
 void CSolider::OnAttack()
 {
 	if (AttackData_->BulletType <= 1)
 	{
-		AttackTarget->GetDamage(AttackData_->HurtCf*AttackDamage,3);
+		AttackTarget->GetDamage(AttackData_->HurtCf*AttackDamage, 3);
 	}
 	else
 	{
@@ -180,24 +180,24 @@ void CSolider::OnAttack()
 		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 	}
 	OpreateType = ESoliderOpreate_Attack;
-	__super::OnAttack();
+	CBattleObject::OnAttack();
 }
 void CSolider::OnHurt()
 {
 	OpreateType = ESoliderOpreate_Hurt;
-	__super::OnHurt();
+	CBattleObject::OnHurt();
 }
 void  CSolider::GetBuff(CBuffData* data)
 {
 	if (data->Damage != 0)
 	{
-		GetDamage(data->Damage,3); 
+		GetDamage(data->Damage, 3);
 	}
 	else
 	{
 		if (data->AttackInveralCf != 0)
 		{
-			GetAttackSpeedCf(data->AttackInveralCf); 
+			GetAttackSpeedCf(data->AttackInveralCf);
 		}
 		if (data->SpeedCf != 0)
 		{
@@ -212,12 +212,12 @@ void  CSolider::GetBuff(CBuffData* data)
 			GetAttackRangeCf(data->AttackRangeCf);
 		}
 	}
-	
+
 }
-void CSolider::GetDamage(int damage,int type)
+void CSolider::GetDamage(int damage, int type)
 {
-	
-	CCLOG("Damange:   %d %.1f , AttackInveralCf = %.1f , MoveSpeedCf = %.1f", damage, AttackCf,AttakInveralCf,MoveSpeedCf);
+
+	CCLOG("Damange:   %d %.1f , AttackInveralCf = %.1f , MoveSpeedCf = %.1f", damage, AttackCf, AttakInveralCf, MoveSpeedCf);
 	damage = damage - damage*AttackCf;
 	if (damage == 0)
 		return;
@@ -235,7 +235,7 @@ void CSolider::GetMoveSpeedCf(float cf)
 }
 void CSolider::GetAttackSpeedCf(float cf)
 {
-	AttakInveralCf +=cf;
+	AttakInveralCf += cf;
 	AttakInveral = init_AttackInveral + init_AttackInveral *AttakInveralCf;
 }
 void  CSolider::GetAttackRangeCf(float cf)
@@ -261,5 +261,5 @@ void CSolider::OnSkill()
 		CSkillManager::GetInstance()->ChoseSkill(SKillData_, this);
 	}
 	OpreateType = ESoliderOpreate_Skill;
-	__super::OnSkill();
+	CBattleObject::OnSkill();
 }

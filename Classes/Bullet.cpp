@@ -16,6 +16,7 @@ CBullet::CBullet(CSkillData* data, int x, int y, CBuffData*  damage, CSolider* t
 	RangeR_ = 10;
 	iSpeed_ = Data_->BulletValue[1];
 	BuffData = damage;
+
 	InitObj();
 }
 
@@ -45,7 +46,7 @@ void CBullet::OnSkillActionComplete()
 }
 void CBullet::Update()
 {
-	__super::Update();
+	CBattleObject::Update();
 	if (IsDelete_ == true)
 		return;
 	if (CheckIsAtTarget() == false)
@@ -59,36 +60,50 @@ void CBullet::Update()
 			}
 			else
 			{
-				Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
 			}
 		}
 		else
 		{
-			if (angle >= 0)
+			if (Obj->getPosition().x > AtTarget_->Obj->getPosition().x)
 			{
-				Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+				if (angle >= 0)
+				{
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+				}
+				else
+				{
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+				}
 			}
 			else
 			{
-				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+				if (angle >= 0)
+				{
+					Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+					
+				}
+				else
+				{
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+				}
 			}
+			
 			
 		}
 			
 		angle = angle * 180 / PI;
+		CCLOG("angle =====%f", angle);
 		Obj->setRotation(-angle);
 		if (Ranks_ != 1)
 		{
-			if (angle>=0)
-				Obj->setRotationSkewY(180 - angle);
-			else 
-				Obj->setRotationSkewY(- angle);
+				Obj->setRotationSkewY(180- angle);
 
 		}
 		else
 		{
 			if (angle < 0)
-				Obj->setRotationSkewY(180 - angle);
+				Obj->setRotationSkewY( - angle);
 
 		}
 	}

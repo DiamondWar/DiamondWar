@@ -72,7 +72,6 @@ bool HelloWorld::init()
 	manager->setAnchorPoint(ccp(0,0));
 	manager->setPosition(0, 0);
 	addChild(manager);
-
 	this->scheduleUpdate();
 
     return true;

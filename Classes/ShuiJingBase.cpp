@@ -30,7 +30,7 @@ void CShuiJingBase::SetInfo(int index)
 	Progress_->setReverseProgress(true);
 	addChild(Progress_);
 
-	TTFConfig config("ERASDEMI.ttf", 80);
+	TTFConfig config("fonts/ERASDEMI.TTF", 80);
 	CoolTimeLabel_ = Label::createWithTTF(config, "", TextHAlignment::LEFT);
 	CoolTimeLabel_->setAnchorPoint(Vec2(0.5, 0.5));
 	CoolTimeLabel_->setPosition(55, 75);

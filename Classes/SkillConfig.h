@@ -12,7 +12,7 @@ public:
 	static CSkillConfig* GetInstance();
 	CSkillData* GetItemById(int id);
 private:
-	std::string  StressText = "Skill_Config.txt";
+	std::string  StressText = "SkillConfig.txt";
 	static CSkillConfig* Instance_;
 	cocos2d::Vector<CSkillData*> DataList_;
 };

@@ -5,7 +5,7 @@
 #include "SoliderData.h"
 #include "SkillData.h"
 #include "BaseBoss.h"
-extern class CBuffData;
+class CBuffData;
 class CSolider :public CBaseBoss
 {
 public:

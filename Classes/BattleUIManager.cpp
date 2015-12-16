@@ -102,7 +102,7 @@ void CBattleUIManager::CreateCaiSeShuiJing()
 	spritebg2->setAnchorPoint(Vec2(1, 0));
 	spritebg2->setPosition(0, 0);
 	CaiseShuiJingRoot_->addChild(spritebg2);
-	TTFConfig config("ARLRDBD.ttf", 25);
+	TTFConfig config("fonts/ARLRDBD.TTF", 25);
 	std::string str = "0%";
 	CaiSeShuiJingLabel_ = Label::createWithTTF(config, str, TextHAlignment::LEFT);
 	CaiSeShuiJingLabel_->setAnchorPoint(Vec2(1, 0));
@@ -121,7 +121,7 @@ void CBattleUIManager::CreateFirstBase()
 	MyIcon_->setAnchorPoint(Vec2(0, 1));
 	MyIcon_->setPosition(0, Director::getInstance()->getWinSize().height);
 	addChild(MyIcon_);
-	TTFConfig config("ERASDEMI.ttf", 50);
+	TTFConfig config("fonts/ERASDEMI.TTF", 50);
 	MyName_ = Label::createWithTTF(config, "player1", TextHAlignment::LEFT);
 	MyName_->setAnchorPoint(Vec2(0.5, 0.5));
 	MyName_->setTextColor(Color4B::GREEN);
@@ -141,7 +141,7 @@ void CBattleUIManager::CreateFirstBase()
 	MyBloodProgress_->setBarChangeRate(Vec2(1, 0));
 	MyBloodProgress_->setPercentage(10);
 	addChild(MyBloodProgress_);
-	TTFConfig config2("ARLRDBD.TTF", 40);
+	TTFConfig config2("fonts/ARLRDBD.TTF", 40);
 	MyBloodDesc_ = Label::createWithTTF(config2, "1000/1000", TextHAlignment::LEFT);
 	MyBloodDesc_->setAnchorPoint(Vec2(0.5, 0.5));
 	MyBloodDesc_->setTextColor(Color4B::RED);
@@ -162,7 +162,7 @@ void CBattleUIManager::CreateSecondBase()
 	SecondIcon_->setAnchorPoint(Vec2(1, 1));
 	SecondIcon_->setPosition(Director::getInstance()->getWinSize().width, Director::getInstance()->getWinSize().height);
 	addChild(SecondIcon_);
-	TTFConfig config("ERASDEMI.ttf", 50);
+	TTFConfig config("fonts/ERASDEMI.TTF", 50);
 	SecondName_ = Label::createWithTTF(config, "player2", TextHAlignment::LEFT);
 	SecondName_->setAnchorPoint(Vec2(0.5, 0.5));
 	SecondName_->setTextColor(Color4B::GREEN);
@@ -185,7 +185,7 @@ void CBattleUIManager::CreateSecondBase()
 	SecondBloodProgress_->setBarChangeRate(Vec2(1, 0));
 	SecondBloodProgress_->setPercentage(75);
 	addChild(SecondBloodProgress_);
-	TTFConfig config2("ARLRDBD.TTF", 40);
+	TTFConfig config2("fonts/ARLRDBD.TTF", 40);
 	SecondBloodDesc_ = Label::createWithTTF(config2, "1000/1000", TextHAlignment::LEFT);
 	SecondBloodDesc_->setAnchorPoint(Vec2(0.5, 0.5));
 	SecondBloodDesc_->setTextColor(Color4B::RED);

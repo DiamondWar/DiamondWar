@@ -27,7 +27,7 @@ void BattleIcon::SetInfo(int id, int type,int color )
 	Icon_ = CCSprite::createWithSpriteFrameName(string->getCString());
 	addChild(Icon_);
 	setContentSize(Icon_->getContentSize());
-	TTFConfig config("ERASDEMI.ttf", 25);
+	TTFConfig config("fonts/ERASDEMI.TTF", 25);
 	String* strtype  = String::createWithFormat("%d", type);
 	IconNum_ = Label::createWithTTF(config, strtype->getCString(),TextHAlignment::LEFT);
 	IconNum_->setAnchorPoint(Vec2(0, 0));
