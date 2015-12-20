@@ -5,11 +5,12 @@
 #include "SoliderData.h"
 #include "SkillData.h"
 #include "BaseBoss.h"
+#include "AttackData.h"
 class CBuffData;
 class CSolider :public CBaseBoss
 {
 public:
-	CSolider(int id, int type, int rank,float level);
+	CSolider(int id, int type, int rank, float level);
 	~CSolider();
 
 
@@ -39,16 +40,23 @@ public:
 	void ShowHurt();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
-	CSkillData* AttackData_;
+	CAttackData* AttackData_;
 	CSkillData* SKillData_;
-
+	cocos2d::Node* BasePoint_;
+	cocos2d::Node* CenterPoint_;
+	cocos2d::Node* LeftPoint_;
+	cocos2d::Node* RightPoint_;
+	cocos2d::Node* UpPoint_;
+	cocos2d::Node* BulletPoint_;
+	cocos2d::Vec2 BulletPos_;
+	int AttackDamage;
 	float AttakRange = 300;
 private:
 	ESoliderOpreate OpreateType = ESoliderOpreate_Idle;
 	//上次攻击的时间
 	long LastAttackTime = 0;
 	long NowTime = 0;
-	int AttackDamage;
+	
 	bool isShowHurt = false;
 	long lastShowHurtTime = 0;
 	//攻击次数
@@ -56,8 +64,8 @@ private:
 	int init_AttackInveral = 0;
 	int Init_MoveSpeed = 0;
 	int Init_AttackRange = 0;
-
-
+	int CurBlood = 0;
+	int MaxBlood = 0;
 	//攻击范围//攻击范围系数
 	float AttackRangeCf = 0;
 	//攻击力削弱
@@ -70,7 +78,8 @@ private:
 	int MoveSpeed = 0;
 
 	void CheckAttackOrSkill();
-
+	cocos2d::Node* CSolider::getBulletPoint(cocos2d::Node* node, std::string name);
+	cocos2d::Vec2 CSolider::GetBulletpos(cocos2d::Node*node, cocos2d::Vec2 pos);
 
 
 };

@@ -62,7 +62,7 @@ CBaseBoss* CBattleObjectManager::GetSecondRanksBoss()
 {
 	return SecondRanksBoss_;
 }
-CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range,float r , float x, float y)
+CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range, float r, float x, float y)
 {
 	CSolider* sol = nullptr;
 	int lastlength = 0;
@@ -117,7 +117,7 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingEnemyListByRange(float rank, f
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
-		if (keysol->Ranks != rank&&keysol->Data_->SoliderType ==3)
+		if (keysol->Ranks != rank && (keysol->Data_->SoliderType == 3 || keysol->Data_->SoliderType == 2))
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
 			length = length - keysol->RangeR_ - r;
@@ -139,7 +139,7 @@ Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float ra
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
 			length = length - keysol->RangeR_ - r;
-			if (length< range)
+			if (length < range)
 			{
 				list.pushBack(keysol);
 			}
@@ -201,23 +201,55 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingFriendListByRange(float rank, 
 	}
 	return list;
 }
-
+Vector<CSolider*> CBattleObjectManager::GetSoliderListByRange(int type ,float range, float r, float x, float y)
+{
+	Vector<CSolider*> list;
+	for (CBattleObject* key : BattleList_)
+	{
+		CSolider * keysol = static_cast<CSolider*>(key);
+		float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+		length = length - keysol->RangeR_ - r;
+		if (length < range)
+		{
+			if (type == 1)
+			{
+				if (keysol->Data_->SoliderType <= 2)
+				{
+					list.pushBack(keysol);
+				}
+			}
+			else if (type == 2)
+			{
+				if (keysol->Data_->SoliderType >= 2)
+				{
+					list.pushBack(keysol);
+				}
+			}
+			else
+			{
+				list.pushBack(keysol);
+			}
+			
+		}
+	}
+	return list;
+}
 void CBattleObjectManager::Update()
 {
 	for (auto key : BattleList_)
 	{
-		if (key->IsDelete_==false)
+		if (key->IsDelete_ == false)
 			key->Update();
 	}
-	for (auto key: BulletList_)
+	for (auto key : BulletList_)
 	{
 		if (key->IsDelete_ == false)
-			key ->Update();
+			key->Update();
 	}
-	for (auto key: HurtShowList_)
+	for (auto key : HurtShowList_)
 	{
 		if (key->IsDelete_ == false)
-		key->Update();
+			key->Update();
 	}
 	for (auto key : BuffList_)
 	{

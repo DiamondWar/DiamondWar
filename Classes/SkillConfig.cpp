@@ -1,6 +1,5 @@
 #include "SkillConfig.h"
 #include "CGlobleConfig.h"
-#include "json/rapidjson.h"
 USING_NS_CC;
 CSkillConfig* CSkillConfig::Instance_ = nullptr;
 CSkillConfig::CSkillConfig()
@@ -40,6 +39,16 @@ void CSkillConfig::LoadText()
 		String * str3 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->TargetType = str3->intValue();
 		str3->release();
+		String * str6 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->HurtCf = str6->intValue();
+		str6->release();
+		String * str7 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->CoolTime = str7->intValue();
+		str7->release();
+		str7 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->AttackPoint = str7->intValue();
+		str7->release();
+
 		String * str4 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->BulletType = str4->intValue();
 		str4->release();
@@ -50,38 +59,49 @@ void CSkillConfig::LoadText()
 			data->BulletValue[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
 		}
 		str5->release();
-		String * str6 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->HurtCf = str6->intValue();
-		str6->release();
-		String * str7 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->CoolTime = str7->intValue();
-		str7->release();
-		String * str8 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->AttributeInfo = str8->getCString();
-		str8->release();
+
 		String * str9 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->EffectId = str9->intValue();
 		str9->release();
-		String * str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->EffectCf = str10->intValue();
-		str10->release();
-		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		String* str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		CCArray* carr1 = CCGlobleConfig::split(str10->getCString(), ",");
 		for (int n = 0; n < carr1->count(); n++)
 		{
-			data->EffectValue[n] = static_cast<String*>(carr1->getObjectAtIndex(n))->intValue();
+			data->EffectValue[n] = static_cast<String*>(carr1->getObjectAtIndex(n))->floatValue();
 		}
+
+		str10->release();
+
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceName1 = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceFrameCount1 = str10->intValue();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceName2 = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceFrameCount2 = str10->intValue();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceName3 = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->ResourceFrameCount3 = str10->intValue();
+		str10->release();
+
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->AttackVoice = str10->getCString();
+		str10->release();
+		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
+		data->HitVoice = str10->getCString();
 		str10->release();
 		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->Desc = str10->getCString();
 		str10->release();
-		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->ResourceName = str10->getCString();
-		str10->release();
-		str10 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->ResourceFrameCount = str10->intValue();
-		str10->release();
-		DataList_.insert(DataList_.size(), data);
+		data->updateResouce();
+		DataList_.pushBack(data);
 
 	}
 	CCLOG(" data  == %s", ns->getCString());

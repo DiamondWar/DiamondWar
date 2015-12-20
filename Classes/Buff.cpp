@@ -29,7 +29,7 @@ void CBuff::OnResourceLoadComplete()
 	{
 		return;
 	}
-	Obj->setAnchorPoint(Vec2(0.5f, 0));
+	Obj->setAnchorPoint(Vec2(0.5, 0.5));
 	if (BuffData->AttackType == 2 || BuffData->AttackType == 3)
 	{
 		Obj->setPosition(BuffData->init_x, BuffData->init_y);
@@ -38,7 +38,30 @@ void CBuff::OnResourceLoadComplete()
 	else
 	{
 		Obj->setPosition(0, 0);
-		BuffData->Target->Obj->addChild(Obj);
+		if (BuffData->attackPoint == 1)
+		{
+			BuffData->Target->CenterPoint_->addChild(Obj);
+		}
+		else if (BuffData->attackPoint == 2)
+		{
+			BuffData->Target->UpPoint_->addChild(Obj);
+		}
+		else if (BuffData->attackPoint == 3)
+		{
+			BuffData->Target->BasePoint_->addChild(Obj);
+		}
+		else if (BuffData->attackPoint == 4)
+		{
+			BuffData->Target->LeftPoint_->addChild(Obj);
+		}
+		else if (BuffData->attackPoint == 5)
+		{
+			BuffData->Target->RightPoint_->addChild(Obj);
+		}	
+		else if (BuffData->attackPoint == 6)
+		{
+			BuffData->Target->BulletPoint_->addChild(Obj);
+		}
 	}
 	StartTime = CCGlobleConfig::GetCurrntTime();
 	Animation* animation = NULL;

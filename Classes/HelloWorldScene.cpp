@@ -5,6 +5,8 @@
 #include "SkillConfig.h"
 #include "BattleUIManager.h"
 #include "GameSceneControl.h"
+#include "AttackConfig.h"
+#include "StrengthConfig.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -41,26 +43,45 @@ bool HelloWorld::init()
     {
         return false;
     }
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet.plist", "Bullet.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Battle.plist", "Battle.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet1.plist", "Bullet1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ZDZ.plist", "ZDZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Line.plist", "Line.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("SF.plist", "SF.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("caihong.plist", "caihong.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A1.plist", "A1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("A2.plist", "A2.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("B1.plist", "B1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("B2.plist", "B2.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("C1.plist", "C1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("C2.plist", "C2.png");
+	//初始化技能资源
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_1.plist", "Skill/ASkill_1001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1002_1.plist", "Skill/ASkill_1002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1003_1.plist", "Skill/ASkill_1003_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2001_1.plist", "Skill/ASkill_2001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2002_1.plist", "Skill/ASkill_2002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2002_2.plist", "Skill/ASkill_2002_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2003_1.plist", "Skill/ASkill_2003_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2003_2.plist", "Skill/ASkill_2003_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_1.plist", "Skill/ASkill_3001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_2.plist", "Skill/ASkill_3001_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_3.plist", "Skill/ASkill_3001_3.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3002_1.plist", "Skill/ASkill_3002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3002_2.plist", "Skill/ASkill_3002_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3003_1.plist", "Skill/ASkill_3003_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3003_2.plist", "Skill/ASkill_3003_2.png");
+	//初始化普通攻击的资源
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_1002_1.plist", "Bullet/Bullet_1002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2001_1.plist", "Bullet/Bullet_2001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2001_3.plist", "Bullet/Bullet_2001_3.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2002_1.plist", "Bullet/Bullet_2002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2003_1.plist", "Bullet/Bullet_2003_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3001_1.plist", "Bullet/Bullet_3001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3002_1.plist", "Bullet/Bullet_3002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3003_1.plist", "Bullet/Bullet_3003_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3003_2.plist", "Bullet/Bullet_3003_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_common_1.plist", "Bullet/Bullet_common_1.png");
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
-    
+	CAttackConfig::GetInstance()->LoadText();
+	CStrengthConfig::GetInstance()->LoadText();
 	
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);

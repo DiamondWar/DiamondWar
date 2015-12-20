@@ -5,14 +5,16 @@
 #include "Bullet.h"
 #include "SoliderConfig.h"
 #include "SkillConfig.h"
+#include "AttackConfig.h"
 #include "HurtShow.h"
 #include "SkillManager.h"
 #include "Buff.h"
-
+#include "AttackManager.h"
+USING_NS_CC;
 CSolider::CSolider(int id, int type, int rank, float level)
 {
 	Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
-	AttackData_ = CSkillConfig::GetInstance()->GetItemById(Data_->AttackId);
+	AttackData_ = CAttackConfig::GetInstance()->GetItemById(Data_->AttackId);
 	SKillData_ = CSkillConfig::GetInstance()->GetItemById(Data_->SkillId);
 	ResourceName = Data_->ResourceName;
 	if (rank == 1)
@@ -27,8 +29,8 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	DownLoadType = type;
 	Ranks = rank;
 	RangeR_ = Data_->RangeR;
-	AttakRange = Data_->AttackRange;///CCGlobleConfig::COMMON_VALUE;
-	AttakInveral = Data_->AttackInterval*CCGlobleConfig::COMMON_ATTACK_VALUE;
+	AttakRange = Data_->AttackRange*CCGlobleConfig::COMMON_RANGE_VALUE;
+	AttakInveral = 1/(Data_->AttackInterval)*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
 	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange, AttakInveral);
 	init_AttackInveral = AttakInveral;
@@ -36,6 +38,8 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	Init_MoveSpeed = MoveSpeed;
 	InitObj();
 	AttackDamage = Data_->Attack*level;
+	CurBlood = Data_->Blood*level;
+	MaxBlood = CurBlood;
 
 }
 
@@ -47,14 +51,61 @@ void CSolider::OnResourceLoadComplete()
 {
 	Obj->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	Obj->setPosition(Init_x, Init_y);
+	Obj->setScale(Data_->ScaleValue);
+	UpPoint_ = Obj->getChildByName("buff1");
+	BasePoint_ = Obj->getChildByName("basepoint");
+	CenterPoint_ = Obj->getChildByName("centerpoint");
+	LeftPoint_ = Obj->getChildByName("buff2");
+	RightPoint_ = Obj->getChildByName("buff3");
+	BulletPoint_ = getBulletPoint(Obj, "bulletpoint");
+	if (BulletPoint_ != nullptr)
+	{
+		BulletPos_ = BulletPoint_->getPosition();
+	}
+		
+
 	if (Ranks != 1)
 	{
 		Obj->setRotationSkewY(180);
 	}
 	OnRun();
 }
+Vec2 CSolider::GetBulletpos(Node*node, Vec2 pos)
+{
+	Vec2 pos1 = pos;
+	if (node->getName().c_str() != Obj->getName().c_str())
+	{
+		pos1.x += node->getPosition().x;
+		pos1.y += node->getPosition().y;
+		return GetBulletpos(node->getParent(), pos1);
+	}
+	return pos1;
+}
+cocos2d::Node* CSolider::getBulletPoint(Node* node, std::string name)
+{
+	Vector<Node*> list = node->getChildren();
+	for (Node* item : list)
+	{
+		CCLOG("item ===%s", item->getName().c_str());
+		if (item->getName().c_str() == name)
+		{
+			return item;
+		}
+		else
+		{
+			Node* temp = getBulletPoint(item, name);
+			if (temp!=nullptr&&temp->getName().c_str() == name)
+			{
+				return temp;
+			}
+		}
+	}
+	return nullptr;
+}
 void CSolider::Update()
 {
+	if (IsDelete_ == true)
+		return;
 	CBattleObject::Update();
 	switch (OpreateType)
 	{
@@ -166,19 +217,7 @@ void CSolider::OnRun()
 }
 void CSolider::OnAttack()
 {
-	if (AttackData_->BulletType <= 1)
-	{
-		AttackTarget->GetDamage(AttackData_->HurtCf*AttackDamage, 3);
-	}
-	else
-	{
-		CBuffData * buffdata = new CBuffData();
-		buffdata->Damage = AttackData_->HurtCf*AttackDamage;
-		buffdata->Target = AttackTarget;
-		CBullet* buttlet = new CBullet(AttackData_, Obj->getPosition().x, Obj->getPosition().y, buffdata, AttackTarget, Ranks, 2);
-		Obj->getParent()->addChild(buttlet->Obj);
-		CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
-	}
+	CAttackManager::GetInstance()->OnAttack(this, AttackData_);
 	OpreateType = ESoliderOpreate_Attack;
 	CBattleObject::OnAttack();
 }
@@ -221,11 +260,24 @@ void CSolider::GetDamage(int damage, int type)
 	damage = damage - damage*AttackCf;
 	if (damage == 0)
 		return;
+	CurBlood -= damage;
+	if (CurBlood <= MaxBlood*0.3f)
+	{
+		OnHurt();
+	}
+	else if (CurBlood == 0)
+	{
+		IsDelete_ = true;
+		Obj->removeFromParent();
+		Obj->setVisible(false);
+
+	}
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
 	CHurtShow *hurt = new CHurtShow();
 	hurt->SetFont(3);
-	hurt->ShowLabel(damage, Obj);
+
+	hurt->ShowLabel(damage, this);
 	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 }
 void CSolider::GetMoveSpeedCf(float cf)

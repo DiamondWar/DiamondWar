@@ -1,5 +1,6 @@
 #include "HurtShow.h"
 #include "CGlobleConfig.h"
+
 USING_NS_CC;
 
 CHurtShow::CHurtShow()
@@ -30,7 +31,7 @@ void CHurtShow::SetFont(int type)
 		ResourceName = "zdz";
 	}
 }
-void CHurtShow::ShowLabel(int value, Node* node)
+void CHurtShow::ShowLabel(int value, CSolider* node)
 {
 	int n = 0;
 	
@@ -52,8 +53,8 @@ void CHurtShow::ShowLabel(int value, Node* node)
 	int count = SpriteArray.size();
 	for (int i = 0; i < SpriteArray.size(); i++)
 	{
-		node->getParent()->addChild(SpriteArray.at(i));
-		SpriteArray.at(i)->setPosition(node->getPosition().x + 40 / 2 * count - i * 40, node->getPosition().y);
+		node->Obj->getParent()->addChild(SpriteArray.at(i));
+		SpriteArray.at(i)->setPosition(node->CenterPoint_->getPosition().x+node->Obj->getPosition().x + 40 / 2 * count - i * 40, node->Obj->getPosition().y+node->CenterPoint_->getPosition().y);
 	}
 	isMove = true;
 }

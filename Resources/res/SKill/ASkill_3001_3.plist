@@ -7,19 +7,6 @@
             <key>ASkill_3001_3_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{134,2},{116,106}}</string>
-                <key>offset</key>
-                <string>{7,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{14,11},{116,106}}</string>
-                <key>sourceSize</key>
-                <string>{130,130}</string>
-            </dict>
-            <key>ASkill_3001_3_2.png</key>
-            <dict>
-                <key>frame</key>
                 <string>{{2,2},{130,130}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -40,7 +27,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:13b25f369f20cd27f6e61c32e0b380bc$</string>
+            <string>$TexturePacker:SmartUpdate:5fb921c7834a7e2a9c731ce6257bac9f$</string>
             <key>textureFileName</key>
             <string>ASkill_3001_3.png</string>
         </dict>

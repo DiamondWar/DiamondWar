@@ -14,12 +14,16 @@ public:
 	void ChoseSkill(CSkillData*data, CSolider* target);
 private:
 	static CSkillManager* Instance_;
-	void OnQiangLiYiJi(CSkillData *data,CSolider*target);
-	void OnZhaoHuanShanDian(CSkillData *skill, CSolider*target);
-	void OnHanBingLingYu(CSkillData *skill, CSolider*target);
-	void OnShouHuZhiGuang(CSkillData *skill, CSolider*target);
-	void OnQianNengJiFa(CSkillData *skill, CSolider*target);
-	void OnQiangLiHuDun(CSkillData *skill, CSolider*target);
+
+
+	void OnAttackByType1(CSolider* solider, CSkillData* attack);
+	void OnAttackByType2(CSolider* solider, CSkillData* data);
+	void OnAttackByType3(CSolider* solider, CSkillData* data);
+	void OnAttackByType4(CSolider* solider, CSkillData* data);
+	void OnAttackByType5(CSolider* solider, CSkillData* data);
+	void OnAttackByType6(CSolider* solider, CSkillData* data);
+	void OnAttackByType7(CSolider* solider, CSkillData* data);
+	cocos2d::Vector<CSolider*> GetList(CSolider* solider, CSkillData* attack);
 };
 
 #endif 

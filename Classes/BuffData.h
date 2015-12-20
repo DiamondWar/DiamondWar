@@ -15,7 +15,7 @@ public:
 	float AttackRange = 0;
 	//受到的伤害值
 	int Damage= 0;
-	
+	int attackPoint = 0;
 	int init_x = 0;
 	int init_y = 0;
 	//减少伤害值

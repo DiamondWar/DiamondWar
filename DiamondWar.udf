@@ -31,9 +31,17 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="MainScene.csd" />
+          <FilePathData Path="Hero_1001.csd" />
+          <FilePathData Path="Hero_1002.csd" />
+          <FilePathData Path="Hero_1003.csd" />
+          <FilePathData Path="Hero_2001.csd" />
+          <FilePathData Path="Hero_3001.csd" />
+          <FilePathData Path="Hero_3002.csd" />
+          <FilePathData Path="Hero_3003.csd" />
+          <FilePathData Path="Hero_2002.csd" />
+          <FilePathData Path="Hero_2003.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="MainScene.csd" />
+        <ActiveDocument Path="Hero_2003.csd" />
       </Value>
     </Item>
   </Properties>

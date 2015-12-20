@@ -36,6 +36,7 @@ public:
 	cocos2d::Vector<CSolider*> GetFriendListByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetLuDiFriendListByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetFeiXingFriendListByRange(float rank, float range, float r, float x, float y);
+	cocos2d::Vector<CSolider*> GetSoliderListByRange(int type,float range, float r, float x, float y);
 private:
 	static CBattleObjectManager* Instance_;
 	cocos2d::Vector<CBattleObject*> BattleList_;

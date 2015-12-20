@@ -13,7 +13,7 @@ bool CDiamondChoseManager::init()
 	setContentSize(Size(1300, 185));
 	for (int i = 0; i < 7;i++)
 	{
-		int rand = random(1,4);
+		int rand = 2;//random(1,4);
 		String* string = String::createWithFormat("shujing_%d.png", rand);
 		CShuiJingBase* sprite = CShuiJingBase::create();
 		sprite->SetInfo(rand);

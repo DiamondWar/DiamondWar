@@ -8,20 +8,24 @@ public:
 	CSoliderData();
 	~CSoliderData();
 
-	int ID;
-	std::string Name;
-	int  SoliderType;
-	int RangeR;
-	int NeedStar;
-	int AttackId;
-	int SkillId;
-	int Attack;
-	int Blood;
-	float MoveSpeed;
-	float AttackRange;
-	float AttackInterval;
-	std::string Desc;
-	std::string ResourceName;
+	int ID;  //Id
+	std::string Name;  //名称
+	int  SoliderType;   //类型
+	int NeedStar;		//所需费用
+	
+	int AttackId;		//攻击id
+	int SkillId;		//技能id
+	float AttackRange;  // 射程
+	int Attack;			//攻击力
+	int Blood;			//血量
+	float MoveSpeed;	//移动速度
+	float AttackInterval; //攻击频率
+	int StrengthValue;	//强化参数
+	std::string ResourceName;	//资源名称
+	float ScaleValue;		//缩放系数
+	int RangeR;			//碰撞半径
+	std::string Desc;	//描述信息
+
 };
 #endif 
 

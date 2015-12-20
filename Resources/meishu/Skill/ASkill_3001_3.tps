@@ -147,7 +147,6 @@
         <key>fileList</key>
         <array>
             <filename>ASkill_3001/ASkill_3001_3_1.png</filename>
-            <filename>ASkill_3001/ASkill_3001_3_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

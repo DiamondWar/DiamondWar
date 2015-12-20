@@ -7,80 +7,80 @@
             <key>Bullet_2001_1_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,216},{106,91}}</string>
+                <string>{{565,2},{279,111}}</string>
                 <key>offset</key>
-                <string>{2,6}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{4,1},{106,91}}</string>
+                <string>{{0,1},{279,111}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{279,113}</string>
             </dict>
             <key>Bullet_2001_1_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{110,216},{94,85}}</string>
+                <string>{{564,115},{279,111}}</string>
                 <key>offset</key>
-                <string>{-3,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{5,10},{94,85}}</string>
+                <string>{{0,1},{279,111}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{279,113}</string>
             </dict>
             <key>Bullet_2001_1_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{114,109},{108,105}}</string>
+                <string>{{2,2},{280,114}}</string>
                 <key>offset</key>
-                <string>{1,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{2,0},{108,105}}</string>
+                <string>{{0,0},{280,114}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{280,114}</string>
             </dict>
             <key>Bullet_2001_1_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,109},{110,105}}</string>
+                <string>{{284,2},{279,111}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{110,105}}</string>
+                <string>{{0,1},{279,111}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{279,113}</string>
             </dict>
             <key>Bullet_2001_1_5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{114,2},{110,105}}</string>
+                <string>{{283,118},{279,111}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{110,105}}</string>
+                <string>{{0,1},{279,111}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{279,113}</string>
             </dict>
             <key>Bullet_2001_1_6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{110,105}}</string>
+                <string>{{2,118},{279,111}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{110,105}}</string>
+                <string>{{0,1},{279,111}}</string>
                 <key>sourceSize</key>
-                <string>{110,105}</string>
+                <string>{279,113}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -90,9 +90,9 @@
             <key>realTextureFileName</key>
             <string>Bullet_2001_1.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{1024,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:757e305071045b9de130713bf80f9a9b$</string>
+            <string>$TexturePacker:SmartUpdate:dfd7b740cafa92521ca78615a65c0d09$</string>
             <key>textureFileName</key>
             <string>Bullet_2001_1.png</string>
         </dict>

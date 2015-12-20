@@ -147,6 +147,15 @@
         <key>fileList</key>
         <array>
             <filename>ASkill_3001/ASkill_3001_1_1.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_9.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_10.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_2.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_3.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_4.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_5.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_6.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_7.png</filename>
+            <filename>ASkill_3001/ASkill_3001_1_8.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

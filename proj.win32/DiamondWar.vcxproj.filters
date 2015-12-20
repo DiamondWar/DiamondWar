@@ -78,9 +78,6 @@
     <ClCompile Include="..\Classes\BaseBoss.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SkillManager.cpp">
-      <Filter>src\Battle</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\BuffData.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
@@ -107,6 +104,27 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AudioManager.cpp">
       <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AttackData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StrengthData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AttackConfig.cpp">
+      <Filter>src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StrengthConfig.cpp">
+      <Filter>src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AttackManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SkillManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LineBullet.cpp">
+      <Filter>src\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,9 +173,6 @@
     <ClInclude Include="..\Classes\BaseBoss.h">
       <Filter>src\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SkillManager.h">
-      <Filter>src\Battle</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\BuffData.h">
       <Filter>src\Data</Filter>
     </ClInclude>
@@ -184,6 +199,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AudioManager.h">
       <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AttackData.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StrengthData.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AttackConfig.h">
+      <Filter>src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StrengthConfig.h">
+      <Filter>src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AttackManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SkillManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LineBullet.h">
+      <Filter>src\Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

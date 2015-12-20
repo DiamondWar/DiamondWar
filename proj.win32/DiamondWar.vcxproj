@@ -151,6 +151,9 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\AttackConfig.cpp" />
+    <ClCompile Include="..\Classes\AttackData.cpp" />
+    <ClCompile Include="..\Classes\AttackManager.cpp" />
     <ClCompile Include="..\Classes\AudioManager.cpp" />
     <ClCompile Include="..\Classes\BaseBoss.cpp" />
     <ClCompile Include="..\Classes\BattleIcon.cpp" />
@@ -166,6 +169,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\GameSceneControl.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HurtShow.cpp" />
+    <ClCompile Include="..\Classes\LineBullet.cpp" />
     <ClCompile Include="..\Classes\ShuiJingBase.cpp" />
     <ClCompile Include="..\Classes\SkillConfig.cpp" />
     <ClCompile Include="..\Classes\SkillData.cpp" />
@@ -174,10 +178,15 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\SoliderConfig.cpp" />
     <ClCompile Include="..\Classes\SoliderData.cpp" />
     <ClCompile Include="..\Classes\SoliderDie.cpp" />
+    <ClCompile Include="..\Classes\StrengthConfig.cpp" />
+    <ClCompile Include="..\Classes\StrengthData.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\AttackConfig.h" />
+    <ClInclude Include="..\Classes\AttackData.h" />
+    <ClInclude Include="..\Classes\AttackManager.h" />
     <ClInclude Include="..\Classes\AudioManager.h" />
     <ClInclude Include="..\Classes\BaseBoss.h" />
     <ClInclude Include="..\Classes\BattleIcon.h" />
@@ -193,6 +202,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\GameSceneControl.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HurtShow.h" />
+    <ClInclude Include="..\Classes\LineBullet.h" />
     <ClInclude Include="..\Classes\ShuiJingBase.h" />
     <ClInclude Include="..\Classes\SkillConfig.h" />
     <ClInclude Include="..\Classes\SkillData.h" />
@@ -201,6 +211,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\SoliderConfig.h" />
     <ClInclude Include="..\Classes\SoliderData.h" />
     <ClInclude Include="..\Classes\SoliderDie.h" />
+    <ClInclude Include="..\Classes\StrengthConfig.h" />
+    <ClInclude Include="..\Classes\StrengthData.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
