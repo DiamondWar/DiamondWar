@@ -12,7 +12,7 @@ CLineBullet::CLineBullet(CAttackData* data, int x, int y, CBuffData*  damage, CS
 	DownLoadType = type;
 	Init_x = x;
 	Init_y = y;
-	LineLength = data->BulletValue[2];
+	LineLength = data->BulletValue[2]*CCGlobleConfig::COMMON_RANGE_VALUE;
 	AtTarget_ = target;
 	if (Data_->AttackPoint == 1)
 	{
@@ -54,7 +54,7 @@ void CLineBullet::OnResourceLoadComplete()
 	Obj->setPosition(Init_x, Init_y);
 	if (Angle_ != 0)
 	{
-		LineLength = abs(LineLength / cos(angle));
+		LineLength = abs(LineLength / cos(Angle_));
 	}
 	Obj->setRotation(-angle);
 	if (Ranks_ != 1)
@@ -106,7 +106,7 @@ void CLineBullet::Update()
 	if (IsDelete_ == true)
 		return;
 	CBattleObject::Update();
-	if (CheckIsAtTarget() == true)
+	if (CheckIsAtTarget() == false)
 	{
 		if (Ranks_ == 1)
 		{
@@ -145,6 +145,7 @@ void CLineBullet::Update()
 				}
 			}
 		}
+		CCLOG("Obj.name ==%s   Pos ==%f,%f", Obj->getName().c_str(), Obj->getPositionX(), Obj->getPositionY());
 		CheckEnemyInAttackRange();
 	}
 	else
@@ -160,6 +161,7 @@ bool CLineBullet::CheckIsAtTarget()
 	if (Obj == nullptr)
 		return true;
 	float length = CCGlobleConfig::GetLengthByPoint(Init_x, Init_y, Obj->getPosition().x, Obj->getPosition().y);
+	CCLOG(" CLineBullet::CheckIsAtTarget ==%f, LineLength=%f", length, LineLength);
 	if (length >= LineLength)
 	{
 		return true;
@@ -169,8 +171,9 @@ bool CLineBullet::CheckIsAtTarget()
 void CLineBullet::CheckEnemyInAttackRange()
 {
 	CSolider* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
-	if (LastTarget_ == solider)
+	if (LastTarget_ == solider||LastTarget_!=nullptr)
 		return;
+	LastTarget_ = solider;
 	BuffData->Target = solider;
 	CBuff* buff = new CBuff(BuffData);
 	CBattleObjectManager::GetInstance()->AddBuffObject(buff);

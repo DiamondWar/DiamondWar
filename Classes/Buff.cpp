@@ -29,9 +29,33 @@ void CBuff::OnResourceLoadComplete()
 	{
 		return;
 	}
-	Obj->setAnchorPoint(Vec2(0.5, 0.5));
+
 	if (BuffData->AttackType == 2 || BuffData->AttackType == 3)
 	{
+		if (BuffData->attackPoint == 1)
+		{
+			Obj->setAnchorPoint(Vec2(0.5, 0.5));
+		}
+		else if (BuffData->attackPoint == 2)
+		{
+			Obj->setAnchorPoint(Vec2(0.5, 1));
+		}
+		else if (BuffData->attackPoint == 3)
+		{
+			Obj->setAnchorPoint(Vec2(0.5, 0));
+		}
+		else if (BuffData->attackPoint == 4)
+		{
+			Obj->setAnchorPoint(Vec2(1, 0.5));
+		}
+		else if (BuffData->attackPoint == 5)
+		{
+			Obj->setAnchorPoint(Vec2(0, 0.5));
+		}
+		else if (BuffData->attackPoint == 6)
+		{
+			Obj->setAnchorPoint(Vec2(0.5, 0.5));
+		}
 		Obj->setPosition(BuffData->init_x, BuffData->init_y);
 		BuffData->From->getParent()->addChild(Obj);
 	}
@@ -41,26 +65,34 @@ void CBuff::OnResourceLoadComplete()
 		if (BuffData->attackPoint == 1)
 		{
 			BuffData->Target->CenterPoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(0.5, 0.5));
 		}
 		else if (BuffData->attackPoint == 2)
 		{
 			BuffData->Target->UpPoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(0.5, 1));
 		}
 		else if (BuffData->attackPoint == 3)
 		{
 			BuffData->Target->BasePoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(0.5, 0));
 		}
 		else if (BuffData->attackPoint == 4)
 		{
+			
 			BuffData->Target->LeftPoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(1, 0.5));
 		}
 		else if (BuffData->attackPoint == 5)
 		{
+			
 			BuffData->Target->RightPoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(0, 0.5));
 		}	
 		else if (BuffData->attackPoint == 6)
 		{
 			BuffData->Target->BulletPoint_->addChild(Obj);
+			Obj->setAnchorPoint(Vec2(0.5, 0.5));
 		}
 	}
 	StartTime = CCGlobleConfig::GetCurrntTime();
@@ -134,6 +166,7 @@ void CBuff::OnAttackActionComplete()
 	BuffData->Target->GetMoveSpeedCf(-BuffData->SpeedCf);
 	BuffData->Target->GetAttackRangeCf(-BuffData->AttackRangeCf);
 	BuffData->Target->GetAttackSpeedCf(-BuffData->AttackInveralCf);
+	if (Obj!=nullptr)
 	Obj->setVisible(false);
 	IsDelete_ = true;
 	this->release();

@@ -19,7 +19,7 @@ public:
 	int Damage;
 private: 
 	int iSpeed_;
-	int LineLength = 0;
+	float LineLength = 0;
 	float Angle_;
 	CSolider* AtTarget_ = nullptr;
 	CSolider*  LastTarget_ = nullptr;

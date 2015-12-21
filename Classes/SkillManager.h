@@ -16,6 +16,15 @@ private:
 	static CSkillManager* Instance_;
 
 
+	/*void OnAttackByType1001(CSolider* solider, CSkillData* attack);
+	void OnAttackByType1002(CSolider* solider, CSkillData* data);
+	void OnAttackByType1003(CSolider* solider, CSkillData* data);
+	void OnAttackByType2001(CSolider* solider, CSkillData* data);
+	void OnAttackByType2002(CSolider* solider, CSkillData* data);
+	void OnAttackByType2003(CSolider* solider, CSkillData* data);
+	void OnAttackByType3001(CSolider* solider, CSkillData* data);
+	void OnAttackByType3002(CSolider* solider, CSkillData* data);
+	void OnAttackByType3003(CSolider* solider, CSkillData* data);*/
 	void OnAttackByType1(CSolider* solider, CSkillData* attack);
 	void OnAttackByType2(CSolider* solider, CSkillData* data);
 	void OnAttackByType3(CSolider* solider, CSkillData* data);

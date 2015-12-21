@@ -4,8 +4,8 @@ USING_NS_CC;
 float CCGlobleConfig::GetLengthByPoint(float point1_x, float point1_y, float point2_x, float point2_y)
 {
 	float x = abs(point1_x - point2_x);
-	float y = abs(point1_y - point2_y);
-	float length = sqrt(x*x + y*y);
+	//float y = abs(point1_y - point2_y);
+	float length = x;//sqrt(x*x + y*y);
 	return length;
 }
 float CCGlobleConfig::GetAngleByPoint(float point1_x, float point1_y, float point2_x, float point2_y)

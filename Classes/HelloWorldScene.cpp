@@ -52,10 +52,11 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Line.plist", "Line.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("caihong.plist", "caihong.png");
 	//初始化技能资源
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_1.plist", "Skill/ASkill_1001_1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1002_1.plist", "Skill/ASkill_1002_1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1003_1.plist", "Skill/ASkill_1003_1.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2001_1.plist", "Skill/ASkill_2001_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_2.plist", "Skill/ASkill_1001_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_3.plist", "Skill/ASkill_1001_3.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1002_3.plist", "Skill/ASkill_1002_3.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1003_2.plist", "Skill/ASkill_1003_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2001_2.plist", "Skill/ASkill_2001_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2002_1.plist", "Skill/ASkill_2002_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2002_2.plist", "Skill/ASkill_2002_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_2003_1.plist", "Skill/ASkill_2003_1.png");
@@ -63,12 +64,12 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_1.plist", "Skill/ASkill_3001_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_2.plist", "Skill/ASkill_3001_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3001_3.plist", "Skill/ASkill_3001_3.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3002_1.plist", "Skill/ASkill_3002_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3002_2.plist", "Skill/ASkill_3002_2.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3002_3.plist", "Skill/ASkill_3002_3.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3003_1.plist", "Skill/ASkill_3003_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_3003_2.plist", "Skill/ASkill_3003_2.png");
 	//初始化普通攻击的资源
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_1002_1.plist", "Bullet/Bullet_1002_1.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_1003_1.plist", "Bullet/Bullet_1003_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2001_1.plist", "Bullet/Bullet_2001_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2001_3.plist", "Bullet/Bullet_2001_3.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_2002_1.plist", "Bullet/Bullet_2002_1.png");
