@@ -2,6 +2,9 @@
 #include "BuffData.h"
 #include "BattleObjectManager.h"
 #include "Buff.h"
+#include "LineBullet.h"
+#include "LinkBullet.h"
+#include "Bullet.h"
 USING_NS_CC;
 
 CSkillManager* CSkillManager::Instance_ = nullptr;
@@ -43,12 +46,25 @@ void CSkillManager::ChoseSkill(CSkillData*data, CSolider* target)
 		OnAttackByType6(target, data);
 		break;
 	case 7:
-		OnAttackByType7(target,data);
+		OnAttackByType7(target, data);
 		break;
 	}
 
 }
-Vector<CSolider*>CSkillManager::GetList(CSolider* solider , CSkillData* attack)
+void CSkillManager::OnShiFa(CSolider* target)
+{
+
+	CBuffData *bufdata = new CBuffData();
+	bufdata->ResourceName = "SF";
+	bufdata->Target = target;
+	bufdata->ContinueTime = 0;
+	bufdata->AttackType = 1;
+	bufdata->ResourceFrameCount = 4;
+	bufdata->NextBuff = NULL;
+	CBuff * buff = new CBuff(bufdata);
+	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+}
+Vector<CSolider*>CSkillManager::GetList(CSolider* solider, CSkillData* attack)
 {
 	Vector<CSolider*>list;
 	if (attack->TargetRank == 2)
@@ -71,8 +87,8 @@ Vector<CSolider*>CSkillManager::GetList(CSolider* solider , CSkillData* attack)
 	}
 	else if (attack->TargetRank == 3)
 	{
-			list = CBattleObjectManager::GetInstance()->GetSoliderListByRange( attack->TargetType,solider->AttakRange, solider->RangeR_, solider->Obj->getPosition().x + solider->CenterPoint_->getPosition().x,
-				solider->Obj->getPosition().y + solider->CenterPoint_->getPosition().y);
+		list = CBattleObjectManager::GetInstance()->GetSoliderListByRange(attack->TargetType, solider->AttakRange, solider->RangeR_, solider->Obj->getPosition().x + solider->CenterPoint_->getPosition().x,
+			solider->Obj->getPosition().y + solider->CenterPoint_->getPosition().y);
 	}
 	else if (attack->TargetRank == 1)
 	{
@@ -96,6 +112,41 @@ Vector<CSolider*>CSkillManager::GetList(CSolider* solider , CSkillData* attack)
 }
 void CSkillManager::OnAttackByType1(CSolider* solider, CSkillData* attack)
 {
+	if (attack->BulletValue[0] != 0)
+	{
+		Vector<CSolider*> list;
+		if (attack->TargetType == 3)
+		{
+			list = CBattleObjectManager::GetInstance()->GetFriendListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->Obj->getPosition().x + solider->CenterPoint_->getPosition().x,
+				solider->Obj->getPosition().y + solider->CenterPoint_->getPosition().y);
+		}
+		else if (attack->TargetType == 2)
+		{
+			list = CBattleObjectManager::GetInstance()->GetFeiXingFriendListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->Obj->getPosition().x + solider->CenterPoint_->getPosition().x,
+				solider->Obj->getPosition().y + solider->CenterPoint_->getPosition().y);
+		}
+		else if (attack->TargetType == 1)
+		{
+			list = CBattleObjectManager::GetInstance()->GetLuDiFriendListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->Obj->getPosition().x + solider->CenterPoint_->getPosition().x,
+				solider->Obj->getPosition().y + solider->CenterPoint_->getPosition().y);
+		}
+		for (CSolider* sol : list)
+		{
+			if (sol == solider->AttackTarget)
+				continue;
+			CBuffData*buffdata = new CBuffData();
+			buffdata->AttackType = 1;
+			buffdata->Damage = attack->HurtCf*solider->AttackDamage;
+			buffdata->ContinueTime = 0;
+			buffdata->attackPoint = attack->AttackPoint;
+			buffdata->ResourceFrameCount = 0;
+			buffdata->ResourceName = 1;
+			buffdata->From = solider;
+			buffdata->Target = solider->AttackTarget;
+			CBuff * buff = new CBuff(buffdata);
+			CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+		}
+	}
 	CBuffData*buffdata = new CBuffData();
 	buffdata->AttackType = 1;
 	buffdata->Damage = attack->HurtCf*solider->AttackDamage;
@@ -107,15 +158,67 @@ void CSkillManager::OnAttackByType1(CSolider* solider, CSkillData* attack)
 	buffdata->Target = solider->AttackTarget;
 	CBuff * buff = new CBuff(buffdata);
 	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
-	
+
 }
 void CSkillManager::OnAttackByType2(CSolider* solider, CSkillData* attack)
 {
-	
+	if (attack->ResourceFrameCount3 != 0)
+	{
+		CBuffData* data1 = new CBuffData();
+		data1->ContinueTime = 0;
+		data1->AttackType = 1;
+		data1->From = solider;
+		data1->Target = solider;
+		data1->Damage = 0;
+		data1->attackPoint = 6;
+		data1->ResourceFrameCount = attack->ResourceFrameCount3;
+		data1->ResourceName = attack->ResourceName3;
+		CBuff *buff2 = new CBuff(data1);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff2);
+	}
+
+	CBuffData * buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->BuffType = E_Buff_LowBlood;
+	buffdata->ContinueTime = 0;
+	buffdata->attackPoint = 1;
+	buffdata->From = solider;
+	buffdata->Damage = solider->AttackDamage;
+	buffdata->Target = solider->AttackTarget;
+	if (attack->ResourceFrameCount2 == 0)
+	{
+		buffdata->ResourceFrameCount = 1;
+		buffdata->ResourceName = "Bullet_common_1";
+	}
+	else
+	{
+		buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
+		buffdata->ResourceName = attack->ResourceName2;
+	}
+	CAttackData* data = new CAttackData();
+	data->AttackPoint = attack->AttackPoint;
+	data->TargetRank = attack->TargetRank;
+	data->TargetType = attack->TargetType;
+	data->BulletType = attack->BulletType;
+	data->BulletValue[0] = attack->BulletValue[0];
+	data->BulletValue[1] = attack->BulletValue[1];
+	data->BulletValue[2] = attack->BulletValue[2];
+	data->EffectId = attack->EffectId;
+	data->HitVoice = attack->HitVoice;
+	data->AttackVoice = attack->AttackVoice;
+	data->ResourceName1 = attack->ResourceName1;
+	data->ResourceFrameCount1 = attack->ResourceFrameCount1;
+	data->ResourceName2 = attack->ResourceName2;
+	data->ResourceFrameCount2 = attack->ResourceFrameCount2;
+	data->ResourceName3 = attack->ResourceName3;
+	data->ResourceFrameCount3= attack->ResourceFrameCount3;
+	CBullet* buttlet = new CBullet(data, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	solider->Obj->getParent()->addChild(buttlet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
 void CSkillManager::OnAttackByType3(CSolider* solider, CSkillData* attack)
 {
-	Vector<CSolider*>list = GetList(solider,attack);
+	Vector<CSolider*>list = GetList(solider, attack);
 	for (CSolider* sol : list)
 	{
 		CBuffData* data = new CBuffData();
@@ -123,41 +226,79 @@ void CSkillManager::OnAttackByType3(CSolider* solider, CSkillData* attack)
 		data->attackPoint = attack->AttackPoint;
 		if (attack->EffectId == 1)
 		{
-			data->Damage = attack->EffectValue[0];
+			data->Damage = attack->HurtCf*solider->AttackDamage;
 		}
-		 if (attack->EffectId == 2)
+		if (attack->EffectId == 2)
 		{
-			 data->ContinueTime = attack->EffectValue[0];
-			 data->SpeedCf = attack->EffectValue[1];
-			 data->AttackInveralCf = attack->EffectValue[2];
+			data->ContinueTime = attack->EffectValue[0];
+			data->SpeedCf = attack->EffectValue[1];
+			data->AttackInveralCf = attack->EffectValue[2];
 		}
 		else if (attack->EffectId == 3)
 		{
 			data->ContinueTime = attack->EffectValue[0];
 			data->AttackCf = attack->EffectValue[1];
 		}
-
-		 data->attackPoint = attack->AttackPoint;
-		 data->From = solider;
-		 data->Target = sol;
-		 CBuff * buff = new CBuff(data);
-		 CBattleObjectManager::GetInstance()->AddBuffObject(buff);
-		 if (attack->ResourceFrameCount2 != 0)
-		 {
-			 CBuffData*buffdata = new CBuffData();
-			 buffdata->ContinueTime = 0;
-			 buffdata->attackPoint = 1;
-			 buffdata->From = solider;
-			 buffdata->Target = sol;
-			 buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
-			 buffdata->ResourceName = attack->ResourceName2;
-			 CBuff * buff = new CBuff(buffdata);
-			 CBattleObjectManager::GetInstance()->AddBuffObject(buff);
-		 }
+		data->From = solider;
+		data->Target = sol;
+		CBuff * buff = new CBuff(data);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+		if (attack->ResourceFrameCount2 != 0)
+		{
+			CBuffData*buffdata = new CBuffData();
+			buffdata->ContinueTime = 0;
+			buffdata->attackPoint = 1;
+			buffdata->From = solider;
+			buffdata->Target = sol;
+			buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
+			buffdata->ResourceName = attack->ResourceName2;
+			CBuff * buff = new CBuff(buffdata);
+			CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+		}
 	}
 }
-void CSkillManager::OnAttackByType4(CSolider* solider, CSkillData* data)
+void CSkillManager::OnAttackByType4(CSolider* solider, CSkillData* attack)
 {
+	CBuffData*buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->attackPoint = attack->AttackPoint;
+	if (attack->EffectId == 1)
+	{
+		buffdata->Damage = attack->HurtCf*solider->AttackDamage;
+	}
+	if (attack->EffectId == 2)
+	{
+		buffdata->ContinueTime = attack->EffectValue[0];
+		buffdata->SpeedCf = attack->EffectValue[1];
+		buffdata->AttackInveralCf = attack->EffectValue[2];
+	}
+	else if (attack->EffectId == 3)
+	{
+		buffdata->ContinueTime = attack->EffectValue[0];
+		buffdata->AttackCf = attack->EffectValue[1];
+	}
+	buffdata->From = solider;
+	buffdata->Target = solider->AttackTarget;
+
+	CAttackData * data= new CAttackData();
+	data->AttackPoint = attack->AttackPoint;
+	data->TargetRank = attack->TargetRank;
+	data->TargetType = attack->TargetType;
+	data->BulletType = attack->BulletType;
+	data->BulletValue[0] = attack->BulletValue[0];
+	data->BulletValue[1] = attack->BulletValue[1];
+	data->BulletValue[2] = attack->BulletValue[2];
+	data->EffectId = attack->EffectId;
+	data->HitVoice = attack->HitVoice;
+	data->AttackVoice = attack->AttackVoice;
+	data->ResourceName1 = attack->ResourceName1;
+	data->ResourceFrameCount1 = attack->ResourceFrameCount1;
+	data->ResourceName2 = attack->ResourceName2;
+	data->ResourceFrameCount2 = attack->ResourceFrameCount2;
+	data->ResourceName3 = attack->ResourceName3;
+	data->ResourceFrameCount3 = attack->ResourceFrameCount3;
+	CLineBullet* bullet = new CLineBullet(data, solider->Obj->getPositionX() + solider->BulletPoint_->getPositionX(), solider->Obj->getPositionY() + solider->BulletPoint_->getPositionY()
+		,buffdata,solider->AttackTarget,solider->Ranks,2);
 
 }
 void CSkillManager::OnAttackByType5(CSolider* solider, CSkillData* data)
@@ -170,5 +311,43 @@ void CSkillManager::OnAttackByType6(CSolider* solider, CSkillData* data)
 }
 void CSkillManager::OnAttackByType7(CSolider* solider, CSkillData* data)
 {
+	CBuffData *buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->From = solider;
+	buffdata->Target = solider;
+	buffdata->AttackInveralCf = -1000;
+	buffdata->ContinueTime = data->BulletValue[2]*0.1;
+	CBuff* buff = new CBuff(buffdata);
+	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+}
+void CSkillManager::OnAttackByType8(CSolider* solider, CSkillData* attack)
+{
+	CBuffData* buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->From = solider;
+	buffdata->Target = solider->AttackTarget;
+	buffdata->ContinueTime = 0;
+	buffdata->Damage = solider->AttackDamage;
 
+	CAttackData * data = new CAttackData();
+	data->AttackPoint = attack->AttackPoint;
+	data->TargetRank = attack->TargetRank;
+	data->TargetType = attack->TargetType;
+	data->BulletType = attack->BulletType;
+	data->BulletValue[0] = attack->BulletValue[0];
+	data->BulletValue[1] = attack->BulletValue[1];
+	data->BulletValue[2] = attack->BulletValue[2];
+	data->EffectId = attack->EffectId;
+	data->HitVoice = attack->HitVoice;
+	data->AttackVoice = attack->AttackVoice;
+	data->ResourceName1 = attack->ResourceName1;
+	data->ResourceFrameCount1 = attack->ResourceFrameCount1;
+	data->ResourceName2 = attack->ResourceName2;
+	data->ResourceFrameCount2 = attack->ResourceFrameCount2;
+	data->ResourceName3 = attack->ResourceName3;
+	data->ResourceFrameCount3 = attack->ResourceFrameCount3;
+
+	CLinkBullet* bullet = new CLinkBullet(data, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	solider->Obj->getParent()->addChild(bullet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
 }

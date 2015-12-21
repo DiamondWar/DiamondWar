@@ -36,10 +36,9 @@ CLineBullet::CLineBullet(CAttackData* data, int x, int y, CBuffData*  damage, CS
 	}
 
 	Ranks_ = rank;
-	RangeR_ = 10;
+	RangeR_ = Data_->BulletValue[0];
 	iSpeed_ = Data_->BulletValue[1] * CCGlobleConfig::COMMON_BULLESPEED_VALUE;
 	BuffData = damage;
-
 	InitObj();
 }
 
@@ -50,10 +49,25 @@ CLineBullet::~CLineBullet()
 }
 void CLineBullet::OnResourceLoadComplete()
 {
-	float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
-	angle = angle * 180 / PI;
+	Angle_ = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
+	 float angle = Angle_ * 180 / PI;
 	Obj->setPosition(Init_x, Init_y);
+	if (Angle_ != 0)
+	{
+		LineLength = abs(LineLength / cos(angle));
+	}
+	Obj->setRotation(-angle);
+	if (Ranks_ != 1)
+	{
+		Obj->setRotationSkewY(180 - angle);
 
+	}
+	else
+	{
+		if (angle < 0)
+			Obj->setRotationSkewY(-angle);
+
+	}
 	Animation* animation = NULL;
 	animation = AnimationCache::sharedAnimationCache()->getAnimation(Data_->ResourceName1);
 	if (animation == NULL)
@@ -92,69 +106,52 @@ void CLineBullet::Update()
 	if (IsDelete_ == true)
 		return;
 	CBattleObject::Update();
-	if (CheckIsAtTarget() == false)
+	if (CheckIsAtTarget() == true)
 	{
-		float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
 		if (Ranks_ == 1)
 		{
-			if (angle >= 0)
+			if (Angle_ >= 0)
 			{
-				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(Angle_), Obj->getPosition().y + iSpeed_*sin(Angle_));
 			}
 			else
 			{
-				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+				Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(Angle_), Obj->getPosition().y + iSpeed_*sin(Angle_));
 			}
 		}
 		else
 		{
 			if (Obj->getPosition().x > AtTarget_->Obj->getPosition().x)
 			{
-				if (angle >= 0)
+				if (Angle_ >= 0)
 				{
-					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(Angle_), Obj->getPosition().y - iSpeed_*sin(Angle_));
 				}
 				else
 				{
-					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(Angle_), Obj->getPosition().y - iSpeed_*sin(Angle_));
 				}
 			}
 			else
 			{
-				if (angle >= 0)
+				if (Angle_ >= 0)
 				{
-					Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(angle), Obj->getPosition().y + iSpeed_*sin(angle));
+					Obj->setPosition(Obj->getPosition().x + iSpeed_*cos(Angle_), Obj->getPosition().y + iSpeed_*sin(Angle_));
 
 				}
 				else
 				{
-					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(angle), Obj->getPosition().y - iSpeed_*sin(angle));
+					Obj->setPosition(Obj->getPosition().x - iSpeed_*cos(Angle_), Obj->getPosition().y - iSpeed_*sin(Angle_));
 				}
 			}
-
-
 		}
-
-		angle = angle * 180 / PI;
-		Obj->setRotation(-angle);
-		if (Ranks_ != 1)
-		{
-			Obj->setRotationSkewY(180 - angle);
-
-		}
-		else
-		{
-			if (angle < 0)
-				Obj->setRotationSkewY(-angle);
-
-		}
+		CheckEnemyInAttackRange();
 	}
 	else
 	{
 		IsDelete_ = true;
 		Obj->setVisible(false);
-		CBuff* buff = new CBuff(BuffData);
-		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+		
 	}
 
 }
@@ -162,10 +159,19 @@ bool CLineBullet::CheckIsAtTarget()
 {
 	if (Obj == nullptr)
 		return true;
-	float length = CCGlobleConfig::GetLengthByPoint(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
-	if (length - AtTarget_->RangeR_ <= iSpeed_)
+	float length = CCGlobleConfig::GetLengthByPoint(Init_x, Init_y, Obj->getPosition().x, Obj->getPosition().y);
+	if (length >= LineLength)
 	{
 		return true;
 	}
 	return false;
+}
+void CLineBullet::CheckEnemyInAttackRange()
+{
+	CSolider* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
+	if (LastTarget_ == solider)
+		return;
+	BuffData->Target = solider;
+	CBuff* buff = new CBuff(BuffData);
+	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
 }

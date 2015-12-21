@@ -17,7 +17,7 @@ public:
 	~CBattleObjectManager();
 	 static CBattleObjectManager* GetInstance();
 	 void AddObject(CBattleObject* obj);
-	 void AddBulletObject(CBullet* obj);
+	 void AddBulletObject(CBattleObject* obj);
 	 void AddHurtShowObject(CHurtShow* obj);
 	 void AddBuffObject(CBuff*obj);
 	 void DeleteObject(CBattleObject*obj);
@@ -40,7 +40,7 @@ public:
 private:
 	static CBattleObjectManager* Instance_;
 	cocos2d::Vector<CBattleObject*> BattleList_;
-	cocos2d::Vector<CBullet*> BulletList_;
+	cocos2d::Vector<CBattleObject*> BulletList_;
 	cocos2d::Vector<CHurtShow*> HurtShowList_;
 	cocos2d::Vector<CBuff*> BuffList_;
 	CBaseBoss* FirstRanksBoss_ = nullptr;

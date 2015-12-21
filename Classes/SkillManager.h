@@ -23,6 +23,7 @@ private:
 	void OnAttackByType5(CSolider* solider, CSkillData* data);
 	void OnAttackByType6(CSolider* solider, CSkillData* data);
 	void OnAttackByType7(CSolider* solider, CSkillData* data);
+	void OnAttackByType8(CSolider* solider, CSkillData* data);
 	cocos2d::Vector<CSolider*> GetList(CSolider* solider, CSkillData* attack);
 };
 

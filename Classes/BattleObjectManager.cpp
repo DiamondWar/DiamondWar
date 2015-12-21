@@ -26,7 +26,7 @@ void CBattleObjectManager::AddObject(CBattleObject* obj)
 {
 	BattleList_.pushBack(obj);
 }
-void CBattleObjectManager::AddBulletObject(CBullet* obj)
+void CBattleObjectManager::AddBulletObject(CBattleObject* obj)
 {
 	BulletList_.pushBack(obj);
 }
@@ -69,6 +69,8 @@ CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range, float r
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks != rank)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);

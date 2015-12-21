@@ -17,5 +17,6 @@ private:
 	void CAttackManager::OnAttackByType5(CSolider* solider, CAttackData* data);
 	void CAttackManager::OnAttackByType6(CSolider* solider, CAttackData* data);
 	void CAttackManager::OnAttackByType7(CSolider* solider, CAttackData* data);
+	void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* data);
 };
 

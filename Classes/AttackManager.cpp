@@ -2,6 +2,8 @@
 #include "CGlobleConfig.h"
 #include "BattleObjectManager.h"
 #include "Buff.h"
+#include "LinkBullet.h"
+#include "LineBullet.h"
 USING_NS_CC;
 CAttackManager* CAttackManager::Instance_ = nullptr;
 CAttackManager::CAttackManager()
@@ -187,11 +189,65 @@ void CAttackManager::OnAttackByType5(CSolider* solider, CAttackData* data)
 {
 
 }
-void CAttackManager::OnAttackByType6(CSolider* solider, CAttackData* data)
+void CAttackManager::OnAttackByType6(CSolider* solider, CAttackData* attack)
 {
+	if (attack->ResourceFrameCount3 != 0)
+	{
+		CBuffData* data1 = new CBuffData();
+		data1->ContinueTime = 0;
+		data1->AttackType = 1;
+		data1->From = solider;
+		data1->Target = solider;
+		data1->Damage = 0;
+		data1->attackPoint = 6;
+		data1->ResourceFrameCount = attack->ResourceFrameCount3;
+		data1->ResourceName = attack->ResourceName3;
+		CBuff *buff2 = new CBuff(data1);
+		CBattleObjectManager::GetInstance()->AddBuffObject(buff2);
+	}
 
+	CBuffData * buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->BuffType = E_Buff_LowBlood;
+	buffdata->ContinueTime = 0;
+	buffdata->attackPoint = 1;
+	buffdata->From = solider;
+	buffdata->Damage = solider->AttackDamage;
+	buffdata->Target = solider->AttackTarget;
+	if (attack->ResourceFrameCount2 == 0)
+	{
+		buffdata->ResourceFrameCount = 1;
+		buffdata->ResourceName = "Bullet_common_1";
+	}
+	else
+	{
+		buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
+		buffdata->ResourceName = attack->ResourceName2;
+	}
+	CBullet* buttlet = new CBullet(attack, solider->AttackTarget->getPosition().x, solider->AttackTarget->getPosition().y + 400, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	solider->Obj->getParent()->addChild(buttlet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
 void CAttackManager::OnAttackByType7(CSolider* solider, CAttackData* data)
 {
-
+	CBuffData *buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->From = solider;
+	buffdata->Target = solider;
+	buffdata->AttackInveralCf = -1000;
+	buffdata->ContinueTime = 5;
+	CBuff* buff = new CBuff(buffdata);
+	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+}
+void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* data)
+{
+	CBuffData* buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->From = solider;
+	buffdata->Target = solider->AttackTarget;
+	buffdata->ContinueTime = 0;
+	buffdata->Damage = solider->AttackDamage;
+	CLinkBullet* bullet = new CLinkBullet(data, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	solider->Obj->getParent()->addChild(bullet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
 }

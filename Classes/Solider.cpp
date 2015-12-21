@@ -289,6 +289,10 @@ void CSolider::GetAttackSpeedCf(float cf)
 {
 	AttakInveralCf += cf;
 	AttakInveral = init_AttackInveral + init_AttackInveral *AttakInveralCf;
+	if (AttakInveral < 0)
+	{
+		AttakInveral = 0.1;
+	}
 }
 void  CSolider::GetAttackRangeCf(float cf)
 {

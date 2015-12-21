@@ -12,6 +12,7 @@ public:
 	virtual void OnHurtActionComplete();
 	virtual void OnSkillActionComplete();
 	bool  CheckIsAtTarget();
+	void CheckEnemyInAttackRange();
 	CAttackData* Data_;
 	CBuffData* BuffData;
 	int Ranks_;
@@ -19,7 +20,9 @@ public:
 private: 
 	int iSpeed_;
 	int LineLength = 0;
-	CSolider*  AtTarget_;
+	float Angle_;
+	CSolider* AtTarget_ = nullptr;
+	CSolider*  LastTarget_ = nullptr;
 	cocos2d::Node* TargetNode;
 	int FrameCount;
 };
