@@ -119,7 +119,7 @@ void CAttackManager::OnAttackByType2(CSolider* solider, CAttackData* attack)
 		buffdata->ResourceName = attack->ResourceName2;
 	}
 	
-	CBullet* buttlet = new CBullet(attack, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	CBullet* buttlet = new CBullet(attack, solider->BulletPos_.x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPos_.y, buffdata, solider->AttackTarget, solider->Ranks, 2);
 	solider->Obj->getParent()->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
@@ -183,7 +183,16 @@ void CAttackManager::OnAttackByType3(CSolider* solider, CAttackData* attack)
 }
 void CAttackManager::OnAttackByType4(CSolider* solider, CAttackData* data)
 {
-
+	CBuffData *buffdata = new CBuffData();
+	buffdata->AttackType = 1;
+	buffdata->Damage = solider->AttackDamage;
+	buffdata->ContinueTime = 0;
+	buffdata->ResourceFrameCount = data->ResourceFrameCount2;
+	buffdata->ResourceName = data->ResourceName2;
+	CLineBullet* bullet = new CLineBullet(data, solider->Obj->getPositionX() + solider->BulletPos_.x, solider->Obj->getPositionY() + solider->BulletPos_.y
+		, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	solider->Obj->getParent()->addChild(bullet->Obj);
+	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
 }
 void CAttackManager::OnAttackByType5(CSolider* solider, CAttackData* data)
 {
@@ -247,7 +256,7 @@ void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* data)
 	buffdata->Target = solider->AttackTarget;
 	buffdata->ContinueTime = 0;
 	buffdata->Damage = solider->AttackDamage;
-	CLinkBullet* bullet = new CLinkBullet(data, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	CLinkBullet* bullet = new CLinkBullet(data, solider->BulletPos_.x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPos_.y, buffdata, solider->AttackTarget, solider->Ranks, 2);
 	solider->Obj->getParent()->addChild(bullet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
 }

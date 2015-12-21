@@ -228,7 +228,7 @@ void CSkillManager::OnAttackByType2(CSolider* solider, CSkillData* attack)
 	data->ResourceFrameCount2 = attack->ResourceFrameCount2;
 	data->ResourceName3 = attack->ResourceName3;
 	data->ResourceFrameCount3= attack->ResourceFrameCount3;
-	CBullet* buttlet = new CBullet(data, solider->BulletPoint_->getPosition().x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPoint_->getPosition().y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	CBullet* buttlet = new CBullet(data, solider->BulletPos_.x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPos_.y, buffdata, solider->AttackTarget, solider->Ranks, 2);
 	solider->Obj->getParent()->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
@@ -317,7 +317,7 @@ void CSkillManager::OnAttackByType4(CSolider* solider, CSkillData* attack)
 	data->ResourceFrameCount2 = attack->ResourceFrameCount2;
 	data->ResourceName3 = attack->ResourceName3;
 	data->ResourceFrameCount3 = attack->ResourceFrameCount3;
-	CLineBullet* bullet = new CLineBullet(data, solider->Obj->getPositionX() + solider->BulletPoint_->getPositionX(), solider->Obj->getPositionY() + solider->BulletPoint_->getPositionY()
+	CLineBullet* bullet = new CLineBullet(data, solider->Obj->getPositionX() + solider->BulletPos_.x, solider->Obj->getPositionY() + solider->BulletPos_.y
 		,buffdata,solider->AttackTarget,solider->Ranks,2);
 	solider->Obj->getParent()->addChild(bullet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
@@ -338,7 +338,7 @@ void CSkillManager::OnAttackByType7(CSolider* solider, CSkillData* data)
 	buffdata->From = solider;
 	buffdata->Target = solider;
 	buffdata->AttackInveralCf = -1000;
-	buffdata->ContinueTime = data->BulletValue[2]*0.1;
+	buffdata->ContinueTime =5;
 	CBuff* buff = new CBuff(buffdata);
 	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
 }

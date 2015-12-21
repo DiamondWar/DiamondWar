@@ -63,7 +63,16 @@ CBattleObject::~CBattleObject()
 	 ActionType = EAction_Idle;
 	 if (DownLoadType == 1)
 	 {
+		 if (_Action->IsAnimationInfoExists("stand"))
 		 _Action->play("stand", true);
+		 else if (_Action->IsAnimationInfoExists("satnd"))
+		 {
+			 _Action->play("satnd", true);
+		 }
+		 else if (_Action->IsAnimationInfoExists("daiji"))
+		 {
+			 _Action->play("daiji", true);
+		 }
 	 }
 	 else if (DownLoadType == 2)
 	 {

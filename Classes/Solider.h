@@ -72,7 +72,7 @@ private:
 	float AttackCf = 0;
 	//攻击间隔
 	float AttakInveralCf = 0;
-	int AttakInveral = 5;
+	float AttakInveral = 5;
 	//移动速度
 	float MoveSpeedCf = 0;
 	int MoveSpeed = 0;

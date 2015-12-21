@@ -60,7 +60,49 @@ void CSolider::OnResourceLoadComplete()
 	BulletPoint_ = getBulletPoint(Obj, "bulletpoint");
 	if (BulletPoint_ != nullptr)
 	{
-		BulletPos_ = BulletPoint_->getPosition();
+		if (Data_->ID == 2001)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node2 = node1->getChildByName("wuqi");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+		}
+		else if (Data_->ID == 2002)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node2 = node1->getChildByName("wuqi");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+		}
+		else if (Data_->ID == 2003)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node2 = node1->getChildByName("shou1");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+		}
+		else if (Data_->ID == 3001)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node11 = node1->getChildByName("Sprite_24");
+			Node*node2 = node11->getChildByName("wuqi");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition();
+		}
+		else if (Data_->ID == 3002)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node2 = node1->getChildByName("Sprite_5");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+		}
+		else if (Data_->ID == 3003)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node2 = node1->getChildByName("wuqi");
+			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+		}
 	}
 		
 
@@ -192,7 +234,7 @@ void CSolider::CheckFriendInRange()
 }
 void CSolider::CheckAttackOrSkill()
 {
-
+	CCLOG("AttackNum=== %d",AttackNum);
 	if (AttackNum >= SKillData_->CoolTime)
 	{
 		AttackNum = 0;
@@ -291,7 +333,7 @@ void CSolider::GetAttackSpeedCf(float cf)
 	AttakInveral = init_AttackInveral + init_AttackInveral *AttakInveralCf;
 	if (AttakInveral < 0)
 	{
-		AttakInveral = 0.1;
+		AttakInveral = 0;
 	}
 }
 void  CSolider::GetAttackRangeCf(float cf)
