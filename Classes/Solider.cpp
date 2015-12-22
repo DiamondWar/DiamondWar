@@ -38,7 +38,8 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	Init_MoveSpeed = MoveSpeed;
 	InitObj();
 	AttackDamage = Data_->Attack*level;
-	CurBlood = Data_->Blood*level;
+	CurBlood =Data_->Blood*level;
+	CCLOG("CurBlood ==%.0f ", CurBlood);
 	MaxBlood = CurBlood;
 
 }
@@ -112,18 +113,7 @@ void CSolider::OnResourceLoadComplete()
 	}
 	OnRun();
 }
-Vec2 CSolider::GetBulletpos(Node*node, Vec2 pos)
-{
-	Vec2 pos1 = pos;
-	if (node->getName().c_str() != Obj->getName().c_str())
-	{
-		pos1.x += node->getPosition().x;
-		pos1.y += node->getPosition().y;
-		return GetBulletpos(node->getParent(), pos1);
-	}
-	return pos1;
-}
-cocos2d::Node* CSolider::getBulletPoint(Node* node, std::string name)
+Node* CSolider::getBulletPoint(Node* node, std::string name)
 {
 	Vector<Node*> list = node->getChildren();
 	for (Node* item : list)
@@ -156,7 +146,10 @@ void CSolider::Update()
 		if (NowTime > LastAttackTime + AttakInveral)
 		{
 			LastAttackTime = NowTime;
-			CheckAttackOrSkill();
+			if (CheckAttackOrSkill() == false)
+			{
+
+			}
 		}
 		if (isShowHurt == true)
 		{
@@ -179,9 +172,16 @@ void CSolider::Update()
 			Obj->setPosition(Obj->getPosition().x - MoveSpeed, Obj->getPosition().y);
 		if (AttackTarget != nullptr)
 		{
-			CheckAttackOrSkill();
-			NowTime = CCGlobleConfig::GetCurrntTime();
-			LastAttackTime = NowTime;
+			if (CheckAttackOrSkill() == false)
+			{
+				CheckEnemyInRange();
+			}
+			else 
+			{
+				NowTime = CCGlobleConfig::GetCurrntTime();
+				LastAttackTime = NowTime;
+			}
+			
 		}
 		else
 		{
@@ -216,7 +216,7 @@ void CSolider::OnSkillActionComplete()
 }
 bool CSolider::CheckEnemyInRange()
 {
-	CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
+	CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks,AttackData_->TargetType, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
 	if (Sol != nullptr)
 	{
 		AttackTarget = Sol;
@@ -232,8 +232,15 @@ void CSolider::CheckFriendInRange()
 	AttackTarget = Sol;
 	}*/
 }
-void CSolider::CheckAttackOrSkill()
+bool CSolider::CheckAttackOrSkill()
 {
+	if (AttackTarget->IsDelete_ == true)
+	{
+		AttackTarget = nullptr;
+		OpreateType = ESoliderOpreate_Walk;
+		return false;
+	}
+		
 	CCLOG("AttackNum=== %d",AttackNum);
 	if (AttackNum >= SKillData_->CoolTime)
 	{
@@ -245,6 +252,7 @@ void CSolider::CheckAttackOrSkill()
 		AttackNum++;
 		OnAttack();
 	}
+	return true;
 	//OnSkill();
 }
 void CSolider::OnIdle()
@@ -298,29 +306,30 @@ void  CSolider::GetBuff(CBuffData* data)
 void CSolider::GetDamage(int damage, int type)
 {
 
-	CCLOG("Damange:   %d %.1f , AttackInveralCf = %.1f , MoveSpeedCf = %.1f", damage, AttackCf, AttakInveralCf, MoveSpeedCf);
+	CCLOG("Damange:   %d , CurBlood = %.0f , MaxBlood = %.0f", damage, CurBlood, MaxBlood);
 	damage = damage - damage*AttackCf;
 	if (damage == 0)
 		return;
 	CurBlood -= damage;
-	if (CurBlood <= MaxBlood*0.3f)
-	{
-		OnHurt();
-	}
-	else if (CurBlood == 0)
-	{
-		IsDelete_ = true;
-		Obj->removeFromParent();
-		Obj->setVisible(false);
-
-	}
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
 	CHurtShow *hurt = new CHurtShow();
 	hurt->SetFont(3);
-
 	hurt->ShowLabel(damage, this);
 	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
+	if (CurBlood>0&&CurBlood <= MaxBlood*0.3f)
+	{
+		OnHurt();
+	}
+	else if (CurBlood <= 0)
+	{
+		CSoliderDie* die = new CSoliderDie();
+		die->ShowLabel(Ranks, this);
+		CBattleObjectManager::GetInstance()->AddSoliderDie(die);
+		IsDelete_ = true;
+		Obj->setVisible(false);
+	}
+	
 }
 void CSolider::GetMoveSpeedCf(float cf)
 {

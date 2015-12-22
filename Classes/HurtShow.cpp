@@ -1,6 +1,6 @@
 #include "HurtShow.h"
 #include "CGlobleConfig.h"
-
+#include "GameSceneControl.h"
 USING_NS_CC;
 
 CHurtShow::CHurtShow()
@@ -53,7 +53,7 @@ void CHurtShow::ShowLabel(int value, CSolider* node)
 	int count = SpriteArray.size();
 	for (int i = 0; i < SpriteArray.size(); i++)
 	{
-		node->Obj->getParent()->addChild(SpriteArray.at(i));
+		CGameSceneControl::GetInstance()->GameRoot_->addChild(SpriteArray.at(i));
 		SpriteArray.at(i)->setPosition(node->CenterPoint_->getPosition().x+node->Obj->getPosition().x + 40 / 2 * count - i * 40, node->Obj->getPosition().y+node->CenterPoint_->getPosition().y);
 	}
 	isMove = true;

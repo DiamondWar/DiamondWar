@@ -1,6 +1,7 @@
 #include "Buff.h"
 #include "CGlobleConfig.h"
 #include "BattleObjectManager.h"
+#include "AudioManager.h"
 USING_NS_CC;
 CBuff::CBuff(CBuffData *data)
 {
@@ -12,7 +13,6 @@ CBuff::CBuff(CBuffData *data)
 
 void CBuff::OnResourceLoadComplete()
 {
-
 	if (BuffData->ContinueTime == 0)
 		GetResultHurt();
 	else
@@ -177,6 +177,7 @@ void CBuff::OnSkillActionComplete()
 }
 void CBuff::GetResultHurt()
 {
+	CAudioManager::GetInstance()->PlayerVoice(BuffData->HitVoice_);
 	//造成一次伤害的走这里
 	if (BuffData->NextBuff == NULL)
 	{
@@ -188,6 +189,7 @@ void CBuff::GetResultHurt()
 	else
 	{
 		CCLOG("xiayige  buff");
+		
 		CBuff* buff = new CBuff(BuffData->NextBuff);
 		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
 	}

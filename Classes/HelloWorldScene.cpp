@@ -7,6 +7,7 @@
 #include "GameSceneControl.h"
 #include "AttackConfig.h"
 #include "StrengthConfig.h"
+#include "AudioManager.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -79,11 +80,41 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3003_1.plist", "Bullet/Bullet_3003_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_3003_2.plist", "Bullet/Bullet_3003_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Bullet/Bullet_common_1.plist", "Bullet/Bullet_common_1.png");
+	//预加载音效
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_1001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_1002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_1003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_2001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_2002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_2003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_3001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_3002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_3003.mp3");
+	//加载音乐
+	CAudioManager::GetInstance()->PreLoadAudioBackground("Audio/background.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_2001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_2002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_2003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_3001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_3002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceHurt_3003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_1001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_1002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_1003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_2001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_2002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_2003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_3001.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_3002.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/AttackVoiceIdle_3003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/SkillVoiceHurt_2003.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/SkillVoiceHurt_3003.mp3");
+	//加载配置文件
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
 	CAttackConfig::GetInstance()->LoadText();
 	CStrengthConfig::GetInstance()->LoadText();
-	
+	CAudioManager::GetInstance()->PlayerBackGroundMusic("background.mp3");
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
 	CGameSceneControl::GetInstance()->SetRoot(this);

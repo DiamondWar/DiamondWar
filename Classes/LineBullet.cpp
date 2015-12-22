@@ -170,7 +170,7 @@ bool CLineBullet::CheckIsAtTarget()
 }
 void CLineBullet::CheckEnemyInAttackRange()
 {
-	CSolider* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
+	CSolider* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_,3, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
 	if (LastTarget_ == solider||LastTarget_!=nullptr)
 		return;
 	LastTarget_ = solider;

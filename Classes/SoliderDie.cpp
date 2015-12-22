@@ -1,5 +1,7 @@
 #include "SoliderDie.h"
 #include "CGlobleConfig.h"
+#include "GameSceneControl.h"
+
 USING_NS_CC;
 
 CSoliderDie::CSoliderDie()
@@ -7,78 +9,38 @@ CSoliderDie::CSoliderDie()
 }
 CSoliderDie::~CSoliderDie()
 {
-	SpriteArray.clear();
-
+	
 }
 void CSoliderDie::SetFont(int type)
 {
-
-	if (type == 1)
-	{
-		ResourceName = "bjz";
-	}
-	else if (type == 2)
-	{
-		ResourceName = "jxz";
-	}
-	else if (type == 3)
-	{
-		ResourceName = "pgz";
-	}
-	else if (type == 4)
-	{
-		ResourceName = "zdz";
-	}
 }
-void CSoliderDie::ShowLabel(int value, Node* node)
+void CSoliderDie::ShowLabel(int value, CSolider* node)
 {
 	int n = 0;
-	
-	while (value > 0)
+	if (value == 1)
 	{
-		int temp = value % 10;
-		value = value / 10;
-
-		CCString *string = CCString::createWithFormat("%s_%d.png", ResourceName, temp);
-		CCSprite* sprite = CCSprite::createWithSpriteFrameName(string->getCString());
-		sprite->autorelease();
-		SpriteArray.pushBack(sprite);
+		Sprite_ = Sprite::createWithSpriteFrameName("medie.png");
 	}
-	CCString *string1 = CCString::createWithFormat("%s_10.png", ResourceName);
-	CCSprite* sprite1 = CCSprite::createWithSpriteFrameName(string1->getCString());
-	sprite1->autorelease();
-	SpriteArray.pushBack(sprite1);
-
-	int count = SpriteArray.size();
-	for (int i = 0; i < SpriteArray.size(); i++)
+	else
 	{
-		node->getParent()->addChild(SpriteArray.at(i));
-		SpriteArray.at(i)->setPosition(node->getPosition().x + 40 / 2 * count - i * 40, node->getPosition().y);
+		Sprite_ = Sprite::createWithSpriteFrameName("enmeydie.png");
 	}
+	CGameSceneControl::GetInstance()->GameRoot_->addChild(Sprite_);
+	Sprite_->setPosition(node->CenterPoint_->getPosition() + node->Obj->getPosition());
 	isMove = true;
 }
 void CSoliderDie::Update()
 {
-	if (CCGlobleConfig::Game_time % 3 == 0)
+	if (CCGlobleConfig::Game_time % 3 == 0&&isMove == true)
 	{
-		if (isMove == true)
+		MoveNum++;
+		Sprite_->setPositionY(Sprite_->getPositionY() + 1);
+		if (MoveNum > 20)
 		{
-			MoveNum++;
-			for (int i = 0; i < SpriteArray.size(); i++)
-			{
-				SpriteArray.at(i)->setPosition(SpriteArray.at(i)->getPosition().x, SpriteArray.at(i)->getPosition().y + MoveNum);
-			}
-			if (MoveNum>10)
-			{
-				isMove = false;
-				IsDelete_ = true;
-				for (int i = 0; i < SpriteArray.size(); i++)
-				{
-					SpriteArray.at(i)->removeFromParent();
-				}
-				this->release();
-			}
-
+			isMove = false;
+			IsDelete_ = true;
+			Sprite_->setVisible(false);
+			this->release();
 		}
 	}
 

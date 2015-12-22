@@ -37,6 +37,7 @@ public:
 	CSolider* From  = nullptr;
 	std::string ResourceName="";
 	int ResourceFrameCount = 0;
+	std::string HitVoice_ = "";
 	CBuffData(); 
 	~CBuffData();
 };

@@ -60,7 +60,7 @@ void CSoliderConfig::LoadText()
 		data->Attack = str6->intValue();
 		str6->release();
 		String * str7 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->Blood = str7->intValue();
+		data->Blood = str7->floatValue();
 		str7->release();
 		String * str8 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->MoveSpeed = str8->floatValue();
@@ -85,7 +85,7 @@ void CSoliderConfig::LoadText()
 		str10->release();
 		
 		DataList_.pushBack(data);
-		CCLOG(" data  == %s", ns->getCString());
+		CCLOG(" data  == %s", str->getCString());
 	}
 }
 CSoliderData*  CSoliderConfig::GetItemById(int id)

@@ -17,7 +17,7 @@ public:
 	int SkillId;		//技能id
 	float AttackRange;  // 射程
 	int Attack;			//攻击力
-	int Blood;			//血量
+	float Blood;			//血量
 	float MoveSpeed;	//移动速度
 	float AttackInterval; //攻击频率
 	int StrengthValue;	//强化参数

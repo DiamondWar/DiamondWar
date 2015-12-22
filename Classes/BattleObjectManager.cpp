@@ -34,6 +34,10 @@ void CBattleObjectManager::AddHurtShowObject(CHurtShow* obj)
 {
 	HurtShowList_.pushBack(obj);
 }
+void CBattleObjectManager::AddSoliderDie(CSoliderDie *obj)
+{
+	SoliderDieList_.pushBack(obj);
+}
 void CBattleObjectManager::AddBuffObject(CBuff* obj)
 {
 	BuffList_.pushBack(obj);
@@ -62,10 +66,12 @@ CBaseBoss* CBattleObjectManager::GetSecondRanksBoss()
 {
 	return SecondRanksBoss_;
 }
-CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range, float r, float x, float y)
+CSolider* CBattleObjectManager::GetEnemyByRange(float rank,int type, float range, float r, float x, float y)
 {
 	CSolider* sol = nullptr;
 	int lastlength = 0;
+	int attacktype = 0;
+
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
@@ -73,21 +79,24 @@ CSolider* CBattleObjectManager::GetEnemyByRange(float rank, float range, float r
 			continue;
 		if (keysol->Ranks != rank)
 		{
-			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
-			length = length - keysol->RangeR_ - r;
-			if (length< range)
+			if ((type == 1 && keysol->Data_->SoliderType <= 2)||(type==2&&keysol->Data_->SoliderType>=2)||type==3)
 			{
-				if (sol == nullptr)
+				float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
+				length = length - keysol->RangeR_ - r;
+				if (length< range)
 				{
-					lastlength = length;
-					sol = keysol;
-				}
-				else
-				{
-					if (lastlength>length)
+					if (sol == nullptr)
 					{
 						lastlength = length;
 						sol = keysol;
+					}
+					else
+					{
+						if (lastlength>length)
+						{
+							lastlength = length;
+							sol = keysol;
+						}
 					}
 				}
 			}
@@ -101,6 +110,8 @@ Vector<CSolider*> CBattleObjectManager::GetLuDiEnemyListByRange(float rank, floa
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks != rank&&keysol->Data_->SoliderType <= 2)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -119,6 +130,8 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingEnemyListByRange(float rank, f
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks != rank && (keysol->Data_->SoliderType == 3 || keysol->Data_->SoliderType == 2))
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -137,6 +150,8 @@ Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float ra
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks != rank)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -155,6 +170,8 @@ Vector<CSolider*> CBattleObjectManager::GetFriendListByRange(float rank, float r
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks == rank)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -173,6 +190,8 @@ Vector<CSolider*> CBattleObjectManager::GetLuDiFriendListByRange(float rank, flo
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks == rank)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -191,6 +210,8 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingFriendListByRange(float rank, 
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if (keysol->IsDelete_ == true)
+			continue;
 		if (keysol->Ranks == rank)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
@@ -209,6 +230,8 @@ Vector<CSolider*> CBattleObjectManager::GetSoliderListByRange(int type ,float ra
 	for (CBattleObject* key : BattleList_)
 	{
 		CSolider * keysol = static_cast<CSolider*>(key);
+		if(keysol->IsDelete_ == true)
+			continue;
 		float length = CCGlobleConfig::GetLengthByPoint(x, y, keysol->Obj->getPosition().x, keysol->Obj->getPosition().y);
 		length = length - keysol->RangeR_ - r;
 		if (length < range)
@@ -258,6 +281,11 @@ void CBattleObjectManager::Update()
 		if (key->IsDelete_ == false)
 			key->Update();
 	}
+	for (auto key : SoliderDieList_)
+	{
+		if (key->IsDelete_ == false)
+			key->Update();
+	}
 }
 void CBattleObjectManager::ClearAllObject()
 {
@@ -265,4 +293,5 @@ void CBattleObjectManager::ClearAllObject()
 	BulletList_.clear();
 	HurtShowList_.clear();
 	BuffList_.clear();
+	SoliderDieList_.clear();
 }

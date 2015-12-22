@@ -64,8 +64,8 @@ private:
 	int init_AttackInveral = 0;
 	int Init_MoveSpeed = 0;
 	int Init_AttackRange = 0;
-	int CurBlood = 0;
-	int MaxBlood = 0;
+	float CurBlood = 0;
+	float MaxBlood = 0;
 	//¹¥»÷·¶Î§//¹¥»÷·¶Î§ÏµÊý
 	float AttackRangeCf = 0;
 	//¹¥»÷Á¦Ï÷Èõ
@@ -77,9 +77,8 @@ private:
 	float MoveSpeedCf = 0;
 	int MoveSpeed = 0;
 
-	void CheckAttackOrSkill();
-	cocos2d::Node* CSolider::getBulletPoint(cocos2d::Node* node, std::string name);
-	cocos2d::Vec2 CSolider::GetBulletpos(cocos2d::Node*node, cocos2d::Vec2 pos);
+	bool CheckAttackOrSkill();
+	cocos2d::Node* getBulletPoint(cocos2d::Node* node, std::string name);
 
 
 };

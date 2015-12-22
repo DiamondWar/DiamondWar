@@ -161,7 +161,8 @@ bool CBullet::CheckIsAtTarget()
 {
 	if (Obj == nullptr)
 		return true;
-	float length = CCGlobleConfig::GetLengthByPoint(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
+	float length = CCGlobleConfig::getLengthByCircle(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
+	CCLOG("Length ===== %.0f", length);
 	if (length - AtTarget_->RangeR_ <= iSpeed_)
 	{
 		return true;
