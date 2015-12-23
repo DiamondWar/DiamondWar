@@ -18,7 +18,7 @@ void CShuiJingBase::SetInfo(int index)
 	MyColor = index;
 	if (index == 2)
 		index = 3;
-	if (index == 3)
+	else if (index == 3)
 		index = 2;
 	String* string = String::createWithFormat("shujing_%d.png", index);
 	MainSprite_ = CCSprite::createWithSpriteFrameName(string->getCString());

@@ -146,7 +146,7 @@ void CBattleUIManager::CreateFirstBase()
 	MyBloodDesc_->setAnchorPoint(Vec2(0.5, 0.5));
 	MyBloodDesc_->setTextColor(Color4B::RED);
 	MyBloodDesc_->setPosition(300, Director::getInstance()->getWinSize().height - 90);
-	
+
 	addChild(MyBloodDesc_);
 }
 //显示第二队伍的基地信息
@@ -231,19 +231,20 @@ void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 	String* str = String::createWithFormat("%.0f%%", val * 100);
 	CaiSeShuiJingLabel_->setString(str->getCString());
 }
-void CBattleUIManager::CreateMoveAnimation(int color,CCPoint start, CCPoint target)
+void CBattleUIManager::CreateMoveAnimation(int color, CCPoint start, CCPoint target)
 {
+	CCLOG("color ====%d", color);
 	if (color == 3)
 		color = 2;
-	if (color == 2)
+	else if (color == 2)
 		color = 3;
 	String* str = String::createWithFormat("shujing_%d.png", color);
 	Sprite* sprite = Sprite::createWithSpriteFrameName(str->getCString());
 	sprite->setTag(100);
 	sprite->setPosition(start);
 	CCMoveTo* move = CCMoveTo::create(1, target);
-	CCFiniteTimeAction* ac = CCSequence::create(move, CallFuncN::create(std::bind(&CBattleUIManager::OnMoveAnimationComplete, this, sprite)) , NULL);
-	
+	CCFiniteTimeAction* ac = CCSequence::create(move, CallFuncN::create(std::bind(&CBattleUIManager::OnMoveAnimationComplete, this, sprite)), NULL);
+
 	sprite->runAction(ac);
 	addChild(sprite);
 }

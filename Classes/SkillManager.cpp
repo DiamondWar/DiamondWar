@@ -177,10 +177,39 @@ void CSkillManager::OnAttackByType1(CSolider* solider, CSkillData* attack)
 		buffdata->Damage = attack->HurtCf*solider->AttackDamage;
 		buffdata->ContinueTime = 0;
 		buffdata->attackPoint = attack->AttackPoint;
-		buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
-		buffdata->ResourceName = attack->ResourceName2;
+		
 		buffdata->From = solider;
-		buffdata->Target = solider->AttackTarget;
+		if (attack->EffectId == 1)
+		{
+			buffdata->Damage = attack->HurtCf*solider->AttackDamage;
+		}
+		if (attack->EffectId == 2)
+		{
+			buffdata->ContinueTime = attack->EffectValue[0];
+			buffdata->SpeedCf = attack->EffectValue[1];
+			buffdata->AttackInveralCf = attack->EffectValue[2];
+			buffdata->ResourceFrameCount = attack->ResourceFrameCount3;
+			buffdata->ResourceName = attack->ResourceName3;
+		}
+		else if (attack->EffectId == 3)
+		{
+			buffdata->ContinueTime = attack->EffectValue[0];
+			buffdata->AttackCf = attack->EffectValue[1];
+			buffdata->ResourceFrameCount = attack->ResourceFrameCount3;
+			buffdata->ResourceName = attack->ResourceName3;
+		}
+		else
+		{
+			buffdata->Damage = attack->HurtCf*solider->AttackDamage;
+			buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
+			buffdata->ResourceName = attack->ResourceName2;
+		}
+		if (attack->TargetRank == 2)
+		{
+			buffdata->Target = solider;
+		}
+		else 
+			buffdata->Target = solider->AttackTarget;
 		buffdata->HitVoice_ = attack->HitVoice;
 		CBuff * buff = new CBuff(buffdata);
 		CBattleObjectManager::GetInstance()->AddBuffObject(buff);

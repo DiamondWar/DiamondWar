@@ -187,7 +187,6 @@ void CSolider::Update()
 			Obj->setPosition(Obj->getPosition().x + MoveSpeed, Obj->getPosition().y);
 		else
 			Obj->setPosition(Obj->getPosition().x - MoveSpeed, Obj->getPosition().y);
-		CCLOG("MoveSpeed===  %d,MoveSpeedCf = %f", MoveSpeed,MoveSpeedCf);
 		if (AttackTarget != nullptr)
 		{
 			if (CheckAttackOrSkill() == false)
@@ -252,7 +251,7 @@ void CSolider::CheckFriendInRange()
 }
 bool CSolider::CheckAttackOrSkill()
 {
-	if (AttackTarget->IsDelete_ == true)
+	if (AttackTarget==nullptr||AttackTarget->IsDelete_ == true)
 	{
 		AttackTarget = nullptr;
 		OpreateType = ESoliderOpreate_Walk;

@@ -283,7 +283,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 					int rand = random(1, 4);
 					SpriteList.at(temp)->ResetInfo(rand);
 					if (flag == true)
-					manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width-80,90));
+						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width-80,90));
 					else 
 						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(200, 540));
 					SpriteList.pushBack(SpriteList.at(temp));
