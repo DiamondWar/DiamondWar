@@ -2,6 +2,7 @@
 #include "CGlobleConfig.h"
 #include "BattleObjectManager.h"
 #include "AudioManager.h"
+#include "GameSceneControl.h"
 USING_NS_CC;
 CBuff::CBuff(CBuffData *data)
 {
@@ -19,6 +20,7 @@ void CBuff::OnResourceLoadComplete()
 	{
 		if (BuffData->InveralTime == 0)
 		{
+			BuffData->Target->GetAttackCf(BuffData->Damage);
 			BuffData->Target->GetAttackCf(BuffData->AttackCf);
 			BuffData->Target->GetMoveSpeedCf(BuffData->SpeedCf);
 			BuffData->Target->GetAttackRangeCf(BuffData->AttackRangeCf);
@@ -57,42 +59,50 @@ void CBuff::OnResourceLoadComplete()
 			Obj->setAnchorPoint(Vec2(0.5, 0.5));
 		}
 		Obj->setPosition(BuffData->init_x, BuffData->init_y);
-		BuffData->From->getParent()->addChild(Obj);
+		CGameSceneControl::GetInstance()->GameRoot_->addChild(Obj);
 	}
 	else
 	{
-		Obj->setPosition(0, 0);
 		if (BuffData->attackPoint == 1)
 		{
-			BuffData->Target->CenterPoint_->addChild(Obj);
+			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0.5, 0.5));
+			Obj->setPosition(BuffData->Target->CenterPoint_->getPosition());
 		}
 		else if (BuffData->attackPoint == 2)
 		{
-			BuffData->Target->UpPoint_->addChild(Obj);
+
+			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0.5, 1));
+			Obj->setPosition(BuffData->Target->UpPoint_->getPosition());
 		}
 		else if (BuffData->attackPoint == 3)
 		{
-			BuffData->Target->BasePoint_->addChild(Obj);
+
+			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0.5, 0));
+			Obj->setPosition(BuffData->Target->BasePoint_->getPosition());
 		}
 		else if (BuffData->attackPoint == 4)
 		{
-			
-			BuffData->Target->LeftPoint_->addChild(Obj);
+
+			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(1, 0.5));
+			Obj->setPosition(BuffData->Target->LeftPoint_->getPosition());
 		}
 		else if (BuffData->attackPoint == 5)
 		{
-			
-			BuffData->Target->RightPoint_->addChild(Obj);
+
+			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0, 0.5));
-		}	
+			Obj->setPosition(BuffData->Target->RightPoint_->getPosition());
+		}
 		else if (BuffData->attackPoint == 6)
 		{
-			BuffData->Target->BulletPoint_->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0.5, 0.5));
+			BuffData->Target->BulletPoint_->addChild(Obj);
+			
+			
 		}
 	}
 	StartTime = CCGlobleConfig::GetCurrntTime();

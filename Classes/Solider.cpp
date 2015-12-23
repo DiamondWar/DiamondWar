@@ -67,14 +67,14 @@ void CSolider::OnResourceLoadComplete()
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("wuqi");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 2002)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("wuqi");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ =   node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 2003)
 		{
@@ -331,12 +331,13 @@ void CSolider::GetDamage(int damage, int type)
 	CurBlood -= damage;
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
-	CHurtShow *hurt = new CHurtShow();
-	hurt->SetFont(3);
-	hurt->ShowLabel(damage, this);
-	CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
+	
 	if (CurBlood>0&&CurBlood <= MaxBlood*0.3f)
 	{
+		CHurtShow *hurt = new CHurtShow();
+		hurt->SetFont(3);
+		hurt->ShowLabel(damage, this);
+		CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 		OnHurt();
 	}
 	else if (CurBlood <= 0)
@@ -344,8 +345,19 @@ void CSolider::GetDamage(int damage, int type)
 		CSoliderDie* die = new CSoliderDie();
 		die->ShowLabel(Ranks, this);
 		CBattleObjectManager::GetInstance()->AddSoliderDie(die);
+		CHurtShow *hurt = new CHurtShow();
+		hurt->SetFont(3);
+		hurt->ShowLabel(damage, this);
+		CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 		IsDelete_ = true;
 		Obj->setVisible(false);
+	}
+	else
+	{
+		CHurtShow *hurt = new CHurtShow();
+		hurt->SetFont(3);
+		hurt->ShowLabel(damage, this);
+		CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 	}
 	
 }
@@ -357,7 +369,7 @@ void CSolider::GetMoveSpeedCf(float cf)
 void CSolider::GetAttackSpeedCf(float cf)
 {
 	AttakInveralCf += cf;
-	AttakInveral = init_AttackInveral + init_AttackInveral *AttakInveralCf;
+	AttakInveral = init_AttackInveral - init_AttackInveral *AttakInveralCf;
 	if (AttakInveral < 0)
 	{
 		AttakInveral = 0;

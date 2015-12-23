@@ -34,7 +34,11 @@ void CHurtShow::SetFont(int type)
 void CHurtShow::ShowLabel(int value, CSolider* node)
 {
 	int n = 0;
-	
+	if (value == 0)
+	{
+		IsDelete_ = true;
+		return;
+	}
 	while (value > 0)
 	{
 		int temp = value % 10;

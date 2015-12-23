@@ -18,6 +18,7 @@ void CAttackData::updateResouce()
 	{
 		ResourceFrameCount2 = 1;
 		ResourceName2 = "Bullet_common_1";
+		
 	}
 	
 	if (ResourceFrameCount3 == 0)

@@ -25,38 +25,38 @@ CAttackManager::~CAttackManager()
 void CAttackManager::OnAttack(CSolider* solider, CAttackData* data)
 {
 	CAudioManager::GetInstance()->PlayerVoice(data->AttackVoice);
-	/*if (data->BulletType == 1)
+	if (data->BulletType == 1)
 	{
-	OnAttackByType1(solider,data);
+		OnAttackByType1(solider, data);
 	}
 	else if (data->BulletType == 2)
 	{
-	OnAttackByType2(solider, data);
+		OnAttackByType2(solider, data);
 	}
 	else if (data->BulletType == 3)
 	{
-	OnAttackByType3(solider, data);
+		OnAttackByType3(solider, data);
 	}
 	else if (data->BulletType == 4)
 	{
-	OnAttackByType4(solider, data);
+		OnAttackByType4(solider, data);
 	}
-	else if (data->BulletType ==5)
+	else if (data->BulletType == 5)
 	{
-	OnAttackByType5(solider, data);
+		OnAttackByType5(solider, data);
 	}
-	else if (data->BulletType ==6)
+	else if (data->BulletType == 6)
 	{
-	OnAttackByType6(solider, data);
+		OnAttackByType6(solider, data);
 	}
 	else if (data->BulletType == 7)
 	{
-	OnAttackByType7(solider, data);
+		OnAttackByType7(solider, data);
 	}
 	else if (data->BulletType == 8)
 	{
-	OnAttackByType8(solider, data);
-	}*/
+		OnAttackByType8(solider, data);
+	}
 }
 void CAttackManager::OnAttackByType1(CSolider* solider,CAttackData* attack)
 {

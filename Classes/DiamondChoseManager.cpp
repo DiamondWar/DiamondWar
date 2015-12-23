@@ -13,7 +13,7 @@ bool CDiamondChoseManager::init()
 	setContentSize(Size(1300, 185));
 	for (int i = 0; i < 7;i++)
 	{
-		int rand = 3;//random(1,4);
+		int rand = random(1,4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
 		sprite->SetInfo(rand);
 		sprite->setAnchorPoint(Vec2(0,0));
