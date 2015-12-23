@@ -11,8 +11,9 @@ CBullet::CBullet(CAttackData* data, int x, int y, CBuffData*  damage, CSolider* 
 	ResourceName = data->ResourceName1 + "_1.png";
 	FrameCount = data->ResourceFrameCount1;
 	DownLoadType = type;
-	Init_x = x;
-	Init_y = y;
+		Init_x = x ;
+		Init_y = y;
+
 	AtTarget_ = target;
 	if (Data_->AttackPoint == 1)
 	{

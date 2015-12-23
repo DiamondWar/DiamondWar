@@ -15,7 +15,7 @@ public:
 	int Init_x;//初始化位置
 	int Init_y;
 	//碰撞物体的半径
-	int  RangeR_;
+	float  RangeR_;
 
 	//type为1时
 	cocos2d::Node* Obj;

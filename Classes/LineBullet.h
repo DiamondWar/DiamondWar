@@ -18,7 +18,7 @@ public:
 	int Ranks_;
 	int Damage;
 private: 
-	int iSpeed_;
+	float iSpeed_;
 	float LineLength = 0;
 	float Angle_;
 	CSolider* AtTarget_ = nullptr;

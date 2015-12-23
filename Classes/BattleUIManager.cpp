@@ -233,6 +233,10 @@ void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 }
 void CBattleUIManager::CreateMoveAnimation(int color,CCPoint start, CCPoint target)
 {
+	if (color == 3)
+		color = 2;
+	if (color == 2)
+		color = 3;
 	String* str = String::createWithFormat("shujing_%d.png", color);
 	Sprite* sprite = Sprite::createWithSpriteFrameName(str->getCString());
 	sprite->setTag(100);

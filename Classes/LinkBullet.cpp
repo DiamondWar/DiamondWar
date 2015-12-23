@@ -37,7 +37,7 @@ CLinkBullet::CLinkBullet(CAttackData* data, int x, int y, CBuffData*  damage, CS
 	Ranks_ = rank;
 	RangeR_ = 10;
 	BuffData = damage;
-
+	MaxTime = Data_->BulletValue[1] * 60;
 	InitObj();
 }
 
@@ -48,8 +48,6 @@ CLinkBullet::~CLinkBullet()
 }
 void CLinkBullet::OnResourceLoadComplete()
 {
-	float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
-	angle = angle * 180 / PI;
 	Obj->setPosition(Init_x, Init_y);
 	baseWidth = Obj->getContentSize().width;
 
@@ -94,12 +92,20 @@ void CLinkBullet::Update()
 	if (IsDelete_ == true)
 		return;
 	CBattleObject::Update();
-	float length = CCGlobleConfig::GetLengthByPoint(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
+	if (Ranks_ == 1)
+		Obj->setPositionX(BuffData->From->BulletPos_.x + BuffData->From->BulletPoint_->getPositionX() + BuffData->From->Obj->getPositionX());
+	else
+	{
+		Obj->setPositionX(BuffData->From->BulletPos_.x - BuffData->From->BulletPoint_->getPositionX() + BuffData->From->Obj->getPositionX());
+	}
+	Obj->setPositionY(BuffData->From->BulletPos_.y + BuffData->From->BulletPoint_->getPositionY() + BuffData->From->Obj->getPositionY());
+	float length = CCGlobleConfig::getLengthByCircle(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
 	Obj->setAnchorPoint(ccp(0, 0.5));
 	Obj->setScaleX(length / (float)baseWidth);
 	float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
 	angle = angle * 180 / PI;
 	Obj->setRotation(-angle);
+	
 	if (Ranks_ != 1)
 	{
 		Obj->setRotationSkewY(180 - angle);
@@ -111,6 +117,12 @@ void CLinkBullet::Update()
 			Obj->setRotationSkewY(-angle);
 
 	}
+	if (curFrameCount >= MaxTime)
+	{
+		IsDelete_ = true;
+		Obj->setVisible(false);
+	}
+	curFrameCount++;
 }
 bool CLinkBullet::CheckIsAtTarget()
 {

@@ -12,7 +12,7 @@ public:
 	int TargetType;  //作用的英雄类型 1为地面部队 2为空中部队 3为两者都有
 	int  AttackPoint; //打击点，命中部位
 	int BulletType; //弹道类型
-	int BulletValue[3]; //弹道参数
+	float BulletValue[3]; //弹道参数
 	int  EffectId;	//所携带的buff特效
 	int EffectValue; //buff参数
 	std::string ResourceName1;//资源1

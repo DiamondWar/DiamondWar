@@ -19,7 +19,9 @@ private:
 	float AtTargetLength = 0;
 	CSolider*  AtTarget_;
 	cocos2d::Node* TargetNode;
-	int FrameCount;
+	int FrameCount= 0;
+	float MaxTime = 0;
+	int curFrameCount = 0;
 	float baseWidth;
 };
 

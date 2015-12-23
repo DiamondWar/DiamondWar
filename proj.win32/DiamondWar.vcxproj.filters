@@ -129,6 +129,9 @@
     <ClCompile Include="..\Classes\LinkBullet.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SustainBullet.cpp">
+      <Filter>src\Battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -225,6 +228,9 @@
       <Filter>src\Battle</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LinkBullet.h">
+      <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SustainBullet.h">
       <Filter>src\Battle</Filter>
     </ClInclude>
   </ItemGroup>

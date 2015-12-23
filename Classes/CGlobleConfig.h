@@ -11,7 +11,7 @@ public:
 	static const int  COMMON_BULLESPEED_VALUE = 1;
 	static const int COMMON_ATTACK_VALUE = 1;
 	static  long Game_time ;
-	static const int COMMON_LOAD_POINT = 400;
+	static const int COMMON_LOAD_POINT = 380;
 	static const int COMMON_SKY_POINT = 720;
 	static float GetLengthByPoint(float point1_x, float point1_y, float point2_x, float point2_y);
 	static float getLengthByCircle(float point1_x, float point1_y, float point2_x, float point2_y);

@@ -25,30 +25,38 @@ CAttackManager::~CAttackManager()
 void CAttackManager::OnAttack(CSolider* solider, CAttackData* data)
 {
 	CAudioManager::GetInstance()->PlayerVoice(data->AttackVoice);
-	if (data->BulletType == 1)
+	/*if (data->BulletType == 1)
 	{
-		OnAttackByType1(solider,data);
+	OnAttackByType1(solider,data);
 	}
 	else if (data->BulletType == 2)
 	{
-		OnAttackByType2(solider, data);
+	OnAttackByType2(solider, data);
 	}
 	else if (data->BulletType == 3)
 	{
-		OnAttackByType3(solider, data);
+	OnAttackByType3(solider, data);
 	}
 	else if (data->BulletType == 4)
 	{
-		OnAttackByType4(solider, data);
+	OnAttackByType4(solider, data);
 	}
 	else if (data->BulletType ==5)
 	{
-		OnAttackByType5(solider, data);
+	OnAttackByType5(solider, data);
 	}
 	else if (data->BulletType ==6)
 	{
-		OnAttackByType6(solider, data);
+	OnAttackByType6(solider, data);
 	}
+	else if (data->BulletType == 7)
+	{
+	OnAttackByType7(solider, data);
+	}
+	else if (data->BulletType == 8)
+	{
+	OnAttackByType8(solider, data);
+	}*/
 }
 void CAttackManager::OnAttackByType1(CSolider* solider,CAttackData* attack)
 {
@@ -124,7 +132,7 @@ void CAttackManager::OnAttackByType2(CSolider* solider, CAttackData* attack)
 		buffdata->ResourceName = attack->ResourceName2;
 	}
 	
-	CBullet* buttlet = new CBullet(attack, solider->BulletPos_.x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPos_.y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	CBullet* buttlet = new CBullet(attack, solider->GetBulletPointToBulletX(), solider->GetBulletPointToBulletY(), buffdata, solider->AttackTarget, solider->Ranks, 2);
 	CGameSceneControl::GetInstance()->GameRoot_->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
@@ -196,7 +204,7 @@ void CAttackManager::OnAttackByType4(CSolider* solider, CAttackData* data)
 	buffdata->ResourceFrameCount = data->ResourceFrameCount2;
 	buffdata->ResourceName = data->ResourceName2;
 	buffdata->HitVoice_ = data->HitVoice;
-	CLineBullet* bullet = new CLineBullet(data, solider->Obj->getPositionX() + solider->BulletPos_.x, solider->Obj->getPositionY() + solider->BulletPos_.y
+	CLineBullet* bullet = new CLineBullet(data, solider->GetBulletPointToBulletX(), solider->GetBulletPointToBulletY()
 		, buffdata, solider->AttackTarget, solider->Ranks, 2);
 	CGameSceneControl::GetInstance()->GameRoot_->addChild(bullet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
@@ -241,7 +249,7 @@ void CAttackManager::OnAttackByType6(CSolider* solider, CAttackData* attack)
 		buffdata->ResourceName = attack->ResourceName2;
 	}
 	buffdata->HitVoice_ = attack->HitVoice;
-	CBullet* buttlet = new CBullet(attack, solider->AttackTarget->getPosition().x, solider->AttackTarget->getPosition().y + 400, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	CBullet* buttlet = new CBullet(attack, solider->GetBulletPointToBulletX(), solider->GetBulletPointToBulletY() + 400, buffdata, solider->AttackTarget, solider->Ranks, 2);
 	CGameSceneControl::GetInstance()->GameRoot_->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
 }
@@ -256,16 +264,19 @@ void CAttackManager::OnAttackByType7(CSolider* solider, CAttackData* data)
 	CBuff* buff = new CBuff(buffdata);
 	CBattleObjectManager::GetInstance()->AddBuffObject(buff);
 }
-void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* data)
+void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* attack)
 {
+	
 	CBuffData* buffdata = new CBuffData();
 	buffdata->AttackType = 1;
 	buffdata->From = solider;
 	buffdata->Target = solider->AttackTarget;
 	buffdata->ContinueTime = 0;
 	buffdata->Damage = solider->AttackDamage;
-	buffdata->HitVoice_ = data->HitVoice;
-	CLinkBullet* bullet = new CLinkBullet(data, solider->BulletPos_.x + solider->Obj->getPosition().x, solider->Obj->getPosition().y + solider->BulletPos_.y, buffdata, solider->AttackTarget, solider->Ranks, 2);
+	buffdata->HitVoice_ = attack->HitVoice;
+	buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
+	buffdata->ResourceName = attack->ResourceName2;
+	CLinkBullet* bullet = new CLinkBullet(attack, solider->GetBulletPointToBulletX(), solider->GetBulletPointToBulletY(), buffdata, solider->AttackTarget, solider->Ranks, 2);
 	CGameSceneControl::GetInstance()->GameRoot_->addChild(bullet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(bullet);
 }

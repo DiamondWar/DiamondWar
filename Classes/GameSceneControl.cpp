@@ -39,7 +39,7 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 			float y = num + 0.0;
 
 			CreateSolider(HeroList[i], 1, y / x);
-			int r = random(0, 8);
+			int r = random(3, 8);
 			CreateSolider(HeroList[r], 2, y / x);
 			return true;
 		}

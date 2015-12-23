@@ -13,7 +13,7 @@ bool CDiamondChoseManager::init()
 	setContentSize(Size(1300, 185));
 	for (int i = 0; i < 7;i++)
 	{
-		int rand = random(1,4);
+		int rand = 3;//random(1,4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
 		sprite->SetInfo(rand);
 		sprite->setAnchorPoint(Vec2(0,0));
@@ -267,7 +267,15 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 				if (!CGameSceneControl::GetInstance()->IsHaveConsumeHero(LaseChoseColor, ChoseNum))
 				{
 					flag = true; 
-					manager->UpdateCaiSeShuiJing(ChoseNum);
+					if (LaseChoseColor == 5)
+					{
+						manager->UpdateCaiSeShuiJing(5);
+					}
+					else
+					{
+						manager->UpdateCaiSeShuiJing(ChoseNum);
+					}
+				
 				}
 				int temp = StartIndex > lastIndex ? lastIndex : StartIndex;
 				for (int i = 0; i < ChoseNum; i++)

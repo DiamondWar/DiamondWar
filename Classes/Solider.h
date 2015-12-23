@@ -38,6 +38,9 @@ public:
 	void GetBuff(CBuffData* data);
 	//显示受伤
 	void ShowHurt();
+	//得到子弹位置
+	float GetBulletPointToBulletY();
+	float GetBulletPointToBulletX();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	CAttackData* AttackData_;

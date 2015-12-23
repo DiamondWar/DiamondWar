@@ -145,7 +145,6 @@ void CLineBullet::Update()
 				}
 			}
 		}
-		CCLOG("Obj.name ==%s   Pos ==%f,%f", Obj->getName().c_str(), Obj->getPositionX(), Obj->getPositionY());
 		CheckEnemyInAttackRange();
 	}
 	else
@@ -160,8 +159,7 @@ bool CLineBullet::CheckIsAtTarget()
 {
 	if (Obj == nullptr)
 		return true;
-	float length = CCGlobleConfig::GetLengthByPoint(Init_x, Init_y, Obj->getPosition().x, Obj->getPosition().y);
-	CCLOG(" CLineBullet::CheckIsAtTarget ==%f, LineLength=%f", length, LineLength);
+	float length = CCGlobleConfig::getLengthByCircle(Init_x, Init_y, Obj->getPosition().x, Obj->getPosition().y);
 	if (length >= LineLength)
 	{
 		return true;

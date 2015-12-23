@@ -16,7 +16,7 @@ public:
 	int CoolTime;
 	int AttackPoint;//命中部位
 	int BulletType;//弹道  发射出的抛射物的弹道类型ID,没有抛射物则为0
-	int BulletValue[3];//弹道参数
+	float BulletValue[3];//弹道参数
 	int EffectId;
 	float EffectValue[3];
 	std::string ResourceName1;//资源1

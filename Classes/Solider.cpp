@@ -59,6 +59,7 @@ void CSolider::OnResourceLoadComplete()
 	LeftPoint_ = Obj->getChildByName("buff2");
 	RightPoint_ = Obj->getChildByName("buff3");
 	BulletPoint_ = getBulletPoint(Obj, "bulletpoint");
+	
 	if (BulletPoint_ != nullptr)
 	{
 		if (Data_->ID == 2001)
@@ -80,7 +81,7 @@ void CSolider::OnResourceLoadComplete()
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("shou1");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3001)
 		{
@@ -88,37 +89,53 @@ void CSolider::OnResourceLoadComplete()
 			Node*node1 = node->getChildByName("Node");
 			Node*node11 = node1->getChildByName("Sprite_24");
 			Node*node2 = node11->getChildByName("wuqi");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition();
+			BulletPos_ =  node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3002)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("Sprite_5");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3003)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("wuqi");
-			BulletPos_ = BulletPoint_->getPosition() + node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 	}
-		
-
 	if (Ranks != 1)
 	{
 		Obj->setRotationSkewY(180);
+		BulletPos_.x= -BulletPos_.x;
 	}
+
+	
 	OnRun();
+}
+float  CSolider::GetBulletPointToBulletX()
+{
+	if (Ranks == 1)
+	{
+		return BulletPos_.x + BulletPoint_->getPositionX() + Obj->getPositionX();
+	}
+	else
+	{
+		return BulletPos_.x - BulletPoint_->getPositionX() + Obj->getPositionX();
+	}
+	
+}
+float  CSolider::GetBulletPointToBulletY()
+{
+	return BulletPos_.y + BulletPoint_->getPositionY() + Obj->getPositionY();
 }
 Node* CSolider::getBulletPoint(Node* node, std::string name)
 {
 	Vector<Node*> list = node->getChildren();
 	for (Node* item : list)
 	{
-		CCLOG("item ===%s", item->getName().c_str());
 		if (item->getName().c_str() == name)
 		{
 			return item;
@@ -170,6 +187,7 @@ void CSolider::Update()
 			Obj->setPosition(Obj->getPosition().x + MoveSpeed, Obj->getPosition().y);
 		else
 			Obj->setPosition(Obj->getPosition().x - MoveSpeed, Obj->getPosition().y);
+		CCLOG("MoveSpeed===  %d,MoveSpeedCf = %f", MoveSpeed,MoveSpeedCf);
 		if (AttackTarget != nullptr)
 		{
 			if (CheckAttackOrSkill() == false)
@@ -334,7 +352,7 @@ void CSolider::GetDamage(int damage, int type)
 void CSolider::GetMoveSpeedCf(float cf)
 {
 	MoveSpeedCf += cf;
-	MoveSpeed += Init_MoveSpeed + Init_MoveSpeed*MoveSpeedCf;
+	MoveSpeed = Init_MoveSpeed + Init_MoveSpeed*MoveSpeedCf;
 }
 void CSolider::GetAttackSpeedCf(float cf)
 {

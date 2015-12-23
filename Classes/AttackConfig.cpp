@@ -50,7 +50,7 @@ void CAttackConfig::LoadText()
 		CCArray* carr = CCGlobleConfig::split(str5->getCString(), ",");
 		for (int n = 0; n < carr->count(); n++)
 		{
-			data->BulletValue[n] = static_cast<String*>(carr->getObjectAtIndex(n))->intValue();
+			data->BulletValue[n] = static_cast<String*>(carr->getObjectAtIndex(n))->floatValue();
 		}
 		str5->release();
 

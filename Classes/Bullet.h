@@ -23,7 +23,7 @@ public:
 	int Ranks_;
 	int Damage;
 private: 
-	int iSpeed_;
+	float iSpeed_;
 	CSolider*  AtTarget_;
 	cocos2d::Node* TargetNode;
 	int FrameCount;
