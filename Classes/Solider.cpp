@@ -33,7 +33,7 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	AttakInveral = 1/(Data_->AttackInterval)*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
 	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange, AttakInveral);
-	init_AttackInveral = AttakInveral;
+	init_AttackInveral = Data_->AttackInterval;
 	Init_AttackRange = AttakRange;
 	Init_MoveSpeed = MoveSpeed;
 	InitObj();
@@ -368,7 +368,8 @@ void CSolider::GetMoveSpeedCf(float cf)
 void CSolider::GetAttackSpeedCf(float cf)
 {
 	AttakInveralCf += cf;
-	AttakInveral = init_AttackInveral - init_AttackInveral *AttakInveralCf;
+	float temp = init_AttackInveral + init_AttackInveral *AttakInveralCf;
+	AttakInveral = 1 / temp*CCGlobleConfig::COMMON_ATTACK_VALUE;
 	if (AttakInveral < 0)
 	{
 		AttakInveral = 0;
