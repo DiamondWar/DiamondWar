@@ -58,9 +58,9 @@ void CAttackManager::OnAttack(CSolider* solider, CAttackData* data)
 		OnAttackByType8(solider, data);
 	}
 }
-void CAttackManager::OnAttackByType1(CSolider* solider,CAttackData* attack)
+void CAttackManager::OnAttackByType1(CSolider* solider, CAttackData* attack)
 {
-	
+
 	CBuffData* data = new CBuffData();
 	data->ContinueTime = 0;
 	data->AttackType = 1;
@@ -75,7 +75,7 @@ void CAttackManager::OnAttackByType1(CSolider* solider,CAttackData* attack)
 	}
 	else
 	{
-		data->ResourceFrameCount =1;
+		data->ResourceFrameCount = 1;
 		data->ResourceName = "Bullet_common_1";
 	}
 
@@ -131,7 +131,7 @@ void CAttackManager::OnAttackByType2(CSolider* solider, CAttackData* attack)
 		buffdata->ResourceFrameCount = attack->ResourceFrameCount2;
 		buffdata->ResourceName = attack->ResourceName2;
 	}
-	
+
 	CBullet* buttlet = new CBullet(attack, solider->GetBulletPointToBulletX(), solider->GetBulletPointToBulletY(), buffdata, solider->AttackTarget, solider->Ranks, 2);
 	CGameSceneControl::GetInstance()->GameRoot_->addChild(buttlet->Obj);
 	CBattleObjectManager::GetInstance()->AddBulletObject(buttlet);
@@ -155,7 +155,7 @@ void CAttackManager::OnAttackByType3(CSolider* solider, CAttackData* attack)
 		list = CBattleObjectManager::GetInstance()->GetLuDiEnemyListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
 			solider->CenterPoint_->getPosition().y + solider->Obj->getPosition().y);
 	}
-	for (CSolider* sol :list)
+	for (CSolider* sol : list)
 	{
 		CBuffData * buffdata = new CBuffData();
 		buffdata->AttackType = 1;
@@ -266,7 +266,7 @@ void CAttackManager::OnAttackByType7(CSolider* solider, CAttackData* data)
 }
 void CAttackManager::OnAttackByType8(CSolider* solider, CAttackData* attack)
 {
-	
+
 	CBuffData* buffdata = new CBuffData();
 	buffdata->AttackType = 1;
 	buffdata->From = solider;

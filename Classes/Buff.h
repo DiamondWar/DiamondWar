@@ -17,9 +17,9 @@ public:
 	virtual void OnSkillActionComplete();
 	virtual void Update();
 private:
-	long StartTime;
-	long LastTime;
-	long NowTime;
+	long long  StartTime;
+	long long LastTime;
+	long  long NowTime;
 	void GetResultHurt();
 };
 #endif 

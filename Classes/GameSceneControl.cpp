@@ -30,11 +30,6 @@ void  CGameSceneControl::InitGameData()
 }
 bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 {
-
-	//CreateSolider(HeroList[1], 1,1);
-	//CreateSolider(HeroList[0], 1, 1);
-	//CreateSolider(HeroList[1], 2, 1);
-	//return true;
 	for (int i = 0; i < 9;i++)
 	{
 		CSoliderData * data = CSoliderConfig::GetInstance()->GetItemById(HeroList[i]);
@@ -42,9 +37,9 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 		{
 			float x = data->NeedStar+0.0;
 			float y = num + 0.0;
-			CreateSolider(HeroList[i], 1, y / x);
+			CreateSolider(HeroList[i], 1, 2);
 			int r = random(0, 8);
-			CreateSolider(HeroList[r], 2, y / x);
+			CreateSolider(HeroList[r], 2, 1);
 			return true;
 		}
 	}

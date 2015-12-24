@@ -65,9 +65,9 @@ void CBuff::OnResourceLoadComplete()
 	{
 		if (BuffData->attackPoint == 1)
 		{
-			BuffData->Target->Obj->addChild(Obj);
 			Obj->setAnchorPoint(Vec2(0.5, 0.5));
 			Obj->setPosition(BuffData->Target->CenterPoint_->getPosition());
+			BuffData->Target->Obj->addChild(Obj);
 		}
 		else if (BuffData->attackPoint == 2)
 		{
@@ -143,7 +143,7 @@ void CBuff::Update()
 	if (BuffData->Target == nullptr || BuffData->ContinueTime == 0)
 		return;
 	NowTime = CCGlobleConfig::GetCurrntTime();
-	if (NowTime > StartTime + BuffData->ContinueTime)
+	if (NowTime > StartTime + BuffData->ContinueTime*CCGlobleConfig::COMMON_ATTACKTIME_VALUE)
 	{
 		//buf消失
 		OnAttackActionComplete();
@@ -152,7 +152,7 @@ void CBuff::Update()
 	{
 		if (BuffData->InveralTime > 0)
 		{
-			if (NowTime > LastTime + BuffData->InveralTime)
+			if (NowTime > LastTime + BuffData->InveralTime*CCGlobleConfig::COMMON_ATTACKTIME_VALUE)
 			{
 				//间隔时间到了 进行造成伤害
 				LastTime = NowTime;

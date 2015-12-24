@@ -24,17 +24,19 @@ float CCGlobleConfig::GetAngleByPoint(float point1_x, float point1_y, float poin
 }
 long CCGlobleConfig::GetCurrntTime()
 {
-	struct tm *tm;
-	time_t timep;
-	time(&timep);
-	tm = localtime(&timep);
-
-	int day = tm->tm_mday;
-	int hour = tm->tm_hour;
-	int minute = tm->tm_min;
-	int second = tm->tm_sec;
-	long ltime = second + minute * 60 + hour * 3600;
+	struct timeval nowTimeval;
+	gettimeofday(&nowTimeval, NULL);
+	struct tm * tm;
+	time_t time_sec;
+	time_sec = nowTimeval.tv_sec;
+	tm = localtime(&time_sec);
+	int nMinute = tm->tm_min;
+	int nSecond = tm->tm_sec;
+	int nHour = tm->tm_hour;
+	long second = 60 * nMinute + nSecond + nHour * 3600;
+	long long ltime = (long long)(second * 1000 + nowTimeval.tv_usec / 1000);
 	return ltime;
+
 }
 long CCGlobleConfig::Game_time = 0;
 

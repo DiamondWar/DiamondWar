@@ -57,14 +57,14 @@ public:
 private:
 	ESoliderOpreate OpreateType = ESoliderOpreate_Idle;
 	//上次攻击的时间
-	long LastAttackTime = 0;
-	long NowTime = 0;
+	long  long LastAttackTime = 0;
+	long  long NowTime = 0;
 	
 	bool isShowHurt = false;
 	long lastShowHurtTime = 0;
 	//攻击次数
 	int AttackNum = 0;
-	int init_AttackInveral = 0;
+	float init_AttackInveral = 0;
 	int Init_MoveSpeed = 0;
 	int Init_AttackRange = 0;
 	float CurBlood = 0;
@@ -75,11 +75,13 @@ private:
 	float AttackCf = 0;
 	//攻击间隔
 	float AttakInveralCf = 0;
-	float AttakInveral = 5;
+	int AttakInveral = 5;
 	//移动速度
 	float MoveSpeedCf = 0;
 	int MoveSpeed = 0;
 
+	//技能时间
+	int MaxSkillFrame = 0;
 	bool CheckAttackOrSkill();
 	cocos2d::Node* getBulletPoint(cocos2d::Node* node, std::string name);
 

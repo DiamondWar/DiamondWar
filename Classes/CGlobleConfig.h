@@ -9,7 +9,7 @@ public:
 	static const int  COMMON_RANGE_VALUE =50;
 	static const int  COMMON_BULLETRANGE_VALUE = 10;
 	static const int  COMMON_BULLESPEED_VALUE = 1;
-	static const int COMMON_ATTACK_VALUE = 1;
+	static const int COMMON_ATTACKTIME_VALUE = 1000 ;
 	static  long Game_time ;
 	static const int COMMON_LOAD_POINT = 380;
 	static const int COMMON_SKY_POINT = 720;

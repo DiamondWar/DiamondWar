@@ -30,9 +30,9 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	Ranks = rank;
 	RangeR_ = Data_->RangeR;
 	AttakRange = Data_->AttackRange*CCGlobleConfig::COMMON_RANGE_VALUE;
-	AttakInveral = 1/(Data_->AttackInterval)*CCGlobleConfig::COMMON_ATTACK_VALUE;
+	AttakInveral = (int)(1 / (Data_->AttackInterval)*CCGlobleConfig::COMMON_ATTACKTIME_VALUE);
 	MoveSpeed = Data_->MoveSpeed*CCGlobleConfig::COMMON_VALUE;
-	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d  ", MoveSpeed, AttakRange, AttakInveral);
+	CCLOG("MoveSpeed===  %d, attackRange === %f ,AttackInveral===%d ", MoveSpeed, AttakRange, AttakInveral);
 	init_AttackInveral = Data_->AttackInterval;
 	Init_AttackRange = AttakRange;
 	Init_MoveSpeed = MoveSpeed;
@@ -41,6 +41,7 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	CurBlood =Data_->Blood*level;
 	CCLOG("CurBlood ==%.0f ", CurBlood);
 	MaxBlood = CurBlood;
+	MaxSkillFrame = SKillData_->CoolTime * 60;
 
 }
 
@@ -159,7 +160,9 @@ void CSolider::Update()
 	switch (OpreateType)
 	{
 	case ESoliderOpreate_Idle:
+		AttackNum++;
 		NowTime = CCGlobleConfig::GetCurrntTime();
+		//CCLOG("Data.ID===%d  AttackInveral === %d", Data_->ID, AttakInveral);
 		if (NowTime > LastAttackTime + AttakInveral)
 		{
 			LastAttackTime = NowTime;
@@ -183,6 +186,7 @@ void CSolider::Update()
 
 		break;
 	case ESoliderOpreate_Walk:
+		AttackNum++;
 		if (Ranks == 1)
 			Obj->setPosition(Obj->getPosition().x + MoveSpeed, Obj->getPosition().y);
 		else
@@ -258,15 +262,14 @@ bool CSolider::CheckAttackOrSkill()
 		return false;
 	}
 		
-	CCLOG("AttackNum=== %d",AttackNum);
-	if (AttackNum >= SKillData_->CoolTime)
+	CCLOG("AttackNum=== %d,MaxFrameNUm===%d",AttackNum,MaxSkillFrame);
+	if (AttackNum >= MaxSkillFrame)
 	{
 		AttackNum = 0;
 		OnSkill();
 	}
 	else
 	{
-		AttackNum++;
 		OnAttack();
 	}
 	return true;
@@ -364,15 +367,17 @@ void CSolider::GetMoveSpeedCf(float cf)
 {
 	MoveSpeedCf += cf;
 	MoveSpeed = Init_MoveSpeed + Init_MoveSpeed*MoveSpeedCf;
+	if (MoveSpeed <= 0)
+		MoveSpeed = 0;
 }
 void CSolider::GetAttackSpeedCf(float cf)
 {
 	AttakInveralCf += cf;
 	float temp = init_AttackInveral + init_AttackInveral *AttakInveralCf;
-	AttakInveral = 1 / temp*CCGlobleConfig::COMMON_ATTACK_VALUE;
+	AttakInveral = (int)(1 / temp*CCGlobleConfig::COMMON_ATTACKTIME_VALUE);
 	if (AttakInveral < 0)
 	{
-		AttakInveral = 0;
+		AttakInveral = 10000000;
 	}
 }
 void  CSolider::GetAttackRangeCf(float cf)
