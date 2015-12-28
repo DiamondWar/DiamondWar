@@ -2,6 +2,7 @@
 #include "Solider.h"
 #include "BattleObjectManager.h"
 #include "SoliderConfig.h"
+#include "Shake.h"
 USING_NS_CC;
 CGameSceneControl* CGameSceneControl::Instance_ = nullptr;
 
@@ -37,7 +38,7 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 		{
 			float x = data->NeedStar+0.0;
 			float y = num + 0.0;
-			CreateSolider(HeroList[i], 1, 2);
+			CreateSolider(HeroList[i], 1, 1);
 			int r = random(0, 8);
 			CreateSolider(HeroList[r], 2, 1);
 			return true;
@@ -64,7 +65,11 @@ void CGameSceneControl::SetRoot(cocos2d::Node* root)
 {
 	GameRoot_ = root;
 }
-
+void CGameSceneControl::AddScreenShake()
+{
+	Shake*sk = Shake::create(3, 3);
+	GameRoot_->runAction(sk);
+}
 CGameSceneControl::~CGameSceneControl()
 {
 }

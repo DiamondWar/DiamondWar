@@ -213,6 +213,7 @@ void CSkillManager::OnAttackByType1(CSolider* solider, CSkillData* attack)
 		buffdata1->ResourceName = attack->ResourceName2;
 		CBuff * buff = new CBuff(buffdata1);
 		CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+		solider->AttackTarget = nullptr;
 	}
 	else
 	{

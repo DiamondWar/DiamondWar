@@ -41,6 +41,7 @@ public:
 	//得到子弹位置
 	float GetBulletPointToBulletY();
 	float GetBulletPointToBulletX();
+	cocos2d::Vec2 UpdateBulletPosition();
 	CSolider* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	CAttackData* AttackData_;

@@ -265,6 +265,7 @@ void CBattleUIManager::onTouchBegan(Touch* touch, Event* event)
 		{
 			//点中彩色水晶
 			IsChoseCaiSe_ = true;
+			IsMoveChoseCaiSe_ = false;
 		}
 	}
 
@@ -281,6 +282,7 @@ void CBattleUIManager::onTouchMoved(Touch* touch, Event* event)
 		if (IsChoseCaiSe_ == true)
 		{
 			CaiseShuiJingRoot_->setPosition(pt.x + 70, pt.y - 80);
+			IsMoveChoseCaiSe_ = true;
 		}
 	}
 
@@ -295,15 +297,20 @@ void CBattleUIManager::onTouchEnded(Touch* touch, Event* event)
 	if (rc.containsPoint(pt))
 	{
 		IsChoseCaiSe_ = false;
-		CCPoint pos = touch->getPreviousLocation();
-		CaiseShuiJingRoot_->setPosition(getContentSize().width - 25, 18);
-		if (IsCanChoseCaiSe_ == true)
+		if (IsMoveChoseCaiSe_ == true)
 		{
-			if (DiamondManger->CheckPointInThis(pos))
+			IsMoveChoseCaiSe_ = false;
+			CCPoint pos = touch->getPreviousLocation();
+			CaiseShuiJingRoot_->setPosition(getContentSize().width - 25, 18);
+			if (IsCanChoseCaiSe_ == true)
 			{
-				UpdateCaiSeShuiJing(-5);
+				if (DiamondManger->CheckPointInThis(pos))
+				{
+					UpdateCaiSeShuiJing(-5);
+				}
 			}
 		}
+	
 	}
 
 }

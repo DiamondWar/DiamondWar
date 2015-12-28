@@ -1,5 +1,5 @@
 <GameFile>
-  <PropertyGroup Name="MainSence" Type="Scene" ID="716c76a2-d4f0-4c9d-867c-f62f56944e48" Version="2.3.3.0" />
+  <PropertyGroup Name="MainScene" Type="Scene" ID="716c76a2-d4f0-4c9d-867c-f62f56944e48" Version="2.3.3.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
@@ -17,7 +17,7 @@
             <FileData Type="Normal" Path="battlebg.jpg" Plist="" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="sjbg_2" ActionTag="-1024584975" Tag="3" IconVisible="False" LeftMargin="309.0000" RightMargin="309.0000" TopMargin="896.0000" ctype="SpriteObjectData">
+          <AbstractNodeData Name="sjbg_2" ActionTag="-1024584975" Alpha="122" Tag="3" IconVisible="False" LeftMargin="309.0000" RightMargin="309.0000" TopMargin="896.0000" ctype="SpriteObjectData">
             <Size X="1302.0000" Y="184.0000" />
             <AnchorPoint ScaleX="0.5000" />
             <Position X="960.0000" />

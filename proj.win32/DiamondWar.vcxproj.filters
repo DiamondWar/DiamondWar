@@ -132,6 +132,9 @@
     <ClCompile Include="..\Classes\SustainBullet.cpp">
       <Filter>src\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Shake.cpp">
+      <Filter>src\Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -232,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SustainBullet.h">
       <Filter>src\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Shake.h">
+      <Filter>src\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

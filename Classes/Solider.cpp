@@ -38,7 +38,7 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	Init_MoveSpeed = MoveSpeed;
 	InitObj();
 	AttackDamage = Data_->Attack*level;
-	CurBlood =Data_->Blood*level;
+	CurBlood = Data_->Blood*level;
 	CCLOG("CurBlood ==%.0f ", CurBlood);
 	MaxBlood = CurBlood;
 	MaxSkillFrame = SKillData_->CoolTime * 60;
@@ -60,7 +60,7 @@ void CSolider::OnResourceLoadComplete()
 	LeftPoint_ = Obj->getChildByName("buff2");
 	RightPoint_ = Obj->getChildByName("buff3");
 	BulletPoint_ = getBulletPoint(Obj, "bulletpoint");
-	
+
 	if (BulletPoint_ != nullptr)
 	{
 		if (Data_->ID == 2001)
@@ -75,14 +75,14 @@ void CSolider::OnResourceLoadComplete()
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("wuqi");
-			BulletPos_ =   node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 2003)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("shou1");
-			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3001)
 		{
@@ -90,30 +90,30 @@ void CSolider::OnResourceLoadComplete()
 			Node*node1 = node->getChildByName("Node");
 			Node*node11 = node1->getChildByName("Sprite_24");
 			Node*node2 = node11->getChildByName("wuqi");
-			BulletPos_ =  node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3002)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("Sprite_5");
-			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 		else if (Data_->ID == 3003)
 		{
 			Node* node = Obj->getChildByName("bottom");
 			Node*node1 = node->getChildByName("Node");
 			Node*node2 = node1->getChildByName("wuqi");
-			BulletPos_ =  node2->getPosition() + node1->getPosition() + node->getPosition();
+			BulletPos_ = node2->getPosition() + node1->getPosition() + node->getPosition();
 		}
 	}
 	if (Ranks != 1)
 	{
 		Obj->setRotationSkewY(180);
-		BulletPos_.x= -BulletPos_.x;
+		BulletPos_.x = -BulletPos_.x;
 	}
 
-	
+
 	OnRun();
 }
 float  CSolider::GetBulletPointToBulletX()
@@ -126,12 +126,40 @@ float  CSolider::GetBulletPointToBulletX()
 	{
 		return BulletPos_.x - BulletPoint_->getPositionX() + Obj->getPositionX();
 	}
-	
+
 }
 float  CSolider::GetBulletPointToBulletY()
 {
 	return BulletPos_.y + BulletPoint_->getPositionY() + Obj->getPositionY();
 }
+Vec2 CSolider::UpdateBulletPosition()
+{
+	if (Ranks == 1)
+	{
+		if (Data_->ID == 3001)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node11 = node1->getChildByName("Sprite_24");
+			Node*node2 = node11->getChildByName("wuqi");
+			return  node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition() + BulletPoint_->getPosition() + Obj->getPosition();
+		}
+
+	}
+	else
+	{
+		if (Data_->ID == 3001)
+		{
+			Node* node = Obj->getChildByName("bottom");
+			Node*node1 = node->getChildByName("Node");
+			Node*node11 = node1->getChildByName("Sprite_24");
+			Node*node2 = node11->getChildByName("wuqi");
+			return  -node2->getPosition() - node1->getPosition() - node11->getPosition() - node->getPosition() - BulletPoint_->getPosition() + Obj->getPosition();
+		}
+	}
+	return Vec2::ZERO;
+}
+
 Node* CSolider::getBulletPoint(Node* node, std::string name)
 {
 	Vector<Node*> list = node->getChildren();
@@ -144,7 +172,7 @@ Node* CSolider::getBulletPoint(Node* node, std::string name)
 		else
 		{
 			Node* temp = getBulletPoint(item, name);
-			if (temp!=nullptr&&temp->getName().c_str() == name)
+			if (temp != nullptr&&temp->getName().c_str() == name)
 			{
 				return temp;
 			}
@@ -197,12 +225,12 @@ void CSolider::Update()
 			{
 				CheckEnemyInRange();
 			}
-			else 
+			else
 			{
 				NowTime = CCGlobleConfig::GetCurrntTime();
 				LastAttackTime = NowTime;
 			}
-			
+
 		}
 		else
 		{
@@ -237,7 +265,7 @@ void CSolider::OnSkillActionComplete()
 }
 bool CSolider::CheckEnemyInRange()
 {
-	CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks,AttackData_->TargetType, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
+	CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks, AttackData_->TargetType, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
 	if (Sol != nullptr)
 	{
 		AttackTarget = Sol;
@@ -255,14 +283,14 @@ void CSolider::CheckFriendInRange()
 }
 bool CSolider::CheckAttackOrSkill()
 {
-	if (AttackTarget==nullptr||AttackTarget->IsDelete_ == true)
+	if (AttackTarget == nullptr || AttackTarget->IsDelete_ == true)
 	{
 		AttackTarget = nullptr;
 		OpreateType = ESoliderOpreate_Walk;
 		return false;
 	}
-		
-	CCLOG("AttackNum=== %d,MaxFrameNUm===%d",AttackNum,MaxSkillFrame);
+
+	CCLOG("AttackNum=== %d,MaxFrameNUm===%d", AttackNum, MaxSkillFrame);
 	if (AttackNum >= MaxSkillFrame)
 	{
 		AttackNum = 0;
@@ -330,17 +358,22 @@ void CSolider::GetDamage(int damage, int type)
 	damage = damage - damage*AttackCf;
 	if (damage == 0)
 		return;
+	bool flag = (CurBlood <= MaxBlood*0.3f);
 	CurBlood -= damage;
 	isShowHurt = true;
 	lastShowHurtTime = CCGlobleConfig::Game_time;
-	
-	if (CurBlood>0&&CurBlood <= MaxBlood*0.3f)
+
+	if (CurBlood > 0 && CurBlood <= MaxBlood*0.3f)
 	{
 		CHurtShow *hurt = new CHurtShow();
 		hurt->SetFont(3);
 		hurt->ShowLabel(damage, this);
 		CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
-		OnHurt();
+		if (flag == false)
+		{
+			OnHurt();
+
+		}
 	}
 	else if (CurBlood <= 0)
 	{
@@ -361,7 +394,7 @@ void CSolider::GetDamage(int damage, int type)
 		hurt->ShowLabel(damage, this);
 		CBattleObjectManager::GetInstance()->AddHurtShowObject(hurt);
 	}
-	
+
 }
 void CSolider::GetMoveSpeedCf(float cf)
 {

@@ -142,17 +142,17 @@ void CAttackManager::OnAttackByType3(CSolider* solider, CAttackData* attack)
 	int range = attack->BulletValue[0];
 	if (attack->TargetType == 3)
 	{
-		list = CBattleObjectManager::GetInstance()->GetEnemyListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
+		list = CBattleObjectManager::GetInstance()->GetEnemyListByRange(solider->Ranks, range, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
 			solider->CenterPoint_->getPosition().y + solider->Obj->getPosition().y);
 	}
 	else if (attack->TargetType == 2)
 	{
-		list = CBattleObjectManager::GetInstance()->GetFeiXingEnemyListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
+		list = CBattleObjectManager::GetInstance()->GetFeiXingEnemyListByRange(solider->Ranks, range, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
 			solider->CenterPoint_->getPosition().y + solider->Obj->getPosition().y);
 	}
 	else if (attack->TargetType == 1)
 	{
-		list = CBattleObjectManager::GetInstance()->GetLuDiEnemyListByRange(solider->Ranks, solider->AttakRange, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
+		list = CBattleObjectManager::GetInstance()->GetLuDiEnemyListByRange(solider->Ranks, range, solider->RangeR_, solider->CenterPoint_->getPosition().x + solider->Obj->getPosition().x,
 			solider->CenterPoint_->getPosition().y + solider->Obj->getPosition().y);
 	}
 	for (CSolider* sol : list)

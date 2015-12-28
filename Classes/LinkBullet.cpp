@@ -92,13 +92,8 @@ void CLinkBullet::Update()
 	if (IsDelete_ == true)
 		return;
 	CBattleObject::Update();
-	if (Ranks_ == 1)
-		Obj->setPositionX(BuffData->From->BulletPos_.x + BuffData->From->BulletPoint_->getPositionX() + BuffData->From->Obj->getPositionX());
-	else
-	{
-		Obj->setPositionX(BuffData->From->BulletPos_.x - BuffData->From->BulletPoint_->getPositionX() + BuffData->From->Obj->getPositionX());
-	}
-	Obj->setPositionY(BuffData->From->BulletPos_.y + BuffData->From->BulletPoint_->getPositionY() + BuffData->From->Obj->getPositionY());
+
+	Obj->setPosition(BuffData->From->UpdateBulletPosition());
 	float length = CCGlobleConfig::getLengthByCircle(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
 	Obj->setAnchorPoint(ccp(0, 0.5));
 	Obj->setScaleX(length / (float)baseWidth);

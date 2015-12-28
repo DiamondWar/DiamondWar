@@ -25,5 +25,6 @@ private:
 	CSolider*  LastTarget_ = nullptr;
 	cocos2d::Node* TargetNode;
 	int FrameCount;
+	bool IsGetMaxLength = false;
 };
 

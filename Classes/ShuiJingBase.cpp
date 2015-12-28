@@ -74,6 +74,10 @@ void CShuiJingBase::update(float dt)
 void CShuiJingBase::ResetInfo(int Color,bool flag )
 {
 	MyColor = Color;
+	if (Color == 2)
+		Color = 3;
+	else if (Color == 3)
+		Color = 2;
 	String* string = String::createWithFormat("shujing_%d.png", Color);
 	SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 	MainSprite_->setSpriteFrame(frame);

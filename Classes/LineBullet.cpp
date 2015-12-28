@@ -149,8 +149,18 @@ void CLineBullet::Update()
 	}
 	else
 	{
-		IsDelete_ = true;
-		Obj->setVisible(false);
+		if (IsGetMaxLength == true)
+		{
+			IsDelete_ = true;
+			Obj->setVisible(false);
+		}
+		else
+		{
+			IsGetMaxLength = true;
+			Init_x = Obj->getPositionX();
+			Init_y = Obj->getPositionY();
+			iSpeed_ = -iSpeed_;
+		}
 		
 	}
 

@@ -231,9 +231,16 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 			SpriteList.at(i)->setPositionY(pt.y - 80);
 			else 
 				SpriteList.at(i)->setPositionY(init_y);
-
+			if (SpriteList.at(i)->getPositionY()>200)
+			{
+				SpriteList.at(i)->setPositionY(200);
+			}
 		}
 		ChoseSprite_->setPositionY(pt.y - 80);
+		if (ChoseSprite_->getPositionY() > 200)
+		{
+			ChoseSprite_->setPositionY(200);
+		}
 	}
 }
 //触摸事件结束，也就是手指松开时  
@@ -300,6 +307,11 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 		else
 		{
 			ChoseSprite_->setScaleX(0);
+			for (int i = 0; i < SpriteList.size(); i++)
+			{
+				SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
+			}
+			lastIndex = -1;
 		}
 	}
 

@@ -40,5 +40,6 @@ private:
 	
 	bool IsChoseCaiSe_ = false;//之前是否点到彩色水晶
 	bool IsCanChoseCaiSe_ = false;//是否可以使用彩色水晶
+	bool IsMoveChoseCaiSe_ = false;
 };
 

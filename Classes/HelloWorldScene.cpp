@@ -126,7 +126,7 @@ bool HelloWorld::init()
 	manager->setPosition(0, 0);
 	addChild(manager);
 	this->scheduleUpdate();
-
+	CGameSceneControl::GetInstance()->AddScreenShake();
     return true;
 }
 void HelloWorld::update(float dt)
