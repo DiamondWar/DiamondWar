@@ -2,20 +2,30 @@
 #include "cocos2d.h"
 #include "ShuiJingBase.h"
 
+class CShuiJingChose
+{
+public:
+	int Color;
+	int Num;
+	int indexlist[6];
+};
+
 class CDiamondChoseManager:public cocos2d::Node
 {
 public:
 	CREATE_FUNC(CDiamondChoseManager);
 	virtual bool init();
+	virtual void update(float delta); 
 	void onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
 	bool CheckPointInThis(cocos2d::CCPoint pos);
 private: 
+	void UpdateCanChoseShuiJing();
 	cocos2d::Vector<CShuiJingBase*> SpriteList;
 	cocos2d::Sprite* ChoseSprite_;
-	
+	CShuiJingChose* CanChoselist[4];
 	const int init_x = 30;
 	const int init_y = 15;
 	int ChoseNum = 0;

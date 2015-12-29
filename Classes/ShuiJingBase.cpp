@@ -12,9 +12,9 @@ bool CShuiJingBase::init()
 	this->scheduleUpdate();
 	return true;
 }
-void CShuiJingBase::SetInfo(int index)
+void CShuiJingBase::SetInfo(int index,bool flag)
 {
-
+	IsCanChose_ = flag;
 	MyColor = index;
 	if (index == 2)
 		index = 3;

@@ -2,6 +2,7 @@
 #include "ShuiJingBase.h"
 #include "BattleUIManager.h"
 #include "GameSceneControl.h"
+#include "CGlobleConfig.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -10,12 +11,21 @@ bool CDiamondChoseManager::init()
 	{
 		return false;
 	}
+	
+	for (int i = 0; i < 4;i++)
+	{
+		CShuiJingChose *chose = new CShuiJingChose();
+		chose->Color = 1+i;
+		chose->indexlist[6] = { 0 };
+		chose->Num = 0;
+		CanChoselist[i] = chose;
+	}
 	setContentSize(Size(1300, 185));
 	for (int i = 0; i < 7;i++)
 	{
 		int rand = random(1,4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
-		sprite->SetInfo(rand);
+		sprite->SetInfo(rand,i!=7);
 		sprite->setAnchorPoint(Vec2(0,0));
 		sprite->setPosition(init_x + 170 * i, init_y);
 		addChild(sprite);
@@ -64,6 +74,17 @@ bool CDiamondChoseManager::init()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	
 	return true;
+}
+void CDiamondChoseManager::UpdateCanChoseShuiJing()
+{
+
+}
+void CDiamondChoseManager::update(float delta)
+{
+	if (CCGlobleConfig::Game_time % 10 == 0)
+	{
+
+	}
 }
 //触摸事件开始，手指按下时  
 void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
@@ -116,7 +137,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 			index = 6;
 		if (lastIndex + 1 == index )
 		{
-			if ((LaseChoseColor == SpriteList.at(index)->MyColor ||LaseChoseColor==5|| SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor || LaseChoseColor == 5 || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false && SpriteList.at(index)->IsCanChose_ == true)
 			{
 				if (LaseChoseColor == 5 && ChoseNum == 1)
 					LaseChoseColor = SpriteList.at(index)->MyColor;
@@ -158,7 +179,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 		}
 		else if (lastIndex - 1 == index)
 		{
-			if ((LaseChoseColor == SpriteList.at(index)->MyColor || LaseChoseColor == 5 || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false)
+			if ((LaseChoseColor == SpriteList.at(index)->MyColor || LaseChoseColor == 5 || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false && SpriteList.at(index)->IsCanChose_ == true)
 			{
 				if (LaseChoseColor == 5 && ChoseNum == 1)
 					LaseChoseColor = SpriteList.at(index)->MyColor;
