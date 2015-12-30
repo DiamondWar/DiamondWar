@@ -11,6 +11,7 @@ public:
 	void SetRoot(cocos2d::Node* root);
 	void InitGameData();
 	bool IsHaveConsumeHero(int color ,int num);
+	int IsHaveHero(int color, int num);
 	void AddScreenShake();
 	cocos2d::Node* GameRoot_;
 	int HeroList[8];

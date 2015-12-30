@@ -88,4 +88,8 @@ void CShuiJingBase::ResetInfo(int Color,bool flag )
 		Progress_->setPercentage(100);
 	IsLoading = flag;
 }
-
+void CShuiJingBase::SetTipsInfo(bool flag)
+{
+	//添加光效显示
+	IsTips_ = flag;
+}

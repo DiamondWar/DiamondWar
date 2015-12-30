@@ -29,6 +29,33 @@ void  CGameSceneControl::InitGameData()
 	HeroList[7] = 3002;
 	HeroList[8] = 3003;
 }
+int CGameSceneControl::IsHaveHero(int color, int num)
+{
+	int chosenum = -1;
+	int index = -1;
+	for (int i = 0; i < 9; i++)
+	{
+		CSoliderData * data = CSoliderConfig::GetInstance()->GetItemById(HeroList[i]);
+		if (data->SoliderType == color)
+		{
+			if (data->NeedStar < num)
+			{
+				if (chosenum < data->NeedStar)
+				{
+					chosenum = data->NeedStar;
+					index = i;
+				}
+			}
+			else if (data->NeedStar == num)
+			{
+				chosenum = num;
+				index = i;
+				break;
+			}
+		}
+	}
+	return index;
+}
 bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 {
 	int chosenum = -1;

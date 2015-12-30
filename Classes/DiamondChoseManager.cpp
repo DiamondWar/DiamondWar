@@ -3,6 +3,7 @@
 #include "BattleUIManager.h"
 #include "GameSceneControl.h"
 #include "CGlobleConfig.h"
+#include "SoliderConfig.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -77,7 +78,28 @@ bool CDiamondChoseManager::init()
 }
 void CDiamondChoseManager::UpdateCanChoseShuiJing()
 {
-
+	for (int i = 0; i < 7; i++)
+	{
+		CShuiJingBase* base = SpriteList.at(i);
+		if (base->IsLoading == false && base->IsCanChose_ == true)
+		{
+			CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = i;
+			CanChoselist[base->MyColor - 1]->Num++;
+		}
+	}
+	for (int i = 0; i < 4;i++)
+	{
+		int index = CGameSceneControl::GetInstance()->IsHaveHero(CanChoselist[i]->Color, CanChoselist[i]->Num);
+		if (index != -1)
+		{
+			CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
+			int num = data->NeedStar;
+			for (int n = 0; n < num;n++)
+			{
+				SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
+			}
+		}
+	}
 }
 void CDiamondChoseManager::update(float delta)
 {

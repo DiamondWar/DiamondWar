@@ -7,6 +7,7 @@ public:
 	virtual bool init();
 	virtual void  update(float dt);
 	void SetInfo(int index,bool flag);
+	void SetTipsInfo(bool flag);
 	void ResetInfo( int Color,bool flag =true);
 	int MyColor =0;
 	bool IsLoading = false;// «∑ÒΩ¯»Î¿‰»¥
@@ -17,6 +18,7 @@ private:
 	cocos2d::Label* CoolTimeLabel_;
 	int  CoolTime = 0;
 	const int MaxCoolTime = 300;
+	bool IsTips_ = false;
 	
 };
 
