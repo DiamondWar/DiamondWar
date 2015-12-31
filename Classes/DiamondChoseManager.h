@@ -21,11 +21,13 @@ public:
 	void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
 	bool CheckPointInThis(cocos2d::CCPoint pos);
+	
+	CShuiJingChose* CanChoselist[4];
 private: 
 	void UpdateCanChoseShuiJing();
 	cocos2d::Vector<CShuiJingBase*> SpriteList;
 	cocos2d::Sprite* ChoseSprite_;
-	CShuiJingChose* CanChoselist[4];
+	
 	const int init_x = 30;
 	const int init_y = 15;
 	int ChoseNum = 0;

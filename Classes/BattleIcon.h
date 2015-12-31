@@ -8,6 +8,7 @@ public:
 	~BattleIcon();
 	virtual bool init();
 	void SetInfo(int id, int type,int color );
+	void SetCanChose(bool flag);
 private: 
 	cocos2d::Sprite* Icon_;
 	cocos2d::Label* IconNum_;

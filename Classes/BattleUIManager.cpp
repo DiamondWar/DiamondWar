@@ -1,6 +1,8 @@
 #include "BattleUIManager.h"
 
 #include "BattleObjectManager.h"
+#include "GameSceneControl.h"
+#include "SoliderConfig.h"
 USING_NS_CC;
 
 bool CBattleUIManager::init()
@@ -211,7 +213,23 @@ void CBattleUIManager::update(float delta)
 		SecondBloodDesc_->setString(str->getCString());
 	}
 }
+void CBattleUIManager::UpdateIconShow()
+{
 
+	for (int i = 0; i < IconList.size(); i++)
+	{
+		IconList.at(i)->SetCanChose(false);
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		int index = CGameSceneControl::GetInstance()->IsHaveHero(DiamondManger->CanChoselist[i]->Color, DiamondManger->CanChoselist[i]->Num);
+		if (index != -1)
+		{
+			IconList.at(index)->SetCanChose(true);
+		}
+	}
+
+}
 void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 {
 	CurCaiSeShuiJingPrecentNum_ += num;

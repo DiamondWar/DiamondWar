@@ -4,6 +4,7 @@
 #include "GameSceneControl.h"
 #include "CGlobleConfig.h"
 #include "SoliderConfig.h"
+#include "SpellConfig.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -86,18 +87,33 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 			CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = i;
 			CanChoselist[base->MyColor - 1]->Num++;
 		}
+		base->SetTipsInfo(false);
 	}
 	for (int i = 0; i < 4;i++)
 	{
 		int index = CGameSceneControl::GetInstance()->IsHaveHero(CanChoselist[i]->Color, CanChoselist[i]->Num);
 		if (index != -1)
 		{
-			CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
-			int num = data->NeedStar;
-			for (int n = 0; n < num;n++)
+			if (index < 6)
 			{
-				SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
+				CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
+				int num = data->NeedStar;
+				for (int n = 0; n < num; n++)
+				{
+					SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
+				}
 			}
+			else
+			{
+				CSpellData* data = CSpellConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
+				int num = data->NeedStar_;
+				for (int n = 0; n < num; n++)
+				{
+					SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
+				}
+				
+			}
+			
 		}
 	}
 }
@@ -331,7 +347,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 				for (int i = 0; i < ChoseNum; i++)
 				{
 					int rand = random(1, 4);
-					SpriteList.at(temp)->ResetInfo(rand);
+					SpriteList.at(temp)->ResetInfo(i+1,rand);
 					if (flag == true)
 						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width-80,90));
 					else 

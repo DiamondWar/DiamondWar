@@ -147,6 +147,13 @@
         <key>fileList</key>
         <array>
             <filename>Bullet_2003/Bullet_2003_1_1.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_7.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_8.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_2.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_3.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_4.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_5.png</filename>
+            <filename>Bullet_2003/Bullet_2003_1_6.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

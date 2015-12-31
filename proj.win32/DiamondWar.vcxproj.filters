@@ -141,6 +141,12 @@
     <ClCompile Include="..\Classes\EnemyLevelData.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SpellConfig.cpp">
+      <Filter>src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpellData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -249,6 +255,12 @@
       <Filter>src\Config</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyLevelData.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpellConfig.h">
+      <Filter>src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpellData.h">
       <Filter>src\Data</Filter>
     </ClInclude>
   </ItemGroup>

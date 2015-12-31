@@ -51,13 +51,23 @@ void CShuiJingBase::update(float dt)
 		// 获取当前进度
 		int num = ct->getPercentage();
 		// 设置进度速度（此处为每帧+1
-		if (CoolTime % 3 == 0)
-		{
-			ct->setPercentage(--num);
-		}
+		
 		CoolTime++;
-		CCString* ns = CCString::createWithFormat("%d", (MaxCoolTime - CoolTime) / 60 + 1);
-		CoolTimeLabel_->setString(ns->getCString());
+		if (CurMaxCoolTime - CoolTime <= MaxCoolTime)
+		{
+
+			if (CoolTime % 3 == 0)
+			{
+				ct->setPercentage(--num);
+			}
+			CCString* ns = CCString::createWithFormat("%d", (CurMaxCoolTime - CoolTime) / 60 + 1);
+			CoolTimeLabel_->setString(ns->getCString());
+		}
+		else
+		{
+			CoolTimeLabel_->setString("");
+		}
+	
 		// 设置了循环播放
 		if (num <= 0)
 		{
@@ -71,13 +81,14 @@ void CShuiJingBase::update(float dt)
 	}
 
 }
-void CShuiJingBase::ResetInfo(int Color,bool flag )
+void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
 {
 	MyColor = Color;
 	if (Color == 2)
 		Color = 3;
 	else if (Color == 3)
 		Color = 2;
+	CurMaxCoolTime = MaxCoolTime*num;
 	String* string = String::createWithFormat("shujing_%d.png", Color);
 	SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 	MainSprite_->setSpriteFrame(frame);

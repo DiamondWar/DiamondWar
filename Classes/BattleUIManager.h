@@ -12,6 +12,7 @@ public:
 	void CreateFirstBase();
 	void CreateSecondBase();
 	void CreateCaiSeShuiJing();
+	void UpdateIconShow();
 	void UpdateCaiSeShuiJing(int num);
 	void CreateMoveAnimation(int color ,cocos2d::CCPoint start, cocos2d::CCPoint target);
 	void OnMoveAnimationComplete(cocos2d::CCSprite* spr);

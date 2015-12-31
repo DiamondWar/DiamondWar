@@ -53,3 +53,13 @@ void BattleIcon::SetInfo(int id, int type,int color )
 	
 
 }
+void BattleIcon::SetCanChose(bool flag)
+{
+	if (flag)
+	{
+	}
+	else
+	{
+
+	}
+}

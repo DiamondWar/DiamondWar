@@ -182,6 +182,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\SoliderConfig.cpp" />
     <ClCompile Include="..\Classes\SoliderData.cpp" />
     <ClCompile Include="..\Classes\SoliderDie.cpp" />
+    <ClCompile Include="..\Classes\SpellConfig.cpp" />
+    <ClCompile Include="..\Classes\SpellData.cpp" />
     <ClCompile Include="..\Classes\StrengthConfig.cpp" />
     <ClCompile Include="..\Classes\StrengthData.cpp" />
     <ClCompile Include="..\Classes\SustainBullet.cpp" />
@@ -220,6 +222,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\SoliderConfig.h" />
     <ClInclude Include="..\Classes\SoliderData.h" />
     <ClInclude Include="..\Classes\SoliderDie.h" />
+    <ClInclude Include="..\Classes\SpellConfig.h" />
+    <ClInclude Include="..\Classes\SpellData.h" />
     <ClInclude Include="..\Classes\StrengthConfig.h" />
     <ClInclude Include="..\Classes\StrengthData.h" />
     <ClInclude Include="..\Classes\SustainBullet.h" />

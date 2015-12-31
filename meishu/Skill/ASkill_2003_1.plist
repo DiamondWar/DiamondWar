@@ -7,15 +7,106 @@
             <key>ASkill_2003_1_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{130,128}}</string>
+                <string>{{2,116},{126,124}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{7,3}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{130,128}}</string>
+                <string>{{25,13},{126,124}}</string>
                 <key>sourceSize</key>
-                <string>{130,128}</string>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{146,2},{140,112}}</string>
+                <key>offset</key>
+                <string>{-9,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{2,20},{140,112}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,242},{124,128}}</string>
+                <key>offset</key>
+                <string>{4,-8}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{23,22},{124,128}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{242,246},{112,140}}</string>
+                <key>offset</key>
+                <string>{3,7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{28,1},{112,140}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{288,2},{128,126}}</string>
+                <key>offset</key>
+                <string>{-6,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{11,19},{128,126}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{142,112}}</string>
+                <key>offset</key>
+                <string>{9,-3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{19,25},{142,112}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{130,116},{124,128}}</string>
+                <key>offset</key>
+                <string>{-2,8}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{17,6},{124,128}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
+            </dict>
+            <key>ASkill_2003_1_8.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{128,246},{112,142}}</string>
+                <key>offset</key>
+                <string>{-1,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{24,14},{112,142}}</string>
+                <key>sourceSize</key>
+                <string>{162,156}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -25,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>ASkill_2003_1.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cd2fdc2e60a2b678321f845f6ca71ff3$</string>
+            <string>$TexturePacker:SmartUpdate:5247fd1ad17d3ec189824703b7f1227d$</string>
             <key>textureFileName</key>
             <string>ASkill_2003_1.png</string>
         </dict>
