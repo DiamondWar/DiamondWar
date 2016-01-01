@@ -16,6 +16,7 @@ private:
 	cocos2d::CCProgressTimer* Progress_;
 	cocos2d::CCSprite* MainSprite_;
 	cocos2d::Label* CoolTimeLabel_;
+	cocos2d::CCSprite*AnimationSp_;
 	int  CoolTime = 0;
 	const int MaxCoolTime = 300;
 	int  CurMaxCoolTime = 0;

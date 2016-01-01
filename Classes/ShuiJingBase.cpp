@@ -16,6 +16,14 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 {
 	IsCanChose_ = flag;
 	MyColor = index;
+	String* st = String::createWithFormat("UI_crystal_shuijing_%d_1.png", index);
+	AnimationSp_ = CCSprite::createWithSpriteFrameName(st->getCString());
+	Animation* animation = NULL;
+	String* st1 = String::createWithFormat("ShuiJing_%d.png", index);
+	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
+	Animate *animate = Animate::create(animation);
+	auto *ac1 = RepeatForever::create(animate);
+	AnimationSp_->runAction(ac1);
 	if (index == 2)
 		index = 3;
 	else if (index == 3)
@@ -84,6 +92,12 @@ void CShuiJingBase::update(float dt)
 void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
 {
 	MyColor = Color;
+	Animation* animation = NULL;
+	String* st1 = String::createWithFormat("ShuiJing_%d.png", Color);
+	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
+	Animate *animate = Animate::create(animation);
+	auto *ac1 = RepeatForever::create(animate);
+	AnimationSp_->runAction(ac1);
 	if (Color == 2)
 		Color = 3;
 	else if (Color == 3)

@@ -45,6 +45,7 @@ bool HelloWorld::init()
         return false;
     }
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Battle.plist", "Battle.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleShuiJing.plist", "BattleShuiJing.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BZ.plist", "BZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("JZ.plist", "JZ.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("PZ.plist", "PZ.png");
@@ -126,7 +127,6 @@ bool HelloWorld::init()
 	manager->setPosition(0, 0);
 	addChild(manager);
 	this->scheduleUpdate();
-	CGameSceneControl::GetInstance()->AddScreenShake();
     return true;
 }
 void HelloWorld::update(float dt)

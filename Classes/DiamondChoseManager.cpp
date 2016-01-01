@@ -13,6 +13,24 @@ bool CDiamondChoseManager::init()
 	{
 		return false;
 	}
+	for (int i = 0; i < 4;i++)
+	{
+		Animation* animation = NULL;
+		String* str = String::createWithFormat("ShuiJing_%d", i);
+		animation = AnimationCache::sharedAnimationCache()->getAnimation(str->getCString());
+		if (animation == NULL)
+		{
+			Vector<SpriteFrame*> vsp;
+			for (int n = 1; n <= 9;n++)
+			{
+				String *string = String::createWithFormat("UI_crystal_shuijing_%d_%d.png",i , n);
+				SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
+				vsp.pushBack(spfr);
+			}
+			animation = Animation::createWithSpriteFrames(vsp, 1.0f / 10);
+			AnimationCache::sharedAnimationCache()->addAnimation(animation, str->getCString());
+		}
+	}
 	
 	for (int i = 0; i < 4;i++)
 	{
