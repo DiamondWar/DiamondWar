@@ -19,11 +19,12 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 	String* st = String::createWithFormat("UI_crystal_shuijing_%d_1.png", index);
 	AnimationSp_ = CCSprite::createWithSpriteFrameName(st->getCString());
 	Animation* animation = NULL;
-	String* st1 = String::createWithFormat("ShuiJing_%d.png", index);
+	String* st1 = String::createWithFormat("ShuiJing_%d", index);
 	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
 	Animate *animate = Animate::create(animation);
 	auto *ac1 = RepeatForever::create(animate);
 	AnimationSp_->runAction(ac1);
+	AnimationSp_->setVisible(false);
 	if (index == 2)
 		index = 3;
 	else if (index == 3)
@@ -42,13 +43,15 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 	Progress_->setAnchorPoint(Vec2(0, 0));
 	Progress_->setReverseProgress(true);
 	addChild(Progress_);
-
+	AnimationSp_->setAnchorPoint(ccp(0, 0));
+	addChild(AnimationSp_);
 	TTFConfig config("fonts/ERASDEMI.TTF", 80);
 	CoolTimeLabel_ = Label::createWithTTF(config, "", TextHAlignment::LEFT);
 	CoolTimeLabel_->setAnchorPoint(Vec2(0.5, 0.5));
 	CoolTimeLabel_->setPosition(55, 75);
 	CoolTimeLabel_->setTextColor(Color4B::RED);
 	addChild(CoolTimeLabel_);
+
 
 }
 void CShuiJingBase::update(float dt)
@@ -93,11 +96,12 @@ void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
 {
 	MyColor = Color;
 	Animation* animation = NULL;
-	String* st1 = String::createWithFormat("ShuiJing_%d.png", Color);
+	String* st1 = String::createWithFormat("ShuiJing_%d", Color);
 	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
 	Animate *animate = Animate::create(animation);
 	auto *ac1 = RepeatForever::create(animate);
 	AnimationSp_->runAction(ac1);
+	AnimationSp_->setVisible(false);
 	if (Color == 2)
 		Color = 3;
 	else if (Color == 3)
@@ -117,4 +121,12 @@ void CShuiJingBase::SetTipsInfo(bool flag)
 {
 	//添加光效显示
 	IsTips_ = flag;
+	if (flag == false)
+	{
+		AnimationSp_->setVisible(false);
+	}
+	else
+	{
+		AnimationSp_->setVisible(true);
+	}
 }

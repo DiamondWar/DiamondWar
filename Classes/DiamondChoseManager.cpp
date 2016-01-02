@@ -16,14 +16,14 @@ bool CDiamondChoseManager::init()
 	for (int i = 0; i < 4;i++)
 	{
 		Animation* animation = NULL;
-		String* str = String::createWithFormat("ShuiJing_%d", i);
+		String* str = String::createWithFormat("ShuiJing_%d", i+1);
 		animation = AnimationCache::sharedAnimationCache()->getAnimation(str->getCString());
 		if (animation == NULL)
 		{
 			Vector<SpriteFrame*> vsp;
 			for (int n = 1; n <= 9;n++)
 			{
-				String *string = String::createWithFormat("UI_crystal_shuijing_%d_%d.png",i , n);
+				String *string = String::createWithFormat("UI_crystal_shuijing_%d_%d.png",i+1 , n);
 				SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 				vsp.pushBack(spfr);
 			}
@@ -36,7 +36,12 @@ bool CDiamondChoseManager::init()
 	{
 		CShuiJingChose *chose = new CShuiJingChose();
 		chose->Color = 1+i;
-		chose->indexlist[6] = { 0 };
+		chose->indexlist[0] = 0 ;
+		chose->indexlist[1] =  0 ;
+		chose->indexlist[2] =  0;
+		chose->indexlist[3] =  0 ;
+		chose->indexlist[4] =  0 ;
+		chose->indexlist[5] =  0 ;
 		chose->Num = 0;
 		CanChoselist[i] = chose;
 	}
@@ -49,6 +54,7 @@ bool CDiamondChoseManager::init()
 		sprite->setAnchorPoint(Vec2(0,0));
 		sprite->setPosition(init_x + 170 * i, init_y);
 		addChild(sprite);
+		if (i<=5)
 		SpriteList.pushBack(sprite);
 	}
 	ChoseSprite_ = Sprite::createWithSpriteFrameName("line_1.png");
@@ -92,7 +98,7 @@ bool CDiamondChoseManager::init()
 		onTouchCancelled(touch, event);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-	
+	UpdateCanChoseShuiJing();
 	return true;
 }
 void CDiamondChoseManager::UpdateCanChoseShuiJing()
@@ -103,7 +109,21 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 		if (base->IsLoading == false && base->IsCanChose_ == true)
 		{
 			CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = i;
-			CanChoselist[base->MyColor - 1]->Num++;
+			if (CanChoselist[base->MyColor - 1]->Num != 0)
+			{
+				if (CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num - 1] == i - 1)
+				{
+					CanChoselist[base->MyColor - 1]->Num++;
+				}
+				else
+				{
+					CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = 0;
+				}
+			}
+			else
+			{
+				CanChoselist[base->MyColor - 1]->Num++;
+			}
 		}
 		base->SetTipsInfo(false);
 	}
@@ -139,7 +159,7 @@ void CDiamondChoseManager::update(float delta)
 {
 	if (CCGlobleConfig::Game_time % 10 == 0)
 	{
-
+		
 	}
 }
 //触摸事件开始，手指按下时  
@@ -379,6 +399,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 					SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
 				}
 				lastIndex = -1;
+				UpdateCanChoseShuiJing();
 			}
 		}
 		else

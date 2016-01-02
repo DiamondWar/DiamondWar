@@ -9,7 +9,7 @@ public:
 	static CSpellConfig* GetInstance();
 	CSpellData* GetItemById(int id);
 private:
-	std::string  StressText = "SkillConfig.txt";
+	std::string  StressText = "SpellConfig.txt";
 	static CSpellConfig* Instance_;
 	cocos2d::Vector<CSpellData*> DataList_;
 };

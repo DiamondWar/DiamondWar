@@ -8,6 +8,8 @@
 #include "AttackConfig.h"
 #include "StrengthConfig.h"
 #include "AudioManager.h"
+#include "EnemyLevelConfig.h"
+#include "SpellConfig.h"
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -115,6 +117,8 @@ bool HelloWorld::init()
 	CSkillConfig::GetInstance()->LoadText();
 	CAttackConfig::GetInstance()->LoadText();
 	CStrengthConfig::GetInstance()->LoadText();
+	CEnemyLevelConfig::GetInstance()->LoadText();
+	CSpellConfig::GetInstance()->LoadText();
 	CAudioManager::GetInstance()->PlayerBackGroundMusic("background.mp3");
 	Node* node = CSLoader::createNode("MainScene.csb");
 	addChild(node);
