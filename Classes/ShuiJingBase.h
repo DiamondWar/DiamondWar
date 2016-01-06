@@ -9,9 +9,11 @@ public:
 	void SetInfo(int index,bool flag);
 	void SetTipsInfo(bool flag);
 	void ResetInfo(int num,int Color, bool flag = true);
+	void SetShuiJingCanLoading();
 	int MyColor =0;
 	bool IsLoading = false;//是否进入冷却
 	bool IsCanChose_ = false;//是否可以选择
+	bool IsCanLoading_ = false;
 private: 
 	cocos2d::CCProgressTimer* Progress_;
 	cocos2d::CCSprite* MainSprite_;

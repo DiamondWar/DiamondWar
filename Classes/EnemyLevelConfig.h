@@ -9,6 +9,7 @@ public:
 	void LoadText();
 	static CEnemyLevelConfig* GetInstance();
 	CEnemyLevelData* GetItemById(int id);
+	CEnemyLevelData* GetItemByIndex(int index);
 	cocos2d::Vector<CEnemyLevelData*> DataList_;
 private:
 	std::string  StressText = "EnemyLevelConfig.txt";

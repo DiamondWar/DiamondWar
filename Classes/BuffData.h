@@ -3,7 +3,7 @@
 #define _CBUFFDATA_H_
 #include "cocos2d.h"
 #include "ESystemEnum.h"
-#include "Solider.h"
+#include "BaseBoss.h"
 class CBuffData
 {
 public:
@@ -33,8 +33,8 @@ public:
 	//下一个buff;
 	CBuffData* NextBuff = nullptr;
 	//当前目标
-	CSolider* Target = nullptr;
-	CSolider* From  = nullptr;
+	CBaseBoss* Target = nullptr;
+	CBaseBoss* From = nullptr;
 	std::string ResourceName="";
 	int ResourceFrameCount = 0;
 	std::string HitVoice_ = "";

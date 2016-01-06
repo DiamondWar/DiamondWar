@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "BattleObjectManager.h"
+#include "EnemyLevelData.h"
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -14,6 +15,10 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 	virtual void  update(float dt);
+private: 
+	long  LastFrameCount = 0;
+	int EnemeyCount = 0;
+	CEnemyLevelData* EnemyData_;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

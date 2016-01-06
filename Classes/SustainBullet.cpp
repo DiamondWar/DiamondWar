@@ -3,7 +3,7 @@
 #include "BattleObjectManager.h"
 #include "GameSceneControl.h"
 USING_NS_CC;
-CSustainBullet::CSustainBullet(CAttackData* data, int x, int y, CBuffData*  damage, CSolider* target, int rank, int type)
+CSustainBullet::CSustainBullet(CAttackData* data, int x, int y, CBuffData*  damage, CBaseBoss* target, int rank, int type)
 {
 	Data_ = data;
 	Init_x = x;

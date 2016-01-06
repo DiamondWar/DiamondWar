@@ -4,7 +4,7 @@
 #include "Buff.h"
 #include "BattleObjectManager.h"
 USING_NS_CC;
-CLineBullet::CLineBullet(CAttackData* data, int x, int y, CBuffData*  damage, CSolider* target, int rank, int type)
+CLineBullet::CLineBullet(CAttackData* data, int x, int y, CBuffData*  damage, CBaseBoss* target, int rank, int type)
 {
 	Data_ = data;
 	ResourceName = data->ResourceName1 + "_1.png";
@@ -178,7 +178,7 @@ bool CLineBullet::CheckIsAtTarget()
 }
 void CLineBullet::CheckEnemyInAttackRange()
 {
-	CSolider* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_,3, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
+	CBaseBoss* solider = CBattleObjectManager::GetInstance()->GetEnemyByRange(Ranks_,3, 0, 0, Obj->getPosition().x, Obj->getPosition().y);
 	if (LastTarget_ == solider||LastTarget_!=nullptr)
 		return;
 	LastTarget_ = solider;

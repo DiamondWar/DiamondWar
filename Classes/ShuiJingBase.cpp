@@ -14,6 +14,8 @@ bool CShuiJingBase::init()
 }
 void CShuiJingBase::SetInfo(int index,bool flag)
 {
+	IsCanLoading_ = false;
+	IsLoading = false;
 	IsCanChose_ = flag;
 	MyColor = index;
 	String* st = String::createWithFormat("UI_crystal_shuijing_%d_1.png", index);
@@ -42,20 +44,34 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 	Progress_->setType(kCCProgressTimerTypeRadial);
 	Progress_->setAnchorPoint(Vec2(0, 0));
 	Progress_->setReverseProgress(true);
-	addChild(Progress_);
 	AnimationSp_->setAnchorPoint(ccp(0, 0));
 	addChild(AnimationSp_);
+	addChild(Progress_);
 	TTFConfig config("fonts/ERASDEMI.TTF", 80);
 	CoolTimeLabel_ = Label::createWithTTF(config, "", TextHAlignment::LEFT);
 	CoolTimeLabel_->setAnchorPoint(Vec2(0.5, 0.5));
 	CoolTimeLabel_->setPosition(55, 75);
 	CoolTimeLabel_->setTextColor(Color4B::RED);
 	addChild(CoolTimeLabel_);
+	if (IsCanChose_ == false)
+	{
+		int num = Progress_->getPercentage();
+		num = 100;
+		Progress_->setPercentage(num);
+	}
+		
 
-
+}
+void CShuiJingBase::SetShuiJingCanLoading()
+{
+	IsCanLoading_ = true;
+	IsLoading = true;
+	CurMaxCoolTime = MaxCoolTime;
 }
 void CShuiJingBase::update(float dt)
 {
+	if (IsCanLoading_ == false)
+		return;
 	if (IsLoading == true)
 	{
 		CCProgressTimer *ct = (CCProgressTimer*)getChildByTag(10);
@@ -100,13 +116,15 @@ void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
 	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
 	Animate *animate = Animate::create(animation);
 	auto *ac1 = RepeatForever::create(animate);
+	AnimationSp_->stopAllActions();
 	AnimationSp_->runAction(ac1);
 	AnimationSp_->setVisible(false);
 	if (Color == 2)
 		Color = 3;
 	else if (Color == 3)
 		Color = 2;
-	CurMaxCoolTime = MaxCoolTime*num;
+	IsCanLoading_ = false;
+	CurMaxCoolTime = MaxCoolTime;
 	String* string = String::createWithFormat("shujing_%d.png", Color);
 	SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 	MainSprite_->setSpriteFrame(frame);

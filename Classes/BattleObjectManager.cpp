@@ -66,9 +66,9 @@ CBaseBoss* CBattleObjectManager::GetSecondRanksBoss()
 {
 	return SecondRanksBoss_;
 }
-CSolider* CBattleObjectManager::GetEnemyByRange(float rank,int type, float range, float r, float x, float y)
+CBaseBoss* CBattleObjectManager::GetEnemyByRange(float rank, int type, float range, float r, float x, float y)
 {
-	CSolider* sol = nullptr;
+	CBaseBoss* sol = nullptr;
 	int lastlength = 0;
 	int attacktype = 0;
 
@@ -99,6 +99,27 @@ CSolider* CBattleObjectManager::GetEnemyByRange(float rank,int type, float range
 						}
 					}
 				}
+			}
+		}
+	}
+	if (sol == nullptr)
+	{
+		if (rank == 1)
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, SecondRanksBoss_->Obj->getPosition().x, SecondRanksBoss_->Obj->getPosition().y);
+			length = length  - r;
+			if (length < range)
+			{
+				sol = SecondRanksBoss_;
+			}
+		}
+		else
+		{
+			float length = CCGlobleConfig::GetLengthByPoint(x, y, FirstRanksBoss_->Obj->getPosition().x, FirstRanksBoss_->Obj->getPosition().y);
+			length = length - r;
+			if (length < range)
+			{
+				sol = FirstRanksBoss_;
 			}
 		}
 	}

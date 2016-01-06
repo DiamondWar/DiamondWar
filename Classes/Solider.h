@@ -10,6 +10,7 @@ class CBuffData;
 class CSolider :public CBaseBoss
 {
 public:
+	CSolider();
 	CSolider(int id, int type, int rank, float level);
 	~CSolider();
 
@@ -30,29 +31,23 @@ public:
 	//¼ì²â·¶Î§ÄÚµÄ¶ÓÓÑ
 	void CheckFriendInRange();
 
-	void GetDamage(int damage, int type);
-	void GetMoveSpeedCf(float cf);
-	void GetAttackSpeedCf(float cf);
-	void GetAttackRangeCf(float cf);
-	void GetAttackCf(float cf);
-	void GetBuff(CBuffData* data);
+	virtual void GetDamage(int damage, int type);
+	virtual void GetMoveSpeedCf(float cf);
+	virtual void GetAttackSpeedCf(float cf);
+	virtual void GetAttackRangeCf(float cf);
+	virtual void GetAttackCf(float cf);
+	virtual void GetBuff(CBuffData* data);
 	//ÏÔÊ¾ÊÜÉË
 	void ShowHurt();
 	//µÃµ½×Óµ¯Î»ÖÃ
 	float GetBulletPointToBulletY();
 	float GetBulletPointToBulletX();
-	cocos2d::Vec2 UpdateBulletPosition();
-	CSolider* AttackTarget = nullptr;
+	virtual cocos2d::Vec2 UpdateBulletPosition();
+	CBaseBoss* AttackTarget = nullptr;
 	CSoliderData* Data_;
 	CAttackData* AttackData_;
 	CSkillData* SKillData_;
-	cocos2d::Node* BasePoint_;
-	cocos2d::Node* CenterPoint_;
-	cocos2d::Node* LeftPoint_;
-	cocos2d::Node* RightPoint_;
-	cocos2d::Node* UpPoint_;
-	cocos2d::Node* BulletPoint_;
-	cocos2d::Vec2 BulletPos_;
+	
 	int AttackDamage;
 	float AttakRange = 300;
 private:
@@ -68,8 +63,7 @@ private:
 	float init_AttackInveral = 0;
 	int Init_MoveSpeed = 0;
 	int Init_AttackRange = 0;
-	float CurBlood = 0;
-	float MaxBlood = 0;
+	
 	//¹¥»÷·¶Î§//¹¥»÷·¶Î§ÏµÊý
 	float AttackRangeCf = 0;
 	//¹¥»÷Á¦Ï÷Èõ

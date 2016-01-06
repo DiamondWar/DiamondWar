@@ -21,7 +21,7 @@ public:
 	void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
 	bool CheckPointInThis(cocos2d::CCPoint pos);
-	
+	int CheckDiamondIsLoading();
 	CShuiJingChose* CanChoselist[4];
 private: 
 	void UpdateCanChoseShuiJing();
@@ -38,5 +38,7 @@ private:
 	int LastPoint = 0;
 	bool IsAddOrDel = false;//判断方向 true是往前false是往后  0 是呆在1个格子中间
 	
+	int CurFrameCount = 0;
+	int LastFrameCount = 0;
 };
 

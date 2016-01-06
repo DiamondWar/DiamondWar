@@ -200,16 +200,16 @@ void CBattleUIManager::update(float delta)
 	if (CBattleObjectManager::GetInstance()->GetFirstRanksBoss() != nullptr&&MyBloodProgress_ != nullptr&&MyBloodDesc_ != nullptr)
 	{
 		CBaseBoss* boss = CBattleObjectManager::GetInstance()->GetFirstRanksBoss();
-		MyBloodProgress_->setPercentage(boss->CurHp * 100 / boss->MaxHp);
+		MyBloodProgress_->setPercentage(boss->CurBlood * 100 / boss->MaxBlood);
 
-		String* str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
+		String* str = String::createWithFormat("%.0f/%.0f", boss->CurBlood, boss->MaxBlood);
 		MyBloodDesc_->setString(str->getCString());
 	}
 	if (CBattleObjectManager::GetInstance()->GetSecondRanksBoss() != nullptr&&SecondBloodDesc_ != nullptr&&SecondBloodProgress_ != nullptr)
 	{
 		CBaseBoss* boss = CBattleObjectManager::GetInstance()->GetSecondRanksBoss();
-		SecondBloodProgress_->setPercentage(boss->CurHp * 100 / boss->MaxHp);
-		String* str = String::createWithFormat("%d/%d", boss->CurHp, boss->MaxHp);
+		SecondBloodProgress_->setPercentage(boss->CurBlood * 100 / boss->MaxBlood);
+		String* str = String::createWithFormat("%.0f/%.0f", boss->CurBlood, boss->MaxBlood);
 		SecondBloodDesc_->setString(str->getCString());
 	}
 }

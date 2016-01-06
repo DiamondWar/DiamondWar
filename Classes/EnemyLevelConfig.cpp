@@ -31,7 +31,7 @@ void CEnemyLevelConfig::LoadText()
 		data->ID = str0->intValue();
 		str0->release();
 		str0 = static_cast<String*>(strarray->getObjectAtIndex(index++));
-		data->ReadyTime = str0->floatValue();
+		data->ReadyTime = str0->floatValue()*60;
 		str0->release();
 		str0 = static_cast<String*>(strarray->getObjectAtIndex(index++));
 		data->RoleId = str0->intValue();
@@ -52,5 +52,11 @@ CEnemyLevelData* CEnemyLevelConfig::GetItemById(int id)
 		if (key->ID == id)
 			return key;
 	}
+	return nullptr;
+}
+CEnemyLevelData* CEnemyLevelConfig::GetItemByIndex(int index)
+{
+	if (index<DataList_.size())
+		return DataList_.at(index);
 	return nullptr;
 }

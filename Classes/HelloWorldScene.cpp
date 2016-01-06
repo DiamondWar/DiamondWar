@@ -131,10 +131,20 @@ bool HelloWorld::init()
 	manager->setPosition(0, 0);
 	addChild(manager);
 	this->scheduleUpdate();
+	LastFrameCount = 0;
+
+	EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
     return true;
 }
 void HelloWorld::update(float dt)
 {
 	CCGlobleConfig::Game_time++;
 	CBattleObjectManager::GetInstance()->Update();
+	if (EnemyData_!=nullptr&&( LastFrameCount + EnemyData_->ReadyTime <= CCGlobleConfig::Game_time))
+	{
+		LastFrameCount = CCGlobleConfig::Game_time;
+		CGameSceneControl::GetInstance()->CreateSolider(EnemyData_->RoleId,2,1);
+		EnemeyCount++;
+		EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
+	}
 }

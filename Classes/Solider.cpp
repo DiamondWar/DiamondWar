@@ -265,7 +265,7 @@ void CSolider::OnSkillActionComplete()
 }
 bool CSolider::CheckEnemyInRange()
 {
-	CSolider* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks, AttackData_->TargetType, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
+	CBaseBoss* Sol = CBattleObjectManager::GetInstance()->GetEnemyByRange((float)Ranks, AttackData_->TargetType, (float)AttakRange, (float)RangeR_, (float)Obj->getPosition().x, (float)Obj->getPosition().y);
 	if (Sol != nullptr)
 	{
 		AttackTarget = Sol;

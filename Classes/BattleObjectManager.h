@@ -4,7 +4,7 @@
 
 
 #include "cocos2d.h"
-#include "Solider.h"
+#include "BaseBoss.h"
 #include "CGlobleConfig.h"
 #include "Bullet.h"
 #include "Buff.h"
@@ -31,7 +31,7 @@ public:
 	void ClearAllObject();
 	void Update();
 
-	CSolider* GetEnemyByRange(float rank, int type, float range, float r, float x, float y);
+	CBaseBoss* GetEnemyByRange(float rank, int type, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetEnemyListByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetLuDiEnemyListByRange(float rank, float range, float r, float x, float y);
 	cocos2d::Vector<CSolider*> GetFeiXingEnemyListByRange(float rank, float range, float r, float x, float y);

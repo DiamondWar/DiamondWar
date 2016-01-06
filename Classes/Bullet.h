@@ -10,7 +10,7 @@ class CBullet :
 {
 public:
 
-	CBullet(CAttackData* data, int x, int y, CBuffData* damage, CSolider* target, int rank, int type);
+	CBullet(CAttackData* data, int x, int y, CBuffData* damage, CBaseBoss* target, int rank, int type);
 	~CBullet();
 	virtual void Update();
 	virtual void OnResourceLoadComplete() ;
@@ -24,7 +24,7 @@ public:
 	int Damage;
 private: 
 	float iSpeed_;
-	CSolider*  AtTarget_;
+	CBaseBoss*  AtTarget_;
 	cocos2d::Node* TargetNode;
 	int FrameCount;
 

@@ -3,7 +3,7 @@
 class CSustainBullet :public CBattleObject
 {
 public:
-	CSustainBullet(CAttackData* data, int x, int y, CBuffData* damage, CSolider* target, int rank, int type);
+	CSustainBullet(CAttackData* data, int x, int y, CBuffData* damage, CBaseBoss* target, int rank, int type);
 	~CSustainBullet();
 	virtual void Update();
 	virtual void OnResourceLoadComplete();
@@ -22,6 +22,6 @@ private:
 	int curFrameCount = 0;
 	bool IsCanCreateBullet = true;
 	cocos2d::Vector<CBullet*> bulletlist;
-	CSolider*  AtTarget_;
+	CBaseBoss*  AtTarget_;
 };
 

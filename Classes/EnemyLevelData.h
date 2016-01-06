@@ -7,7 +7,7 @@ public:
 	~CEnemyLevelData();
 
 	 int ID;
-	 float ReadyTime;
+	 int ReadyTime;
 	 int RoleId;
 	 std::string RoleName;
 };

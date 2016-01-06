@@ -5,7 +5,7 @@
 #include "Buff.h"
 #include "BattleObjectManager.h"
 USING_NS_CC;
-CBullet::CBullet(CAttackData* data, int x, int y, CBuffData*  damage, CSolider* target, int rank, int type)
+CBullet::CBullet(CAttackData* data, int x, int y, CBuffData*  damage, CBaseBoss* target, int rank, int type)
 {
 	Data_ = data;
 	ResourceName = data->ResourceName1 + "_1.png";

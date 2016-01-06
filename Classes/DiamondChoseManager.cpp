@@ -50,7 +50,7 @@ bool CDiamondChoseManager::init()
 	{
 		int rand = random(1,4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
-		sprite->SetInfo(rand,i!=7);
+		sprite->SetInfo(rand,i!=6);
 		sprite->setAnchorPoint(Vec2(0,0));
 		sprite->setPosition(init_x + 170 * i, init_y);
 		addChild(sprite);
@@ -98,12 +98,24 @@ bool CDiamondChoseManager::init()
 		onTouchCancelled(touch, event);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	scheduleUpdate();
 	UpdateCanChoseShuiJing();
 	return true;
 }
 void CDiamondChoseManager::UpdateCanChoseShuiJing()
 {
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 4; i++)
+	{
+		CanChoselist[i]->Color = i+1;
+		CanChoselist[i]->Num = 0;
+		CanChoselist[i]->indexlist[0] = 0;
+		CanChoselist[i]->indexlist[1] = 0;
+		CanChoselist[i]->indexlist[2] = 0;
+		CanChoselist[i]->indexlist[3] = 0;
+		CanChoselist[i]->indexlist[4] = 0;
+		CanChoselist[i]->indexlist[5] = 0;
+	}
+	for (int i = 0; i < 6; i++)
 	{
 		CShuiJingBase* base = SpriteList.at(i);
 		if (base->IsLoading == false && base->IsCanChose_ == true)
@@ -157,10 +169,26 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 }
 void CDiamondChoseManager::update(float delta)
 {
-	if (CCGlobleConfig::Game_time % 10 == 0)
+	CurFrameCount++;
+	if (CurFrameCount % 300 == 0)
 	{
+		int index = CheckDiamondIsLoading();
+		if (index >= 0)
+		{
+			SpriteList.at(index)->SetShuiJingCanLoading();
+		}
+			
 		
 	}
+}
+int CDiamondChoseManager::CheckDiamondIsLoading()
+{
+	for (int i = 0; i < SpriteList.size();i++)
+	{
+		if (SpriteList.at(i)->IsCanLoading_ == false&&SpriteList.at(i)->IsLoading == true)
+			return i;
+	}
+	return -1;
 }
 //触摸事件开始，手指按下时  
 void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
@@ -392,7 +420,6 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(200, 540));
 					SpriteList.pushBack(SpriteList.at(temp));
 					SpriteList.erase(temp);
-					
 				}
 				for (int i = 0; i < SpriteList.size(); i++)
 				{

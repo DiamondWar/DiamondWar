@@ -3,7 +3,7 @@
 class CLinkBullet :public CBattleObject
 {
 public:
-	CLinkBullet(CAttackData* data, int x, int y, CBuffData* damage, CSolider* target, int rank, int type);
+	CLinkBullet(CAttackData* data, int x, int y, CBuffData* damage, CBaseBoss* target, int rank, int type);
 	~CLinkBullet();
 	virtual void Update();
 	virtual void OnResourceLoadComplete();
@@ -17,7 +17,7 @@ public:
 	int Damage;
 private:
 	float AtTargetLength = 0;
-	CSolider*  AtTarget_;
+	CBaseBoss*  AtTarget_;
 	cocos2d::Node* TargetNode;
 	int FrameCount= 0;
 	float MaxTime = 0;
