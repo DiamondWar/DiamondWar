@@ -50,11 +50,11 @@ bool CDiamondChoseManager::init()
 	{
 		int rand = random(1,4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
-		sprite->SetInfo(rand,i!=6);
+		sprite->SetInfo(rand,i!=7);
 		sprite->setAnchorPoint(Vec2(0,0));
 		sprite->setPosition(init_x + 170 * i, init_y);
 		addChild(sprite);
-		if (i<=5)
+		//if (i<=5)
 		SpriteList.pushBack(sprite);
 	}
 	ChoseSprite_ = Sprite::createWithSpriteFrameName("line_1.png");
@@ -108,12 +108,12 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 	{
 		CanChoselist[i]->Color = i+1;
 		CanChoselist[i]->Num = 0;
-		CanChoselist[i]->indexlist[0] = 0;
-		CanChoselist[i]->indexlist[1] = 0;
-		CanChoselist[i]->indexlist[2] = 0;
-		CanChoselist[i]->indexlist[3] = 0;
-		CanChoselist[i]->indexlist[4] = 0;
-		CanChoselist[i]->indexlist[5] = 0;
+		CanChoselist[i]->indexlist[0] = -1;
+		CanChoselist[i]->indexlist[1] = -1;
+		CanChoselist[i]->indexlist[2] = -1;
+		CanChoselist[i]->indexlist[3] = -1;
+		CanChoselist[i]->indexlist[4] =-1;
+		CanChoselist[i]->indexlist[5] =-1;
 	}
 	for (int i = 0; i < 6; i++)
 	{
@@ -129,7 +129,15 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 				}
 				else
 				{
-					CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = 0;
+					if (CanChoselist[base->MyColor - 1]->Num == 1)
+					{
+						CanChoselist[base->MyColor - 1]->indexlist[0] = i;
+						CanChoselist[base->MyColor - 1]->Num = 1;
+					}
+					else
+					{
+						CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = -1;
+					}
 				}
 			}
 			else
@@ -148,6 +156,9 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 			{
 				CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
 				int num = data->NeedStar;
+
+				if (CanChoselist[i]->Num>num)
+					num = CanChoselist[i]->Num;
 				for (int n = 0; n < num; n++)
 				{
 					SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
@@ -176,6 +187,7 @@ void CDiamondChoseManager::update(float delta)
 		if (index >= 0)
 		{
 			SpriteList.at(index)->SetShuiJingCanLoading();
+			UpdateCanChoseShuiJing();
 		}
 			
 		

@@ -15,6 +15,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 	virtual void  update(float dt);
+	virtual void onExit();
+	
 private: 
 	long  LastFrameCount = 0;
 	int EnemeyCount = 0;

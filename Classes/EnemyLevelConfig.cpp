@@ -42,7 +42,6 @@ void CEnemyLevelConfig::LoadText()
 		DataList_.pushBack(data);
 
 	}
-	CCLOG(" data  == %s", ns->getCString());
 }
 
 CEnemyLevelData* CEnemyLevelConfig::GetItemById(int id)

@@ -49,7 +49,6 @@ void CStrengthConfig::LoadText()
 		DataList_.pushBack(data);
 
 	}
-	CCLOG(" data  == %s", ns->getCString());
 }
 
 float CStrengthConfig::GetItemById(int id,int type)//第一个参数为多余的数量 第二个参数为本来所需费用

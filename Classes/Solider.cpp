@@ -54,13 +54,27 @@ void CSolider::OnResourceLoadComplete()
 	Obj->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	Obj->setPosition(Init_x, Init_y);
 	Obj->setScale(Data_->ScaleValue);
+	//Sprite* node = Sprite::createWithSpriteFrameName("player1.png");
+	//node->setScale(0.5);
+	//Sprite* node1 = Sprite::createWithSpriteFrameName("player1.png");
+	//node1->setScale(0.5);
+	//Sprite* node2 = Sprite::createWithSpriteFrameName("player1.png");
+	//node2->setScale(0.5);
+	//Sprite* node3 = Sprite::createWithSpriteFrameName("player1.png");
+	//Sprite* node4 = Sprite::createWithSpriteFrameName("player1.png");
+	//node3->setScale(0.5);
+	//node4->setScale(0.5);
 	UpPoint_ = Obj->getChildByName("buff1");
 	BasePoint_ = Obj->getChildByName("basepoint");
 	CenterPoint_ = Obj->getChildByName("centerpoint");
 	LeftPoint_ = Obj->getChildByName("buff2");
 	RightPoint_ = Obj->getChildByName("buff3");
 	BulletPoint_ = getBulletPoint(Obj, "bulletpoint");
-
+	/*BasePoint_->addChild(node1);
+	UpPoint_->addChild(node);
+	CenterPoint_->addChild(node2);
+	LeftPoint_->addChild(node3);
+	RightPoint_->addChild(node4);*/
 	if (BulletPoint_ != nullptr)
 	{
 		if (Data_->ID == 2001)
@@ -142,9 +156,8 @@ Vec2 CSolider::UpdateBulletPosition()
 			Node*node1 = node->getChildByName("Node");
 			Node*node11 = node1->getChildByName("Sprite_24");
 			Node*node2 = node11->getChildByName("wuqi");
-			return  node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition() + BulletPoint_->getPosition() + Obj->getPosition();
+			return Vec2(2,-50)+ node2->getPosition() + node1->getPosition() + node11->getPosition() + node->getPosition() + BulletPoint_->getPosition() + Obj->getPosition();
 		}
-
 	}
 	else
 	{
@@ -154,7 +167,9 @@ Vec2 CSolider::UpdateBulletPosition()
 			Node*node1 = node->getChildByName("Node");
 			Node*node11 = node1->getChildByName("Sprite_24");
 			Node*node2 = node11->getChildByName("wuqi");
-			return  -node2->getPosition() - node1->getPosition() - node11->getPosition() - node->getPosition() - BulletPoint_->getPosition() + Obj->getPosition();
+			int x = node2->getPositionX() + node1->getPositionX() + node11->getPositionX() + node->getPositionX() + BulletPoint_->getPositionX();
+			int y = node2->getPositionY() + node1->getPositionY() + node11->getPositionY() + node->getPositionY() + BulletPoint_->getPositionY();
+			return Vec2(-x+2+Obj->getPositionX(),-50+y+Obj->getPositionY());
 		}
 	}
 	return Vec2::ZERO;

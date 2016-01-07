@@ -71,9 +71,8 @@ void CBuff::OnResourceLoadComplete()
 		}
 		else if (BuffData->attackPoint == 2)
 		{
-
 			BuffData->Target->Obj->addChild(Obj);
-			Obj->setAnchorPoint(Vec2(0.5, 1));
+			Obj->setAnchorPoint(Vec2(0.5, 0.5));
 			Obj->setPosition(BuffData->Target->UpPoint_->getPosition());
 		}
 		else if (BuffData->attackPoint == 3)
@@ -172,10 +171,14 @@ void CBuff::OnHurtActionComplete()
 }
 void CBuff::OnAttackActionComplete()
 {
-	BuffData->Target->GetAttackCf(-BuffData->AttackCf);
-	BuffData->Target->GetMoveSpeedCf(-BuffData->SpeedCf);
-	BuffData->Target->GetAttackRangeCf(-BuffData->AttackRangeCf);
-	BuffData->Target->GetAttackSpeedCf(-BuffData->AttackInveralCf);
+	if (BuffData->Target != nullptr)
+	{
+		BuffData->Target->GetAttackCf(-BuffData->AttackCf);
+		BuffData->Target->GetMoveSpeedCf(-BuffData->SpeedCf);
+		BuffData->Target->GetAttackRangeCf(-BuffData->AttackRangeCf);
+		BuffData->Target->GetAttackSpeedCf(-BuffData->AttackInveralCf);
+	}
+	
 	if (Obj!=nullptr)
 	Obj->setVisible(false);
 	IsDelete_ = true;

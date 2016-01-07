@@ -58,6 +58,7 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 		int num = Progress_->getPercentage();
 		num = 100;
 		Progress_->setPercentage(num);
+		setVisible(false);
 	}
 		
 
@@ -65,8 +66,10 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 void CShuiJingBase::SetShuiJingCanLoading()
 {
 	IsCanLoading_ = true;
-	IsLoading = true;
+	IsLoading = false;
+	Progress_->setPercentage(0);
 	CurMaxCoolTime = MaxCoolTime;
+	setVisible(true);
 }
 void CShuiJingBase::update(float dt)
 {
@@ -131,9 +134,14 @@ void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
 
 	if (flag == false)
 	Progress_->setPercentage(0);
-	else 
+	else
+	{
 		Progress_->setPercentage(100);
+		setVisible(false); 
+	}
+		
 	IsLoading = flag;
+
 }
 void CShuiJingBase::SetTipsInfo(bool flag)
 {

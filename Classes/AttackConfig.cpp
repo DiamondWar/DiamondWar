@@ -90,7 +90,7 @@ void CAttackConfig::LoadText()
 		DataList_.pushBack(data);
 
 	}
-	CCLOG(" data  == %s", ns->getCString());
+
 }
 
 CAttackData* CAttackConfig::GetItemById(int id)

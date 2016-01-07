@@ -10,6 +10,7 @@ public:
 	void CreateBoss(int ranks);
 	void SetRoot(cocos2d::Node* root);
 	void InitGameData();
+	void CreateSpell(int id);
 	bool IsHaveConsumeHero(int color ,int num);
 	int IsHaveHero(int color, int num);
 	void AddScreenShake();

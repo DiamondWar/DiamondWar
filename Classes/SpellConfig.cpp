@@ -102,7 +102,6 @@ void CSpellConfig::LoadText()
 		data->updateResouce();
 		DataList_.pushBack(data);
 	}
-	CCLOG(" data  == %s", ns->getCString());
 }
 
 CSpellData* CSpellConfig::GetItemById(int id)

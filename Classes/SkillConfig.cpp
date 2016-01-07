@@ -104,7 +104,6 @@ void CSkillConfig::LoadText()
 		DataList_.pushBack(data);
 
 	}
-	CCLOG(" data  == %s", ns->getCString());
 }
 
 CSkillData* CSkillConfig::GetItemById(int id)

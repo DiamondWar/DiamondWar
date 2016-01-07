@@ -85,7 +85,6 @@ void CSoliderConfig::LoadText()
 		str10->release();
 		
 		DataList_.pushBack(data);
-		CCLOG(" data  == %s", str->getCString());
 	}
 }
 CSoliderData*  CSoliderConfig::GetItemById(int id)

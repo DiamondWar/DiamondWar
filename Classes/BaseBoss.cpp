@@ -9,18 +9,18 @@ CBaseBoss::CBaseBoss(int rank)
 	if (rank == 1)
 	{
 		ResourceName = "myboss.png";
-		Init_x = 160;
+		Init_x = 60;
 	}
 	else
 	{
 		ResourceName = "enemyboss.png";
-		Init_x = 1750;
+		Init_x = 1600;
 	}
-	Init_y = 520;
+	Init_y = 350;
 	CurBlood = 10000;
 	MaxBlood = 10000;
 	InitObj();
-	
+
 }
 void CBaseBoss::GetDamage(int damage, int type)
 {
@@ -30,7 +30,7 @@ void CBaseBoss::GetDamage(int damage, int type)
 	bool flag = (CurBlood <= MaxBlood*0.3f);
 	CurBlood -= damage;
 	if (CurBlood <= 0)
-		CurBlood = 0;  
+		CurBlood = 0;
 }
 void CBaseBoss::GetBuff(CBuffData* data)
 {
@@ -57,10 +57,10 @@ Vec2 CBaseBoss::UpdateBulletPosition()
 }
 void CBaseBoss::OnResourceLoadComplete()
 {
-	
+	Obj->setAnchorPoint(ccp(0, 0));
 	Obj->setPosition(Init_x, Init_y);
 	BasePoint_ = Node::create();
-	BasePoint_->setPosition(0, 0);
+	BasePoint_->setPosition(Obj->getContentSize().width / 2, 0);
 	Obj->addChild(BasePoint_);
 	CenterPoint_ = Node::create();
 	CenterPoint_->setPosition(Obj->getContentSize().width / 2, Obj->getContentSize().height / 2);
@@ -68,13 +68,12 @@ void CBaseBoss::OnResourceLoadComplete()
 	LeftPoint_ = Node::create();
 	Obj->addChild(LeftPoint_);
 	LeftPoint_->setPosition(0, Obj->getContentSize().height / 2);
-
 	RightPoint_ = Node::create();
 	Obj->addChild(RightPoint_);
 	RightPoint_->setPosition(Obj->getContentSize().width, Obj->getContentSize().height / 2);
 	UpPoint_ = Node::create();
 	Obj->addChild(UpPoint_);
-	UpPoint_->setPosition(0, Obj->getContentSize().height);
+	UpPoint_->setPosition(Obj->getContentSize().width/2, Obj->getContentSize().height);
 	BulletPoint_ = Node::create();
 	Obj->addChild(BulletPoint_);
 	BulletPoint_->setPosition(Obj->getContentSize().width / 2, Obj->getContentSize().height / 2);

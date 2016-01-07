@@ -36,7 +36,14 @@ void CAudioManager::PreLoadAudioBackground(std::string fileName)
 {
 	SimpleAudioEngine::getInstance()->preloadBackgroundMusic(fileName.c_str());
 }
+void CAudioManager::UnLoadAudioBackground(std::string fileName)
+{
+}
 void CAudioManager::PreLoadAudio(const char* fileName)
 {
 	SimpleAudioEngine::getInstance()->preloadEffect(fileName);
+}
+void CAudioManager::UnLoadAudio(const char* filename)
+{
+	SimpleAudioEngine::getInstance()->unloadEffect(filename);
 }

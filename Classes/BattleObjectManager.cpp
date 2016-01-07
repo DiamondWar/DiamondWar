@@ -22,6 +22,10 @@ CBattleObjectManager* CBattleObjectManager::GetInstance()
 	}
 	return Instance_;
 }
+void CBattleObjectManager::AddSpellObject(CBattleObject* obj)
+{
+	SpellList_.pushBack(obj);
+}
 void CBattleObjectManager::AddObject(CBattleObject* obj)
 {
 	BattleList_.pushBack(obj);
@@ -307,6 +311,11 @@ void CBattleObjectManager::Update()
 		if (key->IsDelete_ == false)
 			key->Update();
 	}
+	for (auto key : SpellList_)
+	{
+		if (key->IsDelete_ == false)
+			key->Update();
+	}
 }
 void CBattleObjectManager::ClearAllObject()
 {
@@ -315,4 +324,5 @@ void CBattleObjectManager::ClearAllObject()
 	HurtShowList_.clear();
 	BuffList_.clear();
 	SoliderDieList_.clear();
+	SpellList_.clear();
 }

@@ -94,7 +94,7 @@ void CBullet::Update()
 		return;
 	if (CheckIsAtTarget() == false)
 	{
-		float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
+		float angle = CCGlobleConfig::GetAngleByPoint(Obj->getPosition().x, Obj->getPosition().y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
 		if (Ranks_ == 1)
 		{
 			if (angle >= 0)

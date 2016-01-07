@@ -4,6 +4,9 @@
 #include "SoliderConfig.h"
 #include "Shake.h"
 #include "SpellConfig.h"
+#include "SpellData.h"
+#include "SpellConfig.h"
+#include "SpellManager.h"
 USING_NS_CC;
 CGameSceneControl* CGameSceneControl::Instance_ = nullptr;
 
@@ -88,6 +91,7 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 }
 bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 {
+
 	int chosenum = -1;
 	int index = -1;
 	for (int i = 0; i < 8; i++)
@@ -146,7 +150,7 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 		CreateSolider(HeroList[index], 1, 1);
 	else
 	{
-
+		CreateSpell(HeroList[index]);
 	}
 	return true;
 }
@@ -166,13 +170,18 @@ void CGameSceneControl::CreateBoss(int ranks)
 	else
 		CBattleObjectManager::GetInstance()->SetSecondRanksBoss(boss);
 }
+void CGameSceneControl::CreateSpell(int id)
+{
+	CSpellData* data = CSpellConfig::GetInstance()->GetItemById(id);
+	CSpellManager::GetInstance()->ChoseSpell(data);
+}
 void CGameSceneControl::SetRoot(cocos2d::Node* root)
 {
 	GameRoot_ = root;
 }
 void CGameSceneControl::AddScreenShake()
 {
-	Shake*sk = Shake::create(3, 3);
+	Shake*sk = Shake::create(3, 4);
 	GameRoot_->runAction(sk);
 }
 CGameSceneControl::~CGameSceneControl()

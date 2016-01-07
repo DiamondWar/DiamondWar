@@ -97,7 +97,7 @@ void CLinkBullet::Update()
 	float length = CCGlobleConfig::getLengthByCircle(TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y, Obj->getPosition().x, Obj->getPosition().y);
 	Obj->setAnchorPoint(ccp(0, 0.5));
 	Obj->setScaleX(length / (float)baseWidth);
-	float angle = CCGlobleConfig::GetAngleByPoint(Init_x, Init_y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
+	float angle = CCGlobleConfig::GetAngleByPoint(Obj->getPosition().x, Obj->getPosition().y, TargetNode->getPosition().x + AtTarget_->Obj->getPosition().x, TargetNode->getPosition().y + AtTarget_->Obj->getPosition().y);
 	angle = angle * 180 / PI;
 	Obj->setRotation(-angle);
 	
