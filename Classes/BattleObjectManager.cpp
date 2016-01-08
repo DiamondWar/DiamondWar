@@ -24,26 +24,32 @@ CBattleObjectManager* CBattleObjectManager::GetInstance()
 }
 void CBattleObjectManager::AddSpellObject(CBattleObject* obj)
 {
+	if (obj!=nullptr)
 	SpellList_.pushBack(obj);
 }
 void CBattleObjectManager::AddObject(CBattleObject* obj)
 {
+	if (obj != nullptr)
 	BattleList_.pushBack(obj);
 }
 void CBattleObjectManager::AddBulletObject(CBattleObject* obj)
 {
+	if (obj != nullptr)
 	BulletList_.pushBack(obj);
 }
 void CBattleObjectManager::AddHurtShowObject(CHurtShow* obj)
 {
+	if (obj != nullptr)
 	HurtShowList_.pushBack(obj);
 }
 void CBattleObjectManager::AddSoliderDie(CSoliderDie *obj)
 {
+	if (obj != nullptr)
 	SoliderDieList_.pushBack(obj);
 }
 void CBattleObjectManager::AddBuffObject(CBuff* obj)
 {
+	if (obj != nullptr)
 	BuffList_.pushBack(obj);
 }
 void CBattleObjectManager::DeleteObject(CBattleObject*obj)
@@ -111,7 +117,7 @@ CBaseBoss* CBattleObjectManager::GetEnemyByRange(float rank, int type, float ran
 		if (rank == 1)
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, SecondRanksBoss_->Obj->getPosition().x, SecondRanksBoss_->Obj->getPosition().y);
-			length = length  - r;
+			length = length -SecondRanksBoss_->RangeR_ - r;
 			if (length < range)
 			{
 				sol = SecondRanksBoss_;
@@ -120,7 +126,7 @@ CBaseBoss* CBattleObjectManager::GetEnemyByRange(float rank, int type, float ran
 		else
 		{
 			float length = CCGlobleConfig::GetLengthByPoint(x, y, FirstRanksBoss_->Obj->getPosition().x, FirstRanksBoss_->Obj->getPosition().y);
-			length = length - r;
+			length = length - FirstRanksBoss_->RangeR_ - r;
 			if (length < range)
 			{
 				sol = FirstRanksBoss_;
@@ -143,6 +149,7 @@ Vector<CSolider*> CBattleObjectManager::GetLuDiEnemyListByRange(float rank, floa
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol!=nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -163,6 +170,7 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingEnemyListByRange(float rank, f
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -183,6 +191,7 @@ Vector<CSolider*> CBattleObjectManager::GetEnemyListByRange(float rank, float ra
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -203,6 +212,7 @@ Vector<CSolider*> CBattleObjectManager::GetFriendListByRange(float rank, float r
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -223,6 +233,7 @@ Vector<CSolider*> CBattleObjectManager::GetLuDiFriendListByRange(float rank, flo
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -243,6 +254,7 @@ Vector<CSolider*> CBattleObjectManager::GetFeiXingFriendListByRange(float rank, 
 			length = length - keysol->RangeR_ - r;
 			if (length < range)
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 		}
@@ -265,6 +277,7 @@ Vector<CSolider*> CBattleObjectManager::GetSoliderListByRange(int type ,float ra
 			{
 				if (keysol->Data_->SoliderType <= 2)
 				{
+					if (keysol != nullptr)
 					list.pushBack(keysol);
 				}
 			}
@@ -272,11 +285,13 @@ Vector<CSolider*> CBattleObjectManager::GetSoliderListByRange(int type ,float ra
 			{
 				if (keysol->Data_->SoliderType >= 2)
 				{
+					if (keysol != nullptr)
 					list.pushBack(keysol);
 				}
 			}
 			else
 			{
+				if (keysol != nullptr)
 				list.pushBack(keysol);
 			}
 			
@@ -288,32 +303,32 @@ void CBattleObjectManager::Update()
 {
 	for (auto key : BattleList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key!=nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 	for (auto key : BulletList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key != nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 	for (auto key : HurtShowList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key != nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 	for (auto key : BuffList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key != nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 	for (auto key : SoliderDieList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key != nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 	for (auto key : SpellList_)
 	{
-		if (key->IsDelete_ == false)
+		if (key != nullptr&&key->IsDelete_ == false)
 			key->Update();
 	}
 }

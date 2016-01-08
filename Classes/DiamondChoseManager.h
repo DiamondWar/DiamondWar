@@ -22,13 +22,14 @@ public:
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
 	bool CheckPointInThis(cocos2d::CCPoint pos);
 	int CheckDiamondIsLoading();
+	void SetCanShengChengShuiJing();
 	CShuiJingChose* CanChoselist[4];
 private: 
 	void UpdateCanChoseShuiJing();
 	cocos2d::Vector<CShuiJingBase*> SpriteList;
 	cocos2d::Sprite* ChoseSprite_;
 	
-	const int init_x = 30;
+	const int init_x = 120;
 	const int init_y = 15;
 	int ChoseNum = 0;
 	int StartIndex = 0;
@@ -40,5 +41,7 @@ private:
 	
 	int CurFrameCount = 0;
 	int LastFrameCount = 0;
+	bool  bIsCanShengChengShuiJing = true;
+	int MaxLoadingTime = 180;
 };
 

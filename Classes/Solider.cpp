@@ -304,7 +304,6 @@ bool CSolider::CheckAttackOrSkill()
 		OpreateType = ESoliderOpreate_Walk;
 		return false;
 	}
-
 	CCLOG("AttackNum=== %d,MaxFrameNUm===%d", AttackNum, MaxSkillFrame);
 	if (AttackNum >= MaxSkillFrame)
 	{

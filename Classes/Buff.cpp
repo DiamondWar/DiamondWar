@@ -180,9 +180,8 @@ void CBuff::OnAttackActionComplete()
 	}
 	
 	if (Obj!=nullptr)
-	Obj->setVisible(false);
+		Obj->setVisible(false);
 	IsDelete_ = true;
-	this->release();
 }
 void CBuff::OnSkillActionComplete()
 {

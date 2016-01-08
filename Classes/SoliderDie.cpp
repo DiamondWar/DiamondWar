@@ -40,7 +40,6 @@ void CSoliderDie::Update()
 			isMove = false;
 			IsDelete_ = true;
 			Sprite_->setVisible(false);
-			this->release();
 		}
 	}
 

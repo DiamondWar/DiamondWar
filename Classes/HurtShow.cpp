@@ -31,7 +31,7 @@ void CHurtShow::SetFont(int type)
 		ResourceName = "zdz";
 	}
 }
-void CHurtShow::ShowLabel(int value, CSolider* node)
+void CHurtShow::ShowLabel(int value, CBaseBoss* node)
 {
 	int n = 0;
 	if (value == 0)
@@ -81,7 +81,6 @@ void CHurtShow::Update()
 				{
 					SpriteArray.at(i)->removeFromParent();
 				}
-				this->release();
 			}
 
 		}

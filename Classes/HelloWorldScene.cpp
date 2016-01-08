@@ -125,18 +125,20 @@ bool HelloWorld::init()
 	CEnemyLevelConfig::GetInstance()->LoadText();
 	CSpellConfig::GetInstance()->LoadText();
 	CAudioManager::GetInstance()->PlayerBackGroundMusic("background.mp3");
-	Node* node = CSLoader::createNode("MainScene.csb");
-	addChild(node);
+	
 	CGameSceneControl::GetInstance()->SetRoot(this);
 	CGameSceneControl::GetInstance()->InitGameData();
-	CGameSceneControl::GetInstance()->CreateBoss(1);
-	CGameSceneControl::GetInstance()->CreateBoss(2);
+	
 	auto manager = CBattleUIManager::create();
 	manager->setAnchorPoint(ccp(0, 0));
 	manager->setPosition(0, 0);
 	addChild(manager);
+	CGameSceneControl::GetInstance()->CreateBoss(1);
+	CGameSceneControl::GetInstance()->CreateBoss(2);
 	this->scheduleUpdate();
 	LastFrameCount = 0;
+	/*CGameSceneControl::GetInstance()->CreateSolider(3001, 2, 1);
+	CGameSceneControl::GetInstance()->CreateSolider(3003, 1, 1);*/
 	EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
 	return true;
 }
@@ -146,10 +148,10 @@ void HelloWorld::update(float dt)
 	CBattleObjectManager::GetInstance()->Update();
 	if (EnemyData_ != nullptr && (LastFrameCount + EnemyData_->ReadyTime <= CCGlobleConfig::Game_time))
 	{
-	LastFrameCount = CCGlobleConfig::Game_time;
-	CGameSceneControl::GetInstance()->CreateSolider(EnemyData_->RoleId, 2, 1);
-	EnemeyCount++;
-	EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
+		LastFrameCount = CCGlobleConfig::Game_time;
+		CGameSceneControl::GetInstance()->CreateSolider(EnemyData_->RoleId, 2, 1);
+		EnemeyCount++;
+		EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
 	}
 }
 void HelloWorld::onExit()

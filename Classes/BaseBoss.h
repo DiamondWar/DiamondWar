@@ -38,6 +38,8 @@ public:
 	cocos2d::Node* UpPoint_;
 	cocos2d::Node* BulletPoint_;
 	cocos2d::Vec2 BulletPos_;
+private:
+	cocos2d::Sprite* BossSprite_;
 };
 #endif
 

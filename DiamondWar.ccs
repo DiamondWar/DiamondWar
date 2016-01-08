@@ -5,34 +5,6 @@
       <RootFolder Name=".">
         <Image Name="HelloWorld.png" />
         <Image Name="battlebg.jpg" />
-        <Image Name="sjbg.png" />
-        <PlistImageFolder Image="Battle.png" PListFile="Battle.plist" Name=".Battle_PList.Dir">
-          <PlistImageFile Name="icon1.png" Key="icon1.png" />
-          <PlistImageFile Name="icon2.png" Key="icon2.png" />
-          <PlistImageFile Name="icon3.png" Key="icon3.png" />
-          <PlistImageFile Name="icon4.png" Key="icon4.png" />
-          <PlistImageFile Name="icon5.png" Key="icon5.png" />
-          <PlistImageFile Name="icon6.png" Key="icon6.png" />
-          <PlistImageFile Name="iconbg.png" Key="iconbg.png" />
-          <PlistImageFile Name="player1.png" Key="player1.png" />
-          <PlistImageFile Name="player2.png" Key="player2.png" />
-          <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
-          <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
-          <PlistImageFile Name="shujing_1.png" Key="shujing_1.png" />
-          <PlistImageFile Name="shujing_2.png" Key="shujing_2.png" />
-          <PlistImageFile Name="shujing_3.png" Key="shujing_3.png" />
-          <PlistImageFile Name="shujing_4.png" Key="shujing_4.png" />
-          <PlistImageFile Name="shujing_0.png" Key="shujing_0.png" />
-          <PlistImageFile Name="caisebg.png" Key="caisebg.png" />
-          <PlistImageFile Name="caisebg1.png" Key="caisebg1.png" />
-          <PlistImageFile Name="caiseup1.png" Key="caiseup1.png" />
-          <PlistImageFile Name="caiseup2.png" Key="caiseup2.png" />
-          <PlistImageFile Name="shujing_5.png" Key="shujing_5.png" />
-        </PlistImageFolder>
-        <PlistImageFolder Image="BattleBoss.png" PListFile="BattleBoss.plist" Name=".BattleBoss_PList.Dir">
-          <PlistImageFile Name="enemyboss.png" Key="enemyboss.png" />
-          <PlistImageFile Name="myboss.png" Key="myboss.png" />
-        </PlistImageFolder>
         <PlistImageFolder Image="caihong.png" PListFile="caihong.plist" Name=".caihong_PList.Dir">
           <PlistImageFile Name="caihong_0.png" Key="caihong_0.png" />
           <PlistImageFile Name="caihong_1.png" Key="caihong_1.png" />
@@ -203,6 +175,65 @@
         <Project Name="Hero_2003.csd" Type="Node" />
         <Project Name="Hero_1003.csd" Type="Node" />
         <Project Name="MainScene.csd" Type="Scene" />
+        <Image Name="shuijingbg.png" />
+        <Project Name="Boss.csd" Type="Node" />
+        <PlistImageFolder Image="BattleBoss.png" PListFile="BattleBoss.plist" Name=".BattleBoss_PList.Dir">
+          <PlistImageFile Name="enemyboss_1.png" Key="enemyboss_1.png" />
+          <PlistImageFile Name="enemyboss_2.png" Key="enemyboss_2.png" />
+          <PlistImageFile Name="enemyboss_3.png" Key="enemyboss_3.png" />
+          <PlistImageFile Name="enmeydie.png" Key="enmeydie.png" />
+          <PlistImageFile Name="medie.png" Key="medie.png" />
+          <PlistImageFile Name="myboss_1.png" Key="myboss_1.png" />
+          <PlistImageFile Name="myboss_2.png" Key="myboss_2.png" />
+          <PlistImageFile Name="myboss_3.png" Key="myboss_3.png" />
+        </PlistImageFolder>
+        <PlistImageFolder Image="Battle.png" PListFile="Battle.plist" Name=".Battle_PList.Dir">
+          <PlistImageFile Name="Di_%.png" Key="Di_%.png" />
+          <PlistImageFile Name="Di_0.png" Key="Di_0.png" />
+          <PlistImageFile Name="Di_1.png" Key="Di_1.png" />
+          <PlistImageFile Name="Di_2.png" Key="Di_2.png" />
+          <PlistImageFile Name="Di_3.png" Key="Di_3.png" />
+          <PlistImageFile Name="Di_4.png" Key="Di_4.png" />
+          <PlistImageFile Name="Di_5.png" Key="Di_5.png" />
+          <PlistImageFile Name="Di_6.png" Key="Di_6.png" />
+          <PlistImageFile Name="Di_7.png" Key="Di_7.png" />
+          <PlistImageFile Name="Di_8.png" Key="Di_8.png" />
+          <PlistImageFile Name="Di_9.png" Key="Di_9.png" />
+          <PlistImageFile Name="Ding_0.png" Key="Ding_0.png" />
+          <PlistImageFile Name="Ding_1.png" Key="Ding_1.png" />
+          <PlistImageFile Name="Ding_2.png" Key="Ding_2.png" />
+          <PlistImageFile Name="Ding_3.png" Key="Ding_3.png" />
+          <PlistImageFile Name="Ding_4.png" Key="Ding_4.png" />
+          <PlistImageFile Name="Ding_5.png" Key="Ding_5.png" />
+          <PlistImageFile Name="Ding_6.png" Key="Ding_6.png" />
+          <PlistImageFile Name="Ding_7.png" Key="Ding_7.png" />
+          <PlistImageFile Name="Ding_8.png" Key="Ding_8.png" />
+          <PlistImageFile Name="Ding_9.png" Key="Ding_9.png" />
+          <PlistImageFile Name="Ding_Q.png" Key="Ding_Q.png" />
+          <PlistImageFile Name="caisebg.png" Key="caisebg.png" />
+          <PlistImageFile Name="caisebg1.png" Key="caisebg1.png" />
+          <PlistImageFile Name="caiseup1.png" Key="caiseup1.png" />
+          <PlistImageFile Name="caiseup2.png" Key="caiseup2.png" />
+          <PlistImageFile Name="iconbg.png" Key="iconbg.png" />
+          <PlistImageFile Name="player1.png" Key="player1.png" />
+          <PlistImageFile Name="player2.png" Key="player2.png" />
+          <PlistImageFile Name="shuijing_0.png" Key="shuijing_0.png" />
+          <PlistImageFile Name="shuijing_1.png" Key="shuijing_1.png" />
+          <PlistImageFile Name="shuijing_2.png" Key="shuijing_2.png" />
+          <PlistImageFile Name="shuijing_3.png" Key="shuijing_3.png" />
+          <PlistImageFile Name="shuijing_4.png" Key="shuijing_4.png" />
+          <PlistImageFile Name="shuijing_5.png" Key="shuijing_5.png" />
+          <PlistImageFile Name="shuijingshuzi_0.png" Key="shuijingshuzi_0.png" />
+          <PlistImageFile Name="shuijingshuzi_1.png" Key="shuijingshuzi_1.png" />
+          <PlistImageFile Name="shuijingshuzi_2.png" Key="shuijingshuzi_2.png" />
+          <PlistImageFile Name="shuijingshuzi_3.png" Key="shuijingshuzi_3.png" />
+          <PlistImageFile Name="shuijingshuzi_4.png" Key="shuijingshuzi_4.png" />
+          <PlistImageFile Name="towerlist.png" Key="towerlist.png" />
+          <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
+          <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
+          <PlistImageFile Name="shuijing_Bg.png" Key="shuijing_Bg.png" />
+        </PlistImageFolder>
+        <Image Name="xuetiaoup.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -8,8 +8,11 @@ public:
 	virtual void  update(float dt);
 	void SetInfo(int index,bool flag);
 	void SetTipsInfo(bool flag);
+	void SetCanExist(bool flag = true);
 	void ResetInfo(int num,int Color, bool flag = true);
-	void SetShuiJingCanLoading();
+	void SetShuiJingCanLoading(int cooltime);
+	void SetShuiJingLoadComplete();
+	int GetCurCoolTime();
 	int MyColor =0;
 	bool IsLoading = false;//是否进入冷却
 	bool IsCanChose_ = false;//是否可以选择
@@ -17,10 +20,9 @@ public:
 private: 
 	cocos2d::CCProgressTimer* Progress_;
 	cocos2d::CCSprite* MainSprite_;
-	cocos2d::Label* CoolTimeLabel_;
 	cocos2d::CCSprite*AnimationSp_;
-	int  CoolTime = 0;
-	const int MaxCoolTime = 300;
+	cocos2d::Sprite* TimeSp_;
+	const int MaxCoolTime = 180;
 	int  CurMaxCoolTime = 0;
 	bool IsTips_ = false;
 	

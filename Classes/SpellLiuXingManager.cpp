@@ -103,7 +103,7 @@ void CSpellLiuXingManager::Update()
 		{
 			lastEffectTime = NowTime;
 			//发射一个子弹
-			CSpellLiuXingBullet* bullet1 = new CSpellLiuXingBullet(EffectData_, EffectNum % 20 * 150 - 400, 1200+random(-20,20), EffctBuffData_, 1300, 1, 2);
+			CSpellLiuXingBullet* bullet1 = new CSpellLiuXingBullet(EffectData_, EffectNum % 15 * 200 - 500, 1200+EffectNum%2*100, EffctBuffData_, 1300, 1, 2);
 			CGameSceneControl::GetInstance()->GameRoot_->addChild(bullet1->Obj);
 			bullet1->Obj->setScale(0.6, 4);
 			CBattleObjectManager::GetInstance()->AddBulletObject(bullet1);

@@ -30,7 +30,7 @@ void  CGameSceneControl::InitGameData()
 	HeroList[4] = 3001;
 	HeroList[5] = 3002;
 	HeroList[6] = 1;
-	HeroList[7] = 1;
+	HeroList[7] = 2;
 }
 int CGameSceneControl::IsHaveHero(int color, int num)
 {
@@ -45,7 +45,6 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 		
 			if (data->SoliderType == color)
 			{
-				CCLOG(" Color ===%d,   num === %d,  neednum === %d",color,num,data->NeedStar);
 				if (data->NeedStar < num)
 				{
 					if (chosenum < data->NeedStar)
@@ -67,7 +66,6 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 			CSpellData* spell = CSpellConfig::GetInstance()->GetItemById(HeroList[i]);
 			if (4 == color)
 			{
-				CCLOG(" Color ===%d,   num === %d,  neednum === %d", color, num, spell->NeedStar_);
 				if (spell->NeedStar_ < num)
 				{
 					if (chosenum < spell->NeedStar_)
@@ -86,12 +84,10 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 		}
 		
 	}
-	CCLOG("ChoseNum === %d          Color ==%d   index ===%d", chosenum, color,index);
 	return index;
 }
 bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 {
-
 	int chosenum = -1;
 	int index = -1;
 	for (int i = 0; i < 8; i++)
@@ -143,7 +139,6 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 	{
 		return false;
 	}
-	CCLOG("ChoseNum === %d          Color ==%d", chosenum, color);
 	float x = chosenum + 0.0;
 	float y = num + 0.0;
 	if (index<6)

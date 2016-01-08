@@ -13,17 +13,17 @@ bool CDiamondChoseManager::init()
 	{
 		return false;
 	}
-	for (int i = 0; i < 4;i++)
+	for (int i = 0; i < 4; i++)
 	{
 		Animation* animation = NULL;
-		String* str = String::createWithFormat("ShuiJing_%d", i+1);
+		String* str = String::createWithFormat("ShuiJing_%d", i + 1);
 		animation = AnimationCache::sharedAnimationCache()->getAnimation(str->getCString());
 		if (animation == NULL)
 		{
 			Vector<SpriteFrame*> vsp;
-			for (int n = 1; n <= 9;n++)
+			for (int n = 1; n <= 9; n++)
 			{
-				String *string = String::createWithFormat("UI_crystal_shuijing_%d_%d.png",i+1 , n);
+				String *string = String::createWithFormat("UI_crystal_shuijing_%d_%d.png", i + 1, n);
 				SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 				vsp.pushBack(spfr);
 			}
@@ -31,28 +31,28 @@ bool CDiamondChoseManager::init()
 			AnimationCache::sharedAnimationCache()->addAnimation(animation, str->getCString());
 		}
 	}
-	
-	for (int i = 0; i < 4;i++)
+
+	for (int i = 0; i < 4; i++)
 	{
 		CShuiJingChose *chose = new CShuiJingChose();
-		chose->Color = 1+i;
-		chose->indexlist[0] = 0 ;
-		chose->indexlist[1] =  0 ;
-		chose->indexlist[2] =  0;
-		chose->indexlist[3] =  0 ;
-		chose->indexlist[4] =  0 ;
-		chose->indexlist[5] =  0 ;
+		chose->Color = 1 + i;
+		chose->indexlist[0] = 0;
+		chose->indexlist[1] = 0;
+		chose->indexlist[2] = 0;
+		chose->indexlist[3] = 0;
+		chose->indexlist[4] = 0;
+		chose->indexlist[5] = 0;
 		chose->Num = 0;
 		CanChoselist[i] = chose;
 	}
 	setContentSize(Size(1300, 185));
-	for (int i = 0; i < 7;i++)
+	for (int i = 0; i < 7; i++)
 	{
-		int rand = random(1,4);
+		int rand = random(1, 4);
 		CShuiJingBase* sprite = CShuiJingBase::create();
-		sprite->SetInfo(rand,i!=7);
-		sprite->setAnchorPoint(Vec2(0,0));
-		sprite->setPosition(init_x + 170 * i, init_y);
+		sprite->SetInfo(rand, i != 7);
+		sprite->setAnchorPoint(Vec2(0, 0));
+		sprite->setPosition(init_x + 150 * i, init_y);
 		addChild(sprite);
 		//if (i<=5)
 		SpriteList.pushBack(sprite);
@@ -76,7 +76,7 @@ bool CDiamondChoseManager::init()
 	ChoseSprite_->setScaleY(3);
 	ChoseSprite_->setVisible(true);
 
-	
+
 	EventListenerTouchOneByOne*	 listener = EventListenerTouchOneByOne::create();
 
 	listener->onTouchBegan = [this](Touch* touch, Event* event)
@@ -106,14 +106,14 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		CanChoselist[i]->Color = i+1;
+		CanChoselist[i]->Color = i + 1;
 		CanChoselist[i]->Num = 0;
 		CanChoselist[i]->indexlist[0] = -1;
 		CanChoselist[i]->indexlist[1] = -1;
 		CanChoselist[i]->indexlist[2] = -1;
 		CanChoselist[i]->indexlist[3] = -1;
-		CanChoselist[i]->indexlist[4] =-1;
-		CanChoselist[i]->indexlist[5] =-1;
+		CanChoselist[i]->indexlist[4] = -1;
+		CanChoselist[i]->indexlist[5] = -1;
 	}
 	for (int i = 0; i < 6; i++)
 	{
@@ -147,7 +147,7 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 		}
 		base->SetTipsInfo(false);
 	}
-	for (int i = 0; i < 4;i++)
+	for (int i = 0; i < 4; i++)
 	{
 		int index = CGameSceneControl::GetInstance()->IsHaveHero(CanChoselist[i]->Color, CanChoselist[i]->Num);
 		if (index != -1)
@@ -156,9 +156,6 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 			{
 				CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
 				int num = data->NeedStar;
-
-				if (CanChoselist[i]->Num>num)
-					num = CanChoselist[i]->Num;
 				for (int n = 0; n < num; n++)
 				{
 					SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
@@ -172,32 +169,30 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 				{
 					SpriteList.at(CanChoselist[i]->indexlist[n])->SetTipsInfo(true);
 				}
-				
+
 			}
-			
+
 		}
 	}
 }
 void CDiamondChoseManager::update(float delta)
 {
 	CurFrameCount++;
-	if (CurFrameCount % 300 == 0)
+	if (CurFrameCount % 20 == 0)
 	{
-		int index = CheckDiamondIsLoading();
-		if (index >= 0)
-		{
-			SpriteList.at(index)->SetShuiJingCanLoading();
-			UpdateCanChoseShuiJing();
-		}
-			
-		
+		UpdateCanChoseShuiJing();
+
 	}
+}
+void CDiamondChoseManager::SetCanShengChengShuiJing()
+{
+	bIsCanShengChengShuiJing = false;
 }
 int CDiamondChoseManager::CheckDiamondIsLoading()
 {
-	for (int i = 0; i < SpriteList.size();i++)
+	for (int i = 0; i < SpriteList.size(); i++)
 	{
-		if (SpriteList.at(i)->IsCanLoading_ == false&&SpriteList.at(i)->IsLoading == true)
+		if (SpriteList.at(i)->IsCanLoading_ == false && SpriteList.at(i)->IsLoading == true)
 			return i;
 	}
 	return -1;
@@ -212,7 +207,7 @@ void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 	if (rc.containsPoint(pt))
 	{
 		int x = pt.x - init_x;
-		int index = x / 170;
+		int index = x / 150;
 		if (index >= 7)
 			index = 6;
 		if (SpriteList.at(index)->IsLoading == false)
@@ -221,7 +216,7 @@ void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 			lastIndex = index;
 			StartIndex = index;
 			ChoseNum = 1;
-			StartPoint = SpriteList.at(index)->getPosition().x+50;
+			StartPoint = SpriteList.at(index)->getPosition().x + 50;
 			LastPoint = StartPoint;
 			ChoseSprite_->setAnchorPoint(ccp(0, 0));
 			ChoseSprite_->setPositionX(StartPoint);
@@ -233,10 +228,10 @@ void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 			StartIndex = -1;
 			ChoseNum = 0;
 		}
-	
+
 		//CCLOG("ChoseNum ==%d, LastChoseColor==%d, LastIndex== %d, Index== %d", ChoseNum, LaseChoseColor, lastIndex, index);
 	}
-	
+
 }
 //触摸移动事件，也就是手指在屏幕滑动的过程  
 void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
@@ -248,10 +243,10 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 	if (rc.containsPoint(pt))
 	{
 		int x = pt.x - init_x;
-		int index = x / 170;
+		int index = x / 150;
 		if (index >= 7)
 			index = 6;
-		if (lastIndex + 1 == index )
+		if (lastIndex + 1 == index)
 		{
 			if ((LaseChoseColor == SpriteList.at(index)->MyColor || LaseChoseColor == 5 || SpriteList.at(index)->MyColor == 5) && SpriteList.at(index)->IsLoading == false && SpriteList.at(index)->IsCanChose_ == true)
 			{
@@ -267,7 +262,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 				}
 				else
 				{
-					ChoseNum--; 
+					ChoseNum--;
 					if (ChoseNum <= 0)
 					{
 						ChoseNum = 2;
@@ -275,7 +270,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 					}
 
 				}
-				
+
 				lastIndex = index;
 				int len = abs(pt.x - StartPoint);
 				if (pt.x < StartPoint)
@@ -310,12 +305,12 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 					{
 						ChoseNum = 2;
 						IsAddOrDel = false;
-						
+
 					}
 				}
 				else
 				{
-					ChoseNum++;	
+					ChoseNum++;
 					lastIndex = index;
 				}
 				lastIndex = index;
@@ -332,11 +327,11 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 			}
 			else
 			{
-				
+
 				//上一个选择的颜色跟这次的不一样，不再进行连线
 			}
 		}
-		else if (lastIndex==index)
+		else if (lastIndex == index)
 		{
 			if (ChoseNum == 1 && SpriteList.at(lastIndex)->MyColor == 5)
 				LaseChoseColor = SpriteList.at(index)->MyColor;
@@ -353,7 +348,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 
 		}
 		CCLOG("ChoseNum ==%d, LastChoseColor==%d, LastIndex== %d, Index== %d", ChoseNum, LaseChoseColor, lastIndex, index);
-		
+
 	}
 	if (lastIndex >= 0)
 	{
@@ -365,8 +360,8 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 		for (int i = 0; i < SpriteList.size(); i++)
 		{
 			if (i >= temp&&i <= last)
-			SpriteList.at(i)->setPositionY(pt.y - 80);
-			else 
+				SpriteList.at(i)->setPositionY(pt.y - 80);
+			else
 				SpriteList.at(i)->setPositionY(init_y);
 			if (SpriteList.at(i)->getPositionY()>200)
 			{
@@ -393,7 +388,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 		ChoseSprite_->setScaleX(0);
 		for (int i = 0; i < SpriteList.size(); i++)
 		{
-			SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
+			SpriteList.at(i)->setPosition(init_x + 150 * i, init_y);
 		}
 		lastIndex = -1;
 	}
@@ -404,13 +399,13 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 			if (lastIndex != -1)
 			{
 				ChoseSprite_->setScaleX(0);
-				
+
 				//结算当前消耗的 如果阵容中有消耗的颜色水晶 则出兵 否则就消耗到彩色水晶里面
 				CBattleUIManager* manager = static_cast<CBattleUIManager*>(this->getParent());
 				bool flag = false;
 				if (!CGameSceneControl::GetInstance()->IsHaveConsumeHero(LaseChoseColor, ChoseNum))
 				{
-					flag = true; 
+					flag = true;
 					if (LaseChoseColor == 5)
 					{
 						manager->UpdateCaiSeShuiJing(5);
@@ -419,23 +414,39 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 					{
 						manager->UpdateCaiSeShuiJing(ChoseNum);
 					}
-				
+
 				}
 				int temp = StartIndex > lastIndex ? lastIndex : StartIndex;
+
 				for (int i = 0; i < ChoseNum; i++)
 				{
 					int rand = random(1, 4);
-					SpriteList.at(temp)->ResetInfo(i+1,rand);
+					SpriteList.at(temp)->ResetInfo(i + 1, rand);
 					if (flag == true)
-						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width-80,90));
-					else 
+						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(Director::getInstance()->getWinSize().width - 80, 90));
+					else
 						manager->CreateMoveAnimation(LaseChoseColor, ccp(SpriteList.at(temp)->getPositionX() + getPositionX(), SpriteList.at(temp)->getPositionY()), ccp(200, 540));
 					SpriteList.pushBack(SpriteList.at(temp));
 					SpriteList.erase(temp);
 				}
 				for (int i = 0; i < SpriteList.size(); i++)
 				{
-					SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
+					SpriteList.at(i)->setPosition(init_x + 150 * i, init_y);
+				}
+				for (int i = SpriteList.size() - ChoseNum; i < SpriteList.size();i++)
+				{
+					if (bIsCanShengChengShuiJing == true)
+					{
+						if (i != 0)
+							SpriteList.at(i)->SetShuiJingCanLoading(SpriteList.at(i - 1)->GetCurCoolTime() + MaxLoadingTime);
+						else
+							SpriteList.at(i)->SetShuiJingCanLoading(MaxLoadingTime);
+					}
+					else
+					{
+						SpriteList.at(i)->SetShuiJingCanLoading(1000000);
+					}
+					
 				}
 				lastIndex = -1;
 				UpdateCanChoseShuiJing();
@@ -446,7 +457,7 @@ void CDiamondChoseManager::onTouchEnded(Touch* touch, Event* event)
 			ChoseSprite_->setScaleX(0);
 			for (int i = 0; i < SpriteList.size(); i++)
 			{
-				SpriteList.at(i)->setPosition(init_x + 170 * i, init_y);
+				SpriteList.at(i)->setPosition(init_x + 150 * i, init_y);
 			}
 			lastIndex = -1;
 		}
@@ -462,11 +473,11 @@ void CDiamondChoseManager::onTouchCancelled(Touch* touch, Event* event)
 bool CDiamondChoseManager::CheckPointInThis(CCPoint pos)
 {
 	int x = getPositionX();
-	int index = (pos.x - x - init_x) / 170;
+	int index = (pos.x - x - init_x) / 150;
 
-	if (index <= 6&&pos.y<180&&SpriteList.at(index)->IsLoading == false)
+	if (index <= 6 && pos.y < 180 && SpriteList.at(index)->IsLoading == false)
 	{
-		SpriteList.at(index)->ResetInfo(5,false);
+		SpriteList.at(index)->ResetInfo(5, false);
 		return true;
 	}
 	return false;

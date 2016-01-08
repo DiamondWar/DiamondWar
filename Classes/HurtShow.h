@@ -9,7 +9,7 @@ class CHurtShow :public cocos2d::Node
 public:
 	CHurtShow();
 	~CHurtShow();
-	void ShowLabel(int value,CSolider* node);
+	void ShowLabel(int value, CBaseBoss* node);
 	void SetFont(int type);
     void Update();
 	bool IsDelete_ = false;

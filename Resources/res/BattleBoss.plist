@@ -4,23 +4,49 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>enemyboss.png</key>
+            <key>enemyboss_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,283},{296,299}}</string>
+                <string>{{752,602},{237,300}}</string>
                 <key>offset</key>
-                <string>{6,0}</string>
+                <string>{4,-4}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{18,0},{296,299}}</string>
+                <string>{{8,8},{237,300}}</string>
                 <key>sourceSize</key>
-                <string>{320,299}</string>
+                <string>{245,308}</string>
+            </dict>
+            <key>enemyboss_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{752,292},{243,308}}</string>
+                <key>offset</key>
+                <string>{1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{2,0},{243,308}}</string>
+                <key>sourceSize</key>
+                <string>{245,308}</string>
+            </dict>
+            <key>enemyboss_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{752,2},{245,288}}</string>
+                <key>offset</key>
+                <string>{0,-10}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,20},{245,288}}</string>
+                <key>sourceSize</key>
+                <string>{245,308}</string>
             </dict>
             <key>enmeydie.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,2},{182,132}}</string>
+                <string>{{2,339},{182,132}}</string>
                 <key>offset</key>
                 <string>{0,-8}</string>
                 <key>rotated</key>
@@ -33,7 +59,7 @@
             <key>medie.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{324,136},{172,142}}</string>
+                <string>{{186,339},{172,142}}</string>
                 <key>offset</key>
                 <string>{0,5}</string>
                 <key>rotated</key>
@@ -43,18 +69,44 @@
                 <key>sourceSize</key>
                 <string>{182,152}</string>
             </dict>
-            <key>myboss.png</key>
+            <key>myboss_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{320,279}}</string>
+                <string>{{380,333},{370,329}}</string>
                 <key>offset</key>
-                <string>{0,9}</string>
+                <string>{-3,-3}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,1},{320,279}}</string>
+                <string>{{0,6},{370,329}}</string>
                 <key>sourceSize</key>
-                <string>{320,299}</string>
+                <string>{376,335}</string>
+            </dict>
+            <key>myboss_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{376,335}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{376,335}}</string>
+                <key>sourceSize</key>
+                <string>{376,335}</string>
+            </dict>
+            <key>myboss_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{380,2},{370,329}}</string>
+                <key>offset</key>
+                <string>{-3,-3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,6},{370,329}}</string>
+                <key>sourceSize</key>
+                <string>{376,335}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -64,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>BattleBoss.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b49398236f9a9e4606767ecd2f60a7a3$</string>
+            <string>$TexturePacker:SmartUpdate:b2d11b9416114fb7b965dce2a20c7f77$</string>
             <key>textureFileName</key>
             <string>BattleBoss.png</string>
         </dict>
