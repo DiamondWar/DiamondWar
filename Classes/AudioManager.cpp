@@ -27,10 +27,31 @@ void CAudioManager::PlayerBackGroundMusic(std::string music)
 	}
 		
 }
+void CAudioManager::PlayerPersonVoice(std::string voice)
+{
+	if (voice != "")
+	{
+		IsPlayPersonVoice_ = true;
+		SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+		String*str = String::createWithFormat("Audio/%s.mp3", voice.c_str());
+		SimpleAudioEngine::getInstance()->playEffect(str->getCString(), false);
+	}
+}
+void CAudioManager::ResumeBackground()
+{
+	IsPlayPersonVoice_ = false;
+	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
 void CAudioManager::PlayerVoice(std::string voice)
 {
-	String*str = String::createWithFormat("Audio/%s.mp3", voice.c_str());
-	SimpleAudioEngine::getInstance()->playEffect(str->getCString(), false);
+	if (IsPlayPersonVoice_ == true)
+		return;
+	if (voice != "")
+	{
+		String*str = String::createWithFormat("Audio/%s.mp3", voice.c_str());
+		SimpleAudioEngine::getInstance()->playEffect(str->getCString(), false);
+	}
+
 }
 void CAudioManager::PreLoadAudioBackground(std::string fileName)
 {

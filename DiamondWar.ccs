@@ -234,6 +234,30 @@
           <PlistImageFile Name="shuijing_Bg.png" Key="shuijing_Bg.png" />
         </PlistImageFolder>
         <Image Name="xuetiaoup.png" />
+        <Project Name="BattleScene.csd" Type="Node" />
+        <Project Name="BattleUI.csd" Type="Node" />
+        <PlistImageFolder Image="DuiHua.png" PListFile="DuiHua.plist" Name=".DuiHua_PList.Dir">
+          <PlistImageFile Name="texture_nan_1_1.png" Key="texture_nan_1_1.png" />
+          <PlistImageFile Name="texture_nan_1_2.png" Key="texture_nan_1_2.png" />
+          <PlistImageFile Name="texture_nan_2_1.png" Key="texture_nan_2_1.png" />
+          <PlistImageFile Name="texture_nan_2_2.png" Key="texture_nan_2_2.png" />
+          <PlistImageFile Name="texture_nan_bg.png" Key="texture_nan_bg.png" />
+          <PlistImageFile Name="texture_nan_golden.png" Key="texture_nan_golden.png" />
+          <PlistImageFile Name="texture_nan_haha.png" Key="texture_nan_haha.png" />
+          <PlistImageFile Name="texture_nan_welcome.png" Key="texture_nan_welcome.png" />
+          <PlistImageFile Name="texture_nan_welldone.png" Key="texture_nan_welldone.png" />
+          <PlistImageFile Name="texture_nv_1_1.png" Key="texture_nv_1_1.png" />
+          <PlistImageFile Name="texture_nv_1_2.png" Key="texture_nv_1_2.png" />
+          <PlistImageFile Name="texture_nv_2_1.png" Key="texture_nv_2_1.png" />
+          <PlistImageFile Name="texture_nv_2_2.png" Key="texture_nv_2_2.png" />
+          <PlistImageFile Name="texture_nv_bg.png" Key="texture_nv_bg.png" />
+          <PlistImageFile Name="texture_nv_caiseshuijing.png" Key="texture_nv_caiseshuijing.png" />
+          <PlistImageFile Name="texture_nv_choice.png" Key="texture_nv_choice.png" />
+          <PlistImageFile Name="texture_nv_heropower.png" Key="texture_nv_heropower.png" />
+          <PlistImageFile Name="texture_nv_hewin.png" Key="texture_nv_hewin.png" />
+          <PlistImageFile Name="texture_nv_monkey.png" Key="texture_nv_monkey.png" />
+          <PlistImageFile Name="texture_nv_start.png" Key="texture_nv_start.png" />
+        </PlistImageFolder>
       </RootFolder>
     </Group>
   </SolutionFolder>

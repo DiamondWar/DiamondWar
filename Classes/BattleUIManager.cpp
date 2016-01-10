@@ -3,7 +3,9 @@
 #include "BattleObjectManager.h"
 #include "GameSceneControl.h"
 #include "SoliderConfig.h"
+#include "DuiHuaUIManager.h"
 USING_NS_CC;
+
 
 bool CBattleUIManager::init()
 
@@ -12,7 +14,25 @@ bool CBattleUIManager::init()
 	{
 		return false;
 	}
-	auto *node = CSLoader::createNode("MainScene.csb");
+	auto *node = CSLoader::createNode("BattleUI.csb");
+	MyIcon_ = static_cast<Sprite*>(node->getChildByName("player1_1"));
+	MyDuiHuaSp_ = Sprite::createWithSpriteFrameName("texture_nv_start.png");
+	MyDuiHuaSp_->setAnchorPoint(ccp(0, 0));
+	Sprite*bg1 = Sprite::createWithSpriteFrameName("texture_nv_bg.png");
+	bg1->setAnchorPoint(ccp(0, 0));
+	bg1->setPosition(180, 940);
+	bg1->addChild(MyDuiHuaSp_);
+	bg1->setVisible(false);
+	addChild(bg1);
+	SecondDuiHuaSp_ = Sprite::createWithSpriteFrameName("texture_nan_welcome.png");
+	SecondDuiHuaSp_->setAnchorPoint(ccp(0, 0));
+	Sprite*bg2 = Sprite::createWithSpriteFrameName("texture_nan_bg.png");
+	bg2->setAnchorPoint(ccp(0, 0));
+	bg2->addChild(SecondDuiHuaSp_);
+	bg2->setPosition(1300, 940);
+	bg2->setVisible(false);
+	addChild(bg2);
+	SecondIcon_ = static_cast<Sprite*>(node->getChildByName("player1_2"));
 	MyBloodProgress_ =static_cast<LoadingBar*>( node->getChildByName("LoadingBar_1"));
 	SecondBloodProgress_ = static_cast<LoadingBar*>(node->getChildByName("LoadingBar_2"));
 	addChild(node);
@@ -23,6 +43,8 @@ bool CBattleUIManager::init()
 	addChild(DiamondManger);
 	CreateTime();
 	CreateCaiSeShuiJing();
+	OnPlayVoice(3, 2.5);
+	CGameSceneControl::GetInstance()->SetBattleUIManager(this);
 	EventListenerTouchOneByOne*	 listener = EventListenerTouchOneByOne::create();
 
 	listener->onTouchBegan = [this](Touch* touch, Event* event)
@@ -98,9 +120,9 @@ void CBattleUIManager::CreateCaiSeShuiJing()
 	/*CCSprite*spr = CCSprite::createWithSpriteFrameName("Di_%.png");
 	spr->setPosition(Vec2(Director::getInstance()->getWinSize().width - 80-30, 150));
 	addChild(spr);*/
-	CaiSeShuiJingTimeLabel_ = TextAtlas::create("12780", "diatlas.png", 45, 37, "/");
-	CaiSeShuiJingTimeLabel_->setString("12/");
-	CaiSeShuiJingTimeLabel_->setPosition(Vec2(Director::getInstance()->getWinSize().width - 80, 150));
+	CaiSeShuiJingTimeLabel_ = TextAtlas::create("12780", "diatlas.png", 32, 37, "/");
+	CaiSeShuiJingTimeLabel_->setString("0/");
+	CaiSeShuiJingTimeLabel_->setPosition(Vec2(Director::getInstance()->getWinSize().width - 90, 100));
 	addChild(CaiSeShuiJingTimeLabel_);
 }
 void CBattleUIManager::CreateTime()
@@ -180,7 +202,7 @@ void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 		CaiSeShuiJing_->setScaleY(val);
 		IsCanChoseCaiSe_ = false;
 	}
-	String*string = String::createWithFormat("%.0f", val * 100);
+	String*string = String::createWithFormat("%.0f/", val * 100);
 	CaiSeShuiJingTimeLabel_->setString(string->getCString());
 
 }
@@ -254,6 +276,9 @@ void CBattleUIManager::onTouchEnded(Touch* touch, Event* event)
 			{
 				if (DiamondManger->CheckPointInThis(pos))
 				{
+					//²¥·ÅÉùÒô
+					OnPlayVoice(5,2);
+
 					UpdateCaiSeShuiJing(-5);
 				}
 			}
@@ -266,4 +291,155 @@ void CBattleUIManager::onTouchEnded(Touch* touch, Event* event)
 void CBattleUIManager::onTouchCancelled(Touch* touch, Event* event)
 {
 	log("TouchTest onTouchesCancelled");
+}
+
+void CBattleUIManager::Role1PlayAnimation(int index)
+{
+	String *string = String::createWithFormat("nv_animation_%d", index);
+	Animation* animation = AnimationCache::getInstance()->getAnimation(string->getCString());
+	if (animation==NULL)
+	{
+		Vector<SpriteFrame*> vsp;
+		for (int i = 1; i < 3; i++)
+		{
+			String *string1 = String::createWithFormat("texture_nv_%d_%d.png", index, i);
+			SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string1->getCString());
+			vsp.pushBack(spfr);
+		}
+		animation = Animation::createWithSpriteFrames(vsp, 1.0f / 10);
+		
+		AnimationCache::getInstance()->addAnimation(animation, string->getCString());
+	}
+	
+	Animate* animate = Animate::create(animation);
+	auto *ac1 = RepeatForever::create(animate);
+	MyIcon_->runAction(ac1);
+}
+void CBattleUIManager::Role2PlayAnimation(int index)
+{
+	String *string = String::createWithFormat("nan_animation_%d", index);
+	Animation* animation = AnimationCache::getInstance()->getAnimation(string->getCString());
+	if (animation == NULL)
+	{
+		Vector<SpriteFrame*> vsp;
+		for (int i = 1; i < 3; i++)
+		{
+			String *string1 = String::createWithFormat("texture_nan_%d_%d.png", index, i);
+			SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string1->getCString());
+			vsp.pushBack(spfr);
+		}
+		animation = Animation::createWithSpriteFrames(vsp, 1.0f / 10);
+
+		AnimationCache::getInstance()->addAnimation(animation, string->getCString());
+	}
+
+	Animate* animate = Animate::create(animation);
+	auto *ac1 = RepeatForever::create(animate);
+
+	if (SecondIcon_!= NULL)
+	SecondIcon_->runAction(ac1);
+}
+void CBattleUIManager::OnPlayVoice(int index,float time)
+{
+	SpriteFrame* frame1;
+	switch (index)
+	{
+	case 1:
+		Role2PlayAnimation(2);
+		SecondDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nan_golden.png");
+		SecondDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 2:
+		Role2PlayAnimation(1);
+		SecondDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nan_haha.png");
+		SecondDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 3:
+		Role2PlayAnimation(1);
+		SecondDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nan_welcome.png");
+		SecondDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 4:
+		Role2PlayAnimation(1);
+		SecondDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nan_welldone.png");
+		SecondDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 5:
+		Role1PlayAnimation(1);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_caiseshuijing.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 6:
+		Role1PlayAnimation(1);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_choice.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case  7:
+		Role1PlayAnimation(2);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 =  SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_heropower.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 8:
+		Role1PlayAnimation(1);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_hewin.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 9:
+		Role1PlayAnimation(2);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_monkey.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	case 10:
+		Role1PlayAnimation(1);
+		MyDuiHuaSp_->getParent()->setVisible(true);
+		frame1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("texture_nv_start.png");
+		MyDuiHuaSp_->setSpriteFrame(frame1);
+		break;
+	default:
+		break;
+	}
+	CDuiHuaUIManager* duihua = CDuiHuaUIManager::create();
+	duihua->PlayPersonAudio(index, time, this);
+	addChild(duihua);
+}
+void CBattleUIManager::OnAudioComplete(int index)
+{
+	MyIcon_->stopAllActions();
+	SecondIcon_->stopAllActions();
+	SecondDuiHuaSp_->getParent()->setVisible(false);
+	MyDuiHuaSp_->getParent()->setVisible(false);
+	switch (index)
+	{
+	case 1:
+		break;
+	case 2:
+		OnPlayVoice(9, 1.3);
+		break;
+	case 3:
+		OnPlayVoice(10, 2.5);
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
+		break;
+	case  7:
+		break;
+	case 8:
+		break;
+	case 9:
+		break;
+	case 10:
+		break;
+	}
 }

@@ -24,6 +24,9 @@ void CSpellManager::ChoseSpell(CSpellData*data)
 	case 1:
 		OnAttackByType1(data);
 		break;
+	case 2:
+		OnAttackByType1(data);
+		break;
 	default:
 		break;
 	}

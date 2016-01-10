@@ -10,6 +10,7 @@
 #include "SkillManager.h"
 #include "Buff.h"
 #include "AttackManager.h"
+#include "GameSceneControl.h"
 USING_NS_CC;
 CSolider::CSolider(int id, int type, int rank, float level)
 {
@@ -126,9 +127,9 @@ void CSolider::OnResourceLoadComplete()
 		Obj->setRotationSkewY(180);
 		BulletPos_.x = -BulletPos_.x;
 	}
-
-
 	OnRun();
+	
+
 }
 float  CSolider::GetBulletPointToBulletX()
 {

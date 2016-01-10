@@ -5,6 +5,7 @@
 #include "CGlobleConfig.h"
 #include "SoliderConfig.h"
 #include "SpellConfig.h"
+#include "AudioManager.h"
 USING_NS_CC;
 
 bool CDiamondChoseManager::init()
@@ -120,6 +121,8 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 		CShuiJingBase* base = SpriteList.at(i);
 		if (base->IsLoading == false && base->IsCanChose_ == true)
 		{
+			if (base->MyColor == 5)
+				continue;
 			CanChoselist[base->MyColor - 1]->indexlist[CanChoselist[base->MyColor - 1]->Num] = i;
 			if (CanChoselist[base->MyColor - 1]->Num != 0)
 			{
@@ -220,6 +223,7 @@ void CDiamondChoseManager::onTouchBegan(Touch* touch, Event* event)
 			LastPoint = StartPoint;
 			ChoseSprite_->setAnchorPoint(ccp(0, 0));
 			ChoseSprite_->setPositionX(StartPoint);
+			CAudioManager::GetInstance()->PlayerVoice("touchshuijing");
 		}
 		else
 		{
@@ -282,6 +286,7 @@ void CDiamondChoseManager::onTouchMoved(Touch* touch, Event* event)
 					ChoseSprite_->setAnchorPoint(ccp(0, 0));
 				}
 				ChoseSprite_->setScaleX((float)len / 256.0f);
+				CAudioManager::GetInstance()->PlayerVoice("moveshuijing");
 			}
 			else
 			{
@@ -477,7 +482,7 @@ bool CDiamondChoseManager::CheckPointInThis(CCPoint pos)
 
 	if (index <= 6 && pos.y < 180 && SpriteList.at(index)->IsLoading == false)
 	{
-		SpriteList.at(index)->ResetInfo(5, false);
+		SpriteList.at(index)->ResetInfo(1,5, false);
 		return true;
 	}
 	return false;

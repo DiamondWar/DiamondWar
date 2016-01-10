@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "BattleUIManager.h"
 class CGameSceneControl
 {
 public:
@@ -14,9 +15,13 @@ public:
 	bool IsHaveConsumeHero(int color ,int num);
 	int IsHaveHero(int color, int num);
 	void AddScreenShake();
+	void OnScreenScale();
+	void SetBattleUIManager(CBattleUIManager* manager);
+	CBattleUIManager* GetBattleUIManager();
 	cocos2d::Node* GameRoot_;
 	int HeroList[8];
 private: 
 	static CGameSceneControl* Instance_;
+	CBattleUIManager* BattleManager_;
 };
 

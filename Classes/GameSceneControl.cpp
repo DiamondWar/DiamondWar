@@ -40,9 +40,9 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 	{
 		if (i < 6)
 		{
-			
+
 			CSoliderData * data = CSoliderConfig::GetInstance()->GetItemById(HeroList[i]);
-		
+
 			if (data->SoliderType == color)
 			{
 				if (data->NeedStar < num)
@@ -82,7 +82,7 @@ int CGameSceneControl::IsHaveHero(int color, int num)
 				}
 			}
 		}
-		
+
 	}
 	return index;
 }
@@ -141,7 +141,7 @@ bool CGameSceneControl::IsHaveConsumeHero(int color, int num)
 	}
 	float x = chosenum + 0.0;
 	float y = num + 0.0;
-	if (index<6)
+	if (index < 6)
 		CreateSolider(HeroList[index], 1, 1);
 	else
 	{
@@ -155,6 +155,33 @@ void CGameSceneControl::CreateSolider(int id, int ranks, float level)
 	CSolider* sol = new CSolider(id, 1, ranks, level);
 	GameRoot_->addChild(sol->Obj);
 	CBattleObjectManager::GetInstance()->AddObject(sol);
+	CSoliderData * Data_ = CSoliderConfig::GetInstance()->GetItemById(id);
+	if (Data_->NeedStar == 5 && Data_->SoliderType == 1 && ranks == 1)
+	{
+		if (CCGlobleConfig::IsMyGolden == true)
+			return;
+		CCGlobleConfig::IsMyGolden = true;
+		CGameSceneControl::GetInstance()->OnScreenScale();
+		CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(1, 3);
+	}
+	else if (ranks == 2 && Data_->NeedStar == 4 && Data_->SoliderType == 3)
+	{
+		if (CCGlobleConfig::IsEnemyHaHa == true)
+			return;
+		CCGlobleConfig::IsEnemyHaHa = true;
+		CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(2, 2.5);
+	}
+	else if (ranks == 1 && Data_->NeedStar == 4 && Data_->SoliderType == 3)
+	{
+		CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(6, 2.5);
+	}
+	else if (ranks == 2 && Data_->SoliderType == 2 && Data_->NeedStar == 3)
+	{
+		if (CCGlobleConfig::isEnemyHeroPower == true)
+			return;
+		CCGlobleConfig::isEnemyHeroPower = true;
+		CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(7, 2.5);
+	}
 }
 void CGameSceneControl::CreateBoss(int ranks)
 {
@@ -178,6 +205,26 @@ void CGameSceneControl::AddScreenShake()
 {
 	Shake*sk = Shake::create(3, 4);
 	GameRoot_->runAction(sk);
+}
+void CGameSceneControl::OnScreenScale()
+{
+	MoveTo* moveto = MoveTo::create(0.5, Vec2(0, -150));
+	MoveTo* moveto1 = MoveTo::create(0.5, Vec2(0, 0));
+	ScaleTo* scalto = ScaleTo::create(0.5, 1.8);
+	ScaleTo* scalto1 = ScaleTo::create(1.5, 1.8);
+	ScaleTo* scalto2 = ScaleTo::create(0.5, 1);
+	CCSpawn* spawn = CCSpawn::create(moveto, scalto, NULL);
+	CCSpawn*spawn1 = CCSpawn::create(moveto1, scalto2, NULL);
+	CCSequence* sequence = CCSequence::create(spawn, scalto1, spawn1, NULL);
+	GameRoot_->runAction(sequence);
+}
+void CGameSceneControl::SetBattleUIManager(CBattleUIManager* manager)
+{
+	BattleManager_ = manager;
+}
+CBattleUIManager* CGameSceneControl::GetBattleUIManager()
+{
+	return BattleManager_;
 }
 CGameSceneControl::~CGameSceneControl()
 {

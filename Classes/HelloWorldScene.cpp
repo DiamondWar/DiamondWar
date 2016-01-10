@@ -55,6 +55,7 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("BattleBoss.plist", "BattleBoss.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Line.plist", "Line.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("caihong.plist", "caihong.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("DuiHua.plist", "DuiHua.png");
 	//初始化技能资源
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_2.plist", "Skill/ASkill_1001_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Skill/ASkill_1001_3.plist", "Skill/ASkill_1001_3.png");
@@ -87,6 +88,7 @@ bool HelloWorld::init()
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Spell/Spell_1_1.plist", "Spell/Spell_1_1.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Spell/Spell_1_2.plist", "Spell/Spell_1_2.png");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Spell/Spell_1_3.plist", "Spell/Spell_1_3.png");
+
 	//预加载音效
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_1001.mp3");
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/ASkillVoiceRun_1002.mp3");
@@ -117,6 +119,17 @@ bool HelloWorld::init()
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/SkillVoiceHurt_2003.mp3");
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/SkillVoiceHurt_3003.mp3");
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/SpellVoiceIdle_1.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nan_golden.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nan_haha.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nan_welcome.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nv_caiseshuijing.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nv_heropower.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nv_hewin.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nv_monkey.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nv_start.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nan_welldone.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/moveshuijing.mp3");
+	CAudioManager::GetInstance()->PreLoadAudio("Audio/touchshuijing.mp3");
 	//加载配置文件
 	CSoliderConfig::GetInstance()->LoadText();
 	CSkillConfig::GetInstance()->LoadText();
@@ -126,19 +139,24 @@ bool HelloWorld::init()
 	CSpellConfig::GetInstance()->LoadText();
 	CAudioManager::GetInstance()->PlayerBackGroundMusic("background.mp3");
 	
-	CGameSceneControl::GetInstance()->SetRoot(this);
-	CGameSceneControl::GetInstance()->InitGameData();
 	
+	CGameSceneControl::GetInstance()->InitGameData();
+	Node* node = Node::create();
+	node->setAnchorPoint(ccp(0.5, 0.5));
+	addChild(node);
+	auto*battle = CSLoader::createNode("BattleScene.csb");
+	node->addChild(battle);
+	CGameSceneControl::GetInstance()->SetRoot(node);
 	auto manager = CBattleUIManager::create();
 	manager->setAnchorPoint(ccp(0, 0));
 	manager->setPosition(0, 0);
 	addChild(manager);
-	CGameSceneControl::GetInstance()->CreateBoss(1);
-	CGameSceneControl::GetInstance()->CreateBoss(2);
 	this->scheduleUpdate();
 	LastFrameCount = 0;
-	/*CGameSceneControl::GetInstance()->CreateSolider(3001, 2, 1);
-	CGameSceneControl::GetInstance()->CreateSolider(3003, 1, 1);*/
+	
+
+	CGameSceneControl::GetInstance()->CreateBoss(1);
+	CGameSceneControl::GetInstance()->CreateBoss(2);
 	EnemyData_ = CEnemyLevelConfig::GetInstance()->GetItemByIndex(EnemeyCount);
 	return true;
 }

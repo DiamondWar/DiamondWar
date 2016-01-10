@@ -159,6 +159,12 @@
     <ClCompile Include="..\Classes\SpellLiuXingBullet.cpp">
       <Filter>src\SpellBulletAndEffect</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DuiHuaUIManager.cpp">
+      <Filter>src\BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AudioDelegate.cpp">
+      <Filter>src\Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -283,6 +289,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SpellLiuXingBullet.h">
       <Filter>src\SpellBulletAndEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DuiHuaUIManager.h">
+      <Filter>src\BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AudioDelegate.h">
+      <Filter>src\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

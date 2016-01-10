@@ -12,7 +12,7 @@ bool CShuiJingBase::init()
 	this->scheduleUpdate();
 	return true;
 }
-void CShuiJingBase::SetInfo(int index,bool flag)
+void CShuiJingBase::SetInfo(int index, bool flag)
 {
 	IsCanLoading_ = true;
 	IsLoading = false;
@@ -59,13 +59,13 @@ void CShuiJingBase::SetInfo(int index,bool flag)
 		Progress_->setPercentage(num);
 		SetCanExist(false);
 	}
-		
+
 
 }
 void CShuiJingBase::SetCanExist(bool flag)
 {
 	//AnimationSp_->setVisible(flag);
-	Progress_->setVisible(flag); 
+	Progress_->setVisible(flag);
 	MainSprite_->setVisible(flag);
 
 }
@@ -91,21 +91,20 @@ void CShuiJingBase::update(float dt)
 	{
 		CCProgressTimer *ct = (CCProgressTimer*)getChildByTag(10);
 		// 获取当前进度
-		int num = ct->getPercentage();
+		float num = ct->getPercentage();
 		// 设置进度速度（此处为每帧+1
-		if (CurMaxCoolTime<100000)
+		if (CurMaxCoolTime < 100000)
 			CurMaxCoolTime--;
 		if (CurMaxCoolTime < 0)
 			CurMaxCoolTime = 0;
+		CCLOG("curMaxCoolTime === %d", CurMaxCoolTime);
 		if (CurMaxCoolTime <= MaxCoolTime)
 		{
 			SetCanExist(true);
 			TimeSp_->setVisible(true);
-			if (CurMaxCoolTime % 3 == 0)
-			{
-				ct->setPercentage(--num);
-			}
-			CCString* ns = CCString::createWithFormat("shuijingshuzi_%d.png", CurMaxCoolTime  / 60 + 1);
+			num -= 100.0 / 180.0;
+			ct->setPercentage(num);
+			CCString* ns = CCString::createWithFormat("shuijingshuzi_%d.png", CurMaxCoolTime / 60 + 1);
 			SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(ns->getCString());
 			TimeSp_->setSpriteFrame(frame);
 		}
@@ -114,12 +113,13 @@ void CShuiJingBase::update(float dt)
 			SetCanExist(false);
 			TimeSp_->setVisible(false);
 		}
-	
+
 		// 设置了循环播放
 		if (num <= 0)
 		{
 			CurMaxCoolTime = 0;
 			IsLoading = false;//冷却成功
+			TimeSp_->setVisible(false);
 		}
 	}
 	else
@@ -128,30 +128,38 @@ void CShuiJingBase::update(float dt)
 	}
 
 }
-void CShuiJingBase::ResetInfo(int num,int Color,bool flag)
+void CShuiJingBase::ResetInfo(int num, int Color, bool flag)
 {
 	MyColor = Color;
 	Animation* animation = NULL;
 	String* st1 = String::createWithFormat("ShuiJing_%d", Color);
 	animation = AnimationCache::sharedAnimationCache()->getAnimation(st1->getCString());
-	Animate *animate = Animate::create(animation);
-	auto *ac1 = RepeatForever::create(animate);
-	AnimationSp_->stopAllActions();
-	AnimationSp_->runAction(ac1);
-	AnimationSp_->setVisible(false);
+	if (animation != NULL)
+	{
+		Animate *animate = Animate::create(animation);
+		auto *ac1 = RepeatForever::create(animate);
+		AnimationSp_->stopAllActions();
+		AnimationSp_->runAction(ac1);
+		AnimationSp_->setVisible(false);
+	}
+	else
+	{
+		AnimationSp_->setVisible(false);
+	}
+
 	IsCanLoading_ = true;
 	String* string = String::createWithFormat("shuijing_%d.png", Color);
 	SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
 	MainSprite_->setSpriteFrame(frame);
 
 	if (flag == false)
-	Progress_->setPercentage(0);
+		Progress_->setPercentage(0);
 	else
 	{
 		Progress_->setPercentage(100);
 		SetCanExist(false);
 	}
-		
+
 	IsLoading = flag;
 
 }

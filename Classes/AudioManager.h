@@ -8,11 +8,14 @@ public:
 	static CAudioManager* GetInstance();
 	void PlayerBackGroundMusic(std::string music);
 	void PlayerVoice(std::string voice);
+	void ResumeBackground();
+	void PlayerPersonVoice(std::string voice);
 	void PreLoadAudioBackground(std::string fileName);
 	void UnLoadAudioBackground(std::string fileName);
 	void PreLoadAudio(const char* fileName);
 	void UnLoadAudio(const char* fileName);
 private: 
 	static CAudioManager* Instance_;
+	bool IsPlayPersonVoice_ = false;
 };
 

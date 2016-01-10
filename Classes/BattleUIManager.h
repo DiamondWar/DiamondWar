@@ -3,9 +3,10 @@
 #include "DiamondChoseManager.h"
 #include "ui/UILoadingBar.h"
 #include "ui/UITextAtlas.h"
+#include "AudioDelegate.h"
 using namespace cocos2d::ui;
 class CBattleUIManager :
-	public cocos2d::Node
+	public cocos2d::Node,public CAudioDelegate
 {
 public:
 	CREATE_FUNC(CBattleUIManager);
@@ -17,13 +18,27 @@ public:
 	void UpdateCaiSeShuiJing(int num);
 	void CreateMoveAnimation(int color ,cocos2d::CCPoint start, cocos2d::CCPoint target);
 	void OnMoveAnimationComplete(cocos2d::CCSprite* spr);
+	virtual void OnAudioComplete(int index);
+	void OnPlayVoice(int index, float time);
 	void onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	void onTouchCancelled(cocos2d::Touch* touch, cocos2d::Event* event);
+	//主角1头像播放动画
+	void Role1PlayAnimation(int index);
+	//主角1头像播放动画
+	void Role2PlayAnimation(int index);
 	cocos2d::Node* CaiseShuiJingRoot_;
 private: 
+	
+
 	CDiamondChoseManager * DiamondManger;
+	//我方基地头像
+	cocos2d::Sprite*  MyIcon_;
+	cocos2d::Sprite* MyDuiHuaSp_;
+	//地方基地头像
+	cocos2d::Sprite* SecondIcon_;
+	cocos2d::Sprite* SecondDuiHuaSp_;
 	//我方基地血条显示
 	LoadingBar* MyBloodProgress_;
 	//地方血条显示

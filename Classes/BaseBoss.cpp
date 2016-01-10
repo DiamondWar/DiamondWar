@@ -1,6 +1,7 @@
 #include "BaseBoss.h"
 #include "Buff.h"
 #include "BattleObjectManager.h"
+#include "GameSceneControl.h"
 USING_NS_CC;
 CBaseBoss::CBaseBoss()
 {}
@@ -31,12 +32,22 @@ void CBaseBoss::GetDamage(int damage, int type)
 	if (damage == 0)
 		return;
 	bool flag = CurBlood == 0;
+	bool flag1 = CurBlood <= MaxBlood*0.3;
+	bool flag2 = CurBlood <= MaxBlood*0.5;
 	CurBlood -= damage;
 	if (CurBlood <= 0)
 	{
 		CurBlood = 0;
 		if (flag == false)
 		{
+			if (Ranks == 1)
+			{
+				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(8, 3);
+			}
+			else
+			{
+				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(4,1.5);
+			}
 			CBuffData* data_ = new   CBuffData();
 			data_->attackPoint = 1;
 			data_->AttackType = 1;
@@ -53,11 +64,16 @@ void CBaseBoss::GetDamage(int damage, int type)
 	{
 		if (Ranks == 1)
 		{
+			if (flag1 == false)
+			{
+				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(7, 2.5);
+			}
 			SpriteFrame* fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("myboss_3.png");
 			BossSprite_->setSpriteFrame(fram);
 		}
 		else
 		{
+
 			SpriteFrame* fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("enemyboss_3.png");
 			BossSprite_->setSpriteFrame(fram);
 		}
@@ -67,6 +83,10 @@ void CBaseBoss::GetDamage(int damage, int type)
 	{
 		if (Ranks == 1)
 		{
+			if (flag2 == false)
+			{
+				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(7, 2.5);
+			}
 			SpriteFrame* fram = SpriteFrameCache::getInstance()->getSpriteFrameByName("myboss_2.png");
 			BossSprite_->setSpriteFrame(fram);
 		}

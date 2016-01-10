@@ -154,6 +154,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AttackConfig.cpp" />
     <ClCompile Include="..\Classes\AttackData.cpp" />
     <ClCompile Include="..\Classes\AttackManager.cpp" />
+    <ClCompile Include="..\Classes\AudioDelegate.cpp" />
     <ClCompile Include="..\Classes\AudioManager.cpp" />
     <ClCompile Include="..\Classes\BaseBoss.cpp" />
     <ClCompile Include="..\Classes\BattleIcon.cpp" />
@@ -165,6 +166,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Bullet.cpp" />
     <ClCompile Include="..\Classes\CGlobleConfig.cpp" />
     <ClCompile Include="..\Classes\DiamondChoseManager.cpp" />
+    <ClCompile Include="..\Classes\DuiHuaUIManager.cpp" />
     <ClCompile Include="..\Classes\EnemyLevelConfig.cpp" />
     <ClCompile Include="..\Classes\EnemyLevelData.cpp" />
     <ClCompile Include="..\Classes\ESystemEnum.cpp" />
@@ -197,6 +199,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AttackConfig.h" />
     <ClInclude Include="..\Classes\AttackData.h" />
     <ClInclude Include="..\Classes\AttackManager.h" />
+    <ClInclude Include="..\Classes\AudioDelegate.h" />
     <ClInclude Include="..\Classes\AudioManager.h" />
     <ClInclude Include="..\Classes\BaseBoss.h" />
     <ClInclude Include="..\Classes\BattleIcon.h" />
@@ -208,6 +211,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Bullet.h" />
     <ClInclude Include="..\Classes\CGlobleConfig.h" />
     <ClInclude Include="..\Classes\DiamondChoseManager.h" />
+    <ClInclude Include="..\Classes\DuiHuaUIManager.h" />
     <ClInclude Include="..\Classes\EnemyLevelConfig.h" />
     <ClInclude Include="..\Classes\EnemyLevelData.h" />
     <ClInclude Include="..\Classes\ESystemEnum.h" />
