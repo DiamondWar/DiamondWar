@@ -258,6 +258,52 @@
           <PlistImageFile Name="texture_nv_monkey.png" Key="texture_nv_monkey.png" />
           <PlistImageFile Name="texture_nv_start.png" Key="texture_nv_start.png" />
         </PlistImageFolder>
+        <Project Name="ChoseTowerRoot.csd" Type="Scene" />
+        <PlistImageFolder Image="ChoseTower.png" PListFile="ChoseTower.plist" Name=".ChoseTower_PList.Dir">
+          <PlistImageFile Name="herotype1.png" Key="herotype1.png" />
+          <PlistImageFile Name="herotype2.png" Key="herotype2.png" />
+          <PlistImageFile Name="herotype3.png" Key="herotype3.png" />
+          <PlistImageFile Name="herotype4.png" Key="herotype4.png" />
+          <PlistImageFile Name="herotypebg1.png" Key="herotypebg1.png" />
+          <PlistImageFile Name="herotypebg2.png" Key="herotypebg2.png" />
+          <PlistImageFile Name="herotypebg3.png" Key="herotypebg3.png" />
+          <PlistImageFile Name="herotypebg4.png" Key="herotypebg4.png" />
+          <PlistImageFile Name="list_bg.png" Key="list_bg.png" />
+          <PlistImageFile Name="listitem_chose_bg.png" Key="listitem_chose_bg.png" />
+          <PlistImageFile Name="listitem_nochose_bg.png" Key="listitem_nochose_bg.png" />
+          <PlistImageFile Name="noadd.png" Key="noadd.png" />
+          <PlistImageFile Name="scrollbg.png" Key="scrollbg.png" />
+          <PlistImageFile Name="srollup.png" Key="srollup.png" />
+          <PlistImageFile Name="texture_cost_1.png" Key="texture_cost_1.png" />
+          <PlistImageFile Name="texture_cost_2.png" Key="texture_cost_2.png" />
+          <PlistImageFile Name="texture_cost_3.png" Key="texture_cost_3.png" />
+          <PlistImageFile Name="texture_cost_4.png" Key="texture_cost_4.png" />
+          <PlistImageFile Name="texture_cost_5.png" Key="texture_cost_5.png" />
+          <PlistImageFile Name="texture_hero_1.png" Key="texture_hero_1.png" />
+          <PlistImageFile Name="texture_hero_2.png" Key="texture_hero_2.png" />
+          <PlistImageFile Name="texture_hero_3.png" Key="texture_hero_3.png" />
+          <PlistImageFile Name="texture_hero_4.png" Key="texture_hero_4.png" />
+          <PlistImageFile Name="texture_hero_5.png" Key="texture_hero_5.png" />
+          <PlistImageFile Name="texture_hero_6.png" Key="texture_hero_6.png" />
+          <PlistImageFile Name="texture_hero_7.png" Key="texture_hero_7.png" />
+          <PlistImageFile Name="texture_hero_8.png" Key="texture_hero_8.png" />
+          <PlistImageFile Name="texture_hero_9.png" Key="texture_hero_9.png" />
+          <PlistImageFile Name="texture_spell_1.png" Key="texture_spell_1.png" />
+          <PlistImageFile Name="texture_spell_2.png" Key="texture_spell_2.png" />
+          <PlistImageFile Name="suo.png" Key="suo.png" />
+          <PlistImageFile Name="choseTower_iconbg.png" Key="choseTower_iconbg.png" />
+          <PlistImageFile Name="texture_chuzhan_title1.png" Key="texture_chuzhan_title1.png" />
+          <PlistImageFile Name="texture_chuzhan_title2.png" Key="texture_chuzhan_title2.png" />
+          <PlistImageFile Name="texture_chuzhan_title3.png" Key="texture_chuzhan_title3.png" />
+          <PlistImageFile Name="texture_chuzhan_title4.png" Key="texture_chuzhan_title4.png" />
+        </PlistImageFolder>
+        <Image Name="bg1.png" />
+        <Image Name="bg2.png" />
+        <Image Name="scrollbg.png" />
+        <Image Name="srollup.png" />
+        <Project Name="IconItem.csd" Type="Node" />
+        <Image Name="Start_button.png" />
+        <Image Name="Start_nobutton.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

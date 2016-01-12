@@ -165,6 +165,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\BuffData.cpp" />
     <ClCompile Include="..\Classes\Bullet.cpp" />
     <ClCompile Include="..\Classes\CGlobleConfig.cpp" />
+    <ClCompile Include="..\Classes\ChoseTowerUIManager.cpp" />
     <ClCompile Include="..\Classes\DiamondChoseManager.cpp" />
     <ClCompile Include="..\Classes\DuiHuaUIManager.cpp" />
     <ClCompile Include="..\Classes\EnemyLevelConfig.cpp" />
@@ -192,6 +193,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\StrengthConfig.cpp" />
     <ClCompile Include="..\Classes\StrengthData.cpp" />
     <ClCompile Include="..\Classes\SustainBullet.cpp" />
+    <ClCompile Include="..\Classes\TowerItemUI.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +212,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\BuffData.h" />
     <ClInclude Include="..\Classes\Bullet.h" />
     <ClInclude Include="..\Classes\CGlobleConfig.h" />
+    <ClInclude Include="..\Classes\ChoseTowerUIManager.h" />
     <ClInclude Include="..\Classes\DiamondChoseManager.h" />
     <ClInclude Include="..\Classes\DuiHuaUIManager.h" />
     <ClInclude Include="..\Classes\EnemyLevelConfig.h" />
@@ -237,6 +240,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\StrengthConfig.h" />
     <ClInclude Include="..\Classes\StrengthData.h" />
     <ClInclude Include="..\Classes\SustainBullet.h" />
+    <ClInclude Include="..\Classes\TowerItemUI.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

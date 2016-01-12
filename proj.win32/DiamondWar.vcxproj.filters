@@ -34,6 +34,9 @@
     <Filter Include="src\SpellBulletAndEffect">
       <UniqueIdentifier>{b01715bc-a248-4aeb-9ebb-c296f0f237e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\ChoseTowerUi">
+      <UniqueIdentifier>{87c033f2-28b7-45f5-8743-34ed797adc54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -165,6 +168,12 @@
     <ClCompile Include="..\Classes\AudioDelegate.cpp">
       <Filter>src\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TowerItemUI.cpp">
+      <Filter>src\ChoseTowerUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ChoseTowerUIManager.cpp">
+      <Filter>src\ChoseTowerUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -295,6 +304,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AudioDelegate.h">
       <Filter>src\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TowerItemUI.h">
+      <Filter>src\ChoseTowerUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ChoseTowerUIManager.h">
+      <Filter>src\ChoseTowerUi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
