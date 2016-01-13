@@ -329,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{108,40}</string>
             </dict>
-            <key>texture_hero_1.png</key>
+            <key>texture_hero_1001.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{405,590},{112,112}}</string>
@@ -342,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_2.png</key>
+            <key>texture_hero_1002.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{371,746},{112,112}}</string>
@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_3.png</key>
+            <key>texture_hero_1003.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{344,861},{112,112}}</string>
@@ -368,7 +368,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_4.png</key>
+            <key>texture_hero_2001.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{291,590},{112,112}}</string>
@@ -381,7 +381,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_5.png</key>
+            <key>texture_hero_2002.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{257,747},{112,112}}</string>
@@ -394,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_6.png</key>
+            <key>texture_hero_2003.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{177,590},{112,112}}</string>
@@ -407,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_7.png</key>
+            <key>texture_hero_3001.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{230,879},{112,112}}</string>
@@ -420,7 +420,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_8.png</key>
+            <key>texture_hero_3002.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{143,765},{112,112}}</string>
@@ -433,7 +433,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>texture_hero_9.png</key>
+            <key>texture_hero_3003.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{116,879},{112,112}}</string>
@@ -482,7 +482,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a81849ff55bece30d31f9d2d82597e21$</string>
+            <string>$TexturePacker:SmartUpdate:9630933e973b739da30f8709578301e0$</string>
             <key>textureFileName</key>
             <string>ChoseTower.png</string>
         </dict>

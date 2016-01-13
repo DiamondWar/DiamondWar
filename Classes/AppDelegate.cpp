@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
+#include "VideoSceneManager.h"
 #include "ChoseTowerUIManager.h"
-
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -42,7 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = CChoseTowerUIManager::createScene();
+    auto scene = CVideoSceneManager::createScene();
 
     // run
     director->runWithScene(scene);

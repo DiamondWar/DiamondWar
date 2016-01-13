@@ -153,15 +153,6 @@
             <filename>texture_cost_3.png</filename>
             <filename>texture_cost_4.png</filename>
             <filename>texture_cost_5.png</filename>
-            <filename>texture_hero_1.png</filename>
-            <filename>texture_hero_2.png</filename>
-            <filename>texture_hero_3.png</filename>
-            <filename>texture_hero_4.png</filename>
-            <filename>texture_hero_5.png</filename>
-            <filename>texture_hero_6.png</filename>
-            <filename>texture_hero_7.png</filename>
-            <filename>texture_hero_8.png</filename>
-            <filename>texture_hero_9.png</filename>
             <filename>texture_spell_1.png</filename>
             <filename>texture_spell_2.png</filename>
             <filename>herotype1.png</filename>
@@ -182,6 +173,15 @@
             <filename>texture_chuzhan_title2.png</filename>
             <filename>texture_chuzhan_title3.png</filename>
             <filename>texture_chuzhan_title4.png</filename>
+            <filename>texture_hero_2003.png</filename>
+            <filename>texture_hero_3001.png</filename>
+            <filename>texture_hero_3002.png</filename>
+            <filename>texture_hero_3003.png</filename>
+            <filename>texture_hero_1001.png</filename>
+            <filename>texture_hero_1002.png</filename>
+            <filename>texture_hero_1003.png</filename>
+            <filename>texture_hero_2001.png</filename>
+            <filename>texture_hero_2002.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

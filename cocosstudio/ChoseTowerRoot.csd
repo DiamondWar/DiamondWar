@@ -39,7 +39,7 @@
             <FileData Type="PlistSubImage" Path="listitem_nochose_bg.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="zhenrong3" ActionTag="-258374308" Tag="46" IconVisible="False" LeftMargin="41.2736" RightMargin="1705.7263" TopMargin="483.7086" BottomMargin="489.2914" ctype="SpriteObjectData">
+          <AbstractNodeData Name="zhenrong3" ActionTag="-258374308" Tag="46" IconVisible="False" LeftMargin="41.2736" RightMargin="1705.7264" TopMargin="483.7086" BottomMargin="489.2914" ctype="SpriteObjectData">
             <Size X="173.0000" Y="107.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="127.7736" Y="542.7914" />
@@ -130,7 +130,7 @@
             <FileData Type="PlistSubImage" Path="herotype2.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="herotypebg3" ActionTag="125284710" Tag="51" IconVisible="False" LeftMargin="259.8365" RightMargin="1563.1635" TopMargin="589.4404" BottomMargin="383.5596" ctype="SpriteObjectData">
+          <AbstractNodeData Name="herotypebg3" ActionTag="125284710" Tag="51" IconVisible="False" LeftMargin="259.8365" RightMargin="1563.1636" TopMargin="589.4404" BottomMargin="383.5596" ctype="SpriteObjectData">
             <Size X="97.0000" Y="107.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="308.3365" Y="437.0596" />
@@ -255,7 +255,7 @@
             <FileData Type="PlistSubImage" Path="texture_chuzhan_title1.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="texture_chuzhan_title2_2" ActionTag="-675958985" Tag="89" IconVisible="False" LeftMargin="373.4481" RightMargin="892.5520" TopMargin="927.2170" BottomMargin="115.7829" ctype="SpriteObjectData">
+          <AbstractNodeData Name="texture_chuzhan_title2_2" ActionTag="-675958985" Tag="89" IconVisible="False" LeftMargin="373.4481" RightMargin="892.5519" TopMargin="927.2171" BottomMargin="115.7829" ctype="SpriteObjectData">
             <Size X="654.0000" Y="37.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="700.4481" Y="134.2829" />
@@ -288,7 +288,7 @@
             <FileData Type="PlistSubImage" Path="texture_chuzhan_title4.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="suo_5" ActionTag="17836376" Tag="92" IconVisible="False" LeftMargin="88.3951" RightMargin="1761.6050" TopMargin="494.1102" BottomMargin="502.8898" ctype="SpriteObjectData">
+          <AbstractNodeData Name="suo_5" ActionTag="17836376" Tag="92" IconVisible="False" LeftMargin="88.3932" RightMargin="1761.6068" TopMargin="494.1102" BottomMargin="502.8898" ctype="SpriteObjectData">
             <Size X="70.0000" Y="83.0000" />
             <AnchorPoint ScaleX="0.1371" />
             <Position X="97.9902" Y="502.8898" />
@@ -299,7 +299,7 @@
             <FileData Type="PlistSubImage" Path="suo.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="suo_6" ActionTag="1688425195" Tag="93" IconVisible="False" LeftMargin="81.1367" RightMargin="1768.8633" TopMargin="646.5385" BottomMargin="350.4615" ctype="SpriteObjectData">
+          <AbstractNodeData Name="suo_6" ActionTag="1688425195" Tag="93" IconVisible="False" LeftMargin="81.1371" RightMargin="1768.8629" TopMargin="646.5414" BottomMargin="350.4586" ctype="SpriteObjectData">
             <Size X="70.0000" Y="83.0000" />
             <AnchorPoint ScaleX="1.1740" ScaleY="0.1065" />
             <Position X="163.3171" Y="359.2981" />
@@ -309,6 +309,38 @@
             <PreSize X="0.0365" Y="0.0769" />
             <FileData Type="PlistSubImage" Path="suo.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="list_bg_1" ActionTag="-1503592631" Tag="33" IconVisible="False" LeftMargin="1446.9681" RightMargin="300.0319" TopMargin="96.6777" BottomMargin="810.3223" ctype="SpriteObjectData">
+            <Size X="173.0000" Y="173.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="1533.4681" Y="896.8223" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.7987" Y="0.8304" />
+            <PreSize X="0.0901" Y="0.1602" />
+            <FileData Type="PlistSubImage" Path="list_bg.png" Plist="ChoseTower.plist" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="herotypebg1_2" ActionTag="-763166379" Tag="34" IconVisible="False" LeftMargin="1482.8727" RightMargin="340.1273" TopMargin="129.6772" BottomMargin="843.3228" ctype="SpriteObjectData">
+            <Size X="97.0000" Y="107.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="1531.3727" Y="896.8228" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.7976" Y="0.8304" />
+            <PreSize X="0.0505" Y="0.0991" />
+            <FileData Type="PlistSubImage" Path="herotypebg1.png" Plist="ChoseTower.plist" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="AtlasLabel_1" ActionTag="382973624" Tag="35" IconVisible="False" LeftMargin="1514.3779" RightMargin="373.6221" TopMargin="165.9437" BottomMargin="877.0563" CharWidth="32" CharHeight="37" LabelText="2" StartChar="/" ctype="TextAtlasObjectData">
+            <Size X="32.0000" Y="37.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="1530.3779" Y="895.5563" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.7971" Y="0.8292" />
+            <PreSize X="0.0167" Y="0.0343" />
+            <LabelAtlasFileImage_CNB Type="Normal" Path="diatlas.png" Plist="" />
           </AbstractNodeData>
         </Children>
       </ObjectData>
