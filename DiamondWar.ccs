@@ -303,6 +303,7 @@
           <PlistImageFile Name="texture_hero_3003.png" Key="texture_hero_3003.png" />
           <PlistImageFile Name="texture_spell_1.png" Key="texture_spell_1.png" />
           <PlistImageFile Name="texture_spell_2.png" Key="texture_spell_2.png" />
+          <PlistImageFile Name="ChoseStatus.png" Key="ChoseStatus.png" />
         </PlistImageFolder>
         <Image Name="diatlas.png" />
       </RootFolder>

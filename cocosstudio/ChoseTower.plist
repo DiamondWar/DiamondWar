@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>ChoseStatus.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{858,2},{162,162}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{162,162}}</string>
+                <key>sourceSize</key>
+                <string>{162,162}</string>
+            </dict>
             <key>choseTower_iconbg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{858,2},{120,120}}</string>
+                <string>{{29,164},{120,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +33,7 @@
             <key>herotype1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,55},{47,63}}</string>
+                <string>{{336,150},{47,63}}</string>
                 <key>offset</key>
                 <string>{2,-2}</string>
                 <key>rotated</key>
@@ -33,7 +46,7 @@
             <key>herotype2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{816,124},{75,73}}</string>
+                <string>{{74,929},{75,73}}</string>
                 <key>offset</key>
                 <string>{-1,-4}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>herotype3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{887,209},{69,73}}</string>
+                <string>{{151,176},{69,73}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>herotype4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{816,199},{69,73}}</string>
+                <string>{{151,929},{69,73}}</string>
                 <key>offset</key>
                 <string>{-1,2}</string>
                 <key>rotated</key>
@@ -72,7 +85,7 @@
             <key>herotypebg1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{633,855},{97,107}}</string>
+                <string>{{29,400},{97,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +98,7 @@
             <key>herotypebg2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{717,590},{97,107}}</string>
+                <string>{{435,311},{97,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +111,7 @@
             <key>herotypebg3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{618,590},{97,107}}</string>
+                <string>{{222,378},{97,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>herotypebg4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{519,590},{97,107}}</string>
+                <string>{{336,311},{97,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>list_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,590},{173,173}}</string>
+                <string>{{2,754},{173,173}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>listitem_chose_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{485,746},{173,107}}</string>
+                <string>{{222,41},{173,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>listitem_nochose_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{458,860},{173,107}}</string>
+                <string>{{2,55},{173,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>noadd.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{660,741},{102,102}}</string>
+                <string>{{556,283},{102,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>scrollbg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{980,2},{25,586}}</string>
+                <string>{{2,166},{25,586}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>srollup.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,765},{25,133}}</string>
+                <string>{{177,41},{25,133}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +215,7 @@
             <key>suo.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{893,124},{70,83}}</string>
+                <string>{{2,929},{70,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +254,7 @@
             <key>texture_chuzhan_title3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{177,704},{102,41}}</string>
+                <string>{{660,295},{102,41}}</string>
                 <key>offset</key>
                 <string>{-4,0}</string>
                 <key>rotated</key>
@@ -254,7 +267,7 @@
             <key>texture_chuzhan_title4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{281,704},{110,40}}</string>
+                <string>{{727,169},{110,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +280,7 @@
             <key>texture_cost_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{613,699},{108,40}}</string>
+                <string>{{446,269},{108,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +293,7 @@
             <key>texture_cost_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{503,704},{108,40}}</string>
+                <string>{{336,269},{108,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +306,7 @@
             <key>texture_cost_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{454,975},{108,40}}</string>
+                <string>{{837,280},{108,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +319,7 @@
             <key>texture_cost_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{344,975},{108,40}}</string>
+                <string>{{727,253},{108,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,7 +332,7 @@
             <key>texture_cost_5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{393,704},{108,40}}</string>
+                <string>{{727,211},{108,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +345,7 @@
             <key>texture_hero_1001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{405,590},{112,112}}</string>
+                <string>{{613,169},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +358,7 @@
             <key>texture_hero_1002.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{371,746},{112,112}}</string>
+                <string>{{29,286},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +371,7 @@
             <key>texture_hero_1003.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{344,861},{112,112}}</string>
+                <string>{{222,264},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,7 +384,7 @@
             <key>texture_hero_2001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,590},{112,112}}</string>
+                <string>{{499,155},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +397,7 @@
             <key>texture_hero_2002.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{257,747},{112,112}}</string>
+                <string>{{385,155},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -397,7 +410,7 @@
             <key>texture_hero_2003.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{177,590},{112,112}}</string>
+                <string>{{853,166},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +423,7 @@
             <key>texture_hero_3001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{230,879},{112,112}}</string>
+                <string>{{739,55},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -423,7 +436,7 @@
             <key>texture_hero_3002.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{143,765},{112,112}}</string>
+                <string>{{625,55},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +449,7 @@
             <key>texture_hero_3003.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{116,879},{112,112}}</string>
+                <string>{{222,150},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -449,7 +462,7 @@
             <key>texture_spell_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{29,765},{112,112}}</string>
+                <string>{{511,41},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -462,7 +475,7 @@
             <key>texture_spell_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,900},{112,112}}</string>
+                <string>{{397,41},{112,112}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -482,7 +495,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9630933e973b739da30f8709578301e0$</string>
+            <string>$TexturePacker:SmartUpdate:33662bcf9544f3f9cf390c1e09b4dc99$</string>
             <key>textureFileName</key>
             <string>ChoseTower.png</string>
         </dict>

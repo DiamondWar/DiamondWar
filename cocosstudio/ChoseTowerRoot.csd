@@ -72,19 +72,19 @@
             <FileData Type="Normal" Path="bg1.png" Plist="" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="ScrollView_1" ActionTag="1839392902" Alpha="234" Tag="15" IconVisible="False" LeftMargin="1274.3579" RightMargin="445.6421" TopMargin="192.7062" BottomMargin="687.2938" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
-            <Size X="200.0000" Y="200.0000" />
-            <AnchorPoint ScaleY="1.0000" />
-            <Position X="1274.3579" Y="887.2938" />
-            <Scale ScaleX="2.5908" ScaleY="1.7351" />
+          <AbstractNodeData Name="ScrollView_1" ActionTag="1839392902" Tag="15" IconVisible="False" LeftMargin="1274.3566" RightMargin="125.6434" TopMargin="272.0958" BottomMargin="187.9042" TouchEnable="True" ClipAble="True" BackColorAlpha="0" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
+            <Size X="520.0000" Y="620.0000" />
+            <AnchorPoint ScaleY="0.8818" />
+            <Position X="1274.3566" Y="734.6268" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.6637" Y="0.8216" />
-            <PreSize X="0.1042" Y="0.1852" />
+            <PrePosition X="0.6637" Y="0.6802" />
+            <PreSize X="0.2708" Y="0.5741" />
             <SingleColor A="255" R="255" G="150" B="100" />
             <FirstColor A="255" R="255" G="150" B="100" />
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
-            <InnerNodeSize Width="200" Height="400" />
+            <InnerNodeSize Width="520" Height="620" />
           </AbstractNodeData>
           <AbstractNodeData Name="herotypebg1" ActionTag="-1461516683" Tag="48" IconVisible="False" LeftMargin="259.8374" RightMargin="1563.1626" TopMargin="260.1489" BottomMargin="712.8511" ctype="SpriteObjectData">
             <Size X="97.0000" Y="107.0000" />
@@ -321,7 +321,7 @@
             <FileData Type="PlistSubImage" Path="list_bg.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="herotypebg1_2" ActionTag="-763166379" Tag="34" IconVisible="False" LeftMargin="1482.8727" RightMargin="340.1273" TopMargin="129.6772" BottomMargin="843.3228" ctype="SpriteObjectData">
+          <AbstractNodeData Name="chosetitlebg" ActionTag="-763166379" Tag="34" IconVisible="False" LeftMargin="1482.8727" RightMargin="340.1273" TopMargin="129.6772" BottomMargin="843.3228" ctype="SpriteObjectData">
             <Size X="97.0000" Y="107.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="1531.3727" Y="896.8228" />
@@ -332,7 +332,7 @@
             <FileData Type="PlistSubImage" Path="herotypebg1.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="AtlasLabel_1" ActionTag="382973624" Tag="35" IconVisible="False" LeftMargin="1514.3779" RightMargin="373.6221" TopMargin="165.9437" BottomMargin="877.0563" CharWidth="32" CharHeight="37" LabelText="2" StartChar="/" ctype="TextAtlasObjectData">
+          <AbstractNodeData Name="chosestar" ActionTag="382973624" Tag="35" IconVisible="False" LeftMargin="1514.3779" RightMargin="373.6221" TopMargin="165.9437" BottomMargin="877.0563" CharWidth="32" CharHeight="37" LabelText="2" StartChar="/" ctype="TextAtlasObjectData">
             <Size X="32.0000" Y="37.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="1530.3779" Y="895.5563" />

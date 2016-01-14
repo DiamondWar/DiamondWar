@@ -8,8 +8,9 @@ public:
 	void LoadText();
 	static CSpellConfig* GetInstance();
 	CSpellData* GetItemById(int id);
+	cocos2d::Vector<CSpellData*> DataList_;
 private:
 	std::string  StressText = "SpellConfig.txt";
 	static CSpellConfig* Instance_;
-	cocos2d::Vector<CSpellData*> DataList_;
+	
 };

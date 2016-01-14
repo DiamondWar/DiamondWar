@@ -130,13 +130,7 @@ bool HelloWorld::init()
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/audio_nan_welldone.mp3");
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/moveshuijing.mp3");
 	CAudioManager::GetInstance()->PreLoadAudio("Audio/touchshuijing.mp3");
-	//¼ÓÔØÅäÖÃÎÄ¼þ
-	CSoliderConfig::GetInstance()->LoadText();
-	CSkillConfig::GetInstance()->LoadText();
-	CAttackConfig::GetInstance()->LoadText();
-	CStrengthConfig::GetInstance()->LoadText();
-	CEnemyLevelConfig::GetInstance()->LoadText();
-	CSpellConfig::GetInstance()->LoadText();
+	
 	CAudioManager::GetInstance()->PlayerBackGroundMusic("background.mp3");
 	
 	

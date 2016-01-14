@@ -182,6 +182,7 @@
             <filename>texture_hero_1003.png</filename>
             <filename>texture_hero_2001.png</filename>
             <filename>texture_hero_2002.png</filename>
+            <filename>ChoseStatus.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
