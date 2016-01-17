@@ -103,6 +103,7 @@ bool CDiamondChoseManager::init()
 	UpdateCanChoseShuiJing();
 	return true;
 }
+
 void CDiamondChoseManager::UpdateCanChoseShuiJing()
 {
 	for (int i = 0; i < 4; i++)
@@ -116,7 +117,7 @@ void CDiamondChoseManager::UpdateCanChoseShuiJing()
 		CanChoselist[i]->indexlist[4] = -1;
 		CanChoselist[i]->indexlist[5] = -1;
 	}
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < SpriteList.size(); i++)
 	{
 		CShuiJingBase* base = SpriteList.at(i);
 		if (base->IsLoading == false && base->IsCanChose_ == true)

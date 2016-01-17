@@ -35,13 +35,14 @@ void CTowerItemUI::SetInfo(int id)
 		String*str = String::createWithFormat("texture_hero_%d.png" ,id);
 		SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(str->getCString());
 		Icon_->setSpriteFrame(frame);
-
+		Icon_->setVisible(true);
 	}
 	else if (id > 0)
 	{
 		String*str = String::createWithFormat("texture_spell_%d.png", id);
 		SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(str->getCString());
 		Icon_->setSpriteFrame(frame);
+		Icon_->setVisible(true);
 	}
 	else
 	{
@@ -52,6 +53,7 @@ void CTowerItemUI::SetInfo(int id)
 }
 void CTowerItemUI::SetCanChose(bool flag)
 {
+	CanChose_ = flag;
 	NoChoseSp_->setVisible(!flag);
 }
 void CTowerItemUI::SetIsChose(bool flag)

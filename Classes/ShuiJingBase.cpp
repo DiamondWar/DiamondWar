@@ -97,7 +97,6 @@ void CShuiJingBase::update(float dt)
 			CurMaxCoolTime--;
 		if (CurMaxCoolTime < 0)
 			CurMaxCoolTime = 0;
-		CCLOG("curMaxCoolTime === %d", CurMaxCoolTime);
 		if (CurMaxCoolTime <= MaxCoolTime)
 		{
 			SetCanExist(true);

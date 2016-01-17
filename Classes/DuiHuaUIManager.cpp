@@ -43,7 +43,7 @@ void CDuiHuaUIManager::PlayPersonAudio(int index, float time, CAudioDelegate*del
 		CAudioManager::GetInstance()->PlayerPersonVoice("audio_nan_welcome");
 		break;
 	case 4:
-		CAudioManager::GetInstance()->PlayerPersonVoice("audio_nan_welldone");
+		CAudioManager::GetInstance()->PlayerPersonVoice("audio_welldone");
 		break;
 	case 5:
 		CAudioManager::GetInstance()->PlayerPersonVoice("audio_nv_caiseshuijing");

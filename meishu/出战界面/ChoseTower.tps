@@ -183,6 +183,11 @@
             <filename>texture_hero_2001.png</filename>
             <filename>texture_hero_2002.png</filename>
             <filename>ChoseStatus.png</filename>
+            <filename>xinshouyindao_ren.png</filename>
+            <filename>xinshouyindao_1.png</filename>
+            <filename>xinshouyindao_2.png</filename>
+            <filename>xinshouyindao_3.png</filename>
+            <filename>xinshouyindao_kuang.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

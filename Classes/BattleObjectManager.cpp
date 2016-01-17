@@ -340,4 +340,6 @@ void CBattleObjectManager::ClearAllObject()
 	BuffList_.clear();
 	SoliderDieList_.clear();
 	SpellList_.clear();
+	FirstRanksBoss_->release();
+	SecondRanksBoss_->release();
 }

@@ -4,7 +4,18 @@
 USING_NS_CC;
 CGameDataManager::CGameDataManager()
 {
-	AllSoliderList_ = CSoliderConfig::GetInstance()->DataList_;
+	CSoliderData* data1 = CSoliderConfig::GetInstance()->GetItemById(1001);
+	AllSoliderList_.pushBack(data1);
+	CSoliderData* data2 = CSoliderConfig::GetInstance()->GetItemById(1002);
+	AllSoliderList_.pushBack(data2);
+	CSoliderData* data3= CSoliderConfig::GetInstance()->GetItemById(2001);
+	AllSoliderList_.pushBack(data3);
+	CSoliderData* data4 = CSoliderConfig::GetInstance()->GetItemById(2002);
+	AllSoliderList_.pushBack(data4);
+	CSoliderData* data5 = CSoliderConfig::GetInstance()->GetItemById(3001);
+	AllSoliderList_.pushBack(data5);
+	CSoliderData* data6 = CSoliderConfig::GetInstance()->GetItemById(3002);
+	AllSoliderList_.pushBack(data6);
 	AllSpellList_ = CSpellConfig::GetInstance()->DataList_;
 }
 

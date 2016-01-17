@@ -3,7 +3,7 @@
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
         <LastPublishType Value="Resource" />
-        <IsLastPublish Value="True" />
+        <IsLastPublish Value="False" />
         <LastRunType Value="Windows" />
       </Value>
     </Item>
@@ -31,7 +31,11 @@
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
         <OpenedDocuments>
-          <FilePathData Path="IconItem.csd" />
+          <FilePathData Path="Hero_1001.csd" />
+          <FilePathData Path="Hero_1002.csd" />
+          <FilePathData Path="MainScene.csd" />
+          <FilePathData Path="BattleScene.csd" />
+          <FilePathData Path="BattleUI.csd" />
           <FilePathData Path="ChoseTowerRoot.csd" />
         </OpenedDocuments>
         <ActiveDocument Path="ChoseTowerRoot.csd" />

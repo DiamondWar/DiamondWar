@@ -16,6 +16,8 @@ public:
 	static bool IsEnemyHaHa ;
 	static  bool  IsMyGolden;
 	static bool isEnemyHeroPower;
+	static bool IsEndGame_;
+	static bool IsWinGame_;
 	static float GetLengthByPoint(float point1_x, float point1_y, float point2_x, float point2_y);
 	static float getLengthByCircle(float point1_x, float point1_y, float point2_x, float point2_y);
 	static float GetAngleByPoint(float point1_x, float point1_y, float point2_x, float point2_y);

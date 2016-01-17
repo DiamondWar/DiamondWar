@@ -42,6 +42,8 @@ long CCGlobleConfig::Game_time = 0;
 bool CCGlobleConfig::IsEnemyHaHa = false;
 bool CCGlobleConfig::isEnemyHeroPower = false;
 bool CCGlobleConfig::IsMyGolden = false;
+bool CCGlobleConfig::IsEndGame_ = false;
+bool CCGlobleConfig::IsWinGame_ = false;
 cocos2d::CCArray* CCGlobleConfig::split(const char* srcStr, const char* sSep)
 {
 	cocos2d::CCArray* stringList = cocos2d::CCArray::create();

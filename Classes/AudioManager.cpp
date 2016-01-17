@@ -20,9 +20,9 @@ CAudioManager* CAudioManager::GetInstance()
 }
 void CAudioManager::PlayerBackGroundMusic(std::string music)
 {
-	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying())
+	//if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying())
 	{
-		String*str = String::createWithFormat("Audio/%s", music.c_str());
+		String*str = String::createWithFormat("Audio/%s.mp3", music.c_str());
 		SimpleAudioEngine::getInstance()->playBackgroundMusic(str->getCString(), true);
 	}
 		
@@ -44,8 +44,8 @@ void CAudioManager::ResumeBackground()
 }
 void CAudioManager::PlayerVoice(std::string voice)
 {
-	if (IsPlayPersonVoice_ == true)
-		return;
+	//if (IsPlayPersonVoice_ == true)
+	//	return;
 	if (voice != "")
 	{
 		String*str = String::createWithFormat("Audio/%s.mp3", voice.c_str());

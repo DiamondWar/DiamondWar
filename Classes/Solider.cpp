@@ -19,9 +19,9 @@ CSolider::CSolider(int id, int type, int rank, float level)
 	SKillData_ = CSkillConfig::GetInstance()->GetItemById(Data_->SkillId);
 	ResourceName = Data_->ResourceName;
 	if (rank == 1)
-		Init_x = 10;
+		Init_x = CBattleObjectManager::GetInstance()->GetFirstRanksBoss()->Obj->getPositionX();
 	else
-		Init_x = 1900;
+		Init_x = CBattleObjectManager::GetInstance()->GetSecondRanksBoss()->Obj->getPositionX()-100;
 	if (Data_->SoliderType == 3)
 		Init_y = CCGlobleConfig::COMMON_SKY_POINT;
 	else
@@ -302,10 +302,10 @@ bool CSolider::CheckAttackOrSkill()
 	if (AttackTarget == nullptr || AttackTarget->IsDelete_ == true)
 	{
 		AttackTarget = nullptr;
+		OnRun();
 		OpreateType = ESoliderOpreate_Walk;
 		return false;
 	}
-	CCLOG("AttackNum=== %d,MaxFrameNUm===%d", AttackNum, MaxSkillFrame);
 	if (AttackNum >= MaxSkillFrame)
 	{
 		AttackNum = 0;
@@ -315,6 +315,7 @@ bool CSolider::CheckAttackOrSkill()
 	{
 		OnAttack();
 	}
+	CheckEnemyInRange();
 	return true;
 	//OnSkill();
 }

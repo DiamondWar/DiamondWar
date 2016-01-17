@@ -72,13 +72,13 @@
             <FileData Type="Normal" Path="bg1.png" Plist="" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="ScrollView_1" ActionTag="1839392902" Tag="15" IconVisible="False" LeftMargin="1274.3566" RightMargin="125.6434" TopMargin="272.0958" BottomMargin="187.9042" TouchEnable="True" ClipAble="True" BackColorAlpha="0" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
+          <AbstractNodeData Name="ScrollView_1" ActionTag="1839392902" Tag="15" IconVisible="False" LeftMargin="1274.3566" RightMargin="125.6434" TopMargin="272.0892" BottomMargin="187.9108" TouchEnable="True" ClipAble="True" BackColorAlpha="0" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
             <Size X="520.0000" Y="620.0000" />
-            <AnchorPoint ScaleY="0.8818" />
-            <Position X="1274.3566" Y="734.6268" />
+            <AnchorPoint ScaleY="1.0000" />
+            <Position X="1274.3566" Y="807.9108" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.6637" Y="0.6802" />
+            <PrePosition X="0.6637" Y="0.7481" />
             <PreSize X="0.2708" Y="0.5741" />
             <SingleColor A="255" R="255" G="150" B="100" />
             <FirstColor A="255" R="255" G="150" B="100" />
@@ -174,13 +174,13 @@
             <FileData Type="PlistSubImage" Path="herotype4.png" Plist="ChoseTower.plist" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1" ActionTag="-1015523085" CallBackType="Click" Tag="56" IconVisible="False" LeftMargin="1402.1501" RightMargin="196.8499" TopMargin="920.2124" BottomMargin="37.7876" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="291" Scale9Height="100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1" ActionTag="-1015523085" CallBackType="Click" Tag="56" IconVisible="False" LeftMargin="1379.7244" RightMargin="219.2756" TopMargin="922.7043" BottomMargin="35.2957" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="291" Scale9Height="100" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="321.0000" Y="122.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="1562.6501" Y="98.7876" />
+            <Position X="1540.2244" Y="96.2957" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.8139" Y="0.0915" />
+            <PrePosition X="0.8022" Y="0.0892" />
             <PreSize X="0.1672" Y="0.1130" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Normal" Path="Start_nobutton.png" Plist="" />
@@ -341,6 +341,32 @@
             <PrePosition X="0.7971" Y="0.8292" />
             <PreSize X="0.0167" Y="0.0343" />
             <LabelAtlasFileImage_CNB Type="Normal" Path="diatlas.png" Plist="" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="xinshouyindao_6" ActionTag="-303782416" Tag="99" IconVisible="False" LeftMargin="2.4379" RightMargin="-2.4380" TopMargin="2.3209" BottomMargin="-2.3209" ctype="SpriteObjectData">
+            <Size X="1920.0000" Y="1080.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="962.4379" Y="537.6791" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5013" Y="0.4979" />
+            <PreSize X="1.0000" Y="1.0000" />
+            <FileData Type="Normal" Path="zhezhaobg.png" Plist="" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Button_2" ActionTag="-691776249" Alpha="0" Tag="108" IconVisible="False" TouchEnable="True" FontSize="14" ButtonText="Button" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+            <Size X="1920.0000" Y="1080.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="960.0000" Y="540.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5000" Y="0.5000" />
+            <PreSize X="1.0000" Y="1.0000" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+            <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
+            <NormalFileData Type="Default" Path="Default/Button_Normal.png" Plist="" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

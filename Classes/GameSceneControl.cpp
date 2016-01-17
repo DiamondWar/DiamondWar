@@ -206,9 +206,11 @@ void CGameSceneControl::AddScreenShake()
 	Shake*sk = Shake::create(3, 4);
 	GameRoot_->runAction(sk);
 }
-void CGameSceneControl::OnScreenScale()
+void CGameSceneControl::OnScreenScale(float x)
 {
-	MoveTo* moveto = MoveTo::create(0.5, Vec2(0, -150));
+	GameRoot_->stopAllActions();
+	//GameRoot_->setPosition(-1900, 0);
+	MoveTo* moveto = MoveTo::create(0.5, Vec2(x, -150));
 	MoveTo* moveto1 = MoveTo::create(0.5, Vec2(0, 0));
 	ScaleTo* scalto = ScaleTo::create(0.5, 1.8);
 	ScaleTo* scalto1 = ScaleTo::create(1.5, 1.8);

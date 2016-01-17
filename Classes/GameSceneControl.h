@@ -15,7 +15,7 @@ public:
 	bool IsHaveConsumeHero(int color ,int num);
 	int IsHaveHero(int color, int num);
 	void AddScreenShake();
-	void OnScreenScale();
+	void OnScreenScale(float x = 0);
 	void SetBattleUIManager(CBattleUIManager* manager);
 	CBattleUIManager* GetBattleUIManager();
 	cocos2d::Node* GameRoot_;

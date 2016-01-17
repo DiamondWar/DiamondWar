@@ -232,6 +232,8 @@
           <PlistImageFile Name="xuetiaobg.png" Key="xuetiaobg.png" />
           <PlistImageFile Name="xuetiaoup.png" Key="xuetiaoup.png" />
           <PlistImageFile Name="shuijing_Bg.png" Key="shuijing_Bg.png" />
+          <PlistImageFile Name="fail.png" Key="fail.png" />
+          <PlistImageFile Name="win.png" Key="win.png" />
         </PlistImageFolder>
         <Image Name="xuetiaoup.png" />
         <Project Name="BattleScene.csd" Type="Node" />
@@ -304,8 +306,16 @@
           <PlistImageFile Name="texture_spell_1.png" Key="texture_spell_1.png" />
           <PlistImageFile Name="texture_spell_2.png" Key="texture_spell_2.png" />
           <PlistImageFile Name="ChoseStatus.png" Key="ChoseStatus.png" />
+          <PlistImageFile Name="xinshouyindao_kuang.png" Key="xinshouyindao_kuang.png" />
+          <PlistImageFile Name="xinshouyindao_ren.png" Key="xinshouyindao_ren.png" />
         </PlistImageFolder>
         <Image Name="diatlas.png" />
+        <Image Name="xinshouyindao_1.png" />
+        <Image Name="xinshouyindao_2.png" />
+        <Image Name="xinshouyindao_3.png" />
+        <Image Name="xinshouyindao_kuang.png" />
+        <Image Name="xinshouyindao_ren.png" />
+        <Image Name="zhezhaobg.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

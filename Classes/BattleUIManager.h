@@ -3,6 +3,7 @@
 #include "DiamondChoseManager.h"
 #include "ui/UILoadingBar.h"
 #include "ui/UITextAtlas.h"
+#include "ui/UIButton.h"
 #include "AudioDelegate.h"
 using namespace cocos2d::ui;
 class CBattleUIManager :
@@ -30,8 +31,11 @@ public:
 	void Role2PlayAnimation(int index);
 	cocos2d::Node* CaiseShuiJingRoot_;
 private: 
-	
-
+	void OnCloseButtonClicked();
+	void OnEndGameAnimation();
+	void CheckToFingerPos();
+	void OnFingerAnimateComplete();
+	void StartFingerAnimation(int num, float init_x, float target_x);
 	CDiamondChoseManager * DiamondManger;
 	//我方基地头像
 	cocos2d::Sprite*  MyIcon_;
@@ -46,6 +50,10 @@ private:
 	//彩色水晶显示
 	cocos2d::Sprite* CaiSeShuiJing_;
 	float CurCaiSeShuiJingPrecentNum_;
+	//胜利失败显示
+	cocos2d::Sprite*  WinSp_;
+	cocos2d::Sprite* FailSp_;
+	Button*  CloseButton_;
 	//时间显示
 	cocos2d::Vector<cocos2d::Sprite*> TimeList_;
 	TextAtlas * CaiSeShuiJingTimeLabel_;
@@ -54,5 +62,9 @@ private:
 	bool IsMoveChoseCaiSe_ = false;
 	float DetiaTime = 0;
 	float MaxTime = 600;
+	cocos2d::Sprite* FingerAciton_; 
+	long long FingerStartTime_;
+	int ContinueTime = 6000;
+	bool IsEndGame_ = false;
 };
 

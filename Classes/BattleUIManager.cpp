@@ -4,6 +4,9 @@
 #include "GameSceneControl.h"
 #include "SoliderConfig.h"
 #include "DuiHuaUIManager.h"
+#include "ChoseTowerUIManager.h"
+#include "AudioManager.h"
+#include "SpellConfig.h"
 USING_NS_CC;
 
 
@@ -35,6 +38,15 @@ bool CBattleUIManager::init()
 	SecondIcon_ = static_cast<Sprite*>(node->getChildByName("player1_2"));
 	MyBloodProgress_ =static_cast<LoadingBar*>( node->getChildByName("LoadingBar_1"));
 	SecondBloodProgress_ = static_cast<LoadingBar*>(node->getChildByName("LoadingBar_2"));
+	CloseButton_ = static_cast<Button*>(node->getChildByName("Button_1"));
+	CloseButton_->setPressedActionEnabled(false);
+	CloseButton_->addClickEventListener(CC_CALLBACK_0(CBattleUIManager::OnCloseButtonClicked, this));
+	CloseButton_->setScale(0);
+	CloseButton_->setVisible(true);
+	WinSp_ = static_cast<Sprite*>(node->getChildByName("win_2"));
+	WinSp_->setVisible(false);
+	FailSp_ = static_cast<Sprite*>(node->getChildByName("fail_1"));
+	FailSp_->setVisible(false);
 	addChild(node);
  	setContentSize(Size(Director::getInstance()->getWinSize().width, Director::getInstance()->getWinSize().height));
 	DiamondManger = CDiamondChoseManager::create();
@@ -45,6 +57,10 @@ bool CBattleUIManager::init()
 	CreateCaiSeShuiJing();
 	OnPlayVoice(3, 2.5);
 	CGameSceneControl::GetInstance()->SetBattleUIManager(this);
+
+	FingerAciton_ = Sprite::createWithSpriteFrameName("finger1.png");
+	addChild(FingerAciton_);
+	
 	EventListenerTouchOneByOne*	 listener = EventListenerTouchOneByOne::create();
 
 	listener->onTouchBegan = [this](Touch* touch, Event* event)
@@ -67,6 +83,7 @@ bool CBattleUIManager::init()
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	this->scheduleUpdate();
+	FingerStartTime_ = CCGlobleConfig::GetCurrntTime();
 	return true;
 }
 //显示彩色水晶的信息
@@ -125,6 +142,65 @@ void CBattleUIManager::CreateCaiSeShuiJing()
 	CaiSeShuiJingTimeLabel_->setPosition(Vec2(Director::getInstance()->getWinSize().width - 90, 100));
 	addChild(CaiSeShuiJingTimeLabel_);
 }
+//给手指确定位置
+void CBattleUIManager::CheckToFingerPos()
+{
+	int num = 0;
+	int cutindex = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		int index = CGameSceneControl::GetInstance()->IsHaveHero(DiamondManger->CanChoselist[i]->Color, DiamondManger->CanChoselist[i]->Num);
+		if (DiamondManger->CanChoselist[i]->Num>num&&index!=-1)
+		{
+			if (index < 6)
+			{
+				CSoliderData* data = CSoliderConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
+				num = data->NeedStar;
+			}
+			else
+			{
+				CSpellData* data = CSpellConfig::GetInstance()->GetItemById(CGameSceneControl::GetInstance()->HeroList[index]);
+				num = data->NeedStar_;
+			}
+			cutindex = DiamondManger->CanChoselist[i]->indexlist[0];
+		}
+	}
+	StartFingerAnimation(num, DiamondManger->getPositionX() + 120 + 150 * cutindex, DiamondManger->getPositionX() + 120 + 150 * (cutindex + num-1));
+}
+void CBattleUIManager::OnFingerAnimateComplete()
+{
+	FingerAciton_->setVisible(false);
+}
+void CBattleUIManager::StartFingerAnimation(int num, float init_x, float target_x)
+{
+	FingerAciton_->setVisible(true);
+	FingerAciton_->setAnchorPoint(ccp(0, 0));
+	FingerAciton_->setPosition(init_x, 85);
+
+	MoveTo* move = MoveTo::create(1, Vec2(target_x, 85));
+	Vector<SpriteFrame*> vsp;
+	for (int i = 1; i < 11; i++)
+	{
+		String *string = String::createWithFormat("finger%d.png", i);
+		SpriteFrame *spfr = SpriteFrameCache::getInstance()->getSpriteFrameByName(string->getCString());
+		vsp.pushBack(spfr);
+	}
+	Animation* animation = Animation::createWithSpriteFrames(vsp, 1.0f / 10);
+	Animate* animate = Animate::create(animation);
+	CCCallFunc * funcall = CCCallFunc::create(this, callfunc_selector(CBattleUIManager::OnFingerAnimateComplete));
+	if (num > 1)
+	{
+		CCSequence* sq = CCSequence::create(move, animate, funcall, NULL);
+		FingerAciton_->runAction(sq);
+	}
+	else
+	{
+		CCSequence* sq = CCSequence::create(animate, funcall, NULL);
+		FingerAciton_->runAction(sq);
+	}
+	
+	
+}
 void CBattleUIManager::CreateTime()
 {
 	for (int i = 0; i < 5;i++)
@@ -173,6 +249,8 @@ void CBattleUIManager::ShowTime()
 }
 void CBattleUIManager::update(float delta)
 {
+	if (IsEndGame_ == true)
+		return;
 	DetiaTime += delta;
 	ShowTime();
 	if (CBattleObjectManager::GetInstance()->GetFirstRanksBoss() != nullptr&&MyBloodProgress_ != nullptr)
@@ -186,6 +264,45 @@ void CBattleUIManager::update(float delta)
 		CBaseBoss* boss = CBattleObjectManager::GetInstance()->GetSecondRanksBoss();
 		SecondBloodProgress_->setPercent(boss->CurBlood * 100 / boss->MaxBlood);
 	}
+
+	if (CCGlobleConfig::GetCurrntTime() > FingerStartTime_ + ContinueTime)
+	{
+		FingerStartTime_ = CCGlobleConfig::GetCurrntTime();
+		CheckToFingerPos();
+	}
+	if (CCGlobleConfig::IsEndGame_ == true)
+	{
+		IsEndGame_ = true;
+		OnEndGameAnimation();
+	}
+}
+void CBattleUIManager::OnCloseButtonClicked()
+{
+	Director::getInstance()->replaceScene(CChoseTowerUIManager::createScene());
+}
+void CBattleUIManager::OnEndGameAnimation()
+{
+	ScaleTo* scale = ScaleTo::create(1, 1);
+	if (CCGlobleConfig::IsWinGame_ == true)
+	{
+		WinSp_->setVisible(true);
+		WinSp_->setScale(0);
+		WinSp_->runAction(scale);
+	}
+	else
+	{
+		FailSp_->setVisible(true);
+		FailSp_->setScale(0);
+		FailSp_->runAction(scale);
+	}
+	
+	CloseButton_->setVisible(true);
+	CloseButton_->setScale(1);
+
+	if (CCGlobleConfig::IsWinGame_ == true)
+		CAudioManager::GetInstance()->PlayerVoice("audio_win");
+	else
+		CAudioManager::GetInstance()->PlayerVoice("audio_fail");
 }
 void CBattleUIManager::UpdateCaiSeShuiJing(int num)
 {
@@ -278,7 +395,7 @@ void CBattleUIManager::onTouchEnded(Touch* touch, Event* event)
 				{
 					//播放声音
 					OnPlayVoice(5,2);
-
+					FingerStartTime_ = CCGlobleConfig::GetCurrntTime();
 					UpdateCaiSeShuiJing(-5);
 				}
 			}

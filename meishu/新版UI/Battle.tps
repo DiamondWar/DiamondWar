@@ -190,6 +190,8 @@
             <filename>主界面UI/caisebg1.png</filename>
             <filename>主界面UI/caiseup1.png</filename>
             <filename>主界面UI/caiseup2.png</filename>
+            <filename>主界面UI/win.png</filename>
+            <filename>主界面UI/fail.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

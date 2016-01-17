@@ -2,6 +2,7 @@
 #include "Buff.h"
 #include "BattleObjectManager.h"
 #include "GameSceneControl.h"
+#include "AudioManager.h"
 USING_NS_CC;
 CBaseBoss::CBaseBoss()
 {}
@@ -20,8 +21,8 @@ CBaseBoss::CBaseBoss(int rank)
 	}
 	Ranks = rank;
 	Init_y = 480;
-	CurBlood = 10000;
-	MaxBlood = 10000;
+	CurBlood =30000;
+	MaxBlood = 20000;
 	RangeR_ = 80;
 	InitObj();
 
@@ -46,18 +47,36 @@ void CBaseBoss::GetDamage(int damage, int type)
 			}
 			else
 			{
-				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(4,1.5);
+				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(4, 1.5);
 			}
 			CBuffData* data_ = new   CBuffData();
 			data_->attackPoint = 1;
-			data_->AttackType = 1;
+			data_->AttackType = 3;
 			data_->ContinueTime = 0;
 			data_->From = this;
 			data_->Target = this;
-			data_->ResourceFrameCount = 9;
-			data_->ResourceName = "Boss_1";
+			data_->init_x = CenterPoint_->getPositionX() + Obj->getPositionX();
+			data_->init_y = CenterPoint_->getPositionY() + Obj->getPositionY();
+			data_->ResourceFrameCount = 5;
+			data_->ResourceName = "bossdie";
 			CBuff*buff = new CBuff(data_);
 			CBattleObjectManager::GetInstance()->AddBuffObject(buff);
+			Obj->setVisible(false);
+			CGameSceneControl::GetInstance()->AddScreenShake();
+			
+			if (Ranks == 1)
+			{
+				CCGlobleConfig::IsWinGame_ = false;
+				CGameSceneControl::GetInstance()->OnScreenScale();
+			}
+				
+			else
+			{
+				CCGlobleConfig::IsWinGame_ = true;
+				CGameSceneControl::GetInstance()->OnScreenScale(-1520);
+			}
+				
+			CAudioManager::GetInstance()->PlayerVoice("audio_bossdie");
 		}
 	}
 	else if (CurBlood <= MaxBlood*0.3)

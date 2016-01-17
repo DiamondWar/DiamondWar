@@ -178,6 +178,10 @@ void CBuff::OnAttackActionComplete()
 		BuffData->Target->GetAttackRangeCf(-BuffData->AttackRangeCf);
 		BuffData->Target->GetAttackSpeedCf(-BuffData->AttackInveralCf);
 	}
+	if (BuffData->ResourceName == "bossdie")
+	{
+		CCGlobleConfig::IsEndGame_ = true;
+	}
 	
 	if (Obj!=nullptr)
 		Obj->setVisible(false);
