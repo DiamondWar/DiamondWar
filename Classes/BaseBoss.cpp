@@ -21,8 +21,8 @@ CBaseBoss::CBaseBoss(int rank)
 	}
 	Ranks = rank;
 	Init_y = 480;
-	CurBlood =30000;
-	MaxBlood = 20000;
+	CurBlood =10000;
+	MaxBlood = 10000;
 	RangeR_ = 80;
 	InitObj();
 
@@ -50,13 +50,13 @@ void CBaseBoss::GetDamage(int damage, int type)
 				CGameSceneControl::GetInstance()->GetBattleUIManager()->OnPlayVoice(4, 1.5);
 			}
 			CBuffData* data_ = new   CBuffData();
-			data_->attackPoint = 1;
+			data_->attackPoint = 3;
 			data_->AttackType = 3;
 			data_->ContinueTime = 0;
 			data_->From = this;
 			data_->Target = this;
-			data_->init_x = CenterPoint_->getPositionX() + Obj->getPositionX();
-			data_->init_y = CenterPoint_->getPositionY() + Obj->getPositionY();
+			data_->init_x = BasePoint_->getPositionX() + Obj->getPositionX();
+			data_->init_y = BasePoint_->getPositionY() + Obj->getPositionY();
 			data_->ResourceFrameCount = 5;
 			data_->ResourceName = "bossdie";
 			CBuff*buff = new CBuff(data_);

@@ -308,6 +308,9 @@
           <PlistImageFile Name="ChoseStatus.png" Key="ChoseStatus.png" />
           <PlistImageFile Name="xinshouyindao_kuang.png" Key="xinshouyindao_kuang.png" />
           <PlistImageFile Name="xinshouyindao_ren.png" Key="xinshouyindao_ren.png" />
+          <PlistImageFile Name="xinshouyindao_1.png" Key="xinshouyindao_1.png" />
+          <PlistImageFile Name="xinshouyindao_2.png" Key="xinshouyindao_2.png" />
+          <PlistImageFile Name="xinshouyindao_3.png" Key="xinshouyindao_3.png" />
         </PlistImageFolder>
         <Image Name="diatlas.png" />
         <Image Name="xinshouyindao_1.png" />
